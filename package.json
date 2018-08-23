@@ -1,0 +1,19 @@
+{
+  "name": "@labor/helpers.js",
+  "version": "1.0.0",
+  "description": "General purpose Javascript helpers",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/labor-digital/labor-js-helpers.js.git"
+  },
+  "peerDependencies": {
+    "jquery": "3.x"
+  },
+  "engines": {
+    "node": ">=8.11.2",
+    "npm": ">=6.3.0"
+  },
+  "author": "Martin Neundorfer",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/labor-digital/labor-js-helpers.js#readme"
+}
