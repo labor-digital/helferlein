@@ -8,7 +8,7 @@ import $globj from "@labor/helpers.js/Globj";
  * Helper to prevent the body from being scrolled with a fix for the ios 9 safary which is a pain...
  * @param {boolean} state True to stop the scrolling, false to reenable it.
  */
-export function stopBodyScrolling(state){
+export default function stopBodyScrolling(state){
 	let isIos = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 
 	// Stop the scrolling
