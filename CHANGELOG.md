@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 - Adds jQuery support for foreach
 - Adds changelog file
 
-### Changes
+### Changed
 - Renames all filenames to lcfirst as they contain functions and no classes
 - Makes all elements "default" exports
 
