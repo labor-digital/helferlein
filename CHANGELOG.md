@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [1.0.2] - 2018-08-29
 ### Added
 - Adds jQuery support for foreach
 - Adds changelog file
