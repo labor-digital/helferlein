@@ -5,10 +5,14 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Adds jQuery support for foreach
 - Adds changelog file
+- Adds reduce function
 
 ### Changed
 - Renames all filenames to lcfirst as they contain functions and no classes
 - Makes all elements "default" exports
+
+### Fixed
+- Fixed an issue where foreach could not be stopped when returning false
 
 ## [1.0.1] - 2018-08-28
 ### Added 
