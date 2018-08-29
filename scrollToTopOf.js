@@ -46,7 +46,7 @@ function doScroll($target, position, speed){
  * @param speed Time in millisecons the sliding should take
  */
 
-export function scrollToTopOf($target, $current, speed) {
+export default function scrollToTopOf($target, $current, speed) {
 
 	// Check if we should scroll up to 0
 	if(typeof $target === 'undefined') {

@@ -10,7 +10,7 @@
  * http://underscorejs.org
  * (c) 2009-2018 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
-export function throttleEvent (callback, limit) {
+export default function throttleEvent (callback, limit) {
 	var timeout, context, args, result;
 	let previous = 0;
 
