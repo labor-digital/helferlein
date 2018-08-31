@@ -22,6 +22,7 @@ export default function throttleEvent (callback, limit) {
 	};
 
 	var throttled = function() {
+		args = arguments;
 		var now = new Date().getTime();
 		if (!previous) previous = now;
 		var remaining = limit - (now - previous);
