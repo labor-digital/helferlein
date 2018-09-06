@@ -2,8 +2,15 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [1.0.3] - 2018-09-06
+### Added
+- Adds a md5 hash implementation
+- Adds a helper to select the content of a given jQuery object
+
 ### Changed 
 - throttledEvent now transfers the instance of the event to the callback.
+- forEach callbacks may now return "FALSE" to break the loop
 
 ## [1.0.2] - 2018-08-29
 ### Added

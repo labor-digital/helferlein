@@ -10,11 +10,17 @@
  */
 export default function forEach(object, callback) {
 	if (object === null || typeof object === 'undefined') return;
-	if (Array.isArray(object)) object.forEach(callback);
-	else if (typeof object.jquery !== 'undefined') object.each((k, v) => {
-		if (callback($(v), k, v) === false) return false;
-	});
-	else Object.entries(object).forEach(v => {
-			if (callback(v[1], v[0]) === false) return false;
-		});
+	if (Array.isArray(object)) {
+		for(let [k,v] of object){
+			if(callback(v, k, object) === false) break;
+		}
+	}
+	else if (typeof object.jquery !== 'undefined') {
+		object.each((k, v) => !(callback($(v), k, v, object) === false));
+	}
+	else {
+		for(let v of Object.entries(object)){
+			if(callback(v[1], v[0], object) === false) break;
+		}
+	}
 }
