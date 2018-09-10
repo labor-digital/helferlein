@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Changed 
+- Renames Globj.js to $globj.js to be consistent
 
 ## [1.0.3] - 2018-09-06
 ### Added

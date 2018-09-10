@@ -2,7 +2,7 @@
  * Created by Martin Neundorfer on 20.08.2018.
  * For LABOR.digital
  */
-import $globj from "./Globj";
+import $globj from "./$globj";
 
 let config = {
 	'speed': 700,

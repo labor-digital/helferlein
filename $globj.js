@@ -5,7 +5,7 @@
 /**
  * Global objects for general use
  */
-export default new class Globj{
+export default new class $globj{
 	get document() {
 		if(typeof this._document !== 'undefined') return this._document;
 		return this._document = $(document);
