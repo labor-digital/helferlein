@@ -21,11 +21,11 @@ for (; i < 64;) {
  * @return {string}
  */
 export function md5(value) {
-	let str = value + '';
+	let str:any = value + '';
 	var b, c, d, j,
 		x = [],
 		str2 = unescape(encodeURI(str)),
-		a = str2.length,
+		a:any = str2.length,
 		h = [b = 1732584193, c = -271733879, ~b, ~c],
 		i = 0;
 

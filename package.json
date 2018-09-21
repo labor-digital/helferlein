@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/labor-digital/labor-js-helpers.js.git"
   },
+  "scripts": {
+    "build": "tsc"
+  },
   "peerDependencies": {
     "jquery": "3.x"
   },
@@ -13,7 +16,13 @@
     "node": ">=8.11.2",
     "npm": ">=6.3.0"
   },
+  "files": [
+    "lib"
+  ],
   "author": "Martin Neundorfer",
   "license": "MIT",
-  "homepage": "https://bitbucket.org/labor-digital/labor-js-helpers.js#readme"
+  "homepage": "https://bitbucket.org/labor-digital/labor-js-helpers.js#readme",
+  "dependencies": {
+    "@types/jquery": "^3.3.9"
+  }
 }
