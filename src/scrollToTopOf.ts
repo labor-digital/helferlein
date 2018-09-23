@@ -3,10 +3,23 @@
  * For LABOR.digital
  */
 import $globj from "./$globj";
+import {mergeRecursive} from "./mergeRecursive";
 
-let config = {
-	'speed': 700,
-	'offset': 0
+interface ScrollToTopOfConfiguration {
+	/**
+	 * The speed in milliseconds the scroll operation should take
+	 */
+	speed?: number,
+
+	/**
+	 * The offset to the top of the page when scrolling up
+	 */
+	offset?: number
+}
+
+let config: ScrollToTopOfConfiguration = {
+	speed: 700,
+	offset: 0
 };
 
 /**
@@ -16,8 +29,8 @@ let config = {
  *            - speed: (Default 700) The speed in milliseconds the scroll operation should take
  *            - offset: (Default 0) The offset to the top of the page when scrolling up
  */
-export function configureScrollToTopOf(configuration) {
-	config = Object.assign(config, configuration);
+export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration) {
+	config = mergeRecursive(config, configuration);
 }
 
 /**
@@ -26,10 +39,10 @@ export function configureScrollToTopOf(configuration) {
  * @param position
  * @param speed
  */
-function doScroll($target, position, speed) {
+function doScroll($target: JQuery, position?: number|undefined, speed?: number) {
 	if (typeof position !== 'number') position = 0;
 	$target.animate({
-		'scrollTop': position
+		scrollTop: position
 	}, speed, 'swing', function () {
 		$globj.document.trigger('scroll__toTopOf--done', [$target])
 	});
@@ -39,15 +52,15 @@ function doScroll($target, position, speed) {
  * Scrolls either the whole page or a specific element with the data attribute "data-scroll-target"
  * to the top of the element which is given as $o.
  *
- * @param {jQuery} [$target] The object to scroll to the top of
- * @param {null|jQuery} [$current] If given will be used as childmarker. The method will bubble up and see if there
+ * @param $target The object to scroll to the top of
+ * @param $current If given will be used as childmarker. The method will bubble up and see if there
  *                is a possible 'data-scroll-target' to scroll instead of the main window
- * @param {{[speed]: number, [offset]: number}} [options] Additional options for this scroll operation
- *        			- speed: (Default 700) The speed in milliseconds the scroll operation should take
- *        			- offset: (Default 0) The offset to the top of the page when scrolling up
+ * @param options Additional options for this scroll operation
+ *                    - speed: (Default 700) The speed in milliseconds the scroll operation should take
+ *                    - offset: (Default 0) The offset to the top of the page when scrolling up
  */
 
-export default function scrollToTopOf($target, $current, options) {
+export function scrollToTopOf($target?:JQuery, $current?:JQuery|null, options?:ScrollToTopOfConfiguration) {
 
 	// Check if we should scroll up to 0
 	if (typeof $target === 'undefined') {
@@ -64,9 +77,10 @@ export default function scrollToTopOf($target, $current, options) {
 
 	// Check if we have a scroll target
 	if (typeof $current !== 'undefined' && $current !== null) {
-		var $scrollTarget = $current.closest($target.ds('data-scroll-target'));
+		var $scrollTarget = $current.closest('*[data-scroll-target]');
 		if ($scrollTarget.length > 0) {
-			doScroll($scrollTarget, $target.offset().top + $scrollTarget.scrollTop() - $scrollTarget.offset().top, options.speed);
+			doScroll($scrollTarget, $target.offset().top + $scrollTarget.scrollTop() -
+				$scrollTarget.offset().top, options.speed);
 			return;
 		}
 	}

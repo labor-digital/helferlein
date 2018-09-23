@@ -2,7 +2,15 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Added
+- Added some basic tests
+- Added isMap: To check if a given object is a set or not
+- Added isSet: To check if a given object is a map or not
+- Added mergeRecursive: To merge arrays, objects, sets and Maps with each other.
+- Adds support for map and set on reduce() and map()
+
 ### Changed 
+- Converted whole codebase to typescript
 - Renames Globj.js to $globj.js to be consistent
 
 ## [1.0.3] - 2018-09-06

@@ -1,7 +1,4 @@
-/**
- * Created by Martin Neundorfer on 20.08.2018.
- * For LABOR.digital
- */
+/// <reference types="jquery" />
 interface forEachCallbackType extends Function {
     /**
      * Is called for every element of the iterated object
@@ -9,7 +6,7 @@ interface forEachCallbackType extends Function {
      * @param key The current key
      * @param iteratedObject The iterated object
      */
-    (value?: any, key?: string | number, iteratedObject?: any): void | false;
+    (value?: any, key?: string | number, iteratedObject?: any): void | boolean;
 }
 interface forEachCallbackType extends Function {
     /**
@@ -19,13 +16,16 @@ interface forEachCallbackType extends Function {
      * @param key The current key
      * @param iteratedObject The iterated object
      */
-    ($value?: any, key?: any, value?: any, iteratedObject?: any): void | false;
+    ($value?: JQuery, key?: any, value?: any, iteratedObject?: any): void | boolean;
 }
 /**
  * Loops over arrays or objects and applies a given callback
- * Does also work with jquery objects
+ *
+ * Will work with Arrays, Objects, Map, Set and jQuery objects.
+ * If jQuery is used the callback params are: ($jQueryValue, key, value, iteratedObject)
+ *
  * @param object The array or object to iterate
- * @param callback The callback to apply. Params are: (value, key)
+ * @param callback The callback to apply. Params are: (value, key, iteratedObject)
  */
 export declare function forEach(object: Array<any> | {
     [key: string]: any;

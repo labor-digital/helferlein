@@ -2,6 +2,11 @@
  * Created by Martin Neundorfer on 05.09.2018.
  * For LABOR.digital
  */
+declare global {
+	interface HTMLElement {
+		createTextRange?: Function;
+	}
+}
 /**
  * Helper to select all text of a given element
  * (Like marking it with the mouse)

@@ -2,6 +2,14 @@
  * Created by Martin Neundorfer on 20.08.2018.
  * For LABOR.digital
  */
+
+interface ThrottleEventWrapper extends Function{
+	/**
+	 * If you need to cancel a scheduled throttle, you can call .cancel() on the throttled function.
+	 */
+	cancel?: Function;
+}
+
 /**
  * Helper to throttle js events
  * The source code is mostly stolen from:
@@ -10,7 +18,7 @@
  * http://underscorejs.org
  * (c) 2009-2018 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
-export default function throttleEvent (callback, limit) {
+export function throttleEvent (callback, limit) {
 	var timeout, context, args, result;
 	let previous = 0;
 
@@ -21,12 +29,13 @@ export default function throttleEvent (callback, limit) {
 		if (!timeout) context = args = null;
 	};
 
-	var throttled = function() {
+	var throttled:ThrottleEventWrapper = function throttleEventWrapper():any {
 		args = arguments;
 		var now = new Date().getTime();
 		if (!previous) previous = now;
 		var remaining = limit - (now - previous);
 		context = this;
+
 		if (remaining <= 0 || remaining > limit) {
 			if (timeout) {
 				clearTimeout(timeout);

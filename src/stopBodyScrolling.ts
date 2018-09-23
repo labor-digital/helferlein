@@ -2,13 +2,33 @@
  * Created by Martin Neundorfer on 20.08.2018.
  * For LABOR.digital
  */
-import $globj from "@labor/helpers.js/$globj";
+import $globj from "./$globj";
+
+declare global {
+	interface Window {
+		/**
+		 * True if the body scrolling is currently blocked
+		 * False / Undefined if not
+		 */
+		HELPERS_JS_STOP_BODY_SCROLLING: boolean;
+		/**
+		 * Used on IOS devices to make sure we really block the scrolling.
+		 * In that case we have to set the scroll position to 0 and afterwards reset it back.
+		 * This value holds the stored position.
+		 */
+		HELPERS_JS_STOP_BODY_SCROLLING_POSITION: number;
+	}
+}
+
+if(typeof window.HELPERS_JS_STOP_BODY_SCROLLING === 'undefined') window.HELPERS_JS_STOP_BODY_SCROLLING = false;
+if(typeof window.HELPERS_JS_STOP_BODY_SCROLLING_POSITION === 'undefined')
+	window.HELPERS_JS_STOP_BODY_SCROLLING_POSITION = 0;
 
 /**
  * Helper to prevent the body from being scrolled with a fix for the ios 9 safary which is a pain...
  * @param {boolean} state True to stop the scrolling, false to reenable it.
  */
-export default function stopBodyScrolling(state){
+export function stopBodyScrolling(state){
 	let isIos = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 
 	// Stop the scrolling
