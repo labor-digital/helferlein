@@ -11,4 +11,4 @@
  * @param value
  * @return {string}
  */
-export declare function md5(value: any): any;
+export declare function md5(value: number | string): string;
