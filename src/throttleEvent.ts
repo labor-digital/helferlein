@@ -2,13 +2,28 @@
  * Created by Martin Neundorfer on 20.08.2018.
  * For LABOR.digital
  */
+import EventHandler = JQuery.EventHandler;
+import EventHandlerBase = JQuery.EventHandlerBase;
+import {JQueryEvent} from "./Interfaces";
 
-interface ThrottleEventWrapper extends Function{
+export interface ThrottleEventWrapper extends EventHandler<HTMLElement, null>{
 	/**
 	 * If you need to cancel a scheduled throttle, you can call .cancel() on the throttled function.
 	 */
 	cancel?: Function;
 }
+
+export interface ThrottleEventWrapper extends Function{
+	/**
+	 * If you need to cancel a scheduled throttle, you can call .cancel() on the throttled function.
+	 */
+	cancel?: Function;
+}
+
+export interface ThrottledEventHandler extends EventHandler<HTMLElement, null>, EventHandlerBase<ThrottleEventWrapper,JQueryEvent>{
+
+}
+
 
 /**
  * Helper to throttle js events
@@ -18,7 +33,7 @@ interface ThrottleEventWrapper extends Function{
  * http://underscorejs.org
  * (c) 2009-2018 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
-export function throttleEvent (callback, limit) {
+export function throttleEvent (callback:ThrottledEventHandler, limit:number) {
 	var timeout, context, args, result;
 	let previous = 0;
 
@@ -29,7 +44,7 @@ export function throttleEvent (callback, limit) {
 		if (!timeout) context = args = null;
 	};
 
-	var throttled:ThrottleEventWrapper = function throttleEventWrapper():any {
+	var throttled:ThrottleEventWrapper = function throttleEventWrapper(foo, bar) {
 		args = arguments;
 		var now = new Date().getTime();
 		if (!previous) previous = now;

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-	"module": "esnext",
+	"module": "es6",
 	"target": "es6",
 	"sourceMap": false,
 	"declaration": true,
@@ -26,6 +26,6 @@
 	"src/**/*"
   ],
   "exclude": [
-	"node_modules"
+	"node_modules", "dist"
   ]
 }

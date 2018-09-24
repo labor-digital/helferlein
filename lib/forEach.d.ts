@@ -1,5 +1,6 @@
 /// <reference types="jquery" />
-interface forEachCallbackType extends Function {
+import { GenericObject } from "./Interfaces";
+export interface ForEachCallbackType extends Function {
     /**
      * Is called for every element of the iterated object
      * @param value The current value
@@ -8,7 +9,7 @@ interface forEachCallbackType extends Function {
      */
     (value?: any, key?: string | number, iteratedObject?: any): void | boolean;
 }
-interface forEachCallbackType extends Function {
+export interface ForEachCallbackType extends Function {
     /**
      * Is called for every element of the iterated object
      * @param $value The current value as a jquery object
@@ -27,7 +28,4 @@ interface forEachCallbackType extends Function {
  * @param object The array or object to iterate
  * @param callback The callback to apply. Params are: (value, key, iteratedObject)
  */
-export declare function forEach(object: Array<any> | {
-    [key: string]: any;
-} | any, callback: forEachCallbackType): void;
-export {};
+export declare function forEach(object: Array<any> | GenericObject | any, callback: ForEachCallbackType): void;

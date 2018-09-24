@@ -1,1 +1,1 @@
-export declare function mergeRecursive(...args: any[]): {};
+export declare function mergeRecursive(...args: any[]): any;

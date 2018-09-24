@@ -18,17 +18,17 @@ class $globj {
 		return storage.get('window');
 	}
 
-	static get html() {
+	static get html(): JQuery  {
 		if (!storage.has('html')) storage.set('html', $('html'));
 		return storage.get('html');
 	}
 
-	static get body() {
+	static get body(): JQuery  {
 		if (!storage.has('body')) storage.set('body', $('body'));
 		return storage.get('body');
 	}
 
-	static get htmlBody() {
+	static get htmlBody(): JQuery  {
 		if (!storage.has('htmlBody')) storage.set('htmlBody', $('html, body'));
 		return storage.get('htmlBody');
 	}

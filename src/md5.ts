@@ -3,7 +3,8 @@
  * For LABOR.digital
  */
 let k = [], i = 0;
-for (; i < 64;) {
+for (; i < 64;)
+{
 	k[i] = 0 | (Math.abs(Math.sin(++i)) * 4294967296);
 }
 
@@ -20,28 +21,30 @@ for (; i < 64;) {
  * @param value
  * @return {string}
  */
-export function md5(value) {
-	let str:any = value + '';
+export function md5(value: number | string): string
+{
+	let str: any = value + "";
 	var b, c, d, j,
 		x = [],
 		str2 = unescape(encodeURI(str)),
-		a:any = str2.length,
+		a: any = str2.length,
 		h = [b = 1732584193, c = -271733879, ~b, ~c],
 		i = 0;
-
+	
 	for (; i <= a;) x[i >> 2] |= (str2.charCodeAt(i) || 128) << 8 * (i++ % 4);
-
+	
 	x[str = (a + 8 >> 6) * 16 + 14] = a * 8;
 	i = 0;
-
+	
 	// Kudos to the author, thsi is some crazy shit o.O
-	for (; i < str; i += 16) {
+	for (; i < str; i += 16)
+	{
 		for (a = h, j = 0; j < 64;) a = [d = a[3], (b = 0 | a[1]) + ((d = a[0] + [b & (c = a[2]) | ~b & d, d & b | ~d & c, b ^ c ^ d, c ^ (b | ~d)][a = j >> 4] + (k[j] + (0 | x[[j, 5 * j + 1, 3 * j + 5, 7 * j][a] % 16 + i]))) << (a = [7, 12, 17, 22, 5, 9, 14, 20, 4, 11, 16, 23, 6, 10, 15, 21][4 * a + j++ % 4]) | d >>> 32 - a), b, c];
 		for (j = 4; j;) h[--j] = h[j] + a[j]
 	}
-
-	str = '';
+	
+	str = "";
 	for (; j < 32;) str += ((h[j >> 3] >> ((1 ^ j++ & 7) * 4)) & 15).toString(16);
-
+	
 	return str;
 }

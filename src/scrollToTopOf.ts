@@ -4,8 +4,9 @@
  */
 import $globj from "./$globj";
 import {mergeRecursive} from "./mergeRecursive";
+import {GenericObject} from "./Interfaces";
 
-interface ScrollToTopOfConfiguration {
+interface ScrollToTopOfConfiguration extends GenericObject{
 	/**
 	 * The speed in milliseconds the scroll operation should take
 	 */
@@ -30,7 +31,7 @@ let config: ScrollToTopOfConfiguration = {
  *            - offset: (Default 0) The offset to the top of the page when scrolling up
  */
 export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration) {
-	config = mergeRecursive(config, configuration);
+	config = mergeRecursive(config, configuration) as GenericObject;
 }
 
 /**

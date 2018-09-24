@@ -1,5 +1,6 @@
 /// <reference types="jquery" />
-interface ScrollToTopOfConfiguration {
+import { GenericObject } from "./Interfaces";
+interface ScrollToTopOfConfiguration extends GenericObject {
     /**
      * The speed in milliseconds the scroll operation should take
      */
