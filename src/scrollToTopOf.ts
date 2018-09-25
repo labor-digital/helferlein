@@ -6,12 +6,13 @@ import $globj from "./$globj";
 import {mergeRecursive} from "./mergeRecursive";
 import {GenericObject} from "./Interfaces";
 
-interface ScrollToTopOfConfiguration extends GenericObject{
+interface ScrollToTopOfConfiguration extends GenericObject
+{
 	/**
 	 * The speed in milliseconds the scroll operation should take
 	 */
 	speed?: number,
-
+	
 	/**
 	 * The offset to the top of the page when scrolling up
 	 */
@@ -30,7 +31,8 @@ let config: ScrollToTopOfConfiguration = {
  *            - speed: (Default 700) The speed in milliseconds the scroll operation should take
  *            - offset: (Default 0) The offset to the top of the page when scrolling up
  */
-export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration) {
+export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration)
+{
 	config = mergeRecursive(config, configuration) as GenericObject;
 }
 
@@ -40,12 +42,13 @@ export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration
  * @param position
  * @param speed
  */
-function doScroll($target: JQuery, position?: number|undefined, speed?: number) {
-	if (typeof position !== 'number') position = 0;
+function doScroll($target: JQuery, position?: number | undefined, speed?: number)
+{
+	if (typeof position !== "number") position = 0;
 	$target.animate({
 		scrollTop: position
-	}, speed, 'swing', function () {
-		$globj.document.trigger('scroll__toTopOf--done', [$target])
+	}, speed, "swing", function () {
+		$globj.document.trigger("scroll__toTopOf--done", [$target])
 	});
 }
 
@@ -61,31 +64,36 @@ function doScroll($target: JQuery, position?: number|undefined, speed?: number) 
  *                    - offset: (Default 0) The offset to the top of the page when scrolling up
  */
 
-export function scrollToTopOf($target?:JQuery, $current?:JQuery|null, options?:ScrollToTopOfConfiguration) {
-
+export function scrollToTopOf($target?: JQuery, $current?: JQuery | null, options?: ScrollToTopOfConfiguration)
+{
+	
 	// Check if we should scroll up to 0
-	if (typeof $target === 'undefined') {
+	if (typeof $target === "undefined")
+	{
 		doScroll($globj.htmlBody);
 		return;
 	}
-
+	
 	// Check if an object was given
 	if ($target.length === 0) return;
-
+	
 	// Prepare options
-	if (typeof options.speed !== 'number') options.speed = config.speed;
-	if (typeof options.offset !== 'number') options.offset = config.offset;
-
+	if (typeof options !== "object") options = {};
+	if (typeof options.speed !== "number") options.speed = config.speed;
+	if (typeof options.offset !== "number") options.offset = config.offset;
+	
 	// Check if we have a scroll target
-	if (typeof $current !== 'undefined' && $current !== null) {
-		var $scrollTarget = $current.closest('*[data-scroll-target]');
-		if ($scrollTarget.length > 0) {
+	if (typeof $current !== "undefined" && $current !== null)
+	{
+		var $scrollTarget = $current.closest("*[data-scroll-target]");
+		if ($scrollTarget.length > 0)
+		{
 			doScroll($scrollTarget, $target.offset().top + $scrollTarget.scrollTop() -
 				$scrollTarget.offset().top, options.speed);
 			return;
 		}
 	}
-
+	
 	// Scroll up whole page to position
 	doScroll($globj.htmlBody, Math.max(options.offset, $target.offset().top), options.speed);
 }

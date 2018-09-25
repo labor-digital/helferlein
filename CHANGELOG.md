@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [1.1.2] - 2018-09-25
+### Fixed
+- Fixed an issue where scrollToTopOf() crashed when options was not given.
+
 ## [1.1.1] - 2018-09-25
 ### Fixed
 - Removes unwanted console.log in asObject() helper
