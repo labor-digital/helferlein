@@ -38,8 +38,16 @@ so if your object looks like {a: {foo:'bar'}} and {a: {bar, 'baz'}} the result w
 {a:{foo:'bar', bar: 'baz'}}.
 
 For the cool part: It works also for Array's, Map's, Set's in any order. So you may merge
-a Set with a Map you may even nest objects, and maps Maps into each other. 
-**Note When merging an object into an array or a set, you will loose your keys!**
+a Set with a Map, with an object and you may even nest objects, and Maps into each other. 
+**Note When merging an object into an array or a Set, you will loose your keys!**
 
 The first argument type will determine the output type. So, if you supply an object,
 followed by an array, the output will be an object. 
+
+### isMap(object): boolean
+Returns true if the given object is of es6 type Map, false if not. 
+Works also with core.js polyfills.
+
+### isSet(object): boolean
+Returns true if the given object is of es6 type Set, false if not. 
+Works also with core.js polyfills.

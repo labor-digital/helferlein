@@ -11,9 +11,7 @@ import {GenericObject} from "./Interfaces";
  */
 export function asObject(object): GenericObject {
 	let out = {};
-	console.log(object);
 	forEach(object, (v,k) => {
-		console.log(v,k);
 		out[k] = v;
 	});
 	return out;

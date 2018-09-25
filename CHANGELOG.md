@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [1.1.1] - 2018-09-25
+### Fixed
+- Removes unwanted console.log in asObject() helper
+
 ## [1.1.0] - 2018-09-24
 ### Added
 - Added some basic tests
