@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [1.1.3] - 2018-09-27
+### Removed
+- Removed "files" node from package.json to make sure all required files end up when installing the package using npm.
+
 ## [1.1.2] - 2018-09-25
 ### Fixed
 - Fixed an issue where scrollToTopOf() crashed when options was not given.

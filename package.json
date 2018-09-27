@@ -17,9 +17,6 @@
     "node": ">=8.11.2",
     "npm": ">=6.3.0"
   },
-  "files": [
-    "lib"
-  ],
   "author": "Martin Neundorfer",
   "license": "MIT",
   "homepage": "https://bitbucket.org/labor-digital/labor-js-helpers.js#readme",
