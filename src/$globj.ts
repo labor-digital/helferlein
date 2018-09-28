@@ -9,7 +9,7 @@ const storage = new Map();
  */
 class $globj {
 	static get document(): JQuery {
-		if (!storage.has('document')) storage.set('document', $(document.documentElement));
+		if (!storage.has('document')) storage.set('document', $(document as any));
 		return storage.get('document');
 	}
 

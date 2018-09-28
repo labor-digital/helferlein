@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Added
+- Added webpackChunkLoader for easier chunk loading on event based requests
+
+### Changed
+- Fixes issues that occurend when document.documentElement was used instead of document in order to make typescript happy with jQuery
+
 ## [1.1.3] - 2018-09-27
 ### Removed
 - Removed "files" node from package.json to make sure all required files end up when installing the package using npm.

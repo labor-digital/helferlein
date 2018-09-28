@@ -5,16 +5,6 @@
 import {isSet} from "./isSet";
 import {GenericObject} from "./Interfaces";
 
-export interface ForEachCallbackType extends Function
-{
-	/**
-	 * Is called for every element of the iterated object
-	 * @param value The current value
-	 * @param key The current key
-	 * @param iteratedObject The iterated object
-	 */
-	(value?, key?: string | number, iteratedObject?): void | boolean
-}
 
 export interface ForEachCallbackType extends Function
 {
@@ -25,7 +15,18 @@ export interface ForEachCallbackType extends Function
 	 * @param key The current key
 	 * @param iteratedObject The iterated object
 	 */
-	($value?: JQuery, key?, value?, iteratedObject?): void | boolean
+	($value?: JQuery|any, key?, value?, iteratedObject?): void | boolean
+}
+
+export interface ForEachCallbackType extends Function
+{
+	/**
+	 * Is called for every element of the iterated object
+	 * @param value The current value
+	 * @param key The current key
+	 * @param iteratedObject The iterated object
+	 */
+	(value?:any, key?: string | number, iteratedObject?): void | boolean
 }
 
 interface BreakErrorType
