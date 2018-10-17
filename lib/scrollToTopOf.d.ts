@@ -1,4 +1,7 @@
 /// <reference types="jquery" />
+/// <reference types="bootstrap-datepicker" />
+/// <reference types="isotope-layout" />
+/// <reference types="select2" />
 import { GenericObject } from "./Interfaces";
 interface ScrollToTopOfConfiguration extends GenericObject {
     /**
