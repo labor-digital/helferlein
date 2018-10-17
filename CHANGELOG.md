@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Fixed
+- Makes map() return "any" instead of {}
+
 ## [1.1.4] - 2018-10-17
 ### Added
 - Added webpackChunkLoader for easier chunk loading on event based requests

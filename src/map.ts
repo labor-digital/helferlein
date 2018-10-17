@@ -5,6 +5,7 @@
 import {isSet} from "./isSet";
 import {forEach} from "./forEach";
 import {isMap} from "./isMap";
+import {GenericObject} from "./Interfaces";
 
 interface MapCallbackType {
 	/**
@@ -20,9 +21,8 @@ interface MapCallbackType {
  * Works like Array.map() but also for objects
  * @param object The array or object to iterate
  * @param callback The callback to apply. Params are: (value, key)
- * @return {*}
  */
-export function map(object: Array<any> | { [key: string]: any } | any, callback:MapCallbackType){
+export function map(object: Array<any> | GenericObject | any, callback:MapCallbackType): any{
 	if(isSet(object)){
 		let result = new Set();
 		forEach(object, (v,k) => {
