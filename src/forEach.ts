@@ -73,7 +73,7 @@ export function forEach(object: Array<any> | GenericObject | any, callback: ForE
 		object.each((k, v) => !(callback(jQuery(v), k, v, object) === false));
 		return;
 	}
-	else if (typeof object === "object")
+	else if (typeof object === "object" || typeof object === "function")
 	{
 		for (let k in object)
 		{
@@ -84,5 +84,6 @@ export function forEach(object: Array<any> | GenericObject | any, callback: ForE
 		}
 		return;
 	}
+
 	throw Error("Could not iterate given object!");
 }

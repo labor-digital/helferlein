@@ -2,11 +2,14 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [1.1.4] - 2018-10-17
 ### Added
 - Added webpackChunkLoader for easier chunk loading on event based requests
+- Additional documentation
 
 ### Changed
 - Fixes issues that occurend when document.documentElement was used instead of document in order to make typescript happy with jQuery
+- Makes static objects iterable using forEach, map and so on.
 
 ## [1.1.3] - 2018-09-27
 ### Removed
