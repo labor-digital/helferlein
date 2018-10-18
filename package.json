@@ -1,6 +1,6 @@
 {
   "name": "@labor/helpers.js",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "General purpose Javascript helpers",
   "repository": {
     "type": "git",
