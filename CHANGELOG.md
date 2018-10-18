@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [1.1.6] - 2018-10-18
+### Fixed
+- Removes unwanted console output when using stopBodyScrolling
 
 ## [1.1.5] - 2018-10-18
 ### Fixed
