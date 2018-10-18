@@ -2,8 +2,11 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [1.1.5] - 2018-10-18
 ### Fixed
 - Makes map() return "any" instead of {}
+- Fixes an issue with stopBodyScrolling on ios
 
 ## [1.1.4] - 2018-10-17
 ### Added

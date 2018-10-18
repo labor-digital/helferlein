@@ -14,7 +14,7 @@ declare global {
     }
 }
 /**
- * Helper to prevent the body from being scrolled with a fix for the ios 9 safary which is a pain...
+ * Helper to prevent the body from being scrolled with a fix for the ios 9 safari which is a pain...
  * @param {boolean} state True to stop the scrolling, false to reenable it.
  */
 export declare function stopBodyScrolling(state: any): void;

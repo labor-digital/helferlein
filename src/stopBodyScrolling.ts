@@ -25,7 +25,7 @@ if(typeof window.HELPERS_JS_STOP_BODY_SCROLLING_POSITION === 'undefined')
 	window.HELPERS_JS_STOP_BODY_SCROLLING_POSITION = 0;
 
 /**
- * Helper to prevent the body from being scrolled with a fix for the ios 9 safary which is a pain...
+ * Helper to prevent the body from being scrolled with a fix for the ios 9 safari which is a pain...
  * @param {boolean} state True to stop the scrolling, false to reenable it.
  */
 export function stopBodyScrolling(state){
@@ -57,6 +57,9 @@ export function stopBodyScrolling(state){
 		$globj.body.css({'padding-right': bodyWidthDiff});
 		$('*[data-fixed-body-scrolling-target]').css({'margin-left': -bodyWidthDiff});
 	} else {
+		// Ignore if already active
+		if(window.HELPERS_JS_STOP_BODY_SCROLLING === false) return;
+
 		// Reenable body scrolling
 		if(isIos){
 			$globj.htmlBody
