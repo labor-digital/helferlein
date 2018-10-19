@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Added
+- Added WebpackChunkLoader.loadChunks() and WebpackChunkLoader.loadChunksInScope() to load chunks more directly
+
+### Changed
+- Another rewrite of the WebpackChunkLoader to make it more efficient
+
 ## [1.1.6] - 2018-10-18
 ### Fixed
 - Removes unwanted console output when using stopBodyScrolling

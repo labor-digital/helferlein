@@ -22,6 +22,16 @@ export interface WebpackChunkLoaderOptions {
 	 * Use this like a jquery event definition
 	 */
 	additionalEvents?:string;
+
+	/**
+	 * If set to true, the chunkloader will trigger a domChange event on the document
+	 * every time a chunk was loaded
+	 */
+	domChangeOnChunkLoad?:boolean;
+}
+
+export interface WebpackChunkLoaderOnErrorCallbackInterface extends Function{
+	(requiredChunk?:string, err?:string):void
 }
 
 export interface WebpackChunkLoaderCallbackInterface extends Function
