@@ -128,6 +128,9 @@ function loadSingleChunk(chunkName: string, path?: Array<string>): Promise<strin
 	return request;
 }
 
+/**
+ * @deprecated Use the @labor/webpack-chunk-loader package instead!
+ */
 export class WebpackChunkLoader {
 
 	/**
@@ -150,6 +153,13 @@ export class WebpackChunkLoader {
 		if (typeof options.additionalEvents === "string") chunkLoaderOptions.additionalEvents = options.additionalEvents;
 		if (typeof options.domChangeOnChunkLoad === "boolean") chunkLoaderOptions.domChangeOnChunkLoad = options.domChangeOnChunkLoad;
 
+		// Get current url
+		let currentUrl = "";
+		if(typeof window !== "undefined" && typeof window.location !== "undefined"){
+			const port = ["", "80", "443"].indexOf(window.location.port) === -1 ? ":" + window.location.port : "";
+			currentUrl = window.location.protocol + "//" + window.location.hostname + port + window.location.pathname + window.location.hash;
+		}
+
 		// Store given definitions
 		forEach(definitions, (v: WebpackChunkLoaderDefinitionInterface) => {
 			if (typeof v.name !== "string") {
@@ -158,6 +168,12 @@ export class WebpackChunkLoader {
 				v.name = pseudoChunkName;
 			}
 			chunkDefinitions.set(v.name, v);
+
+			// Handle url based autoloader
+			if(typeof v.autoloadOnUrl !== "undefined"){
+				if(currentUrl.match(v.autoloadOnUrl))
+					WebpackChunkLoader.loadChunks([v.name]);
+			}
 		});
 
 		// Prepare events to listen on
@@ -232,12 +248,22 @@ export class WebpackChunkLoader {
 		domChangeChunkLoadingRegistered = true;
 
 		// Register callback to parse chunk definitions in list
-		$globj.document.on("domChange", (e) => {
+		$globj.document.on("domChange", (e: any) => {
+			// Ignore if this is a chunkloader event
+			if (e.chunkLoaderDomChange === true) return;
+
 			// Loop over all requirements inside the event scope
-			WebpackChunkLoader.loadChunksInScope($(e.target));
+			WebpackChunkLoader.loadChunksInScope($(e.target))
+				.then(() => {
+					// Trigger extended domChange
+					const event = jQuery.Event("domChange") as any;
+					event.chunkLoaderDomChange = true;
+					$globj.document.trigger(event);
+				});
 		});
 	}
 
+	// noinspection JSAnnotator
 	/**
 	 * This can be used to manually load dom chunks inside a given scope.
 	 * The syntax is the same as if you would use registerDomChangeChunkLoading(), but

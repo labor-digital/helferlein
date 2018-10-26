@@ -42,6 +42,10 @@ export interface WebpackChunkLoaderDefinitionInterface {
      */
     loader: WebpackChunkLoaderLoaderInterface;
     /**
+     * Can be used to automatically require this chunk based on a url pregmatch
+     */
+    autoloadOnUrl?: RegExp;
+    /**
      * A list of other chunknames this chunk depends on
      */
     dependencies?: Array<string>;

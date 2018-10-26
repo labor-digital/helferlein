@@ -1,5 +1,8 @@
 /// <reference types="jquery" />
 import { WebpackChunkLoaderDefinitionInterface, WebpackChunkLoaderOptions } from "./WebpackChunkLoader.interfaces";
+/**
+ * @deprecated Use the @labor/webpack-chunk-loader package instead!
+ */
 export declare class WebpackChunkLoader {
     /**
      * Defines a list of chunks that can be loaded using a dom element (see registerDomChangeChunkLoading())

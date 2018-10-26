@@ -2,11 +2,12 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-### Added
-- Added WebpackChunkLoader.loadChunks() and WebpackChunkLoader.loadChunksInScope() to load chunks more directly
+## [1.1.7] - 2018-10-26
+### Fixed
+- Fixed an issue where scrollToTopOf() ignored the previously configured top-offset
 
-### Changed
-- Another rewrite of the WebpackChunkLoader to make it more efficient
+### Deprecated
+- WebpackChunkLoader is now deprecated! Use @labor/webpack-chunk-loader instead!
 
 ## [1.1.6] - 2018-10-18
 ### Fixed

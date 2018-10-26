@@ -45,6 +45,8 @@ export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration
 function doScroll($target: JQuery, position?: number | undefined, speed?: number)
 {
 	if (typeof position !== "number") position = 0;
+	position = Math.max(0, position - config.offset);
+
 	$target.animate({
 		scrollTop: position
 	}, speed, "swing", function () {
