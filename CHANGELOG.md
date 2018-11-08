@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [1.1.8] - 2018-11-08
+### Added
+- Added new ucFirst(), sanitizeString() and checkOnlineState() helpers
+
 ## [1.1.7] - 2018-10-26
 ### Fixed
 - Fixed an issue where scrollToTopOf() ignored the previously configured top-offset

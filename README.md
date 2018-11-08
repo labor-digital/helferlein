@@ -18,6 +18,10 @@ Converts a given object literal, Set, Map or array into a new object instance an
 It will keep all keys of objects, and maps and will use array/set indexes for keys as a fallback.
 Null and undefined will return an empty object.
 
+### checkOnlineState(): Promise
+Checks if the script can currently call the internet or not. 
+The promise value is either TRUE for "there is internet", or FALSE if there is no connection.
+
 ### filter(object, callback)
 Similar to [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 but it works also for objects, Maps and Sets. Callback params: (value, key, iteratedObject).
@@ -60,3 +64,10 @@ a Set with a Map, with an object and you may even nest objects, and Maps into ea
 
 The first argument type will determine the output type. So, if you supply an object,
 followed by an array, the output will be an object. 
+
+### sanitizeString(string): string
+Removes all non alpha numerical chars from the given string and returns it.
+Also keeps - _ and /
+
+### ucFirst(string): string
+Receives a string, trims it and sets the first char to uppercase
