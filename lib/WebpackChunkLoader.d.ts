@@ -1,4 +1,3 @@
-/// <reference types="jquery" />
 import { WebpackChunkLoaderDefinitionInterface, WebpackChunkLoaderOptions } from "./WebpackChunkLoader.interfaces";
 /**
  * @deprecated Use the @labor/webpack-chunk-loader package instead!

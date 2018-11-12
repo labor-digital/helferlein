@@ -1,4 +1,3 @@
-/// <reference types="jquery" />
 import { GenericObject } from "./Interfaces";
 interface ScrollToTopOfConfiguration extends GenericObject {
     /**

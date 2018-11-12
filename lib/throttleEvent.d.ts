@@ -1,4 +1,3 @@
-/// <reference types="jquery" />
 /**
  * Created by Martin Neundorfer on 20.08.2018.
  * For LABOR.digital
