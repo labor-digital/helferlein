@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [1.1.9] - 2018-11-19
 ### Added
 - Added additional options for the data-fixed-body-scrolling-target targets to make sure they can be adjusted in multiple ways
 - Added a new helper "load" to load js files asynchronously 
