@@ -3,7 +3,7 @@
  * For LABOR.digital
  */
 import $globj from "./$globj";
-import {forEach} from "./forEach";
+import {forEach} from "./iteration/forEach";
 
 declare global {
 	interface Window {

@@ -2,6 +2,27 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [1.2.0] - 2018-11-23
+### Added
+- Added new helper moneyAsNumber();
+- Added new helper numberAsMoney();
+- Added new helper isArray();
+- Added new helper isEmpty();
+- Added new helper isNumber();
+- Added new helper isString();
+- Added new helper isUndefined();
+- Added new helper merge();
+- Added new helper numberAsPercent();
+- Added new helper percentAsNumber();
+- Added additional documentation
+- Added some tests for the new helpers
+
+### Changed
+- To handle the growing number of helpers, I sorted some of them into directories. This will help in the long run, but will also break the current "import" statements in your application. 
+
+### Removed
+- Removed WebpackChunkLoader from the list of helpers
+
 ## [1.1.9] - 2018-11-19
 ### Added
 - Added additional options for the data-fixed-body-scrolling-target targets to make sure they can be adjusted in multiple ways

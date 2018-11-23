@@ -2,7 +2,7 @@
  * Created by Martin Neundorfer on 24.09.2018.
  * For LABOR.digital
  */
-import {filter} from "../src/filter";
+import {filter} from "../src/iteration/filter";
 
 test("filter with array", () => {
 	expect(filter([1, 2, 3, 4], (v) => {

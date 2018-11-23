@@ -1,4 +1,4 @@
-import {reduce} from "../src/reduce";
+import {reduce} from "../src/iteration/reduce";
 
 test('Reduce array', () => {
 	let array = [1, 2, 3, 4, 5];

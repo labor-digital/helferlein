@@ -3,8 +3,8 @@
  * For LABOR.digital
  */
 import $globj from "./$globj";
-import {mergeRecursive} from "./mergeRecursive";
 import {GenericObject} from "./Interfaces";
+import {merge} from "./merge";
 
 interface ScrollToTopOfConfiguration extends GenericObject
 {
@@ -33,7 +33,7 @@ let config: ScrollToTopOfConfiguration = {
  */
 export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration)
 {
-	config = mergeRecursive(config, configuration) as GenericObject;
+	config = merge(config, configuration) as GenericObject;
 }
 
 /**

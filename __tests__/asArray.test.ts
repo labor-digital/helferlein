@@ -2,7 +2,7 @@
  * Created by Martin Neundorfer on 24.09.2018.
  * For LABOR.digital
  */
-import {asArray} from "../src/asArray";
+import {asArray} from "../src/formatAndConvert/asArray";
 
 test('asArray with Object', () => {
 	expect(asArray({'a': 1, 'b': 2, 'd': 3, 'e': 'asdf'})).toEqual([1,2,3,'asdf']);

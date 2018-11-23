@@ -1,4 +1,4 @@
-import {forEach} from "../src/forEach";
+import {forEach} from "../src/iteration/forEach";
 
 // @ts-ignore
 const { JSDOM } = require("jsdom");

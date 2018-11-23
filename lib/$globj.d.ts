@@ -1,3 +1,4 @@
+/// <reference types="jquery" />
 /**
  * Global objects for general use
  */

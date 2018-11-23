@@ -1,5 +1,5 @@
-import {forEach} from "./forEach";
-import IterableHelpers from "./IterableHelpers";
+import {forEach} from "./iteration/forEach";
+import IterableHelpers from "./iteration/IterableHelpers";
 
 function mergeInternal(outputType, output, element) {
 	forEach(element, (v, k) => {

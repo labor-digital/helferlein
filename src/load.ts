@@ -36,8 +36,11 @@ export function load(src:string, options?:LoadOptions):Promise<string> {
 			url: src,
 			dataType: "script"
 		})
-			.done(() => resolve(src))
-			.fail((e) => reject("ERROR: Could not load the required file: " + src))
+			.done(() => {
+				clearTimeout(timeoutMarker);
+				resolve(src)
+			})
+			.fail(() => reject("ERROR: Could not load the required file: " + src))
 	});
 	requests.set(srcUnified, request);
 
