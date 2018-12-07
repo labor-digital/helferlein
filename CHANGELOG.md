@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Changed
+- Adds an additional "thousandSeparator" flag to numberAsMoney which is used to drop the periods as separators between number groups
+
 ## [1.2.0] - 2018-11-23
 ### Added
 - Added new helper moneyAsNumber();
