@@ -2,7 +2,7 @@
  * Created by Martin Neundorfer on 09.01.2019.
  * For LABOR.digital
  */
-import {isFunction} from "@labor/helferlein/lib/types/isFunction";
+import {isFunction} from "@labor/helferlein/src/Types/isFunction";
 
 /**
  * A polifill for "closest()" element in internet explorer without jquery:

@@ -2,19 +2,20 @@
  * Created by Martin Neundorfer on 24.09.2018.
  * For LABOR.digital
  */
-import {forEach} from "../iteration/forEach";
+import {forEach} from "../Lists/forEach";
+import {List} from "../Interfaces/List";
+import {getListType, ListType} from "../Lists/listAccess";
 
 /**
  * Converts a given object/map/set into an array
- * @param object
+ * @param list
  * @return {Array}
  */
-export function asArray(object): Array<any>
-{
-	if (object === null || typeof object === "undefined") return [];
-	let out = [];
-	forEach(object, v => {
-		out.push(v);
-	});
-	return out;
+export function asArray(list: List): Array<any> {
+	if (list === null || typeof list === "undefined") return [];
+	const outputType = getListType(list);
+	if (outputType === ListType.NoList) throw new Error("Could not determine the output type of a given element!");
+	const output = [];
+	forEach(list, v => output.push(v));
+	return output;
 }

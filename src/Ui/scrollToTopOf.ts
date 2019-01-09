@@ -3,12 +3,12 @@
  * For LABOR.digital
  */
 import {merge} from "../Lists/merge";
-import {scrollToPosition} from "@labor/helferlein/lib/Ui/scrollToPosition";
-import {isNumber} from "@labor/helferlein/lib/types/isNumber";
-import {isUndefined} from "@labor/helferlein/lib/types/isUndefined";
-import {isObject} from "@labor/helferlein/lib/types/isObject";
-import {PlainObject} from "@labor/helferlein/lib/Interfaces/PlainObject";
-import {getOffset} from "@labor/helferlein/lib/Dom/getOffset";
+import {scrollToPosition} from "@labor/helferlein/src/Ui/scrollToPosition";
+import {isNumber} from "@labor/helferlein/src/types/isNumber";
+import {isUndefined} from "@labor/helferlein/src/types/isUndefined";
+import {isObject} from "@labor/helferlein/src/types/isObject";
+import {PlainObject} from "@labor/helferlein/src/Interfaces/PlainObject";
+import {getOffset} from "@labor/helferlein/src/Dom/getOffset";
 
 interface ScrollToTopOfConfiguration extends PlainObject {
 	/**
