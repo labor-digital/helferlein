@@ -2,8 +2,8 @@
  * Created by Martin Neundorfer on 22.11.2018.
  * For LABOR.digital
  */
-import {numberAsPercent} from "../src/formatAndConvert/numberAsPercent";
-import {percentAsNumber} from "../src/formatAndConvert/percentAsNumber";
+import {numberAsPercent} from "../src/FormatAndConvert/numberAsPercent";
+import {percentAsNumber} from "../src/FormatAndConvert/percentAsNumber";
 
 test("numberAsPercent", () => {
 	expect(numberAsPercent(1)).toBe("100,00");

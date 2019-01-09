@@ -2,7 +2,7 @@
  * Created by Martin Neundorfer on 24.09.2018.
  * For LABOR.digital
  */
-import {asArray} from "../src/formatAndConvert/asArray";
+import {asArray} from "../src/FormatAndConvert/asArray";
 
 test('asArray with Object', () => {
 	expect(asArray({'a': 1, 'b': 2, 'd': 3, 'e': 'asdf'})).toEqual([1,2,3,'asdf']);
@@ -37,6 +37,7 @@ test('asArray empty array with null or undefined', () => {
 
 test('asArray to die if a non-iterable object was given', () => {
 	expect(() => {
+		// @ts-ignore
 		asArray(true)
 	}).toThrow();
 });

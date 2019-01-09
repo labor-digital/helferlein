@@ -2,7 +2,7 @@
  * Created by Martin Neundorfer on 22.11.2018.
  * For LABOR.digital
  */
-import {isArray} from "../src/types/isArray";
+import {isArray} from "../src/Types/isArray";
 
 test("isArray", () => {
 	expect(isArray([])).toBe(true);

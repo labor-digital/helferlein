@@ -2,15 +2,7 @@
  * Created by Martin Neundorfer on 22.11.2018.
  * For LABOR.digital
  */
-import {isEmpty} from "../src/types/isEmpty";
-
-// @ts-ignore
-const {JSDOM} = require("jsdom");
-const myJSDom = new JSDOM("<html>");
-// @ts-ignore
-const jQuery = require("jquery")(myJSDom.window);
-// @ts-ignore
-global.jQuery = jQuery;
+import {isEmpty} from "../src/Types/isEmpty";
 
 test("isEmpty", () => {
 	expect(isEmpty([])).toBe(true);

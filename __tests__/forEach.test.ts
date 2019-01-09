@@ -1,18 +1,4 @@
-import {forEach} from "../src/iteration/forEach";
-
-// @ts-ignore
-const { JSDOM } = require("jsdom");
-const myJSDom = new JSDOM (`<html>
-<ul>
-<li>1</li>
-<li>2</li>
-<li>3</li>
-</ul>
-</html>`);
-// @ts-ignore
-const jQuery = require('jquery')(myJSDom.window);
-// @ts-ignore
-global.jQuery = jQuery;
+import {forEach} from "../src/Lists/forEach";
 
 test('forEach with array', () => {
 	let array = [1,2,3];
@@ -109,27 +95,6 @@ test('forEach break with Set', () => {
 	};
 	forEach(map, (v,k,o) => {
 		expect(v).toBe(1);
-		return false;
-	});
-});
-
-test('forEach with jquery', () => {
-	let $list = jQuery('li');
-	let c = 0;
-	forEach($list, ($o:JQuery, k?, o?, $l?) => {
-		expect($o.html()).toBe(c + 1 + '');
-		expect(k).toBe(c);
-		expect(o).toBe($list[k]);
-		expect($l).toBe($list);
-		c++;
-	});
-	expect(c).toBe(3);
-});
-
-test('forEach break with jquery', () => {
-	let $list = jQuery('li');
-	forEach($list, ($o:JQuery) => {
-		expect($o.html()).toBe('1');
 		return false;
 	});
 });

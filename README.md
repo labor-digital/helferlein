@@ -1,7 +1,7 @@
-# Helpers.js
-Not mutch to document really.
-Just a bunch of helper methods I use in a lot (all) of my projects and wanted
-to put together into a single repository to keep track of changes.
+# Helferlein (Little Helper)
+This package is the successor of helpers.js and contains a number of helper functions and their typescript definitions. In contrast to the original helpers.js this package is not dependend on jquery.
+
+All helpers should now also be able to run in a node.js context without an issue. 
 
 ## General
 ### $globj

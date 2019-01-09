@@ -2,11 +2,12 @@
  * Created by Martin Neundorfer on 22.11.2018.
  * For LABOR.digital
  */
-import {moneyAsNumber} from "../src/formatAndConvert/moneyAsNumber";
-import {numberAsMoney} from "../src/formatAndConvert/numberAsMoney";
+import {moneyAsNumber} from "../src/FormatAndConvert/moneyAsNumber";
+import {numberAsMoney} from "../src/FormatAndConvert/numberAsMoney";
 
 test("moneyAsNumber", () => {
 	expect(moneyAsNumber("1.000.000")).toBe(1000000);
+	expect(moneyAsNumber("98000.00000000003")).toBe(98000.00000000003);
 	expect(moneyAsNumber("1.000.000,00")).toBe(1000000);
 	expect(moneyAsNumber("1,000,000.00")).toBe(1000000);
 	expect(moneyAsNumber("1,000,000")).toBe(1000000);

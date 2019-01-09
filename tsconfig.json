@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-	"module": "es6",
-	"target": "es6",
+	"moduleResolution": "node",
+	"target": "es5",
 	"sourceMap": false,
 	"declaration": true,
+	"noImplicitAny": false,
 	"noEmitOnError": false,
 	"outDir": "lib",
 	"esModuleInterop": true,
+	"pretty": true,
 	"lib": [
 	  "dom",
 	  "es6",

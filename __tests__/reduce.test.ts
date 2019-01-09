@@ -1,4 +1,4 @@
-import {reduce} from "../src/iteration/reduce";
+import {reduce} from "../src/Lists/reduce";
 
 test('Reduce array', () => {
 	let array = [1, 2, 3, 4, 5];
@@ -50,6 +50,7 @@ test('Reduce Set', () => {
 
 test('Reduce Error on invalid', () => {
 	expect(() => {
+		// @ts-ignore
 		reduce(true, (current, value, key, list) => {}, 0);
 	}).toThrow();
 });

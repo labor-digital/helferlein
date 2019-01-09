@@ -1,4 +1,4 @@
-import {map} from "../src/iteration/map";
+import {map} from "../src/Lists/map";
 
 test('Map Array', () => {
 	let array = [1,2,3,4];

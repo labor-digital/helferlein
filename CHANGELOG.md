@@ -2,8 +2,36 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Added
+- Added flushLib.js script to clean lib directory before build
+- Added npm watch command
+- Added closest() implementation as jQuery replacement
+- Added getOffset() implementation as jQuery replacement
+- Added isFunction() helper
+- Added isObject() helper
+- Added isPlainObject() helper
+- Added scrollToPosition helper
+
 ### Changed
+- Rewrite of mergeRecursive and merge to combine them into a single function
+- Rewrite of the scrollToTopOf helper to work without jQuery
+- Moved all functions into directories to make them more structured
+- Changed Typescript settings to work with node as well
 - Adds an additional "thousandSeparator" flag to numberAsMoney which is used to drop the periods as separators between number groups
+
+### Removed
+- Removed $globj as it is not longer required
+- Removed jQuery as dependency 
+
+### Fixed
+- Fixed some issues with MoneyToNumber when it came to edge cases while detecting comma chars
+
+## [2.0.0] - 2019-01-09
+### Changed
+- Branched this library and renamed it to "Helferlein" instead of "helpers.js" 
+
+### Note
+- Some helpers are disabled until they are rewritten to work without jquery
 
 ## [1.2.0] - 2018-11-23
 ### Added

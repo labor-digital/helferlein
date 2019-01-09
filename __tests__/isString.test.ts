@@ -2,7 +2,7 @@
  * Created by Martin Neundorfer on 22.11.2018.
  * For LABOR.digital
  */
-import {isString} from "../src/types/isString";
+import {isString} from "../src/Types/isString";
 
 test("isString", () => {
 	expect(isString([])).toBe(false);

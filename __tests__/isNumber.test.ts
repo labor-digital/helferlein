@@ -2,7 +2,7 @@
  * Created by Martin Neundorfer on 22.11.2018.
  * For LABOR.digital
  */
-import {isNumber} from "../src/types/isNumber";
+import {isNumber} from "../src/Types/isNumber";
 
 test("isNumber", () => {
 	expect(isNumber([])).toBe(false);
