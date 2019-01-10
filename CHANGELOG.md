@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [2.0.1] - 2019-01-10
 ### Added
 - Added flushLib.js script to clean lib directory before build
 - Added npm watch command
