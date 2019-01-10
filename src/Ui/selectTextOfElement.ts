@@ -14,17 +14,17 @@ declare global {
  * The implementation is from https://stackoverflow.com/a/987376
  * But the author quotes https://www.codingforums.com/archive/index.php/t-105808.html
  *
- * @param {jQuery} $o The jquery object to mark the text of
+ * @param element The dom element to mark the text of
  */
-export function selectTextOfElement($o) {
+export function selectTextOfElement(element: HTMLElement) {
 	if (document.body.createTextRange) {
 		const range = document.body.createTextRange();
-		range.moveToElementText($o[0]);
+		range.moveToElementText(element);
 		range.select();
 	} else if (window.getSelection) {
 		const selection = window.getSelection();
 		const range = document.createRange();
-		range.selectNodeContents($o[0]);
+		range.selectNodeContents(element);
 		selection.removeAllRanges();
 		selection.addRange(range);
 	}

@@ -11,6 +11,10 @@ All notable changes to this project will be documented in this file.
 - Added isObject() helper
 - Added isPlainObject() helper
 - Added scrollToPosition helper
+- Added globalStorage() helper
+- Added GenericStorage
+- Added BreakpointService
+- Added isNull()
 
 ### Changed
 - Rewrite of mergeRecursive and merge to combine them into a single function

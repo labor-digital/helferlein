@@ -3,12 +3,12 @@
  * For LABOR.digital
  */
 import {merge} from "../Lists/merge";
-import {scrollToPosition} from "@labor/helferlein/src/Ui/scrollToPosition";
-import {isNumber} from "@labor/helferlein/src/types/isNumber";
-import {isUndefined} from "@labor/helferlein/src/types/isUndefined";
-import {isObject} from "@labor/helferlein/src/types/isObject";
-import {PlainObject} from "@labor/helferlein/src/Interfaces/PlainObject";
-import {getOffset} from "@labor/helferlein/src/Dom/getOffset";
+import {scrollToPosition} from "./scrollToPosition";
+import {isNumber} from "../Types/isNumber";
+import {isUndefined} from "../Types/isUndefined";
+import {isObject} from "../Types/isObject";
+import {PlainObject} from "../Interfaces/PlainObject";
+import {getOffset} from "../Dom/getOffset";
 
 interface ScrollToTopOfConfiguration extends PlainObject {
 	/**
@@ -27,7 +27,7 @@ interface ScrollToTopOfConfiguration extends PlainObject {
 	container?: HTMLElement | Window;
 }
 
-let config:ScrollToTopOfConfiguration = {
+let config: ScrollToTopOfConfiguration = {
 	duration: 300,
 	offset: 0,
 	container: window

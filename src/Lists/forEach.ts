@@ -2,7 +2,7 @@
  * Created by Martin Neundorfer on 20.08.2018.
  * For LABOR.digital
  */
-import {isSet} from "../types/isSet";
+import {isSet} from "../Types/isSet";
 import {List} from "../Interfaces/List";
 
 export interface ForEachCallbackType extends Function

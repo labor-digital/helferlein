@@ -22,7 +22,7 @@ export interface ThrottledEventHandler extends Function{
  * http://underscorejs.org
  * (c) 2009-2018 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
-export function throttleEvent (callback:ThrottledEventHandler, limit:number) {
+export function throttleEvent (callback:ThrottledEventHandler, limit:number): any {
 	var timeout, context, args, result;
 	let previous = 0;
 

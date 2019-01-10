@@ -7,7 +7,7 @@ import {isMap} from "../Types/isMap";
 import {forEach} from "./forEach";
 import {isUndefined} from "../Types/isUndefined";
 import {List} from "../Interfaces/List";
-import {isPlainObject} from "@labor/helferlein/src/Types/isPlainObject";
+import {isPlainObject} from "../Types/isPlainObject";
 
 export enum ListType {
 	Array, Set, Map, Object, NoList

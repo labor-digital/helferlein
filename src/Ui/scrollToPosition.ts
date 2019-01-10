@@ -2,7 +2,7 @@
  * Created by Martin Neundorfer on 09.01.2019.
  * For LABOR.digital
  */
-import {throttleEvent} from "@labor/helferlein/src/Ui/throttleEvent";
+import {throttleEvent} from "./throttleEvent";
 
 // The number of milliseconds for each frame / tick
 const tickLength = 15;

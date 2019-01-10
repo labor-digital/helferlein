@@ -2,7 +2,7 @@
  * Created by Martin Neundorfer on 09.01.2019.
  * For LABOR.digital
  */
-import {isUndefined} from "@labor/helferlein/src/Types/isUndefined";
+import {isUndefined} from "../Types/isUndefined";
 
 /**
  * Returns the offset of a given dom element relative to the document
