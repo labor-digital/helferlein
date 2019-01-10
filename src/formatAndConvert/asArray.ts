@@ -16,7 +16,7 @@ export function asArray(list: List): Array<any> {
 	if (list === null || typeof list === "undefined") return [];
 	const outputType = getListType(list);
 	if (outputType === ListType.NoList) throw new Error("Could not determine the output type of a given element!");
-	if (isFunction(Array.from)) return Array.from(list as ArrayLike);
+	if (isFunction(Array.from)) return Array.from(list as any);
 	const output = [];
 	forEach(list, v => output.push(v));
 	return output;
