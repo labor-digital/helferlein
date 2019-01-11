@@ -14,14 +14,15 @@ declare global {
 }
 
 /**
- * Provides access to a global storage object on the window scope. Means multiple libraries may interact
- * with the storage and each other.
+ * Provides access to a storage object on the window scope. Means multiple libraries may interact
+ * with the storage and each other. The storage is only available for the current page. Means a refresh/page change
+ * will flush all elements
  *
  * The storage will hold a list of GenericStorage objects.
  *
  * @param namespace
  */
-export function globalStorage(namespace?:string):GenericStorage {
+export function getPageStorage(namespace?:string):GenericStorage {
 	if(isUndefined(window.HELFERLEIN_GLOBAL_STORAGE))
 		window.HELFERLEIN_GLOBAL_STORAGE = {};
 	if(!isString(namespace)) namespace = "storage-" + (Math.random() + "").replace(/[^0-9]/g, "");

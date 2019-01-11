@@ -2,6 +2,7 @@ import {PlainObject} from "../Interfaces/PlainObject";
 import {isUndefined} from "../Types/isUndefined";
 import {forEach} from "../Lists/forEach";
 import {GenericStorageInterface} from "./GenericStorageInterface";
+import {isFunction} from "../Types/isFunction";
 
 /**
  * Created by Martin Neundorfer on 10.01.2019.
@@ -13,8 +14,14 @@ export class GenericStorage implements GenericStorageInterface {
 	 */
 	protected _storage: PlainObject;
 
-	constructor(ref?: PlainObject) {
+	/**
+	 * Optional savehandler which is called every time a value was updated
+	 */
+	protected _onChange?: Function;
+
+	constructor(ref?: PlainObject, onChange?: Function) {
 		this._storage = ref || {};
+		this._onChange = onChange;
 	}
 
 	/**
@@ -38,7 +45,11 @@ export class GenericStorage implements GenericStorageInterface {
 	set(key: string | number, value: any): GenericStorage {
 		if (isUndefined(key)) throw new Error("Missing storage key!");
 		if (isUndefined(value)) throw new Error("Missing storage value!");
-		this._storage[key + ""] = value;
+		if(isFunction(this._onChange) && this._storage[key + ""] !== value){
+			this._storage[key + ""] = value;
+			this._onChange(key, value, this._storage);
+		} else
+			this._storage[key + ""] = value;
 		return this;
 	}
 
@@ -58,6 +69,8 @@ export class GenericStorage implements GenericStorageInterface {
 	remove(key: string | number): GenericStorage {
 		if (isUndefined(key)) throw new Error("Missing storage key!");
 		delete this._storage[key + ""];
+		if(isFunction(this._onChange))
+			this._onChange(key, undefined, this._storage);
 		return this;
 	}
 

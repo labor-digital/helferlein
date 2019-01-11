@@ -96,3 +96,24 @@ test("GenericStorage forEach function bridge", () => {
 	expect(e).toEqual(["foo", 1, "bar", 2]);
 });
 
+test("GenericStorage onChange", () => {
+	const s = {};
+	let c = 0;
+	const i = new GenericStorage(s, (key, value, storage) => {
+		c++;
+		expect(key).toBe("foo");
+		expect(value).toBe("bar");
+		expect(storage).toBe(s);
+	});
+	i.set("foo", "bar");
+
+	const i2 = new GenericStorage(s, (key, value, storage) => {
+		c++;
+		expect(key).toBe("foo");
+		expect(value).toBe(undefined);
+		expect(storage).toBe(s);
+	});
+	i2.remove("foo");
+
+	expect(c).toBe(2)
+});

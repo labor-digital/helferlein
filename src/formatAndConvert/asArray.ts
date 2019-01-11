@@ -5,7 +5,6 @@
 import {forEach} from "../Lists/forEach";
 import {List} from "../Interfaces/List";
 import {getListType, ListType} from "../Lists/listAccess";
-import {isFunction} from "../Types/isFunction";
 
 /**
  * Converts a given object/map/set into an array
@@ -16,7 +15,6 @@ export function asArray(list: List): Array<any> {
 	if (list === null || typeof list === "undefined") return [];
 	const outputType = getListType(list);
 	if (outputType === ListType.NoList) throw new Error("Could not determine the output type of a given element!");
-	if (isFunction(Array.from)) return Array.from(list as any);
 	const output = [];
 	forEach(list, v => output.push(v));
 	return output;

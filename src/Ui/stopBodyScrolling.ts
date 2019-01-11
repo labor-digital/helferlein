@@ -2,12 +2,12 @@
  * Created by Martin Neundorfer on 20.08.2018.
  * For LABOR.digital
  */
-import {globalStorage} from "../Misc/globalStorage";
+import {getPageStorage} from "../Misc/getPageStorage";
 import {forEach} from "../Lists/forEach";
 import {List} from "../Interfaces/List";
 import {isUndefined} from "../Types/isUndefined";
 
-const storage = globalStorage("stopBodyScrolling");
+const storage = getPageStorage("stopBodyScrolling");
 const isIos = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 
 /**

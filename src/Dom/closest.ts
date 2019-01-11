@@ -15,7 +15,7 @@ export function closest(selector: string, to: HTMLElement): HTMLElement | null {
 	if (!isFunction(to.closest)) {
 		let el = to;
 		while (el) {
-			const matches = isFunction(el.matches) ? el.matches : el.msMatchesSelector.bind(el);
+			const matches = isFunction(el.matches) ? el.matches : (el as any).msMatchesSelector.bind(el);
 			if (matches(selector)) return el;
 			el = el.parentElement;
 		}

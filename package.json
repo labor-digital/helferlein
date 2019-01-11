@@ -9,7 +9,8 @@
   "scripts": {
     "build": "node flushLib.js && tsc",
     "watch": "node flushLib.js && tsc --watch",
-    "test": "jest"
+    "test": "jest",
+    "doc": "typedoc --out doc --tsconfig ./tsconfig.json src --module commonjs && git add ./doc"
   },
   "engines": {
     "node": ">=8.11.2",
@@ -24,6 +25,7 @@
     "@types/node": "^10.12.18",
     "jest": "^23.6.0",
     "ts-jest": "^23.10.1",
+    "typedoc": "^0.14.1",
     "typescript": "^3.0.3"
   }
 }

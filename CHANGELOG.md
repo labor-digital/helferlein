@@ -2,6 +2,19 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [2.0.2] - 2019-01-11
+### Added
+- Added addClass() and removeClass() helpers to manage dom element classes with ease
+- Added getLocalStorage() to apply an object based abstraction to the localStorage API
+- Added typedoc as documentation renderer
+
+### Changed
+- Renamed globalStorage() to getPageStorage() to make it easier to understand what it does.
+- Added onChange() hook to GenericStorage which is called when a value is set or deleted
+
+### Fixed
+- Reverted changes to asArray() because it caused more problems than it solved
+
 ## [2.0.1] - 2019-01-10
 ### Added
 - Added flushLib.js script to clean lib directory before build
