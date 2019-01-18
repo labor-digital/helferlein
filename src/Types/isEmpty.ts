@@ -17,8 +17,6 @@ export function isEmpty(value):boolean {
 	switch (typeof value) {
 		case "undefined":
 			return true;
-		case "number":
-			return value === 0;
 		case "string":
 			return value.trim().length === 0;
 		case "object":

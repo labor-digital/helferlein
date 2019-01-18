@@ -5,15 +5,15 @@
 import {BreakpointHelpers} from "./BreakpointHelpers";
 import {throttleEvent} from "../throttleEvent";
 import {BreakpointContext} from "./Entities/BreakpointContext";
-import {BreakpointsConfigureOptions, BreakpointServiceChangeEvent} from "./BreakpointService.interfaces";
-import {onReady} from "../../Dom/onReady";
+import {BreakpointsConfigureOptions} from "./BreakpointService.interfaces";
 import {Breakpoint} from "./Entities/Breakpoint";
+import {EventBus} from "../../Browser/EventBus";
 
 // Create new context
 const context = new BreakpointContext();
 
 // Listen to window resizes
-onReady(() => {
+EventBus.bindOnReady(() => {
 	BreakpointHelpers.ensureCurrent(context);
 	window.addEventListener("resize", throttleEvent(function breakpointWindowOnResizeHandler() {
 		// Store old breakpoint
@@ -26,12 +26,8 @@ onReady(() => {
 		// Skip if the breakpoint did not change
 		if (oldBreakpoint === context.current) return;
 
-		// Trigger global event
-		const e = document.createEvent("Event") as BreakpointServiceChangeEvent;
-		e.initEvent("breakpoint__change", true, true);
-		e.new = context.current;
-		e.old = oldBreakpoint;
-		window.dispatchEvent(e);
+		// Trigger event
+		EventBus.emit("breakpoint__change", {old: oldBreakpoint, new: context.current});
 	}, 200));
 });
 
@@ -107,8 +103,8 @@ export class BreakpointService {
 	/**
 	 * Can be used to customize the settings for the breakpoint service
 	 * @param opts
-	 * 			- container: The container selector to create the breakpoint marker in (DEFAULT: 'body')
-	 * 			- template: The html template to append to the breakpointContainer (DEFAULT: '<div class="sassy-breakpoint-service"></div>')
+	 *            - container: The container selector to create the breakpoint marker in (DEFAULT: 'body')
+	 *            - template: The html template to append to the breakpointContainer (DEFAULT: '<div class="sassy-breakpoint-service"></div>')
 	 */
 	static configure(opts: BreakpointsConfigureOptions): BreakpointService {
 		// Reset current and breakpoints

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BreakpointService | @labor/helferlein</title>
+	<title>EventBus | @labor/helferlein</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_ui_breakpointservice_breakpointservice_.html">&quot;Ui/BreakpointService/BreakpointService&quot;</a>
+					<a href="../modules/_browser_eventbus_.html">&quot;Browser/EventBus&quot;</a>
 				</li>
 				<li>
-					<a href="_ui_breakpointservice_breakpointservice_.breakpointservice.html">BreakpointService</a>
+					<a href="_browser_eventbus_.eventbus.html">EventBus</a>
 				</li>
 			</ul>
-			<h1>Class BreakpointService</h1>
+			<h1>Class EventBus</h1>
 		</div>
 	</div>
 </header>
@@ -72,21 +72,15 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>This class utilizes the css to javascript breakpoint service provided by the &quot;@labor/sassy&quot; package
-						to create a breakpoint api in javascript which is configured in css.</p>
+						<p>This class is used for all helferlein events to prevent contamination of the global event system</p>
 					</div>
-					<p>If you don&#39;t want to use the sassy library, but still want access to this api you have
-						to create a css class that defines a &quot;font-family&quot; with a value like the following:
-					font-family: &quot;xxs: 0|449px, xs: 0|549px, sm: 550px|767px, md: 768px|991px, lg: 992px|1199px, xl: 1200px|999999px&quot;;</p>
-					<p>The key is the name of the breakpoint, the first number is the &quot;min&quot; value of the breakpoint, the second (after the pipe)
-					the &quot;max&quot; value of the breakpoint</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">BreakpointService</span>
+						<span class="target">EventBus</span>
 					</li>
 				</ul>
 			</section>
@@ -97,10 +91,11 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_ui_breakpointservice_breakpointservice_.breakpointservice.html#bpis" class="tsd-kind-icon">bp<wbr>Is</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_ui_breakpointservice_breakpointservice_.breakpointservice.html#configure" class="tsd-kind-icon">configure</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_ui_breakpointservice_breakpointservice_.breakpointservice.html#getall" class="tsd-kind-icon">get<wbr>All</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_ui_breakpointservice_breakpointservice_.breakpointservice.html#getcurrent" class="tsd-kind-icon">get<wbr>Current</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_browser_eventbus_.eventbus.html#bind" class="tsd-kind-icon">bind</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_browser_eventbus_.eventbus.html#bindonready" class="tsd-kind-icon">bind<wbr>OnReady</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_browser_eventbus_.eventbus.html#emit" class="tsd-kind-icon">emit</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected tsd-is-static"><a href="_browser_eventbus_.eventbus.html#makeinternaleventname" class="tsd-kind-icon">make<wbr>Internal<wbr>Event<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_browser_eventbus_.eventbus.html#unbind" class="tsd-kind-icon">unbind</a></li>
 							</ul>
 						</section>
 					</div>
@@ -109,124 +104,162 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="bpis" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> bp<wbr>Is</h3>
+					<a name="bind" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> bind</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">bp<wbr>Is<span class="tsd-signature-symbol">(</span>comparator<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"&lt;&#x3D;"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"&#x3D;&#x3D;"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"&gt;&#x3D;"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"&gt;"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"&lt;"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"!&#x3D;"</span>, breakpointKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">bind<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, handler<span class="tsd-signature-symbol">: </span><a href="../interfaces/_browser_eventbus_.eventbuseventlistener.html" class="tsd-signature-type">EventBusEventListener</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_browser_eventbus_.eventbus.html" class="tsd-signature-type">EventBus</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Ui/BreakpointService/BreakpointService.ts:55</li>
+									<li>Defined in Browser/EventBus.ts:59</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Checks if the current breakpoint which was configured using its css counterpart of bootstrap-addons
-									is (bigger, smaller, the same, not) as a given other breakpoint key (&quot;sm&quot;, &quot;lg&quot;...)</p>
-								</div>
-								<p>To add your own breakpoints take a look at the &quot;$js-breakpoints&quot; variable in config.sass</p>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>comparator: <span class="tsd-signature-type">"&lt;&#x3D;"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"&#x3D;&#x3D;"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"&gt;&#x3D;"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"&gt;"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"&lt;"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"!&#x3D;"</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The operator to use for the comparison</p>
-									</div>
-								</li>
-								<li>
-									<h5>breakpointKey: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The other breakpoint to compare with the current one</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="configure" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> configure</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">configure<span class="tsd-signature-symbol">(</span>opts<span class="tsd-signature-symbol">: </span><a href="../interfaces/_ui_breakpointservice_breakpointservice_interfaces_.breakpointsconfigureoptions.html" class="tsd-signature-type">BreakpointsConfigureOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_ui_breakpointservice_breakpointservice_.breakpointservice.html" class="tsd-signature-type">BreakpointService</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in Ui/BreakpointService/BreakpointService.ts:109</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Can be used to customize the settings for the breakpoint service</p>
+									<p>Binds a given handler to a certain event</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>opts: <a href="../interfaces/_ui_breakpointservice_breakpointservice_interfaces_.breakpointsconfigureoptions.html" class="tsd-signature-type">BreakpointsConfigureOptions</a></h5>
+									<h5>event: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>handler: <a href="../interfaces/_browser_eventbus_.eventbuseventlistener.html" class="tsd-signature-type">EventBusEventListener</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<pre><code>       - container: The container selector <span class="hljs-built_in">to</span> <span class="hljs-built_in">create</span> <span class="hljs-keyword">the</span> <span class="hljs-built_in">breakpoint</span> marker <span class="hljs-keyword">in</span> (DEFAULT: <span class="hljs-string">'body'</span>)
-       - template: The html template <span class="hljs-built_in">to</span> append <span class="hljs-built_in">to</span> <span class="hljs-keyword">the</span> breakpointContainer (DEFAULT: <span class="hljs-string">'&lt;div class="sassy-breakpoint-service"&gt;&lt;/div&gt;'</span>)</code></pre>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_ui_breakpointservice_breakpointservice_.breakpointservice.html" class="tsd-signature-type">BreakpointService</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_browser_eventbus_.eventbus.html" class="tsd-signature-type">EventBus</a></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="getall" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>All</h3>
+					<a name="bindonready" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> bind<wbr>OnReady</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>All<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_ui_breakpointservice_entities_breakpoint_.breakpoint.html" class="tsd-signature-type">Breakpoint</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">bind<wbr>OnReady<span class="tsd-signature-symbol">(</span>handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Ui/BreakpointService/BreakpointService.ts:98</li>
+									<li>Defined in Browser/EventBus.ts:45</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the list of all found breakpoints or null, if there are none</p>
+									<p>Registeres a special event handler which is called as soon as the document reports to be ready.
+									If this is called after the document is ready, the handler will be executed immediately</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span>
-								<span class="tsd-signature-symbol"> | </span>
-								<span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_ui_breakpointservice_entities_breakpoint_.breakpoint.html" class="tsd-signature-type">Breakpoint</a><span class="tsd-signature-symbol">&gt;</span>
-							</h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>handler: <span class="tsd-signature-type">Function</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="getcurrent" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Current</h3>
+					<a name="emit" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> emit</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Current<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="_ui_breakpointservice_entities_breakpoint_.breakpoint.html" class="tsd-signature-type">Breakpoint</a></li>
+						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_interfaces_plainobject_.plainobject.html" class="tsd-signature-type">PlainObject</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_browser_eventbus_.eventbus.html" class="tsd-signature-type">EventBus</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Ui/BreakpointService/BreakpointService.ts:90</li>
+									<li>Defined in Browser/EventBus.ts:32</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the current breakpoint or null, if there is no
-									breakpoint definition</p>
+									<p>Emits a given event which has the option to pass additional arguments.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span>
-								<span class="tsd-signature-symbol"> | </span>
-								<a href="_ui_breakpointservice_entities_breakpoint_.breakpoint.html" class="tsd-signature-type">Breakpoint</a>
-							</h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> args: <a href="../interfaces/_interfaces_plainobject_.plainobject.html" class="tsd-signature-type">PlainObject</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_browser_eventbus_.eventbus.html" class="tsd-signature-type">EventBus</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected tsd-is-static">
+					<a name="makeinternaleventname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagProtected">Protected</span> make<wbr>Internal<wbr>Event<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">make<wbr>Internal<wbr>Event<wbr>Name<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in Browser/EventBus.ts:78</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Scopes the given event into a namespaced, event which should not interfere with other events or EventBuses</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="unbind" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> unbind</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">unbind<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, handler<span class="tsd-signature-symbol">: </span><a href="../interfaces/_browser_eventbus_.eventbuseventlistener.html" class="tsd-signature-type">EventBusEventListener</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_browser_eventbus_.eventbus.html" class="tsd-signature-type">EventBus</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in Browser/EventBus.ts:69</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes a given handler from a certain event</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>handler: <a href="../interfaces/_browser_eventbus_.eventbuseventlistener.html" class="tsd-signature-type">EventBusEventListener</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_browser_eventbus_.eventbus.html" class="tsd-signature-type">EventBus</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -239,7 +272,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_ui_breakpointservice_breakpointservice_.html">"<wbr>Ui/<wbr>Breakpoint<wbr>Service/<wbr>Breakpoint<wbr>Service"</a>
+						<a href="../modules/_browser_eventbus_.html">"<wbr>Browser/<wbr>Event<wbr>Bus"</a>
 					</li>
 				</ul>
 			</nav>
@@ -248,26 +281,38 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_ui_breakpointservice_breakpointservice_.breakpointservice.html" class="tsd-kind-icon">Breakpoint<wbr>Service</a>
+						<a href="_browser_eventbus_.eventbus.html" class="tsd-kind-icon">Event<wbr>Bus</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_ui_breakpointservice_breakpointservice_.breakpointservice.html#bpis" class="tsd-kind-icon">bp<wbr>Is</a>
+								<a href="_browser_eventbus_.eventbus.html#bind" class="tsd-kind-icon">bind</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_ui_breakpointservice_breakpointservice_.breakpointservice.html#configure" class="tsd-kind-icon">configure</a>
+								<a href="_browser_eventbus_.eventbus.html#bindonready" class="tsd-kind-icon">bind<wbr>OnReady</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_ui_breakpointservice_breakpointservice_.breakpointservice.html#getall" class="tsd-kind-icon">get<wbr>All</a>
+								<a href="_browser_eventbus_.eventbus.html#emit" class="tsd-kind-icon">emit</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected tsd-is-static">
+								<a href="_browser_eventbus_.eventbus.html#makeinternaleventname" class="tsd-kind-icon">make<wbr>Internal<wbr>Event<wbr>Name</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_ui_breakpointservice_breakpointservice_.breakpointservice.html#getcurrent" class="tsd-kind-icon">get<wbr>Current</a>
+								<a href="_browser_eventbus_.eventbus.html#unbind" class="tsd-kind-icon">unbind</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../interfaces/_browser_eventbus_.eventbusevent.html" class="tsd-kind-icon">Event<wbr>Bus<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../interfaces/_browser_eventbus_.eventbuseventlistener.html" class="tsd-kind-icon">Event<wbr>Bus<wbr>Event<wbr>Listener</a>
+					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_ui_breakpointservice_breakpointservice_.html#context" class="tsd-kind-icon">context</a>
+						<a href="../modules/_browser_eventbus_.html#eventnamecache" class="tsd-kind-icon">event<wbr>Name<wbr>Cache</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_browser_eventbus_.html#namespace" class="tsd-kind-icon">namespace</a>
 					</li>
 				</ul>
 			</nav>

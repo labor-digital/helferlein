@@ -2,6 +2,19 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [2.0.3] - 2019-01-18
+### Added
+- Added formatDateAndTime() as a js date formatter that work's like php's date()
+- Added EventBus to centralize all events we create without tainting the global namespace
+- Added UrlHash to manage url parameters after the # tag
+- Added getDate() method to read data attributes from html objects
+
+### Changed
+- isEmpty() will no longer detect 0 (number) as empty
+
+### Removed
+- Removed onReady() and moved the functionallity into EventBus.bindOnReady()
+
 ## [2.0.2] - 2019-01-11
 ### Added
 - Added addClass() and removeClass() helpers to manage dom element classes with ease
