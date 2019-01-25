@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [2.0.4] - 2019-01-25
 ### Added
 - Added registerEventResizeThrottled() to call a event on when the browser window is resized
 - Added loadAsset() helper to load javascript / css assets dynamically
