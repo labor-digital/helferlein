@@ -38,20 +38,6 @@ export class EventBus {
 	}
 
 	/**
-	 * Registeres a special event handler which is called as soon as the document reports to be ready.
-	 * If this is called after the document is ready, the handler will be executed immediately
-	 * @param handler
-	 */
-	static bindOnReady(handler: Function){
-		if (document.readyState !== "loading") handler();
-		else if (document.addEventListener) document.addEventListener("DOMContentLoaded", handler as any);
-		else if (isFunction((document as any).attachEvent)) (document as any).attachEvent("onreadystatechange", function () {
-			if (document.readyState == "complete") handler();
-		});
-		else handler();
-	}
-
-	/**
 	 * Binds a given handler to a certain event
 	 * @param event
 	 * @param handler
@@ -69,6 +55,20 @@ export class EventBus {
 	static unbind(event: string, handler: EventBusEventListener): EventBus {
 		document.removeEventListener(EventBus.makeInternalEventName(event), handler);
 		return EventBus;
+	}
+
+	/**
+	 * Registeres a special event handler which is called as soon as the document reports to be ready.
+	 * If this is called after the document is ready, the handler will be executed immediately
+	 * @param handler
+	 */
+	static bindOnReady(handler: Function){
+		if (document.readyState !== "loading") handler();
+		else if (document.addEventListener) document.addEventListener("DOMContentLoaded", handler as any);
+		else if (isFunction((document as any).attachEvent)) (document as any).attachEvent("onreadystatechange", function () {
+			if (document.readyState == "complete") handler();
+		});
+		else handler();
 	}
 
 	/**

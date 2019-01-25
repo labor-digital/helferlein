@@ -6,6 +6,7 @@ import {getPageStorage} from "../Misc/getPageStorage";
 import {forEach} from "../Lists/forEach";
 import {List} from "../Interfaces/List";
 import {isUndefined} from "../Types/isUndefined";
+import {getData} from "../Dom/getData";
 
 const storage = getPageStorage("stopBodyScrolling");
 const isIos = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
@@ -62,7 +63,10 @@ export function stopBodyScrolling(state?: boolean) {
 
 		// Prevent jumping of fixed elements
 		forEach(document.querySelectorAll("*[data-stop-body-scrolling-fixed]") as List, (element: HTMLElement) => {
-			element.style.transform = "translateX(-" + bodyWidthDiff + "px)";
+			let offsetWidth = bodyWidthDiff;
+			const config = getData(element, "stop-body-scrolling-fixed", "");
+			if(config === "half") offsetWidth = offsetWidth / 2;
+			element.style.transform = "translateX(-" + offsetWidth + "px)";
 		});
 	} else {
 		// Ignore if already active

@@ -13,9 +13,9 @@ let currentHash = window.location.hash;
  * history forwards or backwards.
  *
  * If you change the hash and don't want hash.change to be triggered by it,
- * emit the hash.update event first and set args: {new: "#/new/hash"}
+ * emit the "hash__update" event first and set args: {new: "#/new/hash"}
  */
-export function registerEventOnHashChange() {
+export function registerEventOnHashChange():void {
 	if(isRegistered) return;
 	isRegistered = true;
 

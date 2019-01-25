@@ -15,7 +15,7 @@ export interface ThrottledEventHandler extends Function{
 }
 
 /**
- * Helper to throttle js events
+ * Helper to throttle (debounce) js events
  * The source code is mostly stolen from:
  * @see https://github.com/jashkenas/underscore/blob/master/underscore.js
  * Underscore.js 1.9.1

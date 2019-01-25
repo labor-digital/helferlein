@@ -96,7 +96,6 @@ export function configureFormatDateAndTime(format: string | ConfigureFormatDateA
 		if (fp.length !== 4) throw new Error("Invalit dateAndTime config! If a string is given, it is expected to receive FOUR parts separated via '|' (pipe) character.");
 		format = {monthNames: fp[0], monthNamesAbbr: fp[1], weekDays: fp[2], weekDaysAbbr: fp[3]};
 	}
-	console.log((format as any).monthNames);
 	if (!isUndefined((format as any).monthNames)) config.setVal("monthNames", (format as any).monthNames, 12);
 	if (!isUndefined((format as any).monthNamesAbbr)) config.setVal("monthNamesAbbr", (format as any).monthNamesAbbr, 12);
 	if (!isUndefined((format as any).weekDays)) config.setVal("weekDays", (format as any).weekDays, 7);

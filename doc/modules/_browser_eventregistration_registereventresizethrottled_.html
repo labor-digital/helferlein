@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;Types/isEmpty&quot; | @labor/helferlein</title>
+	<title>&quot;Browser/EventRegistration/registerEventResizeThrottled&quot; | @labor/helferlein</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_types_isempty_.html">&quot;Types/isEmpty&quot;</a>
+					<a href="_browser_eventregistration_registereventresizethrottled_.html">&quot;Browser/EventRegistration/registerEventResizeThrottled&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;Types/isEmpty&quot;</h1>
+			<h1>External module &quot;Browser/EventRegistration/registerEventResizeThrottled&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -70,49 +70,56 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_browser_eventregistration_registereventresizethrottled_.html#isregistered" class="tsd-kind-icon">is<wbr>Registered</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_types_isempty_.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_browser_eventregistration_registereventresizethrottled_.html#registereventresizethrottled" class="tsd-kind-icon">register<wbr>Event<wbr>Resize<wbr>Throttled</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="isregistered" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagLet">Let</span> is<wbr>Registered</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Registered<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Browser/EventRegistration/registerEventResizeThrottled.ts:7</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="isempty" class="tsd-anchor"></a>
-					<h3>is<wbr>Empty</h3>
+					<a name="registereventresizethrottled" class="tsd-anchor"></a>
+					<h3>register<wbr>Event<wbr>Resize<wbr>Throttled</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Empty<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, includeZero<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">register<wbr>Event<wbr>Resize<wbr>Throttled<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Types/isEmpty.ts:16</li>
+									<li>Defined in Browser/EventRegistration/registerEventResizeThrottled.ts:12</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns true if the given value counts as empty
-									Empty values are: NULL, undefined, 0, &quot;&quot;, &quot; &quot;, {}, [] and empty Maps and Sets</p>
+									<p>Registeres a &quot;resize__throttled&quot; event which is called every time
+									the window is resized, but which has a debounce rate of 150ms</p>
 								</div>
 							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> includeZero: <span class="tsd-signature-type">boolean</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>By default zero (0) is not seen as &quot;empty&quot; if you set this to true, it will be, tho</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -125,14 +132,17 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_types_isempty_.html">"<wbr>Types/is<wbr>Empty"</a>
+						<a href="_browser_eventregistration_registereventresizethrottled_.html">"<wbr>Browser/<wbr>Event<wbr>Registration/register<wbr>Event<wbr>Resize<wbr>Throttled"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_browser_eventregistration_registereventresizethrottled_.html#isregistered" class="tsd-kind-icon">is<wbr>Registered</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_types_isempty_.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a>
+						<a href="_browser_eventregistration_registereventresizethrottled_.html#registereventresizethrottled" class="tsd-kind-icon">register<wbr>Event<wbr>Resize<wbr>Throttled</a>
 					</li>
 				</ul>
 			</nav>

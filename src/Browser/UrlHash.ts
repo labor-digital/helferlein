@@ -5,7 +5,6 @@
 import {PlainObject} from "../Interfaces/PlainObject";
 import {forEach} from "../Lists/forEach";
 import {isUndefined} from "../Types/isUndefined";
-import {isString} from "../Types/isString";
 import {map} from "../Lists/map";
 import {asArray} from "../FormatAndConvert/asArray";
 import {isEmpty} from "../Types/isEmpty";
@@ -106,7 +105,7 @@ export class UrlHash {
 	protected static update(hash: PlainObject): void {
 		if (isEmpty(hash)) {
 			EventBus.emit("hash__update", {new: ""});
-			window.location.hash = "";
+			window.location.hash = "/";
 			return;
 		}
 		const list = asArray(map(hash, (v, k) => encodeURIComponent(k + "") + "/" + encodeURIComponent(v)));

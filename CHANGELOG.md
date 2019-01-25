@@ -2,6 +2,22 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Added
+- Added registerEventResizeThrottled() to call a event on when the browser window is resized
+- Added loadAsset() helper to load javascript / css assets dynamically
+- Added numberAsFileSize() helper to format file sizes for humans
+- Added debouncePromise() helper to, well debounce calls of functions which return a promise
+- Added maxLength() helper to cut off strings that exceed a given length
+- Added stripTags() helper which removes html tags from a string
+- Added bindOnReady() to EventBus
+
+### Changed
+- isEmpty() now has an additional parameter to check for null conditionally
+- The "data-stop-body-scrolling-fixed" attribute can now again accept a "half" value when stopBodyScrolling() is used
+
+### Fixed
+- Fixed an issue with UrlHash where the page jumped to the top if no arguments were left
+
 ## [2.0.3] - 2019-01-18
 ### Added
 - Added formatDateAndTime() as a js date formatter that work's like php's date()

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;Types/isEmpty&quot; | @labor/helferlein</title>
+	<title>&quot;Strings/maxLength&quot; | @labor/helferlein</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_types_isempty_.html">&quot;Types/isEmpty&quot;</a>
+					<a href="_strings_maxlength_.html">&quot;Strings/maxLength&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;Types/isEmpty&quot;</h1>
+			<h1>External module &quot;Strings/maxLength&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_types_isempty_.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_strings_maxlength_.html#maxlength" class="tsd-kind-icon">max<wbr>Length</a></li>
 							</ul>
 						</section>
 					</div>
@@ -82,37 +82,49 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="isempty" class="tsd-anchor"></a>
-					<h3>is<wbr>Empty</h3>
+					<a name="maxlength" class="tsd-anchor"></a>
+					<h3>max<wbr>Length</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Empty<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, includeZero<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">max<wbr>Length<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, limit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, ellipsis<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Types/isEmpty.ts:16</li>
+									<li>Defined in Strings/maxLength.ts:20</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns true if the given value counts as empty
-									Empty values are: NULL, undefined, 0, &quot;&quot;, &quot; &quot;, {}, [] and empty Maps and Sets</p>
+									<p>This helper is used to cut a string to a fixed number of characters.
+										The resulting string will not exceed the given limit but will also respect
+									word boundraries, not cutting words in half.</p>
 								</div>
+								<p>By default ellipsis will be added at the end of a string which was cut. To
+								disable this, set the third parameter to be an empty string</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>value: <span class="tsd-signature-type">any</span></h5>
+									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The value to limit to a given number of characters</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> includeZero: <span class="tsd-signature-type">boolean</span></h5>
+									<h5>limit: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>By default zero (0) is not seen as &quot;empty&quot; if you set this to true, it will be, tho</p>
+										<p>The number of characters</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> ellipsis: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Optional: Used to override the ... added to a cut of string</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -125,14 +137,14 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_types_isempty_.html">"<wbr>Types/is<wbr>Empty"</a>
+						<a href="_strings_maxlength_.html">"<wbr>Strings/max<wbr>Length"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_types_isempty_.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a>
+						<a href="_strings_maxlength_.html#maxlength" class="tsd-kind-icon">max<wbr>Length</a>
 					</li>
 				</ul>
 			</nav>
