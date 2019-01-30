@@ -21,11 +21,11 @@
   "homepage": "https://bitbucket.org/labor-digital/labor-js-helpers.js#readme",
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^23.3.2",
-    "@types/node": "^10.12.18",
+    "@types/jest": "^23.3.13",
+    "@types/node": "^10.12.19",
     "jest": "^23.6.0",
-    "ts-jest": "^23.10.1",
-    "typedoc": "^0.14.1",
-    "typescript": "^3.0.3"
+    "ts-jest": "^23.10.5",
+    "typedoc": "^0.14.2",
+    "typescript": "^3.2.4"
   }
 }

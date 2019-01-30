@@ -17,4 +17,8 @@ function rmdirRecursive(dirname, removeSelf) {
 		if (removeSelf !== false) fs.rmdirSync(dirname);
 	}
 }
-rmdirRecursive(__dirname + "/lib", false);
+try {
+	rmdirRecursive(__dirname + "/lib", false);
+} catch (e) {
+	console.error("Failed to clear lib!");
+}

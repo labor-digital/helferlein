@@ -9,6 +9,7 @@ import {isUndefined} from "../Types/isUndefined";
 import {isObject} from "../Types/isObject";
 import {PlainObject} from "../Interfaces/PlainObject";
 import {getOffset} from "../Dom/getOffset";
+import {isEmpty} from "../Types/isEmpty";
 
 interface ScrollToTopOfConfiguration extends PlainObject {
 	/**
@@ -59,7 +60,7 @@ export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration
 export function scrollToTopOf(target?: HTMLElement, options?: ScrollToTopOfConfiguration) {
 
 	// Check if we should scroll up to 0
-	if (typeof target === "undefined") return scrollToPosition(0);
+	if (isEmpty(target)) return scrollToPosition(0);
 
 	// Prepare options
 	if (isUndefined(options)) options = {};

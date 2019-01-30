@@ -38,7 +38,7 @@ export function scrollToPosition(position: number, duration?: number, container?
 	runningAnimation = localAnimation;
 
 	// Prepare input values
-	duration = duration || 300;
+	duration = duration || (duration === 0 ? 0 : 300);
 	container = container || window;
 	const containerIsWindow = container === window;
 
@@ -62,6 +62,12 @@ export function scrollToPosition(position: number, duration?: number, container?
 		// Prepare calculation
 		const initialPosition = getScrollPos();
 		const distance = position - initialPosition;
+
+		// Duration is zero -> No animation
+		if(duration === 0){
+			setScrollPos(position);
+			resolve(container);
+		}
 
 		// Nothing to do
 		if(distance === 0) return resolve(container);

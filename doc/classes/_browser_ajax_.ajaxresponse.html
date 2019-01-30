@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ScrollToTopOfConfiguration | @labor/helferlein</title>
+	<title>AjaxResponse | @labor/helferlein</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_ui_scrolltotopof_.html">&quot;Ui/scrollToTopOf&quot;</a>
+					<a href="../modules/_browser_ajax_.html">&quot;Browser/ajax&quot;</a>
 				</li>
 				<li>
-					<a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html">ScrollToTopOfConfiguration</a>
+					<a href="_browser_ajax_.ajaxresponse.html">AjaxResponse</a>
 				</li>
 			</ul>
-			<h1>Interface ScrollToTopOfConfiguration</h1>
+			<h1>Class AjaxResponse</h1>
 		</div>
 	</div>
 </header>
@@ -73,78 +73,102 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_interfaces_plainobject_.plainobject.html" class="tsd-signature-type">PlainObject</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">ScrollToTopOfConfiguration</span>
-							</li>
-						</ul>
+						<span class="target">AjaxResponse</span>
 					</li>
 				</ul>
-			</section>
-			<section class="tsd-panel tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-				<h3 class="tsd-before-signature">Indexable</h3>
-				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-not-exported">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html#container" class="tsd-kind-icon">container</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html#duration" class="tsd-kind-icon">duration</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html#offset" class="tsd-kind-icon">offset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_browser_ajax_.ajaxresponse.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_browser_ajax_.ajaxresponse.html#dataraw" class="tsd-kind-icon">data<wbr>Raw</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_browser_ajax_.ajaxresponse.html#error" class="tsd-kind-icon">error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_browser_ajax_.ajaxresponse.html#raw" class="tsd-kind-icon">raw</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_browser_ajax_.ajaxresponse.html#status" class="tsd-kind-icon">status</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="container" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> container</h3>
-					<div class="tsd-signature tsd-kind-icon">container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Window</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_plainobject_.plainobject.html" class="tsd-signature-type">PlainObject</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Ui/scrollToTopOf.ts:28</li>
+							<li>Defined in Browser/ajax.ts:45</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>If set this will be used as as scroll container instead of the &quot;window&quot;</p>
+							<p>The payload send by the server.
+							Contains either the string or an object/array if the server send a json object our way</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="duration" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> duration</h3>
-					<div class="tsd-signature tsd-kind-icon">duration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="dataraw" class="tsd-anchor"></a>
+					<h3>data<wbr>Raw</h3>
+					<div class="tsd-signature tsd-kind-icon">data<wbr>Raw<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Ui/scrollToTopOf.ts:18</li>
+							<li>Defined in Browser/ajax.ts:50</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The speed in milliseconds the scroll operation should take</p>
+							<p>The payload always as a string</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="offset" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> offset</h3>
-					<div class="tsd-signature tsd-kind-icon">offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="error" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> error</h3>
+					<div class="tsd-signature tsd-kind-icon">error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Ui/scrollToTopOf.ts:23</li>
+							<li>Defined in Browser/ajax.ts:55</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The offset to the top of the page when scrolling up</p>
+							<p>The error message or undefined</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="raw" class="tsd-anchor"></a>
+					<h3>raw</h3>
+					<div class="tsd-signature tsd-kind-icon">raw<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">XMLHttpRequest</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Browser/ajax.ts:60</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The used xml http request</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="status" class="tsd-anchor"></a>
+					<h3>status</h3>
+					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Browser/ajax.ts:39</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The status code send by the server</p>
 						</div>
 					</div>
 				</section>
@@ -157,7 +181,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_ui_scrolltotopof_.html">"<wbr>Ui/scroll<wbr>ToTop<wbr>Of"</a>
+						<a href="../modules/_browser_ajax_.html">"<wbr>Browser/ajax"</a>
 					</li>
 				</ul>
 			</nav>
@@ -165,30 +189,36 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html" class="tsd-kind-icon">Scroll<wbr>ToTop<wbr>OfConfiguration</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_browser_ajax_.ajaxresponse.html" class="tsd-kind-icon">Ajax<wbr>Response</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html#container" class="tsd-kind-icon">container</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_browser_ajax_.ajaxresponse.html#data" class="tsd-kind-icon">data</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html#duration" class="tsd-kind-icon">duration</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_browser_ajax_.ajaxresponse.html#dataraw" class="tsd-kind-icon">data<wbr>Raw</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html#offset" class="tsd-kind-icon">offset</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_browser_ajax_.ajaxresponse.html#error" class="tsd-kind-icon">error</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_browser_ajax_.ajaxresponse.html#raw" class="tsd-kind-icon">raw</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_browser_ajax_.ajaxresponse.html#status" class="tsd-kind-icon">status</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_ui_scrolltotopof_.html#configurescrolltotopof" class="tsd-kind-icon">configure<wbr>Scroll<wbr>ToTop<wbr>Of</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_browser_ajax_.ajaxrequest.html" class="tsd-kind-icon">Ajax<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_ui_scrolltotopof_.html#scrolltotopof" class="tsd-kind-icon">scroll<wbr>ToTop<wbr>Of</a>
+						<a href="../modules/_browser_ajax_.html#ajax" class="tsd-kind-icon">ajax</a>
 					</li>
-					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_ui_scrolltotopof_.html#config" class="tsd-kind-icon">config</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_browser_ajax_.html#preparedata" class="tsd-kind-icon">prepare<wbr>Data</a>
 					</li>
 				</ul>
 			</nav>

@@ -2,6 +2,17 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [2.0.5] - 2019-01-30
+### Added
+- Added ajax() helper to perform BASIC ajax calls to the server
+
+### Changed
+- Updated dependencies to the latest versions
+
+### Fixed
+- Fixed an issue with flusLib.js which caused the 
+- Fixed some issues with scrollToTopOf when using durations
+
 ## [2.0.4] - 2019-01-25
 ### Added
 - Added registerEventResizeThrottled() to call a event on when the browser window is resized
