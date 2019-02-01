@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [2.0.6] - 2019-02-01
+### Added
+- Added isBool() helper
+- Added sort() helper to sort lists of objects by a property
+- Added transistClass() helper to create smooth css transitions
+- Added stickyElement() to create sticky html elements
+- Added getScrollPos() to get the vertical scroll pos on a page
+- Added requestFrame() as polyfill for requestAnimationFrame
+- Added getGuid() which returns a side-wide unique uid
+
 ## [2.0.5] - 2019-01-30
 ### Added
 - Added ajax() helper to perform BASIC ajax calls to the server

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;Dom/addClass&quot; | @labor/helferlein</title>
+	<title>&quot;Browser/requestFrame&quot; | @labor/helferlein</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_dom_addclass_.html">&quot;Dom/addClass&quot;</a>
+					<a href="_browser_requestframe_.html">&quot;Browser/requestFrame&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;Dom/addClass&quot;</h1>
+			<h1>External module &quot;Browser/requestFrame&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Created by Martin Neundorfer on 11.01.2019.
+						<p>Created by Martin Neundorfer on 31.01.2019.
 						For LABOR.digital</p>
 					</div>
 				</div>
@@ -78,47 +78,134 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_browser_requestframe_.html#can" class="tsd-kind-icon">can</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_browser_requestframe_.html#lasttime" class="tsd-kind-icon">last<wbr>Time</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_browser_requestframe_.html#req" class="tsd-kind-icon">req</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_browser_requestframe_.html#vendors" class="tsd-kind-icon">vendors</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_dom_addclass_.html#addclass" class="tsd-kind-icon">add<wbr>Class</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_browser_requestframe_.html#cancelframe" class="tsd-kind-icon">cancel<wbr>Frame</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_browser_requestframe_.html#requestframe" class="tsd-kind-icon">request<wbr>Frame</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="can" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagLet">Let</span> can</h3>
+					<div class="tsd-signature tsd-kind-icon">can<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Browser/requestFrame.ts:14</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="lasttime" class="tsd-anchor"></a>
+					<h3>last<wbr>Time</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Browser/requestFrame.ts:11</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This part is mostly stolen and only slightly modified
+								to avoid global pollution
+							Original source: <a href="https://gist.github.com/paulirish/1579671#file-raf-js-L11">https://gist.github.com/paulirish/1579671#file-raf-js-L11</a></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="req" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagLet">Let</span> req</h3>
+					<div class="tsd-signature tsd-kind-icon">req<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Browser/requestFrame.ts:13</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="vendors" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> vendors</h3>
+					<div class="tsd-signature tsd-kind-icon">vendors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[&quot;ms&quot;, &quot;moz&quot;, &quot;webkit&quot;, &quot;o&quot;]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Browser/requestFrame.ts:12</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="addclass" class="tsd-anchor"></a>
-					<h3>add<wbr>Class</h3>
+					<a name="cancelframe" class="tsd-anchor"></a>
+					<h3>cancel<wbr>Frame</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Class<span class="tsd-signature-symbol">(</span>element<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span>, classes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Frame<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Dom/addClass.ts:11</li>
+									<li>Defined in Browser/requestFrame.ts:41</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Adds a single, or multiple classes to the given html element</p>
+									<p>Wrapper around cancelAnimationFrame to avoid global namespace pollution</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>element: <span class="tsd-signature-type">HTMLElement</span></h5>
-								</li>
-								<li>
-									<h5>classes: <span class="tsd-signature-type">string</span></h5>
+									<h5>id: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="requestframe" class="tsd-anchor"></a>
+					<h3>request<wbr>Frame</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">request<wbr>Frame<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in Browser/requestFrame.ts:33</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrapper around a requestAnimationFrame polyfill to avoid global namespace pollution</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>callback: <span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -131,14 +218,29 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_dom_addclass_.html">"<wbr>Dom/add<wbr>Class"</a>
+						<a href="_browser_requestframe_.html">"<wbr>Browser/request<wbr>Frame"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_browser_requestframe_.html#can" class="tsd-kind-icon">can</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_browser_requestframe_.html#lasttime" class="tsd-kind-icon">last<wbr>Time</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_browser_requestframe_.html#req" class="tsd-kind-icon">req</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_browser_requestframe_.html#vendors" class="tsd-kind-icon">vendors</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_dom_addclass_.html#addclass" class="tsd-kind-icon">add<wbr>Class</a>
+						<a href="_browser_requestframe_.html#cancelframe" class="tsd-kind-icon">cancel<wbr>Frame</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_browser_requestframe_.html#requestframe" class="tsd-kind-icon">request<wbr>Frame</a>
 					</li>
 				</ul>
 			</nav>

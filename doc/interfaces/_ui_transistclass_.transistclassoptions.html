@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;Dom/addClass&quot; | @labor/helferlein</title>
+	<title>TransistClassOptions | @labor/helferlein</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,71 +56,123 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_dom_addclass_.html">&quot;Dom/addClass&quot;</a>
+					<a href="../modules/_ui_transistclass_.html">&quot;Ui/transistClass&quot;</a>
+				</li>
+				<li>
+					<a href="_ui_transistclass_.transistclassoptions.html">TransistClassOptions</a>
 				</li>
 			</ul>
-			<h1>External module &quot;Dom/addClass&quot;</h1>
+			<h1>Interface TransistClassOptions</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Created by Martin Neundorfer on 11.01.2019.
-						For LABOR.digital</p>
-					</div>
-				</div>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">TransistClassOptions</span>
+					</li>
+				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Functions</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_dom_addclass_.html#addclass" class="tsd-kind-icon">add<wbr>Class</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#cancelothers" class="tsd-kind-icon">cancel<wbr>Others</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#prefix" class="tsd-kind-icon">prefix</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#removeclass" class="tsd-kind-icon">remove<wbr>Class</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#targetclass" class="tsd-kind-icon">target<wbr>Class</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="addclass" class="tsd-anchor"></a>
-					<h3>add<wbr>Class</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Class<span class="tsd-signature-symbol">(</span>element<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span>, classes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in Dom/addClass.ts:11</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Adds a single, or multiple classes to the given html element</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>element: <span class="tsd-signature-type">HTMLElement</span></h5>
-								</li>
-								<li>
-									<h5>classes: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="cancelothers" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cancel<wbr>Others</h3>
+					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Others<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Ui/transistClass.ts:48</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>By default multiple transitions cancel each other out
+							If you don&#39;t want to interfere with already running transactions set this to false</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="prefix" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> prefix</h3>
+					<div class="tsd-signature tsd-kind-icon">prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Ui/transistClass.ts:36</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The prefix before the class definition
+							Default: h</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="removeclass" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> remove<wbr>Class</h3>
+					<div class="tsd-signature tsd-kind-icon">remove<wbr>Class<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Ui/transistClass.ts:30</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If this is set, this class / classes will be removed on the last tick/frame of the transition</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="targetclass" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> target<wbr>Class</h3>
+					<div class="tsd-signature tsd-kind-icon">target<wbr>Class<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Ui/transistClass.ts:25</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If set this class will be set at the second tick/frame to add your own fancy transitions</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="type" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Ui/transistClass.ts:42</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The type of transition you want to use
+							Default: enter</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -131,14 +183,47 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_dom_addclass_.html">"<wbr>Dom/add<wbr>Class"</a>
+						<a href="../modules/_ui_transistclass_.html">"<wbr>Ui/transist<wbr>Class"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_ui_transistclass_.transistclassoptions.html" class="tsd-kind-icon">Transist<wbr>Class<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_ui_transistclass_.transistclassoptions.html#cancelothers" class="tsd-kind-icon">cancel<wbr>Others</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_ui_transistclass_.transistclassoptions.html#prefix" class="tsd-kind-icon">prefix</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_ui_transistclass_.transistclassoptions.html#removeclass" class="tsd-kind-icon">remove<wbr>Class</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_ui_transistclass_.transistclassoptions.html#targetclass" class="tsd-kind-icon">target<wbr>Class</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_ui_transistclass_.transistclassoptions.html#type" class="tsd-kind-icon">type</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_ui_transistclass_.html#guid" class="tsd-kind-icon">guid</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_ui_transistclass_.html#runningtransitions" class="tsd-kind-icon">running<wbr>Transitions</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_ui_transistclass_.html#ticklength" class="tsd-kind-icon">tick<wbr>Length</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_dom_addclass_.html#addclass" class="tsd-kind-icon">add<wbr>Class</a>
+						<a href="../modules/_ui_transistclass_.html#transistclass" class="tsd-kind-icon">transist<wbr>Class</a>
 					</li>
 				</ul>
 			</nav>
