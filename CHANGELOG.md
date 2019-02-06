@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [2.0.7] - 2019-02-06
+### Added
+- Reimplemented checkOnlineState() now without dependency on jquery
+
+### Fixed
+- Fixed an issue with formatDateAndTime where the week day was one day off o.O
+- Fixed getData() to no longer validate { or [ as first char before reading json contents
+- Fixed an issue with ajax() which occured when request.data was empty
+
 ## [2.0.6] - 2019-02-01
 ### Added
 - Added isBool() helper

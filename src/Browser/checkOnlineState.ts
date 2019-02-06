@@ -3,6 +3,8 @@
  * For LABOR.digital
  */
 
+import {ajax} from "./ajax";
+
 /**
  * True if the browser can reach the internet, false if not
  */
@@ -22,15 +24,13 @@ export function checkOnlineState(): Promise<boolean> {
 			resolve(onlineState);
 			return;
 		}
-		$.ajax("http://laboranten.net/_extern/labor-javascript-online-check/", {
-			method: "GET",
-			timeout: 500,
-			cache: false
-		}).done(() => {
+		ajax({
+			url: "http://laboranten.net/_extern/labor-javascript-online-check/",
+			timeout: 300
+		}).then(() => {
 			lastCheck = Date.now();
 			onlineState = true;
-			resolve(true);
-		}).fail(() => {
+		}).catch(() => {
 			lastCheck = 0;
 			onlineState = false;
 			resolve(false);

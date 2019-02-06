@@ -9,6 +9,7 @@ import {isNumber} from "../Types/isNumber";
 import {isUndefined} from "../Types/isUndefined";
 import {forEach} from "../Lists/forEach";
 import {isEmpty} from "../Types/isEmpty";
+import {isNull} from "../Types/isNull";
 
 export interface AjaxRequest {
 	/**
@@ -121,6 +122,7 @@ export function ajax(request: AjaxRequest): Promise<AjaxResponse> {
 	const isGet = request.type === "get";
 	return new Promise((resolve, reject) => {
 		if (!isUndefined(request.data)) request.data = prepareData(request.data, isGet);
+		else request.data = null;
 
 		// Create request and response
 		// @ts-ignore
@@ -129,7 +131,7 @@ export function ajax(request: AjaxRequest): Promise<AjaxResponse> {
 		response.raw = xhttp;
 
 		// Prepaere data
-		const url = isGet ? request.url + request.data : request.url;
+		const url = isGet ? request.url + (isNull(request.data) ? "" : request.data) : request.url;
 		xhttp.open(request.type, url, true);
 		if (request.timeout !== 0) xhttp.timeout = request.timeout;
 

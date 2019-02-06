@@ -150,11 +150,11 @@ export function formatDateAndTime(format: string, date?: Date) {
 		if (b === "Y") return date.getFullYear() + "";
 		if (b === "y") return (date.getFullYear() + "").substr(2, 2);
 		if (b === "d") return date.getDate() >= 10 ? date.getDate() + "" : "0" + date.getDate();
-		if (b === "l") return config.getVal("weekDays", date.getDay());
+		if (b === "l") return config.getVal("weekDays", date.getDay() - 1);
 		if (b === "j") return date.getDate() + "";
 		if (b === "w") return date.getDay() + "";
 		if (b === "n") return (date.getDay() + 1) + "";
-		if (b === "D") return config.getVal("weekDaysAbbr", date.getDay());
+		if (b === "D") return config.getVal("weekDaysAbbr", date.getDay() - 1);
 		if (b === "F") return config.getVal("monthNames", date.getMonth());
 		if (b === "m") return (date.getMonth() + 1) >= 10 ? (date.getMonth() + 1) + "" : "0" + (date.getMonth() + 1);
 		if (b === "M") return config.getVal("monthNamesAbbr", date.getMonth());

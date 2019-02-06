@@ -20,7 +20,7 @@ export function getData(element: HTMLElement, selector?: string, fallback?: any)
 
 	// Auto convert json objects
 	function getDataConverter(value:any){
-		if(isString(value) && (value.charAt(0) === "{" || value.charAt(0) === "[")){
+		if(isString(value)){
 			try {
 				return JSON.parse(value);
 			} catch (e) {}
