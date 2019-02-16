@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+# Added
+- Added inflector functions
+- Added new licence
+
 ## [2.0.7] - 2019-02-06
 ### Added
 - Reimplemented checkOnlineState() now without dependency on jquery

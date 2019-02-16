@@ -1,6 +1,19 @@
-/**
- * Created by Martin Neundorfer on 17.01.2019.
- * For LABOR.digital
+/*
+ * Copyright 2019 LABOR.digital
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Last modified: 2019.02.08 at 10:40
  */
 import {isUndefined} from "../Types/isUndefined";
 import {isFunction} from "../Types/isFunction";
@@ -56,7 +69,7 @@ class FormatDateAndTimeConfig implements ConfigureFormatDateAndTimeOptions {
 
 	constructor() {
 		this.monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-		this.weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+		this.weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 		this.monthNamesAbbr = this.monthNames.map(v => v.substr(0, 3));
 		this.weekDaysAbbr = this.weekDays.map(v => v.substr(0, 2));
 	}
@@ -118,6 +131,24 @@ export function getDateAndTimeFormat(type: "monthNames" | "monthNamesAbbr" | "we
 }
 
 /**
+ * Returns the name of the day either full or short textual representation
+ * @param day The numeric representation of the day to get the name for 0: Sunday, 1: Monday...
+ * @param short If true the short textual representation is returned
+ */
+export function getNameOfDay(day:number, short?:boolean):string {
+	return config.getVal(short === true ? "weekDaysAbbr" : "weekDays", day);
+}
+
+/**
+ * Returns the name of a given month, either as full or short textual representation
+ * @param month The numeric representation of the month to get the
+ * @param short If true the short textual representation is returned
+ */
+export function getNameOfMonth(month:number, short?:boolean):string {
+	return config.getVal(short === true ? "monthNamesAbbr" : "monthNames", month);
+}
+
+/**
  * This is a small implementation of the date formater which is used in php
  * The format string can use the same modifiers as in the documentation.
  *
@@ -136,11 +167,14 @@ export function getDateAndTimeFormat(type: "monthNames" | "monthNamesAbbr" | "we
  * i    Minutes with leading zeros    00 to 59
  * s    Seconds, with leading zeros    00 through 59
  *
+ * // Special formats which are supported:
+ * mysql	Returns the mysql datetime representation of the date
  * @param format
  * @param date
  */
 export function formatDateAndTime(format: string, date?: Date) {
 	if (isUndefined(date)) date = new Date();
+	if(format === "mysql") return formatDateAndTime("Y-m-d H:i:s", date);
 	return format.replace(/(?:\\.)|([YydjwnlDFmMHisG])/g, (a, b) => {
 		if (isUndefined(b)) return a.charAt(0) === "\\" ? a.substr(1) : a;
 		if (b === "H") return date.getHours() >= 10 ? date.getHours() + "" : "0" + date.getHours();
@@ -150,14 +184,14 @@ export function formatDateAndTime(format: string, date?: Date) {
 		if (b === "Y") return date.getFullYear() + "";
 		if (b === "y") return (date.getFullYear() + "").substr(2, 2);
 		if (b === "d") return date.getDate() >= 10 ? date.getDate() + "" : "0" + date.getDate();
-		if (b === "l") return config.getVal("weekDays", date.getDay() - 1);
+		if (b === "l") return getNameOfDay(date.getDay());
 		if (b === "j") return date.getDate() + "";
 		if (b === "w") return date.getDay() + "";
-		if (b === "n") return (date.getDay() + 1) + "";
-		if (b === "D") return config.getVal("weekDaysAbbr", date.getDay() - 1);
-		if (b === "F") return config.getVal("monthNames", date.getMonth());
+		if (b === "n") return (date.getMonth() + 1) + "";
+		if (b === "D") return getNameOfDay(date.getDay(), true);
+		if (b === "F") return getNameOfMonth(date.getMonth());
 		if (b === "m") return (date.getMonth() + 1) >= 10 ? (date.getMonth() + 1) + "" : "0" + (date.getMonth() + 1);
-		if (b === "M") return config.getVal("monthNamesAbbr", date.getMonth());
+		if (b === "M") return getNameOfMonth(date.getMonth(), true);
 		console.error("Invalid date formatter: " + b);
 		return "";
 	});
