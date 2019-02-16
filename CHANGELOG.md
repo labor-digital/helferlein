@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 # Added
 - Added inflector functions
 - Added new licence
+- Added phpstorm config
 
 ## [2.0.7] - 2019-02-06
 ### Added
