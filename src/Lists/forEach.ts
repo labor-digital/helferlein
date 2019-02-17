@@ -15,11 +15,10 @@
  *
  * Last modified: 2019.01.10 at 10:02
  */
-import {isSet} from "../Types/isSet";
 import {List} from "../Interfaces/List";
+import {isSet} from "../Types/isSet";
 
-export interface ForEachCallbackType extends Function
-{
+export interface ForEachCallbackType extends Function {
 	/**
 	 * Is called for every element of the iterated object
 	 * @param $value The current value as a jquery object
@@ -30,19 +29,17 @@ export interface ForEachCallbackType extends Function
 	($value?: any, key?, value?, iteratedObject?): boolean | any
 }
 
-export interface ForEachCallbackType extends Function
-{
+export interface ForEachCallbackType extends Function {
 	/**
 	 * Is called for every element of the iterated object
 	 * @param value The current value
 	 * @param key The current key
 	 * @param iteratedObject The iterated object
 	 */
-	(value?:any, key?: string | number, iteratedObject?): boolean | any
+	(value?: any, key?: string | number, iteratedObject?): boolean | any
 }
 
-interface BreakErrorType
-{
+interface BreakErrorType {
 	breaker?: boolean;
 }
 
@@ -58,33 +55,26 @@ breaker.breaker = true;
  * @param object The array or object to iterate
  * @param callback The callback to apply. Params are: (value, key, iteratedObject)
  */
-export function forEach(object: List, callback: ForEachCallbackType): void
-{
+export function forEach(object: List, callback: ForEachCallbackType): void {
 	if (object === null || typeof object === "undefined") return;
-	if (typeof object.forEach === "function")
-	{
+	if (typeof object.forEach === "function") {
 		const objectIsSet = isSet(object);
-		try
-		{
+		try {
 			let c = 0;
 			object.forEach((v, k) => {
 				if (callback(v, objectIsSet ? c : k, object) === false)
 					throw breaker;
 				++c;
 			});
-		} catch (e)
-		{
+		} catch (e) {
 			if (e.breaker === true) return;
 			throw e;
 		}
 		return;
-	}
-	else if (typeof object === "object" || typeof object === "function")
-	{
-		for (let k in object)
-		{
+	} else if (typeof object === "object" || typeof object === "function") {
+		for (let k in object) {
 			if (!object.hasOwnProperty(k)) continue;
-			let kReal: string|number = k;
+			let kReal: string | number = k;
 			if (parseInt(k) + "" === k) kReal = parseInt(k);
 			if (callback(object[k], kReal, object) === false) break;
 		}

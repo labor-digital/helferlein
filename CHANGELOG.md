@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 # Added
 - Added inflector functions
+- Added new test for inflectors
+- Added lcFirst helper
 - Added new licence
 - Added phpstorm config
 

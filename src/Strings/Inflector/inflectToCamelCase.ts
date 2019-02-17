@@ -13,31 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Last modified: 2019.02.15 at 20:21
+ * Last modified: 2019.02.17 at 17:17
  */
-
 import {ucFirst} from "../ucFirst";
 import {inflectToArray} from "./inflectToArray";
 
 /**
- * Converts a "Given string" to "Given String" or
- * "another.String-you wouldWant" to "Another String You Would Want".
+ * Converts a "Given string" to "GivenString" or
+ * "another.String-you wouldWant" to "AnotherStringYouWouldWant".
  *
  * @param string  The string to inflect
  * @param intelligentSplitting Uses intelligent splitting for edge cases if set to true. @see inflectToArray() for details.
  */
-export function inflectToSpacedUpper(string: string, intelligentSplitting?: boolean): string {
-	return inflectToArray(string, intelligentSplitting).map(v => ucFirst(v)).join(" ");
-}
-
-/**
- * Alias of toSpacedUpper
- *
- * @param string  The string to inflect
- * @param intelligentSplitting Uses intelligent splitting for edge cases if set to true. @see inflectToArray() for details.
- *
- * @return string
- */
-export function inflectToHuman(string:string, intelligentSplitting?: boolean): string {
-	return inflectToSpacedUpper(string, intelligentSplitting);
+export function inflectToCamelCase(string: string, intelligentSplitting?: boolean): string {
+	return inflectToArray(string, intelligentSplitting).map(v => ucFirst(v)).join("");
 }
