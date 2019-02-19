@@ -35,12 +35,24 @@ export interface TransistClassOptions {
 	/**
 	 * If set this class will be set at the second tick/frame to add your own fancy transitions
 	 */
-	targetClass?: string
+	addBeforeTransition?: string
+
+	/**
+	 * If this is set, this class / classes will be removed at the second tick/frame of the transition
+	 * This is done AFTER the addBeforeTransition classes were added
+	 */
+	removeBeforeTransition?: string
 
 	/**
 	 * If this is set, this class / classes will be removed on the last tick/frame of the transition
 	 */
-	removeClass?: string
+	removeAfterTransition?: string
+
+	/**
+	 * If this is set, this class / classes will be set on the last tick/frame of the transition
+	 * This is done AFTER the removeAfterTransition classes were removed
+	 */
+	addAfterTransition?:string
 
 	/**
 	 * The prefix before the class definition
@@ -101,15 +113,18 @@ export function transistClass(element: HTMLElement, duration: number, options?: 
 		// Prepare classes
 		const classPrefix = isString(options.prefix) ? options.prefix : "h";
 		const type = isString(options.type) ? options.type : "enter";
-		const targetClass = isString(options.targetClass) ? options.targetClass : "";
-		const classToRemove = isString(options.removeClass) ? options.removeClass : "";
+		const addBeforeTransition = isString(options.addBeforeTransition) ? options.addBeforeTransition : "";
+		const removeBeforeTransition = isString(options.removeBeforeTransition) ? options.removeBeforeTransition : "";
+		const removeAfterTransition = isString(options.removeAfterTransition) ? options.removeAfterTransition : "";
+		const addAfterTransition = isString(options.addAfterTransition) ? options.addAfterTransition : "";
 		const activeClass = classPrefix + "-" + type + "-active";
 		const enterClass = classPrefix + "-" + type;
 
 		const tick = function () {
 			// Check if we were canceled
 			if (c > 1 && context.cancel === true) {
-				removeClass(element, enterClass + " " + activeClass + " " + classToRemove);
+				removeClass(element, enterClass + " " + activeClass + " " + removeBeforeTransition + " " + removeAfterTransition);
+				addClass(element, addBeforeTransition + " " + addAfterTransition);
 				return resolve(element);
 			}
 
@@ -119,11 +134,13 @@ export function transistClass(element: HTMLElement, duration: number, options?: 
 					addClass(element, enterClass + " " + activeClass);
 				} else if (c === 1) {
 					removeClass(element, enterClass);
-					if (targetClass !== "") addClass(element, targetClass);
+					if (addBeforeTransition !== "") addClass(element, addBeforeTransition);
+					if (removeBeforeTransition !== "") removeClass(element, removeBeforeTransition);
 				}
 			} else {
 				// Clean up
-				removeClass(element, enterClass + " " + activeClass + " " + classToRemove);
+				removeClass(element, enterClass + " " + activeClass + " " + removeAfterTransition);
+				if (addAfterTransition !== "") addClass(element, addAfterTransition);
 				delete (element as any)._transitionGuid;
 				runningTransitions.delete(eGuid);
 				return resolve(element);

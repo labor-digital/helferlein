@@ -2,12 +2,16 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-# Added
+### Added
 - Added inflector functions
 - Added new test for inflectors
 - Added lcFirst helper
 - Added new licence
 - Added phpstorm config
+- Added toggleClass helper
+
+### Changed
+- BREAKING: renamed transistClass() options to more speaking names
 
 ## [2.0.7] - 2019-02-06
 ### Added

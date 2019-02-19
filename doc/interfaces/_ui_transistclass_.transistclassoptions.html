@@ -1,21 +1,3 @@
-<!--
-  ~ Copyright 2019 LABOR.digital
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  ~
-  ~ Last modified: 2019.02.13 at 17:44
-  -->
-
 <!doctype html>
 <html class="default no-js">
 <head>
@@ -102,10 +84,12 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#addaftertransition" class="tsd-kind-icon">add<wbr>After<wbr>Transition</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#addbeforetransition" class="tsd-kind-icon">add<wbr>Before<wbr>Transition</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#cancelothers" class="tsd-kind-icon">cancel<wbr>Others</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#prefix" class="tsd-kind-icon">prefix</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#removeclass" class="tsd-kind-icon">remove<wbr>Class</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#targetclass" class="tsd-kind-icon">target<wbr>Class</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#removeaftertransition" class="tsd-kind-icon">remove<wbr>After<wbr>Transition</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#removebeforetransition" class="tsd-kind-icon">remove<wbr>Before<wbr>Transition</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ui_transistclass_.transistclassoptions.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
@@ -115,12 +99,43 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="addaftertransition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> add<wbr>After<wbr>Transition</h3>
+					<div class="tsd-signature tsd-kind-icon">add<wbr>After<wbr>Transition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Ui/transistClass.ts:55</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If this is set, this class / classes will be set on the last tick/frame of the transition
+							This is done AFTER the removeAfterTransition classes were removed</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="addbeforetransition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> add<wbr>Before<wbr>Transition</h3>
+					<div class="tsd-signature tsd-kind-icon">add<wbr>Before<wbr>Transition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Ui/transistClass.ts:38</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If set this class will be set at the second tick/frame to add your own fancy transitions</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="cancelothers" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cancel<wbr>Others</h3>
 					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Others<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Ui/transistClass.ts:48</li>
+							<li>Defined in Ui/transistClass.ts:73</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -136,7 +151,7 @@
 					<div class="tsd-signature tsd-kind-icon">prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Ui/transistClass.ts:36</li>
+							<li>Defined in Ui/transistClass.ts:61</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -147,12 +162,12 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="removeclass" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> remove<wbr>Class</h3>
-					<div class="tsd-signature tsd-kind-icon">remove<wbr>Class<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="removeaftertransition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> remove<wbr>After<wbr>Transition</h3>
+					<div class="tsd-signature tsd-kind-icon">remove<wbr>After<wbr>Transition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Ui/transistClass.ts:30</li>
+							<li>Defined in Ui/transistClass.ts:49</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -162,17 +177,18 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="targetclass" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> target<wbr>Class</h3>
-					<div class="tsd-signature tsd-kind-icon">target<wbr>Class<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="removebeforetransition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> remove<wbr>Before<wbr>Transition</h3>
+					<div class="tsd-signature tsd-kind-icon">remove<wbr>Before<wbr>Transition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Ui/transistClass.ts:25</li>
+							<li>Defined in Ui/transistClass.ts:44</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>If set this class will be set at the second tick/frame to add your own fancy transitions</p>
+							<p>If this is set, this class / classes will be removed at the second tick/frame of the transition
+							This is done AFTER the addBeforeTransition classes were added</p>
 						</div>
 					</div>
 				</section>
@@ -182,7 +198,7 @@
 					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Ui/transistClass.ts:42</li>
+							<li>Defined in Ui/transistClass.ts:67</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -213,16 +229,22 @@
 						<a href="_ui_transistclass_.transistclassoptions.html" class="tsd-kind-icon">Transist<wbr>Class<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_ui_transistclass_.transistclassoptions.html#addaftertransition" class="tsd-kind-icon">add<wbr>After<wbr>Transition</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_ui_transistclass_.transistclassoptions.html#addbeforetransition" class="tsd-kind-icon">add<wbr>Before<wbr>Transition</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_ui_transistclass_.transistclassoptions.html#cancelothers" class="tsd-kind-icon">cancel<wbr>Others</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_ui_transistclass_.transistclassoptions.html#prefix" class="tsd-kind-icon">prefix</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_ui_transistclass_.transistclassoptions.html#removeclass" class="tsd-kind-icon">remove<wbr>Class</a>
+								<a href="_ui_transistclass_.transistclassoptions.html#removeaftertransition" class="tsd-kind-icon">remove<wbr>After<wbr>Transition</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_ui_transistclass_.transistclassoptions.html#targetclass" class="tsd-kind-icon">target<wbr>Class</a>
+								<a href="_ui_transistclass_.transistclassoptions.html#removebeforetransition" class="tsd-kind-icon">remove<wbr>Before<wbr>Transition</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_ui_transistclass_.transistclassoptions.html#type" class="tsd-kind-icon">type</a>

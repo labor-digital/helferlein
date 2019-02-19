@@ -1,21 +1,3 @@
-<!--
-  ~ Copyright 2019 LABOR.digital
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  ~
-  ~ Last modified: 2019.02.13 at 17:44
-  -->
-
 <!doctype html>
 <html class="default no-js">
 <head>
@@ -113,6 +95,8 @@
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_formatandconvert_formatdateandtime_.html#configureformatdateandtime" class="tsd-kind-icon">configure<wbr>Format<wbr>Date<wbr>And<wbr>Time</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_formatandconvert_formatdateandtime_.html#formatdateandtime" class="tsd-kind-icon">format<wbr>Date<wbr>And<wbr>Time</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_formatandconvert_formatdateandtime_.html#getdateandtimeformat" class="tsd-kind-icon">get<wbr>Date<wbr>And<wbr>Time<wbr>Format</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_formatandconvert_formatdateandtime_.html#getnameofday" class="tsd-kind-icon">get<wbr>Name<wbr>OfDay</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_formatandconvert_formatdateandtime_.html#getnameofmonth" class="tsd-kind-icon">get<wbr>Name<wbr>OfMonth</a></li>
 							</ul>
 						</section>
 					</div>
@@ -126,7 +110,7 @@
 					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <a href="../classes/_formatandconvert_formatdateandtime_.formatdateandtimeconfig.html" class="tsd-signature-type">FormatDateAndTimeConfig</a><span class="tsd-signature-symbol"> =&nbsp;new FormatDateAndTimeConfig()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in FormatAndConvert/formatDateAndTime.ts:82</li>
+							<li>Defined in FormatAndConvert/formatDateAndTime.ts:95</li>
 						</ul>
 					</aside>
 				</section>
@@ -143,7 +127,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in FormatAndConvert/formatDateAndTime.ts:93</li>
+									<li>Defined in FormatAndConvert/formatDateAndTime.ts:106</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -171,13 +155,13 @@
 					<a name="formatdateandtime" class="tsd-anchor"></a>
 					<h3>format<wbr>Date<wbr>And<wbr>Time</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">format<wbr>Date<wbr>And<wbr>Time<span class="tsd-signature-symbol">(</span>format<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, date<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">format<wbr>Date<wbr>And<wbr>Time<span class="tsd-signature-symbol">(</span>format<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, date<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in FormatAndConvert/formatDateAndTime.ts:142</li>
+									<li>Defined in FormatAndConvert/formatDateAndTime.ts:175</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -199,6 +183,8 @@
 									H    24-hour format of an hour with leading zeros    00 through 23
 									i    Minutes with leading zeros    00 to 59
 								s    Seconds, with leading zeros    00 through 59</p>
+								<p>// Special formats which are supported:
+								mysql    Returns the mysql datetime representation of the date</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -211,7 +197,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -225,7 +211,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in FormatAndConvert/formatDateAndTime.ts:109</li>
+									<li>Defined in FormatAndConvert/formatDateAndTime.ts:122</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -242,6 +228,80 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="getnameofday" class="tsd-anchor"></a>
+					<h3>get<wbr>Name<wbr>OfDay</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Name<wbr>OfDay<span class="tsd-signature-symbol">(</span>day<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, short<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in FormatAndConvert/formatDateAndTime.ts:138</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the name of the day either full or short textual representation</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>day: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The numeric representation of the day to get the name for 0: Sunday, 1: Monday...</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> short: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>If true the short textual representation is returned</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="getnameofmonth" class="tsd-anchor"></a>
+					<h3>get<wbr>Name<wbr>OfMonth</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Name<wbr>OfMonth<span class="tsd-signature-symbol">(</span>month<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, short<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in FormatAndConvert/formatDateAndTime.ts:147</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the name of a given month, either as full or short textual representation</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>month: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The numeric representation of the month to get the</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> short: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>If true the short textual representation is returned</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -280,6 +340,12 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_formatandconvert_formatdateandtime_.html#getdateandtimeformat" class="tsd-kind-icon">get<wbr>Date<wbr>And<wbr>Time<wbr>Format</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_formatandconvert_formatdateandtime_.html#getnameofday" class="tsd-kind-icon">get<wbr>Name<wbr>OfDay</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_formatandconvert_formatdateandtime_.html#getnameofmonth" class="tsd-kind-icon">get<wbr>Name<wbr>OfMonth</a>
 					</li>
 				</ul>
 			</nav>

@@ -19,6 +19,7 @@ import {inflectToArray} from "../src/Strings/Inflector/inflectToArray";
 import {inflectToCamelBack} from "../src/Strings/Inflector/inflectToCamelBack";
 import {inflectToCamelCase} from "../src/Strings/Inflector/inflectToCamelCase";
 import {inflectToDashed} from "../src/Strings/Inflector/inflectToDashed";
+import {inflectToSlug} from "../src/Strings/Inflector/inflectToSlug";
 import {inflectToHuman, inflectToSpacedUpper} from "../src/Strings/Inflector/inflectToSpacedUpper";
 import {inflectToUnderscore} from "../src/Strings/Inflector/inflectToUnderscore";
 
@@ -105,5 +106,25 @@ test("inflectToUnderscore", () => {
 		const input = inputs[i];
 		const result = results[i];
 		expect(inflectToUnderscore(input)).toEqual(result);
+	}
+});
+
+test("inflectToSlug", () => {
+	const results = ["foo-bar-baz", "foo-bar-baz", "foo-bar-baz", "foo-bar-baz", "foo-bar-baz", "foo-bar-baz-foo-bar",
+		"foo-1-asdf", "foobarbaz",  "f-o-o-bar-b-a-z", "f-o-obar-baz", "asdf-123-bar", "foo-1-bar"];
+
+	for(var i = 0; i < inputs.length; i++){
+		const input = inputs[i];
+		const result = results[i];
+		expect(inflectToSlug(input)).toEqual(result);
+	}
+
+	const additionalInputs = ["föö-bär-böz", "nöMitÖUnd_Rächen", "bewölkt"];
+	const additionalResults = ["foeoe-baer-boez", "noe-mit-oe-und-raechen", "bewoelkt"];
+
+	for(var i = 0; i < additionalInputs.length; i++){
+		const input = additionalInputs[i];
+		const result = additionalResults[i];
+		expect(inflectToSlug(input)).toEqual(result);
 	}
 });
