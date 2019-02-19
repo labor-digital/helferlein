@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [2.0.8] - 2019-02-19
 ### Added
 - Added inflector functions
 - Added new test for inflectors
