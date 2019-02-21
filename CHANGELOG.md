@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [2.0.9] - 2019-02-21
+### Added
+- Added ComponentProxy class
+- Added EventBus marker to provide ComponentProxy compatibility
+
+### Changed
+- Changed checkOnlineState timeout to 1000ms instead of 300ms
+- Changed checkOnlineState cache time from 10 minutes to 30 seconds
+
 ## [2.0.8] - 2019-02-19
 ### Added
 - Added inflector functions

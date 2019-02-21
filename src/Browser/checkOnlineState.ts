@@ -33,13 +33,13 @@ let lastCheck:number = 0;
  */
 export function checkOnlineState(): Promise<boolean> {
 	return new Promise(resolve => {
-		if (lastCheck > (Date.now() - (60 * 10 * 1000))) {
+		if (lastCheck > (Date.now() - (30 * 1000))) {
 			resolve(onlineState);
 			return;
 		}
 		ajax({
 			url: "http://laboranten.net/_extern/labor-javascript-online-check/",
-			timeout: 300
+			timeout: 1000
 		}).then(() => {
 			lastCheck = Date.now();
 			onlineState = true;

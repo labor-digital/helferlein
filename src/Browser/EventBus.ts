@@ -23,12 +23,12 @@ import {isFunction} from "../Types/isFunction";
 const namespace = (new Date()).toTimeString() + "-" + Math.random() * Math.random();
 const eventNameCache = new Map();
 
-interface EventBusEvent extends Event {
+export interface EventBusEvent extends Event {
 	args: PlainObject
 }
 
-interface EventBusEventListener {
-	(evt: EventBusEvent): void;
+export interface EventBusEventListener {
+	(evt: EventBusEvent|any): void|any;
 }
 
 /**
@@ -36,6 +36,11 @@ interface EventBusEventListener {
  *
  */
 export class EventBus {
+
+	/**
+	 * Marker to let other helpers know, that this is a event bus interface
+	 */
+	static $isEventBus: true;
 
 	/**
 	 * Emits a given event which has the option to pass additional arguments.
@@ -95,3 +100,4 @@ export class EventBus {
 		return eventName;
 	}
 }
+EventBus.$isEventBus = true;
