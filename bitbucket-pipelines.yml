@@ -8,9 +8,9 @@ pipelines:
         step: &test
           image:
             name: 848331400135.dkr.ecr.eu-central-1.amazonaws.com/labor-prod-pipelines:node-environment
-              aws:
-                access-key: $AWS_ACCESS_KEY_ID
-                secret-key: $AWS_SECRET_ACCESS_KEY
+            aws:
+              access-key: $AWS_ACCESS_KEY_ID
+              secret-key: $AWS_SECRET_ACCESS_KEY
           name: Build Assets
           caches:
             - node
@@ -22,9 +22,9 @@ pipelines:
       - step: &build
           image:
             name: 848331400135.dkr.ecr.eu-central-1.amazonaws.com/labor-prod-pipelines:node-environment
-              aws:
-                access-key: $AWS_ACCESS_KEY_ID
-                secret-key: $AWS_SECRET_ACCESS_KEY
+            aws:
+              access-key: $AWS_ACCESS_KEY_ID
+              secret-key: $AWS_SECRET_ACCESS_KEY
           name: Build Assets
           caches:
             - node
