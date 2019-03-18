@@ -15,7 +15,6 @@ pipelines:
           caches:
             - node
           script:
-            - ls -la /opt/
             - source /opt/npm-login.sh
             - source /opt/npm-run-script.sh test
     
