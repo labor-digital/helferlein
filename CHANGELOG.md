@@ -1,7 +1,6 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
 ## [2.0.9] - 2019-02-21
 ### Added
 - Added ComponentProxy class
