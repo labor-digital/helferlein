@@ -11,10 +11,11 @@ pipelines:
             aws:
               access-key: $AWS_ACCESS_KEY_ID
               secret-key: $AWS_SECRET_ACCESS_KEY
-          name: Build Assets
+          name: Run tests
           caches:
             - node
           script:
+            - ls -la /opt/
             - source /opt/npm-login.sh
             - source /opt/npm-run-script.sh test
     
@@ -26,7 +27,7 @@ pipelines:
             aws:
               access-key: $AWS_ACCESS_KEY_ID
               secret-key: $AWS_SECRET_ACCESS_KEY
-          name: Build Assets
+          name: Build library
           caches:
             - node
           script:
