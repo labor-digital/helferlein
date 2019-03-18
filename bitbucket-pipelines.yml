@@ -17,9 +17,10 @@ pipelines:
           script:
             - source /opt/npm-login.sh
             - source /opt/npm-run-script.sh test
-
+    
     build:
-      - step: &build
+      -
+        step: &build
           image:
             name: 848331400135.dkr.ecr.eu-central-1.amazonaws.com/labor-prod-pipelines:node-environment
             aws:
@@ -33,7 +34,7 @@ pipelines:
             - source /opt/npm-run-script.sh build
           artifacts:
             - lib/*
-
+    
     release:
       -
         step: &release
@@ -45,7 +46,7 @@ pipelines:
           name: Release
           script:
             - source /opt/release.sh --ci-integration --npm-publish --git-push
-
+  
   branches:
     master:
       -
