@@ -26,7 +26,8 @@ test("isEmpty", () => {
 	expect(isEmpty(null)).toBe(true);
 	expect(isEmpty("string")).toBe(false);
 	expect(isEmpty("")).toBe(true);
-	expect(isEmpty(0)).toBe(true);
+	expect(isEmpty(0)).toBe(false);
+	expect(isEmpty(0, true)).toBe(true);
 	expect(isEmpty(123)).toBe(false);
 	expect(isEmpty(123.12)).toBe(false);
 });
