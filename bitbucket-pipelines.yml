@@ -33,7 +33,7 @@ pipelines:
             - source /opt/npm-login.sh
             - source /opt/npm-run-script.sh build
           artifacts:
-            - lib/*
+            - lib/**
     
     release:
       -
