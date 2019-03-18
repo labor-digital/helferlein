@@ -1,5 +1,15 @@
-# Changelog
-All notable changes to this project will be documented in this file.
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+# [2.1.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v2.1.0%0Dv2.0.9#diff) (2019-03-18)
+
+
+### Features
+
+* Update dependencies to match node 11.11 ([012a341](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/012a341))
+
+
 
 ## [2.0.9] - 2019-02-21
 ### Added
