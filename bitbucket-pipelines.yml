@@ -15,7 +15,6 @@ pipelines:
           caches:
             - node
           script:
-            - source /opt/npm-login.sh
             - source /opt/npm-run-script.sh test
     
     build:
@@ -30,7 +29,6 @@ pipelines:
           caches:
             - node
           script:
-            - source /opt/npm-login.sh
             - source /opt/npm-run-script.sh build
           artifacts:
             - lib/**
