@@ -13,19 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Last modified: 2019.02.20 at 10:32
+ * Last modified: 2019.04.02 at 11:43
  */
 
-import {EventProxyListener, EventProxyRegistry} from "../Entities/EventProxyRegistry";
-import {GenericStorageInterface} from "../Entities/GenericStorageInterface";
+import {emitDomEvent} from "../Events/DomEvents/emitDomEvent";
+import {onDomMutation} from "../Events/DomEvents/onDomMutation";
+import {EventBus} from "../Events/EventBus";
+import {EventEmitter, EventEmitterEvent} from "../Events/EventEmitter";
 import {PlainObject} from "../Interfaces/PlainObject";
 import {forEach} from "../Lists/forEach";
-import {getGuid} from "../Misc/getGuid";
 import {isFunction} from "../Types/isFunction";
 import {isObject} from "../Types/isObject";
-import {isPlainObject} from "../Types/isPlainObject";
 import {isUndefined} from "../Types/isUndefined";
-import {EventBus} from "./EventBus";
+import {GenericStorageInterface} from "./GenericStorageInterface";
+
+export type ComponentProxyEventTarget =
+	Document
+	| Window
+	| HTMLElement
+	| GenericStorageInterface
+	| EventBus
+	| EventEmitter
+	| Object;
+
+export interface ComponentProxyListener extends Function {
+	apply: any;
+	
+	(evt: Event | EventEmitterEvent | any): void | any;
+}
 
 /**
  * This class is ment to be used inside of js components.
@@ -61,29 +76,29 @@ export class ComponentProxy {
 	protected intervals: Array<number>;
 	
 	/**
-	 * A list of targetId => MutationObserver references to handle @mutation events
+	 * The list of all registered event listeners and their matching proxy functions
+	 * by the target and event name
 	 */
-	protected mutationTargets: Map<string, MutationObserver>;
+	protected events: Map<ComponentProxyEventTarget,
+		Map<string,
+			Map<ComponentProxyListener, Function>>>;
 	
 	/**
-	 * Holds the proxy registry which keeps track of the used event proxies
+	 * The list of registered mutation observers by their target objects
 	 */
-	protected proxyRegistry: EventProxyRegistry;
+	protected mutationObservers: Map<ComponentProxyEventTarget, MutationObserver>;
 	
 	/**
-	 * The list of events, the targets and the matching listeners
-	 * to be used in combination with the proxyRegistry which will keep track
-	 * of the registered listeners and their targets to unbind them when the proxy is destroyed
+	 * The internal event emitter to handle mutation events
 	 */
-	protected events: Map<string, { target: any, event: string, listener: EventProxyListener }>;
+	protected mutationEmitter: EventEmitter;
 	
 	constructor(thisContext) {
 		this.lives = true;
-		this.proxyRegistry = new EventProxyRegistry(this.thisContext);
 		this.thisContext = thisContext;
 		this.timeouts = [];
 		this.intervals = [];
-		this.mutationTargets = new Map();
+		
 		this.events = new Map();
 	}
 	
@@ -216,14 +231,15 @@ export class ComponentProxy {
 	 * @param event The name of the event to emit
 	 * @param args An object of arguments which then are transferred to e.args in your callback
 	 */
-	emit(target: Document | Window | HTMLElement | Object, event: string, args?: PlainObject): ComponentProxy {
-		if (isFunction(target) && (target as any).$isEventBus)
-			EventBus.emit(event, args);
+	emit(target: ComponentProxyEventTarget, event: string, args?: PlainObject): ComponentProxy {
+		if (this.isDestroyed()) return this;
+		
+		if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter))
+			target = (target as any).getEmitter();
+		if (isObject(target) && isFunction((target as any).emit))
+			(target as any).emit(event, args);
 		else if (isFunction((target as HTMLElement).dispatchEvent)) {
-			const e = document.createEvent("Event") as any;
-			e.initEvent(event, true, true);
-			e.args = isPlainObject(args) ? args : {};
-			(target as HTMLElement).dispatchEvent(e);
+			emitDomEvent((target as HTMLElement), event, args);
 		} else throw new Error("Could not emit event \"" + event + "\", because the given target is invalid!");
 		return this;
 	}
@@ -236,45 +252,58 @@ export class ComponentProxy {
 	 *                any changes of the dom and call the listener on it
 	 * @param listener The listener which is called when the event is emitted on the given target
 	 */
-	bind(target: Document | Window | HTMLElement | GenericStorageInterface | Object, event: string, listener: EventProxyListener): ComponentProxy {
-		const targetId = (target as any)._cpti = (target as any)._cpti || getGuid();
-		const eventId = targetId + "-" + event;
-		const proxy = this.proxyRegistry.bindProxy(eventId, listener);
-		const id = eventId + "-" + proxy._eventProxyListenerId;
+	bind(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener): ComponentProxy {
+		if (this.isDestroyed()) return this;
 		
-		if (isFunction(target) && (target as any).$isEventBus)
-			EventBus.bind(event, proxy);
-		else if (isObject(target) && (target as GenericStorageInterface).$isWatchable === true)
-			(target as GenericStorageInterface).watch(event, proxy);
+		// Prepare the target
+		if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter))
+			target = (target as any).getEmitter();
+		
+		// Prepare storage
+		if (!this.events.has(target)) this.events.set(target, new Map());
+		if (!this.events.get(target).has(event)) this.events.get(target).set(event, new Map());
+		
+		// Retrieve or create the proxy
+		let proxy: any = this.events.get(target).get(event).get(listener);
+		if (isUndefined(proxy)) {
+			const thisContext = this.thisContext;
+			proxy = function () {
+				listener.apply(thisContext, arguments);
+			};
+			this.events.get(target).get(event).set(listener, proxy);
+		}
+		
+		// Execute the binding
+		if (isObject(target) && isFunction((target as any).bind))
+			(target as any).bind(event, proxy);
 		else if (isFunction((target as HTMLElement).addEventListener)) {
 			
 			// Special event handling for @mutation
 			if (event === "@mutation") {
-				if (!this.mutationTargets.has(targetId)) {
-					const observer = new MutationObserver((mutations: MutationRecord[], observer: MutationObserver) => {
-						this.emit(target, event, {mutations, observer});
-					});
-					observer.observe(
-						target as any,
-						{attributes: true, childList: true, characterData: true, subtree: true}
-					);
-					this.mutationTargets.set(targetId, observer);
+				// Bind our proxy
+				if (isUndefined(this.mutationEmitter)) {
+					this.mutationObservers = new Map();
+					this.mutationEmitter = new EventEmitter();
 				}
+				this.mutationEmitter.bind("", proxy);
+				
+				// Make sure we have an observer on that target
+				if (!this.mutationObservers.has(target)) {
+					this.mutationObservers.set(target, onDomMutation((target as HTMLElement),
+						(args: { target: any, mutations: MutationRecord[], observer: MutationObserver }) => {
+							this.mutationEmitter.emit("", args);
+						}));
+				}
+				
+				// Done
+				return this;
 			}
 			
+			// Default handling
 			(target as HTMLElement).addEventListener(event, proxy);
-			
 		} else throw new Error("Could not bind to event \"" + event + "\", because the given target is invalid!");
 		
-		// Create internal binding
-		if (!this.events.has(id)) {
-			this.events.set(id, {
-				target: target,
-				listener: listener,
-				event: event
-			});
-		}
-		
+		// Done
 		return this;
 	}
 	
@@ -284,30 +313,47 @@ export class ComponentProxy {
 	 * @param event The event to unbind or @mutation if a mutation observer is used
 	 * @param listener The listener which should be unbound for the given event
 	 */
-	unbind(target: Document | Window | HTMLElement | GenericStorageInterface | Object, event: string, listener: EventProxyListener): ComponentProxy {
-		const targetId = (target as any)._cpti = (target as any)._cpti || getGuid();
-		const eventId = targetId + "-" + event;
-		const proxy = this.proxyRegistry.bindProxy(eventId, listener);
-		const id = eventId + "-" + proxy._eventProxyListenerId;
+	unbind(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener): ComponentProxy {
+		if (this.isDestroyed()) return this;
 		
-		// Unbind mutation listeners if there are no events for it anymore
-		if (event === "@mutation" && this.mutationTargets.has(targetId)) {
-			this.mutationTargets.get(targetId).disconnect();
-			this.mutationTargets.delete(targetId);
-			return this;
+		// Prepare the target
+		if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter))
+			target = (target as any).getEmitter();
+		
+		// Check if we can do stuff
+		if (this.events.has(target) &&
+			this.events.get(target).has(event) &&
+			this.events.get(target).get(event).has(listener)) {
+			
+			// Get the proxy instance
+			const eventList = this.events.get(target);
+			const eventListeners = eventList.get(event);
+			const proxy: any = eventListeners.get(listener);
+			
+			// Remove the listener and clean up
+			eventListeners.delete(listener);
+			if (eventListeners.size === 0) eventList.delete(event);
+			if (eventList.size === 0) this.events.delete(target);
+			
+			// Replace the listener with our proxy
+			listener = proxy;
 		}
 		
-		// Execute the unbinding
-		if (isFunction(target) && (target as any).$isEventBus)
-			EventBus.unbind(event, proxy);
-		else if (isObject(target) && (target as GenericStorageInterface).$isWatchable === true)
-			(target as GenericStorageInterface).unwatch(event, proxy);
-		else if (isFunction((target as HTMLElement).removeEventListener))
-			(target as HTMLElement).removeEventListener(event, proxy);
-		else throw new Error("Could not bind to event \"" + event + "\", because the given target is invalid!");
-		
-		// Remove internal binding
-		this.events.delete(id);
+		// Remove the binding
+		if (isObject(target) && isFunction((target as any).unbind))
+			(target as any).unbind(event, listener);
+		else if (isFunction((target as HTMLElement).addEventListener)) {
+			
+			// Special event handling for @mutation
+			if (event === "@mutation") {
+				if (isUndefined(this.mutationEmitter)) return this;
+				this.mutationEmitter.unbind("", listener);
+				return this;
+			}
+			
+			// Default handling
+			(target as HTMLElement).removeEventListener(event, listener);
+		} else throw new Error("Could not bind to event \"" + event + "\", because the given target is invalid!");
 		
 		// Done
 		return this;
@@ -323,6 +369,8 @@ export class ComponentProxy {
 	 * which could lead to errors or memory leaks
 	 */
 	destroy(): ComponentProxy {
+		if (this.isDestroyed()) return this;
+		
 		this.lives = false;
 		
 		// Intervals
@@ -334,20 +382,30 @@ export class ComponentProxy {
 			forEach(this.timeouts, t => clearTimeout(t));
 		
 		// Events
-		forEach(this.events, binding => {
-			this.unbind(binding.target, binding.event, binding.listener);
+		forEach(this.events, (eventList, target) => {
+			forEach(eventList, (listeners, event) => {
+				forEach(listeners, (proxy, listener) => {
+					this.unbind(target, event, listener);
+				});
+			});
 		});
 		
-		// Proxies
-		this.proxyRegistry.destroy();
+		// Mutation observers
+		if (!isUndefined(this.mutationEmitter)) {
+			forEach(this.mutationObservers, (o: MutationObserver, k) => {
+				o.disconnect();
+				this.mutationObservers.delete(k);
+			});
+			delete this.mutationEmitter;
+			delete this.mutationObservers;
+		}
 		
 		// Remove my properties
-		delete this.proxyRegistry;
 		delete this.intervals;
 		delete this.timeouts;
 		delete this.thisContext;
-		delete this.mutationTargets;
 		delete this.lives;
+		delete this.events;
 		
 		return this;
 	}

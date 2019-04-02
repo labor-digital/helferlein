@@ -16,17 +16,14 @@
  * Last modified: 2019.01.10 at 10:55
  */
 
+import {EventEmitterCallbackEventListener} from "../Events/EventEmitter";
 import {PlainObject} from "../Interfaces/PlainObject";
 
-export interface GenericStorageWatcher extends Function {
+export interface GenericStorageWatcher extends EventEmitterCallbackEventListener {
 	(value, valueOld, storage: PlainObject, key: string)
 }
 
 export interface GenericStorageInterface {
-	/**
-	 * Marker to let other helpers know, that this is a watchable instance
-	 */
-	$isWatchable: boolean;
 	
 	/**
 	 * Returns the current value for the given storage key. If the key is not set (undefined)
@@ -68,12 +65,12 @@ export interface GenericStorageInterface {
 	 * @param key
 	 * @param callback
 	 */
-	watch(key: string | number, callback: GenericStorageWatcher): void;
+	watch(key: string | number, callback: GenericStorageWatcher): GenericStorageInterface;
 	
 	/**
 	 * Removes a given callback as watcher for the given storage key
 	 * @param key
 	 * @param callback
 	 */
-	unwatch(key: string | number, callback: GenericStorageWatcher): void;
+	unwatch(key: string | number, callback: GenericStorageWatcher): GenericStorageInterface;
 }

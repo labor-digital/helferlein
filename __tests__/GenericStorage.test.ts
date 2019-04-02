@@ -27,7 +27,7 @@ test("GenericStorage get storage link", () => {
 	const i = new GenericStorage(storage);
 	// External storage object
 	expect(i.get()).toBe(storage);
-
+	
 	// Auto created storage object
 	expect((new GenericStorage()).get()).toEqual({});
 });
@@ -51,7 +51,7 @@ test("GenericStorage set", () => {
 	expect(i.get("1")).toBe("baz");
 	expect(() => {
 		// @ts-ignore
-		i.set()
+		i.set();
 	}).toThrow();
 	expect(() => {
 		// @ts-ignore
@@ -70,7 +70,7 @@ test("GenericStorage has", () => {
 	expect(i.has("foo2")).toBe(true);
 	expect(() => {
 		// @ts-ignore
-		i.has()
+		i.has();
 	}).toThrow();
 });
 
@@ -85,7 +85,7 @@ test("GenericStorage remove", () => {
 	expect(i.get()).toEqual({});
 	expect(() => {
 		// @ts-ignore
-		i.remove()
+		i.remove();
 	}).toThrow();
 });
 
@@ -112,21 +112,39 @@ test("GenericStorage forEach function bridge", () => {
 test("GenericStorage onChange", () => {
 	const s = {};
 	let c = 0;
-	const i = new GenericStorage(s, (key, value, storage) => {
+	const i = new GenericStorage(s);
+	const callbackWildcard = (value, valueOld, storage, key) => {
 		c++;
+		expect(key).toBe("foo");
+		expect(storage).toBe(s);
+	};
+	
+	i.watch("*", callbackWildcard);
+	
+	let callback = (value, valueOld, storage, key) => {
+		c++;
+		expect(valueOld).toBe(undefined);
 		expect(key).toBe("foo");
 		expect(value).toBe("bar");
 		expect(storage).toBe(s);
-	});
+	};
+	i.watch("foo", callback);
 	i.set("foo", "bar");
-
-	const i2 = new GenericStorage(s, (key, value, storage) => {
+	i.unwatch("foo", callback);
+	
+	callback = (value, valueOld, storage, key) => {
 		c++;
+		expect(valueOld).toBe("bar");
 		expect(key).toBe("foo");
 		expect(value).toBe(undefined);
 		expect(storage).toBe(s);
-	});
-	i2.remove("foo");
-
-	expect(c).toBe(2)
+	};
+	i.watch("foo", callback);
+	i.remove("foo");
+	i.unwatch("foo", callback);
+	i.unwatch("*", callbackWildcard);
+	
+	i.set("bar", "baz");
+	
+	expect(c).toBe(4);
 });
