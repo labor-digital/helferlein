@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.0.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.0.0%0Dv2.1.1#diff) (2019-04-02)
+
+
+### Bug Fixes
+
+* fix references to EventBus in internal modules ([18656f0](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/18656f0))
+
+
+### Features
+
+* add isElementInViewport helper which checks if a given html element is (at least partly) visible in the current viewport ([ea6ba65](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/ea6ba65))
+* make GenericStorage properties watchable via callbacks ([6c7a0e6](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/6c7a0e6))
+* new eventhandling for eventbus ([6104cdd](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/6104cdd))
+
+
+### BREAKING CHANGES
+
+* The eventbus, component proxy and the event
+registration functions have been moved to a new location
+
+
+
 ## [2.1.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v2.1.1%0Dv2.1.0#diff) (2019-03-18)
 
 
