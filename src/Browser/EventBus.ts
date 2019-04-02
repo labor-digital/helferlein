@@ -16,9 +16,9 @@
  * Last modified: 2019.01.23 at 13:16
  */
 import {PlainObject} from "../Interfaces/PlainObject";
-import {isPlainObject} from "../Types/isPlainObject";
 import {md5} from "../Misc/md5";
 import {isFunction} from "../Types/isFunction";
+import {isPlainObject} from "../Types/isPlainObject";
 
 const namespace = (new Date()).toTimeString() + "-" + Math.random() * Math.random();
 const eventNameCache = new Map();
@@ -28,7 +28,7 @@ export interface EventBusEvent extends Event {
 }
 
 export interface EventBusEventListener {
-	(evt: EventBusEvent|any): void|any;
+	(evt: EventBusEvent | any): void | any;
 }
 
 /**
@@ -36,12 +36,12 @@ export interface EventBusEventListener {
  *
  */
 export class EventBus {
-
+	
 	/**
-	 * Marker to let other helpers know, that this is a event bus interface
+	 * Marker to let other helpers know, that this is an event bus interface
 	 */
 	static $isEventBus: true;
-
+	
 	/**
 	 * Emits a given event which has the option to pass additional arguments.
 	 * @param event
@@ -54,7 +54,7 @@ export class EventBus {
 		document.dispatchEvent(e);
 		return EventBus;
 	}
-
+	
 	/**
 	 * Binds a given handler to a certain event
 	 * @param event
@@ -64,7 +64,7 @@ export class EventBus {
 		document.addEventListener(EventBus.makeInternalEventName(event), handler);
 		return EventBus;
 	}
-
+	
 	/**
 	 * Removes a given handler from a certain event
 	 * @param event
@@ -74,13 +74,13 @@ export class EventBus {
 		document.removeEventListener(EventBus.makeInternalEventName(event), handler);
 		return EventBus;
 	}
-
+	
 	/**
-	 * Registeres a special event handler which is called as soon as the document reports to be ready.
+	 * Registers a special event handler which is called as soon as the document reports to be ready.
 	 * If this is called after the document is ready, the handler will be executed immediately
 	 * @param handler
 	 */
-	static bindOnReady(handler: Function){
+	static bindOnReady(handler: Function) {
 		if (document.readyState !== "loading") handler();
 		else if (document.addEventListener) document.addEventListener("DOMContentLoaded", handler as any);
 		else if (isFunction((document as any).attachEvent)) (document as any).attachEvent("onreadystatechange", function () {
@@ -88,16 +88,17 @@ export class EventBus {
 		});
 		else handler();
 	}
-
+	
 	/**
 	 * Scopes the given event into a namespaced, event which should not interfere with other events or EventBuses
 	 * @param event
 	 */
-	protected static makeInternalEventName(event:string):string {
-		if(eventNameCache.has(event)) return eventNameCache.get(event);
+	protected static makeInternalEventName(event: string): string {
+		if (eventNameCache.has(event)) return eventNameCache.get(event);
 		const eventName = "helferlein-event-" + md5(namespace + "-" + event);
 		eventNameCache.set(event, eventName);
 		return eventName;
 	}
 }
+
 EventBus.$isEventBus = true;

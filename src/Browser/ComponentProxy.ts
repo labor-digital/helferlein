@@ -16,31 +16,16 @@
  * Last modified: 2019.02.20 at 10:32
  */
 
+import {EventProxyListener, EventProxyRegistry} from "../Entities/EventProxyRegistry";
+import {GenericStorageInterface} from "../Entities/GenericStorageInterface";
 import {PlainObject} from "../Interfaces/PlainObject";
 import {forEach} from "../Lists/forEach";
 import {getGuid} from "../Misc/getGuid";
 import {isFunction} from "../Types/isFunction";
+import {isObject} from "../Types/isObject";
 import {isPlainObject} from "../Types/isPlainObject";
 import {isUndefined} from "../Types/isUndefined";
-import {EventBus, EventBusEvent} from "./EventBus";
-
-export interface ComponentProxyEventListener {
-	/**
-	 * A unique id for this event listener which is set internally
-	 */
-	_cpid?: string;
-
-	apply: any;
-
-	(evt: Event | EventBusEvent | any): void | any;
-}
-
-export interface ComponentProxyEventListenerProxy extends ComponentProxyEventListener {
-	/**
-	 * If this is true, this listener is already a proxy
-	 */
-	_cpep?: boolean;
-}
+import {EventBus} from "./EventBus";
 
 /**
  * This class is ment to be used inside of js components.
@@ -54,52 +39,54 @@ export interface ComponentProxyEventListenerProxy extends ComponentProxyEventLis
  * do all the unbinding for you, cleaning up all the junk you might forget at some point.
  */
 export class ComponentProxy {
-
+	
 	/**
 	 * The component which is used as this context inside the proxy instance
 	 */
 	protected thisContext: any;
-
+	
 	/**
 	 * False if this instance was destroyed
 	 */
 	protected lives: boolean;
-
+	
 	/**
 	 * Contains the list of all timeouts that are bound on this block
 	 */
 	protected timeouts: Array<number>;
-
+	
 	/**
 	 * Contains the list of all intervals that are bound on this block
 	 */
 	protected intervals: Array<number>;
-
-	/**
-	 * The list of all registered targets by id, events by name and all registered proxies by handler id
-	 */
-	protected eventListeners: Map<string, Map<string, Map<string, Array<ComponentProxyEventListenerProxy>>>>;
-
-	/**
-	 * A list of targetId => targetObject references to unbind the elements on
-	 */
-	protected eventTargets: Map<string, any>;
-
+	
 	/**
 	 * A list of targetId => MutationObserver references to handle @mutation events
 	 */
 	protected mutationTargets: Map<string, MutationObserver>;
-
+	
+	/**
+	 * Holds the proxy registry which keeps track of the used event proxies
+	 */
+	protected proxyRegistry: EventProxyRegistry;
+	
+	/**
+	 * The list of events, the targets and the matching listeners
+	 * to be used in combination with the proxyRegistry which will keep track
+	 * of the registered listeners and their targets to unbind them when the proxy is destroyed
+	 */
+	protected events: Map<string, { target: any, event: string, listener: EventProxyListener }>;
+	
 	constructor(thisContext) {
 		this.lives = true;
+		this.proxyRegistry = new EventProxyRegistry(this.thisContext);
 		this.thisContext = thisContext;
 		this.timeouts = [];
 		this.intervals = [];
-		this.eventListeners = new Map();
-		this.eventTargets = new Map();
 		this.mutationTargets = new Map();
+		this.events = new Map();
 	}
-
+	
 	/**
 	 * INTERVALS
 	 * ==================================================================
@@ -111,7 +98,7 @@ export class ComponentProxy {
 	 * @param timeout
 	 */
 	setInterval(handler: (...args: any[]) => void, timeout: number): number;
-
+	
 	/**
 	 * Registers a handler to run in a specified interval.
 	 * The interval will automatically be stopped when the block is destroyed
@@ -127,7 +114,7 @@ export class ComponentProxy {
 		this.intervals.push(i);
 		return i;
 	}
-
+	
 	/**
 	 * Removes a given interval on the current block
 	 * @param id
@@ -138,7 +125,7 @@ export class ComponentProxy {
 		if (k === -1) return;
 		this.intervals.splice(k, 1);
 	}
-
+	
 	/**
 	 * TIMEOUTS
 	 * ==================================================================
@@ -150,7 +137,7 @@ export class ComponentProxy {
 	 * @param timeout
 	 */
 	setTimeout(handler: (...args: any[]) => void, timeout: number): number;
-
+	
 	/**
 	 * Registers a timeout to run after a specified timespan.
 	 * The timout will automatically be stopped when the block is destroyed
@@ -169,7 +156,7 @@ export class ComponentProxy {
 		this.timeouts.push(i);
 		return i;
 	}
-
+	
 	/**
 	 * Clears a given timeout id
 	 * @param id
@@ -180,7 +167,7 @@ export class ComponentProxy {
 		if (k === -1) return;
 		this.timeouts.splice(k, 1);
 	}
-
+	
 	/**
 	 * PROMISES AND CALLBACKS
 	 * ==================================================================
@@ -204,7 +191,7 @@ export class ComponentProxy {
 			return Promise.resolve(args);
 		};
 	}
-
+	
 	/**
 	 * Wrap all callbacks to the outside world with this method so you can be sure there won't be issues
 	 * even if your component is destroyed before the outside function finishes
@@ -218,7 +205,7 @@ export class ComponentProxy {
 			return callback.apply(that.thisContext, Array.prototype.slice.call(arguments));
 		};
 	}
-
+	
 	/**
 	 * EVENTS
 	 * ==================================================================
@@ -240,22 +227,27 @@ export class ComponentProxy {
 		} else throw new Error("Could not emit event \"" + event + "\", because the given target is invalid!");
 		return this;
 	}
-
+	
 	/**
 	 * Binds a given listener to a certain event
 	 *
 	 * @param target The target to bind the listener to. Either a html element, the document or the EventBus class
 	 * @param event The name of the event to bind the listener to. If you use "@mutation" a MutationObserver will track
-	 * 				any changes of the dom and call the listener on it
+	 *                any changes of the dom and call the listener on it
 	 * @param listener The listener which is called when the event is emitted on the given target
 	 */
-	bind(target: Document | Window | HTMLElement | Object, event: string, listener: ComponentProxyEventListener): ComponentProxy {
-		const proxy = this.makeEventHandlerProxy(listener);
+	bind(target: Document | Window | HTMLElement | GenericStorageInterface | Object, event: string, listener: EventProxyListener): ComponentProxy {
 		const targetId = (target as any)._cpti = (target as any)._cpti || getGuid();
+		const eventId = targetId + "-" + event;
+		const proxy = this.proxyRegistry.bindProxy(eventId, listener);
+		const id = eventId + "-" + proxy._eventProxyListenerId;
+		
 		if (isFunction(target) && (target as any).$isEventBus)
 			EventBus.bind(event, proxy);
+		else if (isObject(target) && (target as GenericStorageInterface).$isWatchable === true)
+			(target as GenericStorageInterface).watch(event, proxy);
 		else if (isFunction((target as HTMLElement).addEventListener)) {
-
+			
 			// Special event handling for @mutation
 			if (event === "@mutation") {
 				if (!this.mutationTargets.has(targetId)) {
@@ -269,99 +261,58 @@ export class ComponentProxy {
 					this.mutationTargets.set(targetId, observer);
 				}
 			}
-
+			
 			(target as HTMLElement).addEventListener(event, proxy);
-
+			
 		} else throw new Error("Could not bind to event \"" + event + "\", because the given target is invalid!");
-
-		// Store the proxy
-		const proxyId = proxy._cpid;
-		if (!this.eventListeners.has(targetId)) {
-			this.eventListeners.set(targetId, new Map());
-			this.eventTargets.set(targetId, target);
+		
+		// Create internal binding
+		if (!this.events.has(id)) {
+			this.events.set(id, {
+				target: target,
+				listener: listener,
+				event: event
+			});
 		}
-		const t = this.eventListeners.get(targetId);
-		if (!t.has(event)) t.set(event, new Map());
-		const t2 = t.get(event);
-		if (!t2.has(proxyId)) t2.set(proxyId, []);
-		t2.get(proxyId).push(proxy);
-
+		
 		return this;
 	}
-
+	
 	/**
 	 * Removes a given listener from a certain event
 	 * @param target The target to unbind the listener from. Either a html element, the document or the EventBus class
 	 * @param event The event to unbind or @mutation if a mutation observer is used
 	 * @param listener The listener which should be unbound for the given event
 	 */
-	unbind(target: Document | Window | HTMLElement | Object, event: string, listener: ComponentProxyEventListener): ComponentProxy {
-		const targetId = (target as any)._cpti;
-		const proxyId = listener._cpid;
-
-		// Clean up our internal storage
-		const listenersToUnbind = [];
-		if (this.eventListeners.has(targetId)) {
-			const targetList = this.eventListeners.get(targetId);
-			if (targetList.has(event)) {
-				const eventList = targetList.get(event);
-				if (eventList.has(proxyId)) {
-					eventList.get(proxyId).forEach((proxy) => listenersToUnbind.push(proxy));
-					eventList.delete(proxyId);
-				}
-				if (eventList.size === 0) {
-					// Free up memory
-					targetList.delete(event);
-
-					// Unbind mutaton listeners if there are no events for it anymore
-					if (event === "@mutation" && this.mutationTargets.has(targetId)) {
-						this.mutationTargets.get(targetId).disconnect();
-						this.mutationTargets.delete(targetId);
-					}
-				}
-			}
-			if (targetList.size === 0) {
-				// Free up memory
-				this.eventListeners.delete(targetId);
-				this.eventTargets.delete(targetId);
-			}
+	unbind(target: Document | Window | HTMLElement | GenericStorageInterface | Object, event: string, listener: EventProxyListener): ComponentProxy {
+		const targetId = (target as any)._cpti = (target as any)._cpti || getGuid();
+		const eventId = targetId + "-" + event;
+		const proxy = this.proxyRegistry.bindProxy(eventId, listener);
+		const id = eventId + "-" + proxy._eventProxyListenerId;
+		
+		// Unbind mutation listeners if there are no events for it anymore
+		if (event === "@mutation" && this.mutationTargets.has(targetId)) {
+			this.mutationTargets.get(targetId).disconnect();
+			this.mutationTargets.delete(targetId);
+			return this;
 		}
-
-		// Handle listeners which were not registered over this proxy
-		if (listenersToUnbind.length === 0)
-			listenersToUnbind.push(listener);
-
+		
 		// Execute the unbinding
-		if (isFunction(target) && (target as any).$isEventBus) {
-			for (let i = 0; i < listenersToUnbind.length; i++)
-				EventBus.bind(event, listenersToUnbind[i]);
-		} else if (isFunction((target as HTMLElement).removeEventListener)) {
-			for (let i = 0; i < listenersToUnbind.length; i++)
-				(target as HTMLElement).removeEventListener(event, listenersToUnbind[i]);
-		} else throw new Error("Could not bind to event \"" + event + "\", because the given target is invalid!");
-
+		if (isFunction(target) && (target as any).$isEventBus)
+			EventBus.unbind(event, proxy);
+		else if (isObject(target) && (target as GenericStorageInterface).$isWatchable === true)
+			(target as GenericStorageInterface).unwatch(event, proxy);
+		else if (isFunction((target as HTMLElement).removeEventListener))
+			(target as HTMLElement).removeEventListener(event, proxy);
+		else throw new Error("Could not bind to event \"" + event + "\", because the given target is invalid!");
+		
+		// Remove internal binding
+		this.events.delete(id);
+		
+		// Done
 		return this;
 	}
-
-	protected makeEventHandlerProxy(handler: ComponentProxyEventListener | ComponentProxyEventListenerProxy): ComponentProxyEventListenerProxy {
-		// Skip if this is already a proxy
-		if ((handler as ComponentProxyEventListenerProxy)._cpep === true) return handler;
-
-		// Create or use handler id
-		const id = handler._cpid = handler._cpid || getGuid();
-
-		// Create a new proxy
-		const thisContext = this.thisContext;
-		const proxy: ComponentProxyEventListenerProxy = function () {
-			handler.apply(thisContext, Array.prototype.slice.call(arguments));
-		};
-		proxy._cpid = id;
-		proxy._cpep = true;
-
-		// Done
-		return proxy;
-	}
-
+	
 	/**
 	 * DESTRUCTION
 	 * ==================================================================
@@ -373,38 +324,34 @@ export class ComponentProxy {
 	 */
 	destroy(): ComponentProxy {
 		this.lives = false;
-
+		
 		// Intervals
 		if (this.intervals.length > 0)
 			forEach(this.intervals, i => clearInterval(i));
-
+		
 		// Timeouts
 		if (this.timeouts.length > 0)
 			forEach(this.timeouts, t => clearTimeout(t));
-
+		
 		// Events
-		if (this.eventListeners.size > 0)
-			forEach(this.eventListeners, (targetList, targetId) => {
-				const target = this.eventTargets.get(targetId);
-				forEach(targetList, (eventList, event) => {
-					forEach(eventList, (proxyList) => {
-						this.unbind(target, event, proxyList[0]);
-					});
-				});
-			});
-
+		forEach(this.events, binding => {
+			this.unbind(binding.target, binding.event, binding.listener);
+		});
+		
+		// Proxies
+		this.proxyRegistry.destroy();
+		
 		// Remove my properties
+		delete this.proxyRegistry;
 		delete this.intervals;
 		delete this.timeouts;
-		delete this.eventListeners;
-		delete this.eventTargets;
 		delete this.thisContext;
 		delete this.mutationTargets;
 		delete this.lives;
-
+		
 		return this;
 	}
-
+	
 	/**
 	 * Returns true if this proxy is destroyed, false if not
 	 */

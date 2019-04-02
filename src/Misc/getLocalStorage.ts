@@ -15,9 +15,9 @@
  *
  * Last modified: 2019.01.11 at 18:53
  */
-import {isUndefined} from "../Types/isUndefined";
 import {GenericStorage} from "../Entities/GenericStorage";
 import {isString} from "../Types/isString";
+import {isUndefined} from "../Types/isUndefined";
 import {getPageStorage} from "./getPageStorage";
 
 /**
@@ -29,25 +29,25 @@ import {getPageStorage} from "./getPageStorage";
  *
  * @param namespace
  */
-export function getLocalStorage(namespace?:string): GenericStorage{
-	if(isUndefined(window.localStorage)){
+export function getLocalStorage(namespace?: string): GenericStorage {
+	if (isUndefined(window.localStorage)) {
 		console.error("Your browser does not support the localStorage API!");
 		return new GenericStorage();
 	}
-	if(!isString(namespace)) namespace = "general";
+	if (!isString(namespace)) namespace = "general";
 	namespace = "helferlein." + namespace;
-
+	
 	// Check if there is already a connected instance on the page
 	const localStorageRegistry = getPageStorage("@localStorage");
-	if(localStorageRegistry.has(namespace)) return localStorageRegistry.get(namespace);
-
+	if (localStorageRegistry.has(namespace)) return localStorageRegistry.get(namespace);
+	
 	// Read storage from window storage
 	const s = window.localStorage.getItem(namespace);
 	const storage = isString(s) ? JSON.parse(s) : {};
-
+	
 	// Create storage object
-	const lc = new GenericStorage(storage, (k,v,s) => {
-		// Update local storage as soon as we detect a change
+	const lc = new GenericStorage(storage);
+	lc.watch("*", (value, valueOld, s) => {
 		window.localStorage.setItem(namespace, JSON.stringify(s));
 	});
 	localStorageRegistry.set(namespace, lc);
