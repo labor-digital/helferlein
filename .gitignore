@@ -1,5 +1,6 @@
 node_modules
 lib
+doc
 
 # IDEA Code Style
 .idea/*

@@ -1,31 +1,31 @@
 {
-  "name": "@labor/helferlein",
-  "version": "2.1.1",
-  "description": "General purpose Javascript helpers - Successor to helpers.js",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@bitbucket.org/labor-digital/labor-js-helpers.js.git"
-  },
-  "scripts": {
-    "build": "node flushLib.js && tsc",
-    "watch": "node flushLib.js && tsc --watch",
-    "test": "jest",
-    "doc": "typedoc --out doc --tsconfig ./tsconfig.json src --module commonjs && git add ./doc"
-  },
-  "engines": {
-    "node": ">=8.11.2",
-    "npm": ">=6.3.0"
-  },
-  "author": "Martin Neundorfer @LABOR",
-  "license": "MIT",
-  "homepage": "https://bitbucket.org/labor-digital/labor-js-helpers.js#readme",
-  "dependencies": {},
-  "devDependencies": {
-    "@types/jest": "24.0.11",
-    "@types/node": "11.11.3",
-    "jest": "24.5.0",
-    "ts-jest": "24.0.0",
-    "typedoc": "0.14.2",
-    "typescript": "3.3.3333"
-  }
+	"name": "@labor/helferlein",
+	"version": "2.1.1",
+	"description": "General purpose Javascript helpers - Successor to helpers.js",
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@bitbucket.org/labor-digital/labor-js-helpers.js.git"
+	},
+	"scripts": {
+		"build": "node flushLib.js && tsc",
+		"watch": "node flushLib.js && tsc --watch",
+		"test": "jest",
+		"doc": "typedoc --out doc --tsconfig ./tsconfig.json src --module commonjs"
+	},
+	"engines": {
+		"node": ">=8.11.2",
+		"npm": ">=6.3.0"
+	},
+	"author": "Martin Neundorfer @LABOR",
+	"license": "MIT",
+	"homepage": "https://bitbucket.org/labor-digital/labor-js-helpers.js#readme",
+	"dependencies": {},
+	"devDependencies": {
+		"@types/jest": "24.0.11",
+		"@types/node": "11.11.3",
+		"jest": "24.5.0",
+		"ts-jest": "24.0.0",
+		"typedoc": "0.14.2",
+		"typescript": "3.3.3333"
+	}
 }
