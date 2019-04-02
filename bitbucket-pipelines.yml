@@ -25,13 +25,15 @@ pipelines:
             aws:
               access-key: $AWS_ACCESS_KEY_ID
               secret-key: $AWS_SECRET_ACCESS_KEY
-          name: Build library
+          name: Build library and doc
           caches:
             - node
           script:
             - source /opt/npm-run-script.sh build
+            - source /opt/npm-run-script-without-login.sh doc
           artifacts:
             - lib/**
+            - doc/**
     
     release:
       -

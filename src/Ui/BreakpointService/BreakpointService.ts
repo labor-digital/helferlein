@@ -15,30 +15,31 @@
  *
  * Last modified: 2019.02.06 at 17:56
  */
-import {BreakpointHelpers} from "./BreakpointHelpers";
+import {onDomReady} from "../../Events/DomEvents/onDomReady";
+import {EventBus} from "../../Events/EventBus";
 import {throttleEvent} from "../throttleEvent";
-import {BreakpointContext} from "./Entities/BreakpointContext";
+import {BreakpointHelpers} from "./BreakpointHelpers";
 import {BreakpointsConfigureOptions} from "./BreakpointService.interfaces";
 import {Breakpoint} from "./Entities/Breakpoint";
-import {EventBus} from "../../Browser/EventBus";
+import {BreakpointContext} from "./Entities/BreakpointContext";
 
 // Create new context
 const context = new BreakpointContext();
 
 // Listen to window resizes
-EventBus.bindOnReady(() => {
+onDomReady(() => {
 	BreakpointHelpers.ensureCurrent(context);
 	window.addEventListener("resize", throttleEvent(function breakpointWindowOnResizeHandler() {
 		// Store old breakpoint
 		const oldBreakpoint = context.current;
-
+		
 		// Recalculate current breakpoint
 		context.current = null;
 		BreakpointHelpers.calculateCurrentBreakpoint(context);
-
+		
 		// Skip if the breakpoint did not change
 		if (oldBreakpoint === context.current) return;
-
+		
 		// Trigger event
 		EventBus.emit("breakpoint__change", {old: oldBreakpoint, new: context.current});
 	}, 200));
@@ -69,15 +70,15 @@ export class BreakpointService {
 		BreakpointHelpers.ensureCurrent(context);
 		// Skip if there are no configured breakpoints
 		if (context.current === null) return false;
-
+		
 		// Kill if there was an invalid breakpoint
 		if (!context.breakpoints.has(breakpointKey))
 			throw new Error("Request for unknown breakpoint: " + breakpointKey);
-
+		
 		// Compare
 		const compareId: number = context.breakpoints.get(breakpointKey).id;
 		const currentId = context.current.id;
-
+		
 		switch (comparator) {
 			case ">":
 				return currentId > compareId;
@@ -92,10 +93,10 @@ export class BreakpointService {
 			case "!=":
 				return currentId !== compareId;
 		}
-
+		
 		return false;
 	}
-
+	
 	/**
 	 * Returns the current breakpoint or null, if there is no
 	 * breakpoint definition
@@ -104,7 +105,7 @@ export class BreakpointService {
 		BreakpointHelpers.ensureCurrent(context);
 		return context.current;
 	}
-
+	
 	/**
 	 * Returns the list of all found breakpoints or null, if there are none
 	 */
@@ -112,7 +113,7 @@ export class BreakpointService {
 		BreakpointHelpers.readBreakpoints(context);
 		return context.breakpoints;
 	}
-
+	
 	/**
 	 * Can be used to customize the settings for the breakpoint service
 	 * @param opts
@@ -123,7 +124,7 @@ export class BreakpointService {
 		// Reset current and breakpoints
 		context.breakpoints = null;
 		context.current = null;
-
+		
 		// Apply options
 		if (typeof opts.container === "string") context.container = opts.container;
 		if (typeof opts.template === "string") context.template = opts.template;

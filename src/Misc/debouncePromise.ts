@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.01.25 at 12:17
  */
-import {EventBus} from "../Browser/EventBus";
+import {EventBus} from "../Events/EventBus";
 
 interface PromiseCreator {
 	(): Promise<any>
@@ -54,22 +54,22 @@ export function debouncePromise(key: string, promiseCreator: PromiseCreator,
 			guid: 0
 		});
 	}
-
+	
 	// Load config
 	const config = registry.get(key);
-
+	
 	// Register timeout
 	clearTimeout(config.timeout);
 	config.timeout = setTimeout(() => {
 		EventBus.emit(config.event, {promiseCreator});
 	}, limit);
-
+	
 	return new Promise((resolve, reject) => {
 		const localGuid = ++config.guid;
 		const callback = function (e) {
 			// Clean our callback
 			EventBus.unbind(config.event, callback);
-
+			
 			// Check if this is the last promise
 			if (localGuid === config.guid) {
 				registry.delete(key);
@@ -91,5 +91,5 @@ export function debouncePromise(key: string, promiseCreator: PromiseCreator,
 			return noopPromise;
 		}
 		return Promise.reject(e);
-	})
+	});
 }

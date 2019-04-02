@@ -15,13 +15,13 @@
  *
  * Last modified: 2019.01.25 at 18:37
  */
+import {EventBus} from "../Events/EventBus";
+import {asArray} from "../FormatAndConvert/asArray";
 import {PlainObject} from "../Interfaces/PlainObject";
 import {forEach} from "../Lists/forEach";
-import {isUndefined} from "../Types/isUndefined";
 import {map} from "../Lists/map";
-import {asArray} from "../FormatAndConvert/asArray";
 import {isEmpty} from "../Types/isEmpty";
-import {EventBus} from "./EventBus";
+import {isUndefined} from "../Types/isUndefined";
 
 let knownHash = "";
 let hashCache = {};
@@ -39,7 +39,7 @@ export class UrlHash {
 		const hash = UrlHash.getAll();
 		return !isUndefined(hash[key]);
 	}
-
+	
 	/**
 	 * Returns the value for a given key
 	 * @param key The key to retrieve the value for
@@ -49,7 +49,7 @@ export class UrlHash {
 		const hash = UrlHash.getAll();
 		return isUndefined(hash[key]) ? defaultValue : hash[key];
 	}
-
+	
 	/**
 	 * Sets a single key value pair
 	 * @param key
@@ -61,7 +61,7 @@ export class UrlHash {
 		else hash[key] = value;
 		UrlHash.update(hash);
 	}
-
+	
 	/**
 	 * Sets multiple values using only a single change request
 	 * @param values
@@ -77,14 +77,14 @@ export class UrlHash {
 		});
 		UrlHash.update(hash);
 	}
-
+	
 	/**
 	 * Returns all key value pairs that are currently in the hash
 	 */
 	static getAll(): PlainObject {
 		return JSON.parse(JSON.stringify(UrlHash.parseFromUrl()));
 	}
-
+	
 	/**
 	 * Parses the current hash value into an object
 	 * The hash is expected to look like #/key/value/key2/value2
@@ -110,7 +110,7 @@ export class UrlHash {
 		});
 		return hashCache = parsed;
 	}
-
+	
 	/**
 	 * Converts the given hash object into a string representation valid for the url
 	 * @param hash
