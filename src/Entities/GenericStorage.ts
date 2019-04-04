@@ -125,4 +125,11 @@ export class GenericStorage implements GenericStorageInterface {
 	public forEach(callback: Function) {
 		forEach(this.storage, (v, k) => callback(v, k, this.storage));
 	}
+	
+	/**
+	 * Provides a bridge for the component proxy to bind events on a storage
+	 */
+	public getEmitter(): EventEmitter {
+		return this.emitter;
+	}
 }
