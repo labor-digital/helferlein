@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.0.1%0Dv3.0.0#diff) (2019-04-04)
+
+
+### Bug Fixes
+
+* Make genericStorage usable with componentProxy's bind and unbind methods ([f799503](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/f799503))
+
+
+
 # [3.0.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.0.0%0Dv2.1.1#diff) (2019-04-02)
 
 
