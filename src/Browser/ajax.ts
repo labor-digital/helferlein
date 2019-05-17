@@ -16,30 +16,30 @@
  * Last modified: 2019.02.04 at 14:11
  */
 import {PlainObject} from "../Interfaces/PlainObject";
-import {isString} from "../Types/isString";
-import {isPlainObject} from "../Types/isPlainObject";
-import {isNumber} from "../Types/isNumber";
-import {isUndefined} from "../Types/isUndefined";
 import {forEach} from "../Lists/forEach";
 import {isEmpty} from "../Types/isEmpty";
 import {isNull} from "../Types/isNull";
+import {isNumber} from "../Types/isNumber";
+import {isPlainObject} from "../Types/isPlainObject";
+import {isString} from "../Types/isString";
+import {isUndefined} from "../Types/isUndefined";
 
 export interface AjaxRequest {
 	/**
 	 * The url to send the request to
 	 */
 	url: string
-
+	
 	/**
 	 * By default "get", can be set to post data to a server
 	 */
 	type?: "post" | "get"
-
+	
 	/**
 	 * A number in milliseconds after the script should time out
 	 */
 	timeout?: number
-
+	
 	/**
 	 * The payload works for both get and post requests
 	 */
@@ -51,23 +51,23 @@ export class AjaxResponse {
 	 * The status code send by the server
 	 */
 	status: number;
-
+	
 	/**
 	 * The payload send by the server.
 	 * Contains either the string or an object/array if the server send a json object our way
 	 */
 	data: string | PlainObject | Array<any>;
-
+	
 	/**
 	 * The payload always as a string
 	 */
 	dataRaw: string;
-
+	
 	/**
 	 * The error message or undefined
 	 */
 	error?: string;
-
+	
 	/**
 	 * The used xml http request
 	 */
@@ -84,7 +84,7 @@ export class AjaxResponse {
 function prepareData(data, asGet: boolean) {
 	// Ignore empty data
 	if (isEmpty(data)) return asGet ? "" : data;
-
+	
 	// Make sure we have a formdata object to work with
 	if (!(data instanceof FormData)) {
 		const formData = new FormData();
@@ -105,7 +105,7 @@ function prepareData(data, asGet: boolean) {
 		data = formData;
 	}
 	if (!asGet) return data;
-
+	
 	// Convert the data into a url string
 	let query = [];
 	forEach(data, (v, k) => {
@@ -136,18 +136,19 @@ export function ajax(request: AjaxRequest): Promise<AjaxResponse> {
 	return new Promise((resolve, reject) => {
 		if (!isUndefined(request.data)) request.data = prepareData(request.data, isGet);
 		else request.data = null;
-
+		
 		// Create request and response
 		// @ts-ignore
 		const xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 		const response = new AjaxResponse();
 		response.raw = xhttp;
-
+		
 		// Prepaere data
 		const url = isGet ? request.url + (isNull(request.data) ? "" : request.data) : request.url;
 		xhttp.open(request.type, url, true);
+		xhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 		if (request.timeout !== 0) xhttp.timeout = request.timeout;
-
+		
 		// Set result handler
 		xhttp.onreadystatechange = function () {
 			if (this.readyState !== 4) return;
@@ -163,7 +164,7 @@ export function ajax(request: AjaxRequest): Promise<AjaxResponse> {
 			response.error = "AJAX error: " + this.statusText;
 			reject(response);
 		};
-
+		
 		// Set timeout handler
 		xhttp.ontimeout = function () {
 			response.status = 408;
