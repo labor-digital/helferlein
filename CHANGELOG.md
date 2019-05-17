@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.1.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.1.0%0Dv3.0.1#diff) (2019-05-17)
+
+
+### Bug Fixes
+
+* **ComponentProxy:** fix wrong function check when removing element event bindings ([8c7f0d8](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/8c7f0d8))
+
+
+### Features
+
+* **ajax:** Add X-Requested-With: XMLHttpRequest header to ajax calls to detect them on server side ([3ef1f19](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/3ef1f19))
+* add getSize helper to get the size in pixels of a single element ([53d66da](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/53d66da))
+* add helpers to manipulate dom element attributes ([2aec48c](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/2aec48c))
+* allow all dom class manipulation functions to work with node-sets as well as HTMLElements ([677b2c9](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/677b2c9))
+
+
+
 ## [3.0.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.0.1%0Dv3.0.0#diff) (2019-04-04)
 
 
