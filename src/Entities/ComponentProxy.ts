@@ -43,14 +43,14 @@ export interface ComponentProxyListener extends Function {
 }
 
 /**
- * This class is ment to be used inside of js components.
+ * This class is mend to be used inside of js components.
  * The promise is simple: Sometimes your component needs outside connections to the dom, other libraries, hooks into a promise chain,
  * registers a callback or something else. But what's if your component gets destroyed? You have to unbind all event listeners, decouple
  * all callbacks, cancel all timeouts and intervals. If you forget one? The instance will stay in the memory for the rest of the page's livecycle.
  *
  * To make the handling in that case a lot easier you can use this proxy class.
  * Create it inside your component, supply it the component's instance as "this" context and register events, timeouts and intervals
- * using the proxy. When your component reaches the end of it's livecycle call the proxy.destroy() method and the proxy will
+ * using the proxy. When your component reaches the end of it's lifecycle call the proxy.destroy() method and the proxy will
  * do all the unbinding for you, cleaning up all the junk you might forget at some point.
  */
 export class ComponentProxy {
@@ -342,7 +342,7 @@ export class ComponentProxy {
 		// Remove the binding
 		if (isObject(target) && isFunction((target as any).unbind))
 			(target as any).unbind(event, listener);
-		else if (isFunction((target as HTMLElement).addEventListener)) {
+		else if (isFunction((target as HTMLElement).removeEventListener)) {
 			
 			// Special event handling for @mutation
 			if (event === "@mutation") {
@@ -404,7 +404,6 @@ export class ComponentProxy {
 		delete this.intervals;
 		delete this.timeouts;
 		delete this.thisContext;
-		delete this.lives;
 		delete this.events;
 		
 		return this;
