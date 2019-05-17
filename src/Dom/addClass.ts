@@ -16,15 +16,29 @@
  * Last modified: 2019.02.01 at 10:50
  */
 
+import {forEach} from "../Lists/forEach";
+import {isUndefined} from "../Types/isUndefined";
+
 /**
- * Adds a single, or multiple classes to the given html element
+ * Internal helper to avoid unnecessary iteration
  * @param element
- * @param classes
+ * @param classList
  */
-export function addClass(element: HTMLElement, classes: string) {
-	const classList = classes.split(" ");
+function addClassAdder(element: HTMLElement | Element, classList: Array<string>) {
 	for (let i = 0; i < classList.length; i++) {
 		if (element.className.indexOf(classList[i]) === -1)
 			element.className += " " + classList[i];
 	}
+}
+
+/**
+ * Adds a single, or multiple classes to the given html element
+ * @param element Receives either a single element or multiple elements
+ * @param classes The space-separated list of classes to add to the element
+ */
+export function addClass(element: HTMLElement | NodeListOf<Element>, classes: string) {
+	const classList = classes.split(" ");
+	if (isUndefined((element as NodeListOf<Element>).length))
+		return addClassAdder(element as HTMLElement, classList);
+	forEach(element, (e) => addClassAdder(e, classList));
 }

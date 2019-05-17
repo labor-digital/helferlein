@@ -25,7 +25,7 @@ import {removeClass} from "./removeClass";
  * @param classes The class / classes to toggle
  * @param condition A condition to toggle the classes by
  */
-export function toggleClass(element: HTMLElement, classes: string, condition: boolean) {
-	if(condition === true) addClass(element, classes);
+export function toggleClass(element: HTMLElement | NodeListOf<Element>, classes: string, condition: boolean) {
+	if (condition === true) addClass(element, classes);
 	else removeClass(element, classes);
 }
