@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.2.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.2.0%0Dv3.1.0#diff) (2019-05-17)
+
+
+### Features
+
+* add a bunch of helpers for calculating and converting colors ([bd10f49](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/bd10f49))
+
+
+
 # [3.1.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.1.0%0Dv3.0.1#diff) (2019-05-17)
 
 
