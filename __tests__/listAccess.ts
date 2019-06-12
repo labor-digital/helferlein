@@ -13,10 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Last modified: 2019.01.09 at 12:53
+ * Last modified: 2019.06.12 at 12:32
  */
-import {PlainObject} from "./PlainObject";
 
-export type List = Array<any> | Set<any> | Map<any, any> | PlainObject;
+import {getListKeys} from "../src/Lists/listAccess";
 
-export type ListPath = string | number | Array<string | number | Array<any>>;
+test("getListKeys of array", () => {
+	expect(getListKeys([1, 2, 3, 4])).toEqual([0, 1, 2, 3]);
+});
+
+test("getListKeys of set", () => {
+	const s = new Set();
+	s.add(1);
+	s.add(2);
+	s.add(2);
+	s.add(3);
+	expect(getListKeys(s)).toEqual([0, 1, 2]);
+});
+
+test("getListKeys of map", () => {
+	const m = new Map();
+	m.set("foo", "bar");
+	m.set("bar", "baz");
+	m.set(1, "foo");
+	expect(getListKeys(m)).toEqual(["foo", "bar", 1]);
+});
