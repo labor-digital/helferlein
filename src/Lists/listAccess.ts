@@ -15,15 +15,17 @@
  *
  * Last modified: 2019.01.10 at 10:18
  */
-import {isSet} from "../Types/isSet";
-import {isMap} from "../Types/isMap";
-import {forEach} from "./forEach";
-import {isUndefined} from "../Types/isUndefined";
+import {asArray} from "../FormatAndConvert/asArray";
 import {List} from "../Interfaces/List";
+import {isIterator} from "../Types/isIterator";
+import {isMap} from "../Types/isMap";
 import {isPlainObject} from "../Types/isPlainObject";
+import {isSet} from "../Types/isSet";
+import {isUndefined} from "../Types/isUndefined";
+import {forEach} from "./forEach";
 
 export enum ListType {
-	Array, Set, Map, Object, NoList
+	Array, Set, Map, Object, NoList, Iterator
 }
 
 /**
@@ -31,13 +33,12 @@ export enum ListType {
  * @param element
  */
 export function getListType(element: any): ListType {
-	// Skip if this type is not relevant
-	if (["number", "string", "undefined", "function", "boolean"].indexOf(typeof element) !== -1)
-		return ListType.NoList;
 	if (Array.isArray(element)) return ListType.Array;
 	else if (isSet(element)) return ListType.Set;
 	else if (isMap(element)) return ListType.Map;
 	else if (isPlainObject(element)) return ListType.Object;
+	else if (isIterator(element)) return ListType.Iterator;
+	return ListType.NoList;
 }
 
 /**
@@ -49,6 +50,7 @@ export function getNewList(type: ListType): List {
 	if (type === ListType.Set) return new Set();
 	if (type === ListType.Map) return new Map();
 	if (type === ListType.Object) return {};
+	if (type === ListType.Iterator) return [];
 	return null;
 }
 
@@ -61,7 +63,7 @@ export function getListValue(list: List, key): undefined | any {
 	const type = getListType(list);
 	if (type === ListType.NoList) throw new Error("Invalid list type given!");
 	if (type === ListType.Array) return list[key];
-	if (type === ListType.Set) {
+	if (type === ListType.Set || type === ListType.Iterator) {
 		let out = undefined;
 		forEach(list, (v, k) => {
 			if (k !== key) return;
@@ -85,9 +87,29 @@ export function getListValue(list: List, key): undefined | any {
 export function setListValue(list: List, value, key?) {
 	const type = getListType(list);
 	if (type === ListType.NoList) throw new Error("Invalid list type given!");
+	if (type === ListType.Iterator) throw new Error("Can't set the value of an iterator!");
 	if (type === ListType.Array) (list as Array<any>).push(value);
 	else if (type === ListType.Set) (list as Set<any>).add(value);
 	else if (type === ListType.Map && !isUndefined(key)) (list as Map<any, any>).set(key, value);
 	else if (type === ListType.Object && !isUndefined(key)) list[key] = value;
 	else throw new Error("The given list type requires a \"key\" value to be specified!");
+}
+
+/**
+ * Returns the list of all keys of the given list element
+ * @param list
+ */
+export function getListKeys(list: List): Array<string | number> {
+	let type = getListType(list);
+	let keys = [];
+	if (type === ListType.NoList) throw new Error("Invalid list type given!");
+	if (type === ListType.Iterator) {
+		list = asArray(list);
+		type = ListType.Array;
+	}
+	if (type === ListType.Array) for (var i = 0; i < (list as Array<any>).length; i++) keys.push(i);
+	else if (type === ListType.Set) for (var i = 0; i < (list as Set<any>).size; i++) keys.push(i);
+	else if (type === ListType.Map) keys = asArray((list as Map<any, any>).keys());
+	else if (type === ListType.Object) keys = asArray(Object.keys((list as Object)));
+	return keys;
 }
