@@ -15,8 +15,8 @@
  *
  * Last modified: 2019.01.11 at 18:13
  */
-import {forEach} from "../Lists/forEach";
 import {List} from "../Interfaces/List";
+import {forEach} from "../Lists/forEach";
 import {getListType, ListType} from "../Lists/listAccess";
 
 /**
