@@ -72,6 +72,19 @@ export function forEach(object: List, callback: ForEachCallbackType): void {
 		}
 		return;
 	} else if (typeof object === "object" || typeof object === "function") {
+		// Handle iterators
+		if (typeof object[Symbol.iterator] === "function") {
+			const it: Iterator<any> = object as any;
+			let k = 0;
+			for (let nextValue = it.next(); nextValue.done !== true; nextValue = it.next()) {
+				if (callback(nextValue.value, k++, object) === false) break;
+			}
+			
+			// Done
+			return;
+		}
+		
+		// Handle default iteration
 		for (let k in object) {
 			if (!object.hasOwnProperty(k)) continue;
 			let kReal: string | number = k;
@@ -80,6 +93,6 @@ export function forEach(object: List, callback: ForEachCallbackType): void {
 		}
 		return;
 	}
-
+	
 	throw Error("Could not iterate given object!");
 }
