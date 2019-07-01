@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.3.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.3.0%0Dv3.2.1#diff) (2019-06-12)
+
+
+### Features
+
+* add escapeRegex helper as equivalent to PHP's preg_escape ([6dd6d17](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/6dd6d17))
+* add isIterator helper ([8ada1f2](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/8ada1f2))
+* **forEach:** add support for iterators in forEach loops ([f70d252](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/f70d252))
+* **listAccess:** add support for iterators and add getListKeys helper ([b572b47](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/b572b47))
+* add multiple path based list access helpers, ported from PHP and the matching tests ([97514c3](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/97514c3))
+
+
+
 ## [3.2.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.2.1%0Dv3.2.0#diff) (2019-05-17)
 
 
