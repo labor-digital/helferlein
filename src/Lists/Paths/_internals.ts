@@ -73,7 +73,8 @@ export function _initPathWalkerStep(list: List, path: Array<string>): Array<any>
 
 export function _initPathWalkerPath(list: List, path: ListPath, separator): Array<string | Array<any>> {
 	if (isUndefined(separator)) separator = ".";
-	if (getListType(list) === ListType.NoList) throw new Error("The given value can not be accessed via path");
+	if (getListType(list) === ListType.NoList)
+		throw new Error("The given value can not be accessed via path");
 	const parsedPath = parsePath(path, separator);
 	if (parsedPath.length === 0) throw new Error("The given path is empty!");
 	return parsedPath;

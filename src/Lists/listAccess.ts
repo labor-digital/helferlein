@@ -19,7 +19,7 @@ import {asArray} from "../FormatAndConvert/asArray";
 import {List} from "../Interfaces/List";
 import {isIterator} from "../Types/isIterator";
 import {isMap} from "../Types/isMap";
-import {isPlainObject} from "../Types/isPlainObject";
+import {isObject} from "../Types/isObject";
 import {isSet} from "../Types/isSet";
 import {isUndefined} from "../Types/isUndefined";
 import {forEach} from "./forEach";
@@ -36,7 +36,7 @@ export function getListType(element: any): ListType {
 	if (Array.isArray(element)) return ListType.Array;
 	else if (isSet(element)) return ListType.Set;
 	else if (isMap(element)) return ListType.Map;
-	else if (isPlainObject(element)) return ListType.Object;
+	else if (isObject(element)) return ListType.Object;
 	else if (isIterator(element)) return ListType.Iterator;
 	return ListType.NoList;
 }
