@@ -34,5 +34,5 @@ test("getSimilarity of texts", () => {
 	expect(getSimilarity("THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND",
 		"THE SOFTWARE IS PROVIDED \"AS IS\"")).toEqual(0.6753246753246753);
 	expect(getSimilarity("Permission is hereby granted, free of charge, to any person obtaining a copy",
-		"Copyright (c) 2018")).toEqual(0);
+		"Copyright (c) 2018")).toEqual(0.05128205128205128);
 });
