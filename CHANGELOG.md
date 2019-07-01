@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.4.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.4.0%0Dv3.3.0#diff) (2019-07-01)
+
+
+### Bug Fixes
+
+* **getListType:** return the correct list type for plain objects instead of "no-list" ([3508642](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/3508642))
+* **getSimilarity test:** fix broken test assertion ([a31ac41](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/a31ac41))
+
+
+### Features
+
+* add getSimilarity() to calculate the similarity between two strings ([9ee3a3b](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/9ee3a3b))
+* add hasClass() to check if a certain element has a css class or not ([204e3ea](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/204e3ea))
+* getScrollPos() can now also return the horizontal scroll pos not only the vertical ([fe9bc41](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/fe9bc41))
+* isElementInViewport can not also check if the queried element is COMPLETELY visible in the viewport. ([7c57f41](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/7c57f41))
+
+
+
 # [3.3.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.3.0%0Dv3.2.1#diff) (2019-06-12)
 
 
