@@ -15,9 +15,12 @@
  *
  * Last modified: 2019.02.01 at 18:58
  */
-import {isArray} from "../Types/isArray";
-import {isPlainObject} from "../Types/isPlainObject";
-import {PlainObject} from "../Interfaces/PlainObject";
+import {List, ListPath} from "../Interfaces/List";
+import {isNull} from "../Types/isNull";
+import {isUndefined} from "../Types/isUndefined";
+import {forEach} from "./forEach";
+import {getListType, getNewList, setListValue} from "./listAccess";
+import {getPath} from "./Paths/getPath";
 
 /**
  * Can be used to sort arrays containing objects by a property of said objects
@@ -25,30 +28,26 @@ import {PlainObject} from "../Interfaces/PlainObject";
  *
  * @param list the list to sort
  * @param by The property of the child objects to sort by
+ * @param desc If set to true the result will be sorted descending instead of the default which is ascending
  */
-export function sort(list: Array<PlainObject | any> | PlainObject, by: string | number) {
-	// Sort array lists
-	if (isArray(list)) {
-		return list.sort(function (a, b) {
-			var x = a[by];
-			var y = b[by];
-			return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+export function sort(list: List, by?: ListPath | null, desc?: boolean): List {
+	// Build the sorter
+	let sorter = [];
+	forEach(list, (v, k) => {
+		sorter.push({
+			by: isNull(by) || isUndefined(by) ? v : getPath(v, by),
+			k, v
 		});
-	}
-
-	// Sort plain objects
-	if (isPlainObject(list)) {
-		// Create sortable array out of given object
-		const sorter = Object.keys(list).reduce((a, v) => {
-			a.push({by: list[v][by], key: v, v: list[v]});
-			return a;
-		}, []);
-
-		// Sort the array and rebuild the object out of it
-		return (sort(sorter, "by") as Array<PlainObject>)
-			.reduce((a, v) => {
-				a[v.key] = v.v;
-				return a;
-			}, {});
-	}
+	});
+	
+	// Sort the sorter array
+	sorter = sorter.sort((a, b) =>
+		desc ?
+			((a.by > b.by) ? -1 : ((a.by < b.by) ? 1 : 0)) :
+			((a.by < b.by) ? -1 : ((a.by > b.by) ? 1 : 0)));
+	
+	// Build result
+	const result = getNewList(getListType(list));
+	forEach(sorter, (o) => setListValue(result, o.v, o.k));
+	return result;
 }
