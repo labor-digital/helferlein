@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.5.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.5.0%0Dv3.4.0#diff) (2019-07-03)
+
+
+### Features
+
+* add htmlEncode helper to html encode a string in a browser environment ([d453745](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/d453745))
+* sort() now supports lookups by path as well as reversed ordering ([ff2038a](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/ff2038a))
+
+
+
 # [3.4.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.4.0%0Dv3.3.0#diff) (2019-07-01)
 
 
