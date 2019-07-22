@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.6.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.6.0%0Dv3.5.1#diff) (2019-07-22)
+
+
+### Features
+
+* **BreakpointService:** add inTemplateSelector to config + getForWidth() method to calculate the breakpoint of a given width ([c8660ce](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/c8660ce))
+
+
+
 ## [3.5.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.5.1%0Dv3.5.0#diff) (2019-07-22)
 
 
