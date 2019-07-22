@@ -38,7 +38,7 @@ import {_initPathWalkerPath, _initPathWalkerStep, KeyTypes} from "./_internals";
  */
 export function getPath(list: List, path: ListPath, defaultValue?: any, separator?: string): any {
 	// Check recursive if the path exists
-	const walker = function hasPathWalker(list: List, path: Array<any>, isNested?: boolean) {
+	const walker = function getPathWalker(list: List, path: Array<any>, isNested?: boolean) {
 		const [keys, isLastKey, keyType] = _initPathWalkerStep(list, path);
 		if (isEmpty(list)) return defaultValue;
 		let result = {};
