@@ -107,6 +107,14 @@ export class BreakpointService {
 	}
 	
 	/**
+	 * Returns the breakpoint instance that would be used for a given width in pixels
+	 * @param width the number in pixels to calculate the breakpoint for
+	 */
+	static getForWidth(width: number): null | Breakpoint {
+		return BreakpointHelpers.calculateBreakpointForPixelWidth(width, context);
+	}
+	
+	/**
 	 * Returns the list of all found breakpoints or null, if there are none
 	 */
 	static getAll(): null | Map<string, Breakpoint> {
@@ -119,14 +127,17 @@ export class BreakpointService {
 	 * @param opts
 	 *            - container: The container selector to create the breakpoint marker in (DEFAULT: 'body')
 	 *            - template: The html template to append to the breakpointContainer (DEFAULT: '<div class="sassy-breakpoint-service"></div>')
+	 *            - inTemplateSelector: Can be used if multi-layered templates are required to get the correct element to read the css definition from.
 	 */
 	static configure(opts: BreakpointsConfigureOptions) {
 		// Reset current and breakpoints
 		context.breakpoints = null;
 		context.current = null;
+		context.inTemplateSelector = null;
 		
 		// Apply options
 		if (typeof opts.container === "string") context.container = opts.container;
 		if (typeof opts.template === "string") context.template = opts.template;
+		if (typeof opts.inTemplateSelector === "string") context.inTemplateSelector = opts.inTemplateSelector;
 	}
 }

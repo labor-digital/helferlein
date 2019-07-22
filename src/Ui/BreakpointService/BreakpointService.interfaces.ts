@@ -21,23 +21,32 @@ export interface BreakpointsConfigureOptions {
 	/**
 	 * Configure the container selector to create the breakpoint marker in (DEFAULT: 'body')
 	 */
-	container?:string;
-
+	container?: string;
+	
 	/**
 	 * The html template to append to the breakpointContainer (DEFAULT: '<div class="sassy-breakpoint-service"></div>')
+	 * This element should hold the css configuration of the breakpoints in its font-face definition.
+	 * If you provide a nested element like <div ...><div ...><div class="foo"></div></div></div> make sure
+	 * to add a "inTemplateSelector" to select your child element you want to use as breakpoint bearer
 	 */
-	template?:string;
-
+	template?: string;
+	
+	/**
+	 *  If given the service will try to find an element with this selector inside the template element
+	 * instead of getting the css rules from the element itself.
+	 */
+	inTemplateSelector?: string;
+	
 }
 
 export interface BreakpointServiceChangeEvent extends Event {
 	/**
 	 * The previous breakpoint
 	 */
-	old:Breakpoint;
-
+	old: Breakpoint;
+	
 	/**
 	 * The new breakpoint
 	 */
-	new:Breakpoint;
+	new: Breakpoint;
 }
