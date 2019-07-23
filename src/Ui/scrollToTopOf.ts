@@ -15,26 +15,25 @@
  *
  * Last modified: 2019.02.01 at 15:10
  */
-import {merge} from "../Lists/merge";
-import {scrollToPosition} from "./scrollToPosition";
-import {isNumber} from "../Types/isNumber";
-import {isUndefined} from "../Types/isUndefined";
-import {isObject} from "../Types/isObject";
-import {PlainObject} from "../Interfaces/PlainObject";
 import {getOffset} from "../Dom/getOffset";
-import {isEmpty} from "../Types/isEmpty";
+import {PlainObject} from "../Interfaces/PlainObject";
+import {merge} from "../Lists/merge";
+import {isNumber} from "../Types/isNumber";
+import {isObject} from "../Types/isObject";
+import {isUndefined} from "../Types/isUndefined";
+import {scrollToPosition} from "./scrollToPosition";
 
 interface ScrollToTopOfConfiguration extends PlainObject {
 	/**
 	 * The speed in milliseconds the scroll operation should take
 	 */
 	duration?: number;
-
+	
 	/**
 	 * The offset to the top of the page when scrolling up
 	 */
 	offset?: number;
-
+	
 	/**
 	 * If set this will be used as as scroll container instead of the "window"
 	 */
@@ -71,16 +70,12 @@ export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration
  */
 
 export function scrollToTopOf(target?: HTMLElement, options?: ScrollToTopOfConfiguration) {
-
-	// Check if we should scroll up to 0
-	if (isEmpty(target)) return scrollToPosition(0);
-
 	// Prepare options
 	if (isUndefined(options)) options = {};
 	if (!isNumber(options.duration)) options.duration = config.duration;
 	if (!isNumber(options.offset)) options.offset = config.offset;
 	if (!isObject(options.container)) options.container = config.container;
-
+	
 	// Scroll there
 	const offset = getOffset(target, (options.container !== window ? options.container as HTMLElement : undefined));
 	const position = Math.max(0, offset.top - options.offset);
