@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.6.2](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.6.2%0Dv3.6.1#diff) (2019-07-23)
+
+
+### Bug Fixes
+
+* **ScrollToTopOf:** fix broken container lookup ([9a34f52](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/9a34f52))
+
+
+
 ## [3.6.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.6.1%0Dv3.6.0#diff) (2019-07-23)
 
 
