@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.6.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.6.1%0Dv3.6.0#diff) (2019-07-23)
+
+
+### Bug Fixes
+
+* **ScrollToTopOf:** apply options even if no target is given ([010398b](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/010398b))
+
+
+
 # [3.6.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.6.0%0Dv3.5.1#diff) (2019-07-22)
 
 
