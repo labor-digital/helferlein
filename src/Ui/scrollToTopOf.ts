@@ -70,7 +70,7 @@ export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration
  *            - container: (Default null) The container to scroll instead of the window
  */
 
-export function scrollToTopOf(target?: HTMLElement, options?: ScrollToTopOfConfiguration) {
+export function scrollToTopOf(target?: HTMLElement | null, options?: ScrollToTopOfConfiguration) {
 	// Prepare options
 	if (isUndefined(options)) options = {};
 	if (!isNumber(options.duration)) options.duration = config.duration;
@@ -78,8 +78,12 @@ export function scrollToTopOf(target?: HTMLElement, options?: ScrollToTopOfConfi
 	if (!isObject(options.container)) options.container = config.container;
 	if (isEmpty(options.container)) options.container = window;
 	
+	// Get the element's offset
+	const offset =
+		isEmpty(target) ? {top: 0} :
+			getOffset(target, (options.container !== window ? options.container as HTMLElement : undefined));
+	
 	// Scroll there
-	const offset = getOffset(target, (options.container !== window ? options.container as HTMLElement : undefined));
 	const position = Math.max(0, offset.top - options.offset);
 	return scrollToPosition(position, options.duration, options.container);
 }
