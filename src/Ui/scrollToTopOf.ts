@@ -18,6 +18,7 @@
 import {getOffset} from "../Dom/getOffset";
 import {PlainObject} from "../Interfaces/PlainObject";
 import {merge} from "../Lists/merge";
+import {isEmpty} from "../Types/isEmpty";
 import {isNumber} from "../Types/isNumber";
 import {isObject} from "../Types/isObject";
 import {isUndefined} from "../Types/isUndefined";
@@ -75,6 +76,7 @@ export function scrollToTopOf(target?: HTMLElement, options?: ScrollToTopOfConfi
 	if (!isNumber(options.duration)) options.duration = config.duration;
 	if (!isNumber(options.offset)) options.offset = config.offset;
 	if (!isObject(options.container)) options.container = config.container;
+	if (isEmpty(options.container)) options.container = window;
 	
 	// Scroll there
 	const offset = getOffset(target, (options.container !== window ? options.container as HTMLElement : undefined));
