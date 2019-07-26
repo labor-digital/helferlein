@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.7.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.7.0%0Dv3.6.3#diff) (2019-07-26)
+
+
+### Features
+
+* add new isNumeric helper + test ([f98d16b](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/f98d16b))
+
+
+
 ## [3.6.3](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.6.3%0Dv3.6.2#diff) (2019-07-23)
 
 
