@@ -16,37 +16,39 @@
  * Last modified: 2019.02.06 at 12:03
  */
 
-import {isString} from "../Types/isString";
 import {isObject} from "../Types/isObject";
+import {isString} from "../Types/isString";
 
 /**
  * This helper receives a html element and extracts either a single,
  * or all data attributes from it. It can also accept a default, which
  * is returned if the given element has no data with the required selector
  *
- * @param element
- * @param selector
- * @param fallback
+ * @param element The html element to get the data from
+ * @param selector Optionally, the name of the data attribute to read from (data-)some-attribute. (The data- part is optional)
+ * @param fallback Optional value which will be returned if the data attribute for the selector was not found
  */
 export function getData(element: HTMLElement, selector?: string, fallback?: any) {
 	if (!isObject(element)) return undefined;
-
+	
 	// Auto convert json objects
-	function getDataConverter(value:any){
-		if(isString(value)){
+	function getDataConverter(value: any) {
+		if (isString(value)) {
 			try {
 				return JSON.parse(value);
-			} catch (e) {}
+			} catch (e) {
+			}
 		}
 		return value;
 	}
+	
 	// Load a single selector
 	if (isString(selector)) {
 		selector = "data-" + selector.trim().replace(/^data-/, "");
 		if (!element.hasAttribute(selector)) return fallback;
 		return getDataConverter(element.getAttribute(selector));
 	}
-
+	
 	// Load all data values of element
 	// Courtesy of https://stackoverflow.com/a/18540799
 	var dataset = {};
