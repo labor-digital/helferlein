@@ -20,15 +20,20 @@ import {List} from "../Interfaces/List";
 import {PlainObject} from "../Interfaces/PlainObject";
 import {forEach} from "../Lists/forEach";
 import {getPageStorage} from "../Misc/getPageStorage";
+import {isBool} from "../Types/isBool";
+import {isNull} from "../Types/isNull";
+import {isObject} from "../Types/isObject";
 import {isUndefined} from "../Types/isUndefined";
 import {getScrollPos} from "./getScrollPos";
 
 const storage = getPageStorage();
 const isIos = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-const html = document.querySelector("html") as HTMLElement;
-const body = document.querySelector("body") as HTMLElement;
 const storageKeyStopped = "stopBodyScrolling";
 const storageKeyBackup = "stopBodyScrollingPropertyBackup";
+
+let html = null;
+let body = null;
+let forceHtmlBlocking = isIos;
 
 /**
  * Reads the current body width in pixels
@@ -44,10 +49,24 @@ function getBodyWidth(): number {
 }
 
 /**
+ * If this is set to true the html block will also have it's overflow marked as hidden.
+ * This causes jumping but is required for some sites.
+ * On IOS clients this is true by default.
+ *
+ * @param state
+ */
+export function setForceHtmlScrollBlocking(state?: boolean) {
+	forceHtmlBlocking = isBool(state) ? state : true;
+}
+
+/**
  * Helper to prevent the body from being scrolled with a fix for the ios 9 safari which is a pain...
  * @param {boolean} state True to stop the scrolling, false to re-enable it.
  */
 export function stopBodyScrolling(state?: boolean) {
+	if (isNull(html)) html = document.querySelector("html") as HTMLElement;
+	if (isNull(body)) body = document.querySelector("body") as HTMLElement;
+	
 	// Stop the scrolling
 	if (isUndefined(state) || state === true) {
 		// Ignore if already stopped
@@ -59,6 +78,7 @@ export function stopBodyScrolling(state?: boolean) {
 		
 		// Backup elements
 		const createElementStyleBackup = function (el: HTMLElement) {
+			if (!isObject(el) || isUndefined(el.style)) return {};
 			const style = el.style;
 			return {
 				overflowX: style.overflowX,
@@ -87,7 +107,7 @@ export function stopBodyScrolling(state?: boolean) {
 				el.style.height = "hidden";
 			}
 		};
-		disableElementScroll(html, true);
+		if (forceHtmlBlocking) disableElementScroll(html, true);
 		disableElementScroll(body, false);
 		
 		// Calculate difference
@@ -114,9 +134,9 @@ export function stopBodyScrolling(state?: boolean) {
 				el.style[k] = v;
 			});
 		};
-		restoreBackup(html, backup.html);
+		if (forceHtmlBlocking) restoreBackup(html, backup.html);
 		restoreBackup(body, backup.body);
-		if (isIos) window.scrollTo(0, backup.scrollPos);
+		if (forceHtmlBlocking) window.scrollTo(0, backup.scrollPos);
 		
 		// Reset fixed elements
 		forEach(document.querySelectorAll("*[data-stop-body-scrolling-fixed]") as List, (element: HTMLElement) => {
