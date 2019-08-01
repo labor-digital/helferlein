@@ -84,13 +84,13 @@ test("Simple set merge", () => {
 	b.add(1);
 	b.add(3);
 	b.add(4);
-
+	
 	let c = new Set();
 	c.add(1);
 	c.add(2);
 	c.add(3);
 	c.add(4);
-
+	
 	expect(merge(a, b)).toEqual(c);
 });
 
@@ -103,14 +103,14 @@ test("Recursive set merge", () => {
 	b.add(1);
 	b.add([2, 3, 4]);
 	b.add(4);
-
+	
 	let c = new Set();
 	c.add(1);
 	c.add([1, 2]);
 	c.add(3);
 	c.add([2, 3, 4]);
 	c.add(4);
-
+	
 	expect(merge(a, b)).toEqual(c);
 });
 
@@ -122,14 +122,14 @@ test("Simple map merge", () => {
 	b.set(2, 1);
 	b.set(3, 3);
 	b.set(4, 4);
-
+	
 	let c = new Map();
 	c.set(0, 1);
 	c.set(1, 2);
 	c.set(2, 1);
 	c.set(3, 3);
 	c.set(4, 4);
-
+	
 	expect(merge(a, b)).toEqual(c);
 });
 
@@ -138,7 +138,7 @@ test("Recursive map merge", () => {
 	a.set(0, 1);
 	a.set(1, 2);
 	a.set(2, new Map());
-
+	
 	let b = new Map();
 	b.set(2, {
 		"foo": [123],
@@ -147,23 +147,71 @@ test("Recursive map merge", () => {
 	});
 	b.set(3, 3);
 	b.set(4, 4);
-
+	
 	let c = {
 		2: [2, 4]
 	};
-
+	
 	let d1 = new Map();
 	d1.set("foo", [123]);
 	d1.set("bar", "baz");
 	d1.set(0, 2);
 	d1.set(1, 4);
-
+	
 	let d = new Map();
 	d.set(0, 1);
 	d.set(1, 2);
 	d.set(2, d1);
 	d.set(3, 3);
 	d.set(4, 4);
-
+	
 	expect(merge(a, b, c)).toEqual(d);
+});
+
+test("merge of nested objects", () => {
+	const a = {
+		a: {
+			a: {
+				a: 1
+			},
+			b: {
+				a: 1
+			},
+			c: {
+				a: 1
+			}
+		},
+		b: {
+			b: {
+				b: 2
+			}
+		}
+	};
+	const b = {
+		a: {
+			a: {
+				b: 123
+			}
+		}
+	};
+	const c = {
+		a: {
+			a: {
+				a: 1,
+				b: 123
+			},
+			b: {
+				a: 1
+			},
+			c: {
+				a: 1
+			}
+		},
+		b: {
+			b: {
+				b: 2
+			}
+		}
+	};
+	expect(merge(a, b)).toEqual(c);
 });
