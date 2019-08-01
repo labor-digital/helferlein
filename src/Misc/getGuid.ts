@@ -16,13 +16,16 @@
  * Last modified: 2019.02.01 at 13:32
  */
 import {isString} from "../Types/isString";
+import {getPageStorage} from "./getPageStorage";
 
-let guid = 0;
+const storage = getPageStorage();
 
 /**
  * Returns a globally unique, numeric id as a string
  * @param prefix
  */
-export function getGuid(prefix?:string):string {
-	return (isString(prefix) ? prefix : "") + guid++
+export function getGuid(prefix?: string): string {
+	let guid = storage.get("guid", 0) + 1;
+	storage.set("guid", guid);
+	return (isString(prefix) ? prefix : "") + guid;
 }
