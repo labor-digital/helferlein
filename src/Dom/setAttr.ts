@@ -45,7 +45,8 @@ export function setAttr(element: HTMLElement | NodeListOf<Element>, attributeNam
 	if (isString(value)) valueString = value as string;
 	else if (isBool(value)) valueString = value ? "TRUE" : "FALSE";
 	else if (isNumber(value)) valueString = value + "";
+	else if (!isUndefined(value)) valueString = JSON.stringify(value);
 	if (isUndefined((element as NodeListOf<Element>).length))
 		setAttrSetter(element as HTMLElement, attributeName, valueString);
-	forEach(element, (e) => setAttrSetter(e, attributeName, valueString));
+	else forEach(element, (e) => setAttrSetter(e, attributeName, valueString));
 }
