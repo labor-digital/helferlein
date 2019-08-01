@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.8.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.8.0%0Dv3.7.0#diff) (2019-08-01)
+
+
+### Bug Fixes
+
+* **setAttr:** fix overlap when multiple elements were given ([61af387](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/61af387))
+
+
+### Features
+
+* **getGuid:** make sure the guid is unique across multiple instances of this library ([ed6a957](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/ed6a957))
+* **makeOptions:** add makeOptions helper to validate complex objects with ease ([a9d4ef6](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/a9d4ef6))
+* **setData:** add helper to set data attributes on a dom element ([827e887](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/827e887))
+* **stopBodyScrolling:** make the scroll blocking more reliable across multiple browsers ([3548780](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/3548780))
+
+
+
 # [3.7.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.7.0%0Dv3.6.3#diff) (2019-07-26)
 
 
