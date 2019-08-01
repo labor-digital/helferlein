@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.8.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.8.1%0Dv3.8.0#diff) (2019-08-01)
+
+
+### Bug Fixes
+
+* **stopBodyScrolling:** disable html blocking by default and make it configurable ([e16b001](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/e16b001))
+
+
+
 # [3.8.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.8.0%0Dv3.7.0#diff) (2019-08-01)
 
 
