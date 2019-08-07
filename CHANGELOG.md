@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.9.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.9.0%0Dv3.8.1#diff) (2019-08-01)
+
+
+### Features
+
+* **getBackgroundColor:** add new helper to extract the background color of an element or its parents ([8ad69b8](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/8ad69b8))
+
+
+
 ## [3.8.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.8.1%0Dv3.8.0#diff) (2019-08-01)
 
 
