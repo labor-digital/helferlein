@@ -21,5 +21,7 @@
  * @param value
  */
 export function isIterator(value): boolean {
-	return typeof value === "object" && value != null && typeof value[Symbol.iterator] === "function";
+	if (typeof value !== "object" || value === null) return false;
+	if (typeof Symbol === "undefined") return false;
+	return typeof value[Symbol.iterator] === "function";
 }

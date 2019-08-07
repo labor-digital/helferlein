@@ -16,6 +16,7 @@
  * Last modified: 2019.01.10 at 10:02
  */
 import {List} from "../Interfaces/List";
+import {isIterator} from "../Types/isIterator";
 import {isSet} from "../Types/isSet";
 
 export interface ForEachCallbackType extends Function {
@@ -73,8 +74,12 @@ export function forEach(object: List, callback: ForEachCallbackType): void {
 		return;
 	} else if (typeof object === "object" || typeof object === "function") {
 		// Handle iterators
-		if (typeof object[Symbol.iterator] === "function") {
-			const it: Iterator<any> = object as any;
+		if (isIterator(object)) {
+			let it: Iterator<any> = object as any;
+			
+			// Check if the iterator has the next() method -> IE fix
+			if (typeof object[Symbol.iterator].next !== "function" && typeof object[Symbol.iterator] === "function")
+				it = object[Symbol.iterator]();
 			let k = 0;
 			for (let nextValue = it.next(); nextValue.done !== true; nextValue = it.next()) {
 				if (callback(nextValue.value, k++, object) === false) break;
