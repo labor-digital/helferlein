@@ -22,11 +22,11 @@
 export function moneyAsNumber(value: string | number): number {
 	if (typeof value === "number") value = value + "";
 	if (typeof value !== "string") return -1;
-
+	
 	// Try to gather the comma character
 	let comma = value.replace(/[^0-9,.]/g, "").substr(-3).replace(/[^.,]/g, "");
 	let hasComma = comma.length !== 0;
-
+	
 	// Try to find comma in numbers like 98000.00000000003
 	if (!hasComma) {
 		// Remove everything that looks like a thousand separator
@@ -38,13 +38,17 @@ export function moneyAsNumber(value: string | number): number {
 		}
 	}
 	comma = hasComma ? comma : ",";
-
+	
+	// Special handling if the comma is at the first or the last position
+	if (value.match(/^[,.]/)) value = "0" + value;
+	if (value.match(/[,.]$/)) value = value + "0";
+	
 	// Clean up the input
 	var commaPosition = value.split("").reverse().join("").indexOf(comma);
 	var decimal = hasComma ? value.substr(-commaPosition) : "00";
 	value = hasComma ? value.substr(0, value.length - (commaPosition)) : value;
 	value = value.replace(/[^0-9]/g, "");
-
+	
 	// Done
 	return parseFloat(value + "." + decimal);
 }

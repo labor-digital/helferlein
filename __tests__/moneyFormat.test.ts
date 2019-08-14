@@ -30,8 +30,12 @@ test("moneyAsNumber", () => {
 	expect(moneyAsNumber("1,50")).toBe(1.5);
 	expect(moneyAsNumber("10.5")).toBe(10.5);
 	expect(moneyAsNumber("10.50")).toBe(10.5);
+	expect(moneyAsNumber("10,5")).toBe(10.5);
+	expect(moneyAsNumber("10,")).toBe(10);
+	expect(moneyAsNumber("1240.")).toBe(1240);
+	expect(moneyAsNumber(".5")).toBe(0.5);
 	// Test if invalid values will propperly handled
-	let tmp:any = 1.5;
+	let tmp: any = 1.5;
 	expect(moneyAsNumber(tmp)).toBe(1.5);
 	tmp = null;
 	expect(moneyAsNumber(tmp)).toBe(-1);
@@ -46,7 +50,7 @@ test("numberAsMoney", () => {
 	expect(numberAsMoney(1000, true)).toBe("1.000");
 	expect(numberAsMoney(1, true)).toBe("1");
 	// Test if invalid values will propperly handled
-	let tmp:any = "foo";
+	let tmp: any = "foo";
 	expect(numberAsMoney(tmp)).toBe("ERR");
 	tmp = "1.5";
 	expect(numberAsMoney(tmp)).toBe("1,50");
