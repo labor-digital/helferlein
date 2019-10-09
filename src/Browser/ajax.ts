@@ -15,6 +15,7 @@
  *
  * Last modified: 2019.02.04 at 14:11
  */
+import {isBrowser} from "../Environment/isBrowser";
 import {PlainObject} from "../Interfaces/PlainObject";
 import {forEach} from "../Lists/forEach";
 import {isEmpty} from "../Types/isEmpty";
@@ -129,6 +130,7 @@ function prepareData(data, asGet: boolean) {
  * @param request
  */
 export function ajax(request: AjaxRequest): Promise<AjaxResponse> {
+	if (!isBrowser()) throw new Error("ajax() only works in browsers!");
 	if (!isPlainObject(request)) throw new Error("Invalid request object given!");
 	request.type = !isString(request.type) ? "get" : request.type.trim().toLowerCase() as any;
 	if (!isNumber(request.timeout)) request.timeout = 0;

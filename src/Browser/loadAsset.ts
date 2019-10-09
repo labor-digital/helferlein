@@ -15,8 +15,9 @@
  *
  * Last modified: 2019.01.22 at 18:02
  */
-import {isPlainObject} from "../Types/isPlainObject";
+import {isBrowser} from "../Environment/isBrowser";
 import {isNumber} from "../Types/isNumber";
+import {isPlainObject} from "../Types/isPlainObject";
 import {isString} from "../Types/isString";
 
 interface LoadJsOptions {
@@ -24,7 +25,7 @@ interface LoadJsOptions {
 	 * The timeout in milliseconds after which the promise should fail
 	 */
 	timeout?: number,
-
+	
 	/**
 	 * The type of asset to load
 	 */
@@ -43,12 +44,13 @@ const loadedJs: Map<string, Promise<string>> = new Map();
  * @param options
  */
 export function loadAsset(url: string, options?: LoadJsOptions): Promise<string> {
+	if (!isBrowser()) throw new Error("loadAsset() only works in browsers!");
 	if (loadedJs.has(url)) return loadedJs.get(url);
 	if (!isPlainObject(options)) options = {};
 	const promise = new Promise<string>((resolve, reject) => {
 		const timeoutTime = isNumber(options.timeout) ? options.timeout : 2000;
 		const timeout = setTimeout(() => reject("Timeout after " + timeoutTime + "ms."), timeoutTime);
-
+		
 		(new Promise(resolve1 => {
 			const elType = isString(options.type) && options.type === "css" ? "css" : "js";
 			let el;
@@ -68,12 +70,12 @@ export function loadAsset(url: string, options?: LoadJsOptions): Promise<string>
 			el.onerror = (e) => {
 				reject("An error occured while loading: \"" + url + "\"");
 			};
-
+			
 		}).then(() => {
 			clearTimeout(timeout);
 			resolve(url);
 		}));
-
+		
 	});
 	loadedJs.set(url, promise);
 	return promise;

@@ -16,18 +16,22 @@
  * Last modified: 2019.01.31 at 15:38
  */
 
+import {isBrowser} from "../Environment/isBrowser";
+
 /**
  * This part is mostly stolen and only slightly modified
  * to avoid global pollution
  * Original source: https://gist.github.com/paulirish/1579671#file-raf-js-L11
  */
 var lastTime = 0;
-const vendors = ["ms", "moz", "webkit", "o"];
 let req = null;
 let can = null;
-for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-	req = window[vendors[x] + "RequestAnimationFrame"].bind(window);
-	can = window[vendors[x] + "CancelAnimationFrame"].bind(window) || window[vendors[x] + "CancelRequestAnimationFrame"].bind(window);
+if (isBrowser()) {
+	const vendors = ["ms", "moz", "webkit", "o"];
+	for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+		req = window[vendors[x] + "RequestAnimationFrame"].bind(window);
+		can = window[vendors[x] + "CancelAnimationFrame"].bind(window) || window[vendors[x] + "CancelRequestAnimationFrame"].bind(window);
+	}
 }
 if (req === null)
 	req = function (callback, element) {

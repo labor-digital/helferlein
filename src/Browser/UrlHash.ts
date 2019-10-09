@@ -15,6 +15,7 @@
  *
  * Last modified: 2019.01.25 at 18:37
  */
+import {isBrowser} from "../Environment/isBrowser";
 import {EventBus} from "../Events/EventBus";
 import {asArray} from "../FormatAndConvert/asArray";
 import {PlainObject} from "../Interfaces/PlainObject";
@@ -90,6 +91,7 @@ export class UrlHash {
 	 * The hash is expected to look like #/key/value/key2/value2
 	 */
 	protected static parseFromUrl(): PlainObject {
+		if (!isBrowser()) return {};
 		if (window.location.hash === knownHash) return hashCache;
 		if (window.location.hash === "") return {};
 		if (window.location.hash.indexOf("/") === -1) return {};
@@ -116,6 +118,7 @@ export class UrlHash {
 	 * @param hash
 	 */
 	protected static update(hash: PlainObject): void {
+		if (!isBrowser()) return;
 		if (isEmpty(hash)) {
 			EventBus.emit("hash__update", {new: ""});
 			window.location.hash = "/";
