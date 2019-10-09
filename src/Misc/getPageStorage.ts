@@ -15,16 +15,23 @@
  *
  * Last modified: 2019.01.11 at 18:39
  */
-import {isUndefined} from "../Types/isUndefined";
-import {PlainObject} from "../Interfaces/PlainObject";
-import {isString} from "../Types/isString";
 import {GenericStorage} from "../Entities/GenericStorage";
+import {isBrowser} from "../Environment/isBrowser";
+import {PlainObject} from "../Interfaces/PlainObject";
+import {isNull} from "../Types/isNull";
+import {isString} from "../Types/isString";
+import {isUndefined} from "../Types/isUndefined";
 
 declare global {
 	interface Window {
-		HELFERLEIN_GLOBAL_STORAGE?:PlainObject
+		HELFERLEIN_GLOBAL_STORAGE?: PlainObject
 	}
 }
+
+/**
+ * A fallback local storage if this script is not called from a browser.
+ */
+let fallbackStorage = null;
 
 /**
  * Provides access to a storage object on the window scope. Means multiple libraries may interact
@@ -35,11 +42,16 @@ declare global {
  *
  * @param namespace
  */
-export function getPageStorage(namespace?:string):GenericStorage {
-	if(isUndefined(window.HELFERLEIN_GLOBAL_STORAGE))
+export function getPageStorage(namespace?: string): GenericStorage {
+	if (!isBrowser()) {
+		if (isNull(fallbackStorage)) fallbackStorage = new GenericStorage();
+		return fallbackStorage;
+	}
+	
+	if (isUndefined(window.HELFERLEIN_GLOBAL_STORAGE))
 		window.HELFERLEIN_GLOBAL_STORAGE = {};
-	if(!isString(namespace)) namespace = "storage-" + (Math.random() + "").replace(/[^0-9]/g, "");
-	if(isUndefined(window.HELFERLEIN_GLOBAL_STORAGE[namespace]))
+	if (!isString(namespace)) namespace = "storage-" + (Math.random() + "").replace(/[^0-9]/g, "");
+	if (isUndefined(window.HELFERLEIN_GLOBAL_STORAGE[namespace]))
 		window.HELFERLEIN_GLOBAL_STORAGE[namespace] = new GenericStorage();
 	return window.HELFERLEIN_GLOBAL_STORAGE[namespace];
 }

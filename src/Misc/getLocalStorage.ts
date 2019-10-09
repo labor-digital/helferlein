@@ -16,9 +16,16 @@
  * Last modified: 2019.01.11 at 18:53
  */
 import {GenericStorage} from "../Entities/GenericStorage";
+import {isBrowser} from "../Environment/isBrowser";
 import {isString} from "../Types/isString";
 import {isUndefined} from "../Types/isUndefined";
 import {getPageStorage} from "./getPageStorage";
+
+/**
+ * A fallback local storage if this script is not called from a browser,
+ * or a browser that does not support the local storage object
+ */
+let fallbackStorage = null;
 
 /**
  * Adapter to connect a GenericStorage object to the window.localStorage API.
@@ -30,10 +37,10 @@ import {getPageStorage} from "./getPageStorage";
  * @param namespace
  */
 export function getLocalStorage(namespace?: string): GenericStorage {
-	if (isUndefined(window.localStorage)) {
-		console.error("Your browser does not support the localStorage API!");
-		return new GenericStorage();
-	}
+	if (!isBrowser() || isUndefined(window.localStorage))
+		if (fallbackStorage === null) return fallbackStorage = new GenericStorage();
+		else return fallbackStorage;
+	
 	if (!isString(namespace)) namespace = "general";
 	namespace = "helferlein." + namespace;
 	
