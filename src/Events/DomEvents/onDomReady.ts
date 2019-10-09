@@ -15,6 +15,7 @@
  *
  * Last modified: 2019.04.02 at 13:25
  */
+import {isBrowser} from "../../Environment/isBrowser";
 import {isFunction} from "../../Types/isFunction";
 
 /**
@@ -23,7 +24,7 @@ import {isFunction} from "../../Types/isFunction";
  * @param listener
  */
 export function onDomReady(listener: Function) {
-	if (document.readyState !== "loading") listener();
+	if (!isBrowser() || document.readyState !== "loading") listener();
 	else if (document.addEventListener) document.addEventListener("DOMContentLoaded", listener as any);
 	else if (isFunction((document as any).attachEvent)) (document as any).attachEvent("onreadystatechange", function () {
 		if (document.readyState == "complete") listener();

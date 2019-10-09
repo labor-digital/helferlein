@@ -15,16 +15,18 @@
  *
  * Last modified: 2019.02.13 at 17:42
  */
+import {isBrowser} from "../../Environment/isBrowser";
 import {throttleEvent} from "../../Ui/throttleEvent";
 import {EventBus} from "../EventBus";
 
 let isRegistered = false;
+
 /**
  * Registeres a "scroll__throttled" event which is called every time
  * the window is resized, but which has a debounce rate of 150ms
  */
-export function registerEventScrollThrottled():void {
-	if(isRegistered) return;
+export function registerEventScrollThrottled(): void {
+	if (!isBrowser() || isRegistered) return;
 	isRegistered = true;
 	window.addEventListener("scroll", throttleEvent((e) => {
 		EventBus.emit("scroll__throttled", {parent: e});

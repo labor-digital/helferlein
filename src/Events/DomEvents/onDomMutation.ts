@@ -16,6 +16,8 @@
  * Last modified: 2019.04.02 at 15:57
  */
 
+import {isBrowser} from "../../Environment/isBrowser";
+
 /**
  * Creates a mutation observer for a given target object
  * Every time a mutation occurs the supplied callback will be executed
@@ -23,6 +25,14 @@
  * @param callback
  */
 export function onDomMutation(target: HTMLElement, callback: Function): MutationObserver {
+	if (!isBrowser()) return {
+		observe(target: Node, options?: MutationObserverInit): void {
+		},
+		disconnect(): void {
+		},
+		takeRecords(): any {
+		}
+	};
 	const observer = new MutationObserver((mutations: MutationRecord[], observer: MutationObserver) => {
 		callback({target, mutations, observer});
 	});
