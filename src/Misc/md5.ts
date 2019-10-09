@@ -15,9 +15,11 @@
  *
  * Last modified: 2019.01.09 at 11:10
  */
+
+import {isNode} from "../Environment/isNode";
+
 let k = [], i = 0;
-for (; i < 64;)
-{
+for (; i < 64;) {
 	k[i] = 0 | (Math.abs(Math.sin(++i)) * 4294967296);
 }
 
@@ -34,8 +36,10 @@ for (; i < 64;)
  * @param value
  * @return {string}
  */
-export function md5(value: number | string): string
-{
+export function md5(value: number | string): string {
+	// Shortcut if we are in a node environment
+	if (isNode()) return require("crypto").createHash("md5").update(value).digest("hex");
+	
 	let str: any = value + "";
 	var b, c, d, j,
 		x = [],
@@ -50,10 +54,9 @@ export function md5(value: number | string): string
 	i = 0;
 	
 	// Kudos to the author, thsi is some crazy shit o.O
-	for (; i < str; i += 16)
-	{
+	for (; i < str; i += 16) {
 		for (a = h, j = 0; j < 64;) a = [d = a[3], (b = 0 | a[1]) + ((d = a[0] + [b & (c = a[2]) | ~b & d, d & b | ~d & c, b ^ c ^ d, c ^ (b | ~d)][a = j >> 4] + (k[j] + (0 | x[[j, 5 * j + 1, 3 * j + 5, 7 * j][a] % 16 + i]))) << (a = [7, 12, 17, 22, 5, 9, 14, 20, 4, 11, 16, 23, 6, 10, 15, 21][4 * a + j++ % 4]) | d >>> 32 - a), b, c];
-		for (j = 4; j;) h[--j] = h[j] + a[j]
+		for (j = 4; j;) h[--j] = h[j] + a[j];
 	}
 	
 	str = "";
