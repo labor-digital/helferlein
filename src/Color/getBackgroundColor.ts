@@ -16,6 +16,7 @@
  * Last modified: 2019.08.01 at 18:23
  */
 
+import {isBrowser} from "../Environment/isBrowser";
 import {isNull} from "../Types/isNull";
 import {isUndefined} from "../Types/isUndefined";
 import {RgbColor} from "./Color.interfaces";
@@ -31,6 +32,7 @@ import {rgbStringToRgbColor} from "./rgbStringToRgbColor";
  * @param el
  */
 export function getBackgroundColor(el: HTMLElement): RgbColor | null {
+	if (!isBrowser()) return null;
 	let backgroundColor = null;
 	while (el) {
 		const backgroundColorLocal = window.getComputedStyle(el).backgroundColor;
