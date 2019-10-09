@@ -39,26 +39,22 @@ import {
 // The list of allowed keys inside a definition object
 const ALLOWED_DEFINITION_KEYS = ["default", "validator", "preFilter", "filter", "type", "children", "values"];
 
-// The list of type validations you may use
-enum TypeValidationTypes {
-	number, string, array, object, plainObject, bool, numeric, true, false, callable, undefined, null
-}
-
 // The map of string types to the numeric equivalent
 const LIST_TYPE_MAP = {
-	boolean: TypeValidationTypes.bool,
-	bool: TypeValidationTypes.bool,
-	number: TypeValidationTypes.number,
-	numeric: TypeValidationTypes.numeric,
-	string: TypeValidationTypes.string,
-	array: TypeValidationTypes.array,
-	object: TypeValidationTypes.object,
-	plainobject: TypeValidationTypes.plainObject,
-	true: TypeValidationTypes.true,
-	false: TypeValidationTypes.false,
-	callable: TypeValidationTypes.callable,
-	undefined: TypeValidationTypes.undefined,
-	"null": TypeValidationTypes.null
+	boolean: 0,
+	bool: 1,
+	number: 2,
+	numeric: 3,
+	string: 4,
+	array: 5,
+	object: 6,
+	plainObject: 7,
+	plainobject: 7,
+	true: 8,
+	false: 9,
+	callable: 10,
+	undefined: 11,
+	"null": 12
 };
 
 export class OptionApplier {
@@ -237,7 +233,7 @@ export class OptionApplier {
 		if (!isArray(types)) throw new Error("Error at \"" + path.join(".") + "\" - The type definition has to be an array or a string");
 		
 		// Build internal list
-		const typeList = new Set();
+		const typeList: Set<number> = new Set();
 		forEach(types as Array<MakeOptionTypes>, (type: string) => {
 			type = type.toLowerCase().trim();
 			if (!isUndefined(LIST_TYPE_MAP[type])) typeList.add(LIST_TYPE_MAP[type]);
@@ -328,40 +324,40 @@ export class OptionApplier {
 		let valid = false;
 		forEach(types, (type: number) => {
 			switch (type) {
-				case TypeValidationTypes.number:
+				case LIST_TYPE_MAP.number:
 					if (isNumber(v)) valid = true;
 					break;
-				case TypeValidationTypes.numeric:
+				case LIST_TYPE_MAP.numeric:
 					if (isNumeric(v)) valid = true;
 					break;
-				case TypeValidationTypes.string:
+				case LIST_TYPE_MAP.string:
 					if (typeof v === "string") valid = true;
 					break;
-				case TypeValidationTypes.array:
+				case LIST_TYPE_MAP.array:
 					if (isArray(v)) valid = true;
 					break;
-				case TypeValidationTypes.object:
+				case LIST_TYPE_MAP.object:
 					if (isObject(v)) valid = true;
 					break;
-				case TypeValidationTypes.plainObject:
+				case LIST_TYPE_MAP.plainObject:
 					if (isPlainObject(v)) valid = true;
 					break;
-				case TypeValidationTypes.undefined:
+				case LIST_TYPE_MAP.undefined:
 					if (isUndefined(v)) valid = true;
 					break;
-				case TypeValidationTypes.callable:
+				case LIST_TYPE_MAP.callable:
 					if (isFunction(v)) valid = true;
 					break;
-				case TypeValidationTypes.bool:
+				case LIST_TYPE_MAP.bool:
 					if (typeof v === "boolean") valid = true;
 					break;
-				case TypeValidationTypes.true:
+				case LIST_TYPE_MAP.true:
 					if (v === true) valid = true;
 					break;
-				case TypeValidationTypes.false:
+				case LIST_TYPE_MAP.false:
 					if (v === false) valid = true;
 					break;
-				case TypeValidationTypes.null:
+				case LIST_TYPE_MAP.null:
 					if (v === null) valid = true;
 					break;
 			}
