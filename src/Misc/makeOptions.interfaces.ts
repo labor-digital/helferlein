@@ -30,7 +30,8 @@ export type MakeOptionTypes =
 	| "callable"
 	| "undefined"
 	| "object"
-	| "plainObject";
+	| "plainObject"
+	| string;
 
 export interface MakeOptionsOptions {
 	/**
