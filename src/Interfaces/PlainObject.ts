@@ -18,6 +18,6 @@
 /**
  * Defines the interface of a plain javascript object
  */
-export interface PlainObject {
-	[key: string]: any
+export interface PlainObject<T = any> {
+	[key: string]: T
 }
