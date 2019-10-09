@@ -25,7 +25,7 @@ let isBrowserCache = null;
  */
 export function isBrowser(): boolean {
 	if (isBrowserCache !== null) return isBrowserCache;
-	return isBrowserCache === !isNode() &&
+	return isBrowserCache = !isNode() &&
 		typeof window !== "undefined" &&
 		typeof window.document !== "undefined";
 }
