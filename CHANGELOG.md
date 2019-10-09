@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.9.2](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.9.2%0Dv3.9.1#diff) (2019-08-14)
+
+
+### Bug Fixes
+
+* **moneyAsNumber:** make sure money values with a comma at the beginning or the end are parsed correctly ([b88312b](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/b88312b))
+
+
+
 ## [3.9.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.9.1%0Dv3.9.0#diff) (2019-08-07)
 
 
