@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.10.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.10.0%0Dv3.9.2#diff) (2019-10-09)
+
+
+### Bug Fixes
+
+* **Browser:** avoid crashing when browser helpers are called in a non-browser environment ([0e404da](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/0e404da))
+* **DomEvents:** avoid crashing when dom event helpers are called in a non-browser environment ([14f4893](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/14f4893))
+* **getBackgroundColor:** avoid crashing when the background color of an element is requested in a non-browser environment ([543db4b](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/543db4b))
+* **makeOptions:** allow generic string as "type" to avoid strange typescript errors ([2dd5138](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/2dd5138))
+* testing for an iOs bug I can only test in production ([446c481](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/446c481))
+* **makeOptions:** simplify the type map and fix typescript issue ([c8fc72e](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/c8fc72e))
+
+
+### Features
+
+* add fallbacks to getLocalStorage() and getPageStorage() to make both functions independent of the browser's window object. ([8666bf5](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/8666bf5))
+* add new helpers to check if the script runs in a browser or on a node server ([b2fb73d](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/b2fb73d))
+* **Events:** add emitHook() for sequential event listener execution and event priorities ([1260591](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/1260591))
+* **md5:** add node js shortcut for md5 generation ([dc874c2](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/dc874c2))
+* **PlainObject:** allow the plain object type to have a defined subtype ([5998242](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/5998242))
+* update dependencies ([a72dcef](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/a72dcef))
+
+
+
 ## [3.9.2](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.9.2%0Dv3.9.1#diff) (2019-08-14)
 
 
