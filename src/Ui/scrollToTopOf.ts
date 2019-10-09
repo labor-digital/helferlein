@@ -85,5 +85,7 @@ export function scrollToTopOf(target?: HTMLElement | null, options?: ScrollToTop
 	
 	// Scroll there
 	const position = Math.max(0, offset.top - options.offset);
+	// @todo remove this after ios test!
+	console.log(offset.top, options.offset, position);
 	return scrollToPosition(position, options.duration, options.container);
 }

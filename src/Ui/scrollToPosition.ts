@@ -15,9 +15,9 @@
  *
  * Last modified: 2019.02.01 at 14:35
  */
-import {throttleEvent} from "./throttleEvent";
 import {requestFrame} from "../Browser/requestFrame";
 import {getScrollPos} from "./getScrollPos";
+import {throttleEvent} from "./throttleEvent";
 
 // The number of milliseconds for each frame / tick
 const tickLength = 15;
@@ -44,47 +44,51 @@ export function scrollToPosition(position: number, duration?: number, container?
 	// Make sure we break if a new animation was started
 	const localAnimation = Math.random();
 	runningAnimation = localAnimation;
-
+	
 	// Prepare input values
 	duration = duration || (duration === 0 ? 0 : 300);
 	container = container || window;
 	const containerIsWindow = container === window;
-
-	// Start promis chain
+	
+	// Start promise chain
 	return new Promise(resolve => {
 		const ticks = Math.floor(duration / tickLength);
 		let c = 1;
-
-
+		
+		
 		// Helper to set the scroll value
 		const setScrollPos = function (pos) {
+			// @todo remove this after ios test!
+			console.log("set scroll pos to", pos);
 			if (containerIsWindow) (container as Window).scrollTo(0, pos);
 			else (container as HTMLElement).scrollTop = pos;
 		};
-
+		
 		// Prepare calculation
 		const initialPosition = getScrollPos(container as HTMLElement);
 		const distance = position - initialPosition;
-
+		// @todo remove this after ios test!
+		console.log("scrolling from", initialPosition, "to", position, "distance", distance);
+		
 		// Duration is zero -> No animation
 		if (duration === 0) {
 			setScrollPos(position);
 			resolve(container);
 		}
-
+		
 		// Nothing to do
 		if (distance === 0) return resolve(container);
-
+		
 		// Marker to detect if the user changed our expected scroll position
 		let expectedPosition = Math.ceil(initialPosition);
-
+		
 		// The animation loop
 		const tick = function () {
 			// Break if another animation was started or something else scrolled
 			if (localAnimation !== runningAnimation || (expectedPosition !== Math.ceil(getScrollPos(container as HTMLElement)))) {
 				return resolve(container);
 			}
-
+			
 			// Check if there is still work to do
 			if (c < ticks) {
 				const p = easing(c / ticks);
@@ -95,11 +99,11 @@ export function scrollToPosition(position: number, duration?: number, container?
 				setScrollPos(position);
 				resolve(container);
 			}
-
+			
 			// Count up
 			c++;
 		};
-
+		
 		// Start ticking
 		tick();
 	});
