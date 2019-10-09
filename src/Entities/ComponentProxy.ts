@@ -36,6 +36,10 @@ export type ComponentProxyEventTarget =
 	| EventEmitter
 	| Object;
 
+export type ComponentProxyHookTarget = GenericStorageInterface
+	| EventBus
+	| EventEmitter
+
 export interface ComponentProxyListener extends Function {
 	apply: any;
 	
@@ -245,14 +249,32 @@ export class ComponentProxy {
 	}
 	
 	/**
+	 * Emits a given hook to process the given arguments
+	 * @param target The target to trigger the event on. Either a EventBus, EventEmitter or storage object
+	 * @param event The name of the hook to emit
+	 * @param args An object of arguments which then are transferred to e.args in your callbacks
+	 * @see EventEmitter.emitHook()
+	 */
+	emitHook(target: ComponentProxyHookTarget, event: string, args: PlainObject): Promise<PlainObject> {
+		if (this.isDestroyed()) return Promise.resolve(args);
+		if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter))
+			target = (target as any).getEmitter();
+		if (isObject(target) && isFunction((target as any).emit))
+			return (target as any).emit(event, args);
+		throw new Error("Could not emit hook \"" + event + "\", because the given target is invalid!");
+	}
+	
+	/**
 	 * Binds a given listener to a certain event
 	 *
 	 * @param target The target to bind the listener to. Either a html element, the document or the EventBus class
 	 * @param event The name of the event to bind the listener to. If you use "@mutation" a MutationObserver will track
 	 *                any changes of the dom and call the listener on it
 	 * @param listener The listener which is called when the event is emitted on the given target
+	 * @param priority Default: 0, the lower the number, the earlier the execution. May be a negative value!
+	 *                    Note: This only works for event emitters and the event bus.
 	 */
-	bind(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener): ComponentProxy {
+	bind(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener, priority?: number): ComponentProxy {
 		if (this.isDestroyed()) return this;
 		
 		// Prepare the target
@@ -275,7 +297,7 @@ export class ComponentProxy {
 		
 		// Execute the binding
 		if (isObject(target) && isFunction((target as any).bind))
-			(target as any).bind(event, proxy);
+			(target as any).bind(event, proxy, priority);
 		else if (isFunction((target as HTMLElement).addEventListener)) {
 			
 			// Special event handling for @mutation

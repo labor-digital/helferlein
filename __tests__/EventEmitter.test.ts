@@ -75,6 +75,37 @@ test("Event emitter, bind and unbind", () => {
 	emitter.unbind("test", callback2);
 	emitter.emit("test");
 	expect(c).toBe(0);
+	c = 0;
+	
+	emitter.bind("test", callback1);
+	emitter.bind("test", callback2);
+	emitter.bind("test", callback3);
+	return emitter.emitHook("test", {})
+		.then(() => {
+			expect(c).toBe(111);
+			c = 0;
+			return true;
+		})
+		.then(() => {
+			emitter.unbind("test", callback3);
+			return emitter.emitHook("test", {}).then(() => {
+				expect(c).toBe(11);
+				c = 0;
+			});
+		})
+		.then(() => {
+			emitter.unbind("test", callback1);
+			return emitter.emitHook("test", {}).then(() => {
+				expect(c).toBe(10);
+				c = 0;
+			});
+		})
+		.then(() => {
+			emitter.unbind("test", callback2);
+			return emitter.emitHook("test", {}).then(() => {
+				expect(c).toBe(0);
+			});
+		});
 });
 
 test("Event emitter, stop propagation", () => {
@@ -98,9 +129,32 @@ test("Event emitter, stop propagation", () => {
 	expect(c).toBe(11);
 	c = 0;
 	
+	emitter.emitHook("test", {});
+	expect(c).toBe(11);
+	c = 0;
+	
 	emitter.unbind("test", callback2);
 	emitter.emit("test");
 	expect(c).toBe(101);
+	c = 0;
+	
+	// Test hook emitting
+	emitter.unbindAll();
+	emitter.bind("test", callback1);
+	emitter.bind("test", callback2);
+	emitter.bind("test", callback3);
+	return emitter.emitHook("test", {})
+		.then(() => {
+			expect(c).toBe(11);
+			c = 0;
+			return true;
+		}).then(() => {
+			emitter.unbind("test", callback2);
+			return emitter.emitHook("test", {})
+				.then(() => {
+					expect(c).toBe(101);
+				});
+		});
 });
 
 test("Event emitter, unbind all", () => {
@@ -135,6 +189,36 @@ test("Event emitter, unbind all", () => {
 	emitter.emit("test");
 	emitter.emit("test2");
 	expect(c).toBe(0);
+	c = 0;
+	
+	emitter.unbindAll();
+	emitter.bind("test", callback1);
+	emitter.bind("test", callback2);
+	emitter.bind("test", callback3);
+	emitter.bind("test2", callback3);
+	emitter.unbindAll("test");
+	return emitter.emitHook("test", {})
+		.then(() => {
+			expect(c).toBe(0);
+			return emitter.emitHook("test2", {}).then(() => {
+					expect(c).toBe(100);
+					c = 0;
+					return true;
+				})
+				.then(() => {
+					emitter.bind("test", callback1);
+					emitter.bind("test", callback2);
+					emitter.bind("test", callback3);
+					emitter.unbindAll();
+					return emitter.emitHook("test", {})
+						.then(() => {
+							return emitter.emitHook("test2", {}).then(() => {
+								expect(c).toBe(0);
+							});
+						});
+				});
+			
+		});
 });
 
 test("Event emitter, as callbacks", () => {
@@ -154,4 +238,9 @@ test("Event emitter, as callbacks", () => {
 	emitter.bind("test", callback3);
 	emitter.emit("test", {arg1: 1, arg2: 10});
 	expect(c).toBe(33);
+	
+	c = 0;
+	return emitter.emitHook("test", {arg1: 1, arg2: 10}).then(() => {
+		expect(c).toBe(33);
+	});
 });

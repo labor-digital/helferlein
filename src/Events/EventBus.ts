@@ -35,11 +35,29 @@ export class EventBus {
 	}
 	
 	/**
+	 * Hooks are quite similar to events and share the same namespace with them.
+	 * They however have one distinct difference when it comes to their handling.
+	 * Events are called async, you emit an event and go on. A hook however waits
+	 * for the registered listeners to finish and allows them to process the given arguments.
+	 * All listeners are executed in sequence, even if they are async and return a promise object.
+	 *
+	 * Therefore this method will always return a promise object you have to wait for.
+	 *
+	 * @param event
+	 * @param args
+	 * @see EventEmitter.emitHook()
+	 */
+	static emitHook(event: string | Array<string>, args: PlainObject): Promise<PlainObject> {
+		return emitter.emitHook(event, args);
+	}
+	
+	/**
 	 * Binds a given listener to a certain event
 	 * @param event
 	 * @param listener
+	 * @param priority Default: 0, the lower the number, the earlier the execution. May be a negative value!
 	 */
-	static bind(event: string, listener: EventEmitterEventListener): void {
+	static bind(event: string, listener: EventEmitterEventListener, priority?: number): void {
 		emitter.bind(event, listener);
 	}
 	
