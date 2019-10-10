@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.10.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.10.1%0Dv3.10.0#diff) (2019-10-09)
+
+
+
 # [3.10.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.10.0%0Dv3.9.2#diff) (2019-10-09)
 
 
