@@ -55,11 +55,8 @@ export function scrollToPosition(position: number, duration?: number, container?
 		const ticks = Math.floor(duration / tickLength);
 		let c = 1;
 		
-		
 		// Helper to set the scroll value
 		const setScrollPos = function (pos) {
-			// @todo remove this after ios test!
-			console.log("set scroll pos to", pos);
 			if (containerIsWindow) (container as Window).scrollTo(0, pos);
 			else (container as HTMLElement).scrollTop = pos;
 		};
@@ -67,8 +64,7 @@ export function scrollToPosition(position: number, duration?: number, container?
 		// Prepare calculation
 		const initialPosition = getScrollPos(container as HTMLElement);
 		const distance = position - initialPosition;
-		// @todo remove this after ios test!
-		console.log("scrolling from", initialPosition, "to", position, "distance", distance);
+		const direction = distance < 0 ? "up" : "down";
 		
 		// Duration is zero -> No animation
 		if (duration === 0) {
@@ -85,7 +81,21 @@ export function scrollToPosition(position: number, duration?: number, container?
 		// The animation loop
 		const tick = function () {
 			// Break if another animation was started or something else scrolled
-			if (localAnimation !== runningAnimation || (expectedPosition !== Math.ceil(getScrollPos(container as HTMLElement)))) {
+			if (localAnimation !== runningAnimation) return resolve(container);
+			
+			// Check if we got to our expected position
+			const actualPosition = Math.ceil(getScrollPos(container as HTMLElement));
+			if (expectedPosition !== actualPosition) {
+				// Check if we are still on the right way
+				if (direction === "up" && actualPosition > expectedPosition ||
+					direction === "down" && actualPosition < expectedPosition) {
+					// Try again, for stupid iOs
+					requestFrame(throttleEvent(tick, tickLength) as any);
+					setScrollPos(expectedPosition);
+					return;
+				}
+				
+				// No? Than there is something wrong here -> break
 				return resolve(container);
 			}
 			
