@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.10.2](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.10.2%0Dv3.10.1#diff) (2019-10-10)
+
+
+### Bug Fixes
+
+* **scrollToPosition:** scrolling now works correctly on iOs ([e709465](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/e709465))
+
+
+
 ## [3.10.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.10.1%0Dv3.10.0#diff) (2019-10-09)
 
 
