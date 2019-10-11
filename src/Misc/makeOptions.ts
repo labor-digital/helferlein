@@ -340,6 +340,7 @@ export class OptionApplier {
 					if (isObject(v)) valid = true;
 					break;
 				case LIST_TYPE_MAP.plainObject:
+				case LIST_TYPE_MAP.plainobject:
 					if (isPlainObject(v)) valid = true;
 					break;
 				case LIST_TYPE_MAP.undefined:
@@ -349,6 +350,7 @@ export class OptionApplier {
 					if (isFunction(v)) valid = true;
 					break;
 				case LIST_TYPE_MAP.bool:
+				case LIST_TYPE_MAP.boolean:
 					if (typeof v === "boolean") valid = true;
 					break;
 				case LIST_TYPE_MAP.true:
