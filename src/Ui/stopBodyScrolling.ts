@@ -16,6 +16,7 @@
  * Last modified: 2019.01.24 at 10:51
  */
 import {getData} from "../Dom/getData";
+import {isBrowser} from "../Environment/isBrowser";
 import {List} from "../Interfaces/List";
 import {PlainObject} from "../Interfaces/PlainObject";
 import {forEach} from "../Lists/forEach";
@@ -27,7 +28,7 @@ import {isUndefined} from "../Types/isUndefined";
 import {getScrollPos} from "./getScrollPos";
 
 const storage = getPageStorage();
-const isIos = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+const isIos = isBrowser() && !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 const storageKeyStopped = "stopBodyScrolling";
 const storageKeyBackup = "stopBodyScrollingPropertyBackup";
 
@@ -64,6 +65,8 @@ export function setForceHtmlScrollBlocking(state?: boolean) {
  * @param {boolean} state True to stop the scrolling, false to re-enable it.
  */
 export function stopBodyScrolling(state?: boolean) {
+	if (!isBrowser()) return;
+	
 	if (isNull(html)) html = document.querySelector("html") as HTMLElement;
 	if (isNull(body)) body = document.querySelector("body") as HTMLElement;
 	

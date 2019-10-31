@@ -16,6 +16,7 @@
  * Last modified: 2019.02.01 at 15:10
  */
 import {getOffset} from "../Dom/getOffset";
+import {isBrowser} from "../Environment/isBrowser";
 import {PlainObject} from "../Interfaces/PlainObject";
 import {merge} from "../Lists/merge";
 import {isEmpty} from "../Types/isEmpty";
@@ -41,10 +42,12 @@ interface ScrollToTopOfConfiguration extends PlainObject {
 	container?: HTMLElement | Window;
 }
 
+const isInBrowser = isBrowser();
+
 let config: ScrollToTopOfConfiguration = {
 	duration: 300,
 	offset: 0,
-	container: window
+	container: isInBrowser ? window : null
 };
 
 /**
@@ -71,6 +74,9 @@ export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration
  */
 
 export function scrollToTopOf(target?: HTMLElement | null, options?: ScrollToTopOfConfiguration) {
+	// Noop if not in browser
+	if (!isBrowser()) return;
+	
 	// Prepare options
 	if (isUndefined(options)) options = {};
 	if (!isNumber(options.duration)) options.duration = config.duration;

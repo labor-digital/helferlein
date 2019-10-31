@@ -15,6 +15,7 @@
  *
  * Last modified: 2019.02.06 at 17:56
  */
+import {isBrowser} from "../../Environment/isBrowser";
 import {onDomReady} from "../../Events/DomEvents/onDomReady";
 import {EventBus} from "../../Events/EventBus";
 import {throttleEvent} from "../throttleEvent";
@@ -26,24 +27,28 @@ import {BreakpointContext} from "./Entities/BreakpointContext";
 // Create new context
 const context = new BreakpointContext();
 
-// Listen to window resizes
-onDomReady(() => {
-	BreakpointHelpers.ensureCurrent(context);
-	window.addEventListener("resize", throttleEvent(function breakpointWindowOnResizeHandler() {
-		// Store old breakpoint
-		const oldBreakpoint = context.current;
-		
-		// Recalculate current breakpoint
-		context.current = null;
-		BreakpointHelpers.calculateCurrentBreakpoint(context);
-		
-		// Skip if the breakpoint did not change
-		if (oldBreakpoint === context.current) return;
-		
-		// Trigger event
-		EventBus.emit("breakpoint__change", {old: oldBreakpoint, new: context.current});
-	}, 200));
-});
+// Only do this if we are running in a browser
+if (isBrowser()) {
+	
+	// Listen to window resize
+	onDomReady(() => {
+		BreakpointHelpers.ensureCurrent(context);
+		window.addEventListener("resize", throttleEvent(function breakpointWindowOnResizeHandler() {
+			// Store old breakpoint
+			const oldBreakpoint = context.current;
+			
+			// Recalculate current breakpoint
+			context.current = null;
+			BreakpointHelpers.calculateCurrentBreakpoint(context);
+			
+			// Skip if the breakpoint did not change
+			if (oldBreakpoint === context.current) return;
+			
+			// Trigger event
+			EventBus.emit("breakpoint__change", {old: oldBreakpoint, new: context.current});
+		}, 200));
+	});
+}
 
 /**
  * This class utilizes the css to javascript breakpoint service provided by the "@labor/sassy" package
@@ -67,6 +72,7 @@ export class BreakpointService {
 	 * @param breakpointKey The other breakpoint to compare with the current one
 	 */
 	static bpIs(comparator: "<=" | "==" | ">=" | ">" | "<" | "!=", breakpointKey: string): boolean {
+		if (!isBrowser()) return true;
 		BreakpointHelpers.ensureCurrent(context);
 		// Skip if there are no configured breakpoints
 		if (context.current === null) return false;
@@ -102,6 +108,7 @@ export class BreakpointService {
 	 * breakpoint definition
 	 */
 	static getCurrent(): null | Breakpoint {
+		if (!isBrowser()) return null;
 		BreakpointHelpers.ensureCurrent(context);
 		return context.current;
 	}
@@ -111,6 +118,7 @@ export class BreakpointService {
 	 * @param width the number in pixels to calculate the breakpoint for
 	 */
 	static getForWidth(width: number): null | Breakpoint {
+		if (!isBrowser()) return null;
 		return BreakpointHelpers.calculateBreakpointForPixelWidth(width, context);
 	}
 	
@@ -118,6 +126,7 @@ export class BreakpointService {
 	 * Returns the list of all found breakpoints or null, if there are none
 	 */
 	static getAll(): null | Map<string, Breakpoint> {
+		if (!isBrowser()) return null;
 		BreakpointHelpers.readBreakpoints(context);
 		return context.breakpoints;
 	}
@@ -130,6 +139,8 @@ export class BreakpointService {
 	 *            - inTemplateSelector: Can be used if multi-layered templates are required to get the correct element to read the css definition from.
 	 */
 	static configure(opts: BreakpointsConfigureOptions) {
+		if (!isBrowser()) return;
+		
 		// Reset current and breakpoints
 		context.breakpoints = null;
 		context.current = null;

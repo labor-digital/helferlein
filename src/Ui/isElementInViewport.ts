@@ -15,6 +15,7 @@
  *
  * Last modified: 2019.03.31 at 19:36
  */
+import {isBrowser} from "../Environment/isBrowser";
 import {isNumber} from "../Types/isNumber";
 import {isUndefined} from "../Types/isUndefined";
 import {getScrollPos} from "./getScrollPos";
@@ -49,6 +50,7 @@ export function isElementInViewport(el: HTMLElement, offsetTop?: number): boolea
 export function isElementInViewport(el: HTMLElement, options?: IsElementInViewportOptions): boolean
 
 export function isElementInViewport(el: HTMLElement, options?: number | IsElementInViewportOptions): boolean {
+	if (!isBrowser()) return false;
 	let top = el.offsetTop;
 	let left = el.offsetLeft;
 	const width = el.offsetWidth;

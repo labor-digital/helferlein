@@ -21,10 +21,6 @@ import {isNull} from "../../Types/isNull";
 import {Breakpoint} from "./Entities/Breakpoint";
 import {BreakpointContext} from "./Entities/BreakpointContext";
 
-/**
- * Created by Martin Neundorfer on 17.10.2018.
- * For LABOR.digital
- */
 export class BreakpointHelpers {
 	
 	/**
@@ -47,7 +43,6 @@ export class BreakpointHelpers {
 	 * @param context
 	 */
 	static readBreakpoints(context: BreakpointContext): void {
-		if (!isNull(context.breakpoints)) return;
 		
 		// Add the template to the container
 		const container = document.querySelector(context.container);
@@ -73,6 +68,7 @@ export class BreakpointHelpers {
 				.trim()
 				.replace(/^(.*?):(?:[^\d]*?)(\d*?)(?:[^\d|]*?)\|(?:[^\d|]*?)(\d*?)(?:[^\d]*?)$/, (a, key, min, max) => {
 					breakpoints.set(key, new Breakpoint(id, key, parseInt(min), parseInt(max)));
+					return "";
 				});
 		});
 		

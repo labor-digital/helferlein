@@ -16,6 +16,7 @@
  * Last modified: 2019.02.01 at 14:35
  */
 import {requestFrame} from "../Browser/requestFrame";
+import {isBrowser} from "../Environment/isBrowser";
 import {getScrollPos} from "./getScrollPos";
 import {throttleEvent} from "./throttleEvent";
 
@@ -41,6 +42,9 @@ function easing(p) {
  * @param container (Default window) The container to scroll instead of the window
  */
 export function scrollToPosition(position: number, duration?: number, container?: HTMLElement | Window): Promise<HTMLElement | Window> {
+	// Noop if not in browser
+	if (!isBrowser()) return Promise.resolve(container);
+	
 	// Make sure we break if a new animation was started
 	const localAnimation = Math.random();
 	runningAnimation = localAnimation;

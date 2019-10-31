@@ -15,18 +15,19 @@
  *
  * Last modified: 2019.02.01 at 17:38
  */
-import {isUndefined} from "../Types/isUndefined";
-import {getGuid} from "../Misc/getGuid";
-import {getOffset} from "../Dom/getOffset";
-import {throttleEvent} from "./throttleEvent";
 import {addClass} from "../Dom/addClass";
+import {getOffset} from "../Dom/getOffset";
 import {removeClass} from "../Dom/removeClass";
-import {isPlainObject} from "../Types/isPlainObject";
-import {isNumber} from "../Types/isNumber";
-import {isString} from "../Types/isString";
-import {isBool} from "../Types/isBool";
-import {getScrollPos} from "./getScrollPos";
+import {isBrowser} from "../Environment/isBrowser";
 import {forEach} from "../Lists/forEach";
+import {getGuid} from "../Misc/getGuid";
+import {isBool} from "../Types/isBool";
+import {isNumber} from "../Types/isNumber";
+import {isPlainObject} from "../Types/isPlainObject";
+import {isString} from "../Types/isString";
+import {isUndefined} from "../Types/isUndefined";
+import {getScrollPos} from "./getScrollPos";
+import {throttleEvent} from "./throttleEvent";
 
 let stickyElements = [];
 
@@ -37,13 +38,13 @@ export interface StickyElementOptions {
 	 * Default: 0
 	 */
 	offset?: number
-
+	
 	/**
 	 * Can be used to disable the setting of the style attribute to fixed / top
 	 * Default: true
 	 */
 	setStyle?: boolean
-
+	
 	/**
 	 * Can be used to define the class which is applied to the element
 	 * when it should be considered "sticky"
@@ -56,12 +57,15 @@ export interface StickyElementOptions {
  * Register our scroll event listener which is used to loop over all our
  * registered elements and calculate their sticky state
  */
-window.addEventListener("scroll", throttleEvent(() => {
-	if (stickyElements.length === 0) return;
-	const scrollPos = getScrollPos();
-	for (let i = 0; i < stickyElements.length; i++)
-		checkElementState(stickyElements[i], scrollPos);
-}, 10));
+if (isBrowser()) {
+	window.addEventListener("scroll", throttleEvent(() => {
+		if (stickyElements.length === 0) return;
+		const scrollPos = getScrollPos();
+		for (let i = 0; i < stickyElements.length; i++)
+			checkElementState(stickyElements[i], scrollPos);
+	}, 10));
+}
+
 
 /**
  * This internal function receives one element's storage object
@@ -80,14 +84,14 @@ function checkElementState(e, scrollPos) {
 			addClass(e.element, e.options.class);
 			if (e.options.setStyle) {
 				e.element.style.position = "fixed";
-				e.element.style.top = e.options.offset + "px"
+				e.element.style.top = e.options.offset + "px";
 			}
 		} else {
 			// Unstick the element
 			removeClass(e.element, e.options.class);
 			if (e.options.setStyle) {
 				e.element.style.position = "";
-				e.element.style.top = ""
+				e.element.style.top = "";
 			}
 		}
 		e.appliedState = e.state;
@@ -113,12 +117,14 @@ function checkElementState(e, scrollPos) {
  * @param options
  */
 export function stickyElement(element: HTMLElement, options?: StickyElementOptions) {
+	if (!isBrowser()) return;
+	
 	// Check if element is already sticky
 	if (!isUndefined((element as any)._stickyGuid)) {
 		console.error("The given element is already sticky!");
 		return;
 	}
-
+	
 	// Prepare internal storage object
 	const guid = (element as any)._stickyGuid = getGuid();
 	if (!isPlainObject(options)) options = {};
@@ -127,7 +133,7 @@ export function stickyElement(element: HTMLElement, options?: StickyElementOptio
 	if (!isString(options.class)) options.class = "sticky";
 	const e = {guid, element, options};
 	stickyElements.push(e);
-
+	
 	// Check initial state -> so we don't have to wait for a scroll event
 	checkElementState(e, getScrollPos());
 }
@@ -138,16 +144,18 @@ export function stickyElement(element: HTMLElement, options?: StickyElementOptio
  * @param element
  */
 export function destroyStickyElement(element: HTMLElement) {
+	if (!isBrowser()) return;
+	
 	// Ignore non-sticky elements
 	if (isUndefined((element as any)._stickyGuid)) return;
-
+	
 	// Search the element which should be destroyed
 	forEach(stickyElements, (e, k) => {
 		if (e.guid === (element as any)._stickyGuid) {
 			// Make sure the element was un-sticked
 			e.state = true;
 			checkElementState(e, -1);
-
+			
 			// Clean up
 			stickyElements.splice(k, 1);
 			delete (element as any)._stickyGuid;

@@ -15,6 +15,8 @@
  *
  * Last modified: 2019.02.15 at 16:59
  */
+import {isBrowser} from "../Environment/isBrowser";
+
 interface ViewportSize {
 	width: number
 	height: number
@@ -24,6 +26,7 @@ interface ViewportSize {
  * Returns the current viewport size as object containing width and height
  */
 export function getViewportSize(): ViewportSize {
+	if (!isBrowser()) return {width: 0, height: 0};
 	return {
 		width: Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
 		height: Math.max(document.documentElement.clientHeight, window.innerHeight || 0)

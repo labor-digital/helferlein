@@ -15,16 +15,18 @@
  *
  * Last modified: 2019.02.01 at 14:36
  */
+import {isBrowser} from "../Environment/isBrowser";
 import {isUndefined} from "../Types/isUndefined";
 
 /**
- * Returns the vertical scroll position of either the window,
- * or the given container object
+ * Returns the vertical scroll position of either the window or the given container object
+ * Returns 0 if not called in a browser
  *
  * @param container An optional container element to get the scroll position of, otherwise the window is used
  * @param horizontal If set to true the horizontal (X) scroll position is returned, instead of the default (Y)
  */
 export function getScrollPos(container?: HTMLElement | Window, horizontal?: boolean): number {
+	if (!isBrowser()) return 0;
 	if (isUndefined(container) || container === window)
 		return horizontal === true ?
 			window.scrollX || window.pageXOffset || document.documentElement.scrollLeft :
