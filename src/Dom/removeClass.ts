@@ -25,7 +25,7 @@ import {isUndefined} from "../Types/isUndefined";
  * @param regex
  */
 function removeClassRemover(element: HTMLElement | Element, regex: RegExp) {
-	element.className = element.className.replace(regex, "$1").trim();
+	element.className = element.className.replace(regex, "$1 ").trim();
 }
 
 /**
