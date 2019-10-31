@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.10.4](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.10.4%0Dv3.10.3#diff) (2019-10-31)
+
+
+### Bug Fixes
+
+* **removeClass:** fix issue where remaining classes ended up without a space between them ([0fe9984](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/0fe9984))
+* **Ui:** make ui methods aware of being used in an SSR environment, to prevent crashing ([6442a7d](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/6442a7d))
+
+
+
 ## [3.10.3](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.10.3%0Dv3.10.2#diff) (2019-10-11)
 
 
