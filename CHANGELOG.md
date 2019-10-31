@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.10.3](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.10.3%0Dv3.10.2#diff) (2019-10-11)
+
+
+### Bug Fixes
+
+* **makeOptions:** fix issue where "boolean" could not be validated correctly ([0281600](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/0281600))
+
+
+
 ## [3.10.2](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.10.2%0Dv3.10.1#diff) (2019-10-10)
 
 
