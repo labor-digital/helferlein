@@ -273,6 +273,7 @@ export class ComponentProxy {
 	 * @param listener The listener which is called when the event is emitted on the given target
 	 * @param priority Default: 0, the lower the number, the earlier the execution. May be a negative value!
 	 *                    Note: This only works for event emitters and the event bus.
+	 *                    @todo add html event listener options like passive and capture!
 	 */
 	bind(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener, priority?: number): ComponentProxy {
 		if (this.isDestroyed()) return this;
@@ -334,6 +335,8 @@ export class ComponentProxy {
 	 * @param target The target to unbind the listener from. Either a html element, the document or the EventBus class
 	 * @param event The event to unbind or @mutation if a mutation observer is used
 	 * @param listener The listener which should be unbound for the given event
+	 *                    @todo add html event listener options like passive and capture!
+	 *                    @todo While addEventListener() will let you add the same listener more than once for the same type if the options are different, the only option removeEventListener() checks is the capture/useCapture flag. Its value must match for removeEventListener() to match, but the other values don't.
 	 */
 	unbind(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener): ComponentProxy {
 		if (this.isDestroyed()) return this;
