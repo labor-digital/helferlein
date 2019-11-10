@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.11.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.11.0%0Dv3.10.4#diff) (2019-11-10)
+
+
+### Features
+
+* add new chunks helper to split a list into chunks of fixed length's ([3e7c51a](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/3e7c51a))
+
+
+
 ## [3.10.4](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.10.4%0Dv3.10.3#diff) (2019-10-31)
 
 
