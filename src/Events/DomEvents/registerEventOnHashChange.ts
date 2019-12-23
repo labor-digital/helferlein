@@ -17,17 +17,18 @@
  */
 import {isBrowser} from "../../Environment/isBrowser";
 import {EventBus} from "../EventBus";
+import {HelferleinEventList} from "../HelferleinEventList";
 
 let isRegistered = false;
-let currentHash = window.location.hash;
+let currentHash = isBrowser() ? window.location.hash : null;
 
 /**
  * Registers the hash__change event on the event bus
  * which is triggered every time the user moves in the
  * history forwards or backwards.
  *
- * If you change the hash and don't want hash.change to be triggered by it,
- * emit the "hash__update" event first and set args: {new: "#/new/hash"}
+ * If you change the hash and don't want EVENT_ON_HASH_CHANGE to be triggered by it,
+ * emit the "EVENT_HASH_UPDATE" event first and set args: {new: "#/new/hash"}
  */
 export function registerEventOnHashChange(): void {
 	if (!isBrowser() || isRegistered) return;
@@ -37,7 +38,7 @@ export function registerEventOnHashChange(): void {
 	window.addEventListener("popstate", (e) => {
 		if (e.isTrusted !== true) return;
 		if (currentHash === window.location.hash) return;
-		EventBus.emit("hash__change", {
+		EventBus.emit(HelferleinEventList.EVENT_ON_HASH_CHANGE, {
 			old: currentHash,
 			new: window.location.hash
 		});
@@ -45,7 +46,7 @@ export function registerEventOnHashChange(): void {
 	});
 	
 	// Register cross link to UrlHash Api to prevent unwanted popstates we did ourself
-	EventBus.bind("hash__update", (e) => {
+	EventBus.bind(HelferleinEventList.EVENT_HASH_UPDATE, (e) => {
 		currentHash = e.args.new;
 	});
 }

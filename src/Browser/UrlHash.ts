@@ -17,6 +17,7 @@
  */
 import {isBrowser} from "../Environment/isBrowser";
 import {EventBus} from "../Events/EventBus";
+import {HelferleinEventList} from "../Events/HelferleinEventList";
 import {asArray} from "../FormatAndConvert/asArray";
 import {PlainObject} from "../Interfaces/PlainObject";
 import {forEach} from "../Lists/forEach";
@@ -120,13 +121,13 @@ export class UrlHash {
 	protected static update(hash: PlainObject): void {
 		if (!isBrowser()) return;
 		if (isEmpty(hash)) {
-			EventBus.emit("hash__update", {new: ""});
+			EventBus.emit(HelferleinEventList.EVENT_HASH_UPDATE, {new: ""});
 			window.location.hash = "/";
 			return;
 		}
 		const list = asArray(map(hash, (v, k) => encodeURIComponent(k + "") + "/" + encodeURIComponent(v)));
 		const hashString = "#/" + list.join("/");
-		EventBus.emit("hash__update", {new: hashString});
+		EventBus.emit(HelferleinEventList.EVENT_HASH_UPDATE, {new: hashString});
 		window.location.hash = hashString;
 	}
 }

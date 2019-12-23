@@ -18,6 +18,7 @@
 import {isBrowser} from "../../Environment/isBrowser";
 import {onDomReady} from "../../Events/DomEvents/onDomReady";
 import {EventBus} from "../../Events/EventBus";
+import {HelferleinEventList} from "../../Events/HelferleinEventList";
 import {throttleEvent} from "../throttleEvent";
 import {BreakpointHelpers} from "./BreakpointHelpers";
 import {BreakpointsConfigureOptions} from "./BreakpointService.interfaces";
@@ -45,7 +46,7 @@ if (isBrowser()) {
 			if (oldBreakpoint === context.current) return;
 			
 			// Trigger event
-			EventBus.emit("breakpoint__change", {old: oldBreakpoint, new: context.current});
+			EventBus.emit(HelferleinEventList.EVENT_BREAKPOINT_CHANGE, {old: oldBreakpoint, new: context.current});
 		}, 200));
 	});
 }
