@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.12.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.12.0%0Dv3.11.0#diff) (2019-12-23)
+
+
+### Bug Fixes
+
+* **isArray:** use the builtin array detection if possible ([a74bf68](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/a74bf68))
+
+
+### Features
+
+* implement HelferleinEventList to allow easier event lookup without consulting the documentation ([bd73f8d](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/bd73f8d))
+
+
+
 # [3.11.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.11.0%0Dv3.10.4#diff) (2019-11-10)
 
 
