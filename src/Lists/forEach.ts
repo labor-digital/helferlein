@@ -16,6 +16,7 @@
  * Last modified: 2019.01.10 at 10:02
  */
 import {List} from "../Interfaces/List";
+import {isArray} from "../Types/isArray";
 import {isIterator} from "../Types/isIterator";
 import {isSet} from "../Types/isSet";
 
@@ -58,6 +59,15 @@ breaker.breaker = true;
  */
 export function forEach(object: List, callback: ForEachCallbackType): void {
 	if (object === null || typeof object === "undefined") return;
+	
+	// Fast lane for arrays
+	if (isArray(object)) {
+		for (let i = 0; i < (object as Array<any>).length; i++)
+			if (callback(object[i], i, object) === false) break;
+		return;
+	}
+	
+	// Handle for-each functions on sets and maps
 	if (typeof object.forEach === "function") {
 		const objectIsSet = isSet(object);
 		try {
@@ -91,7 +101,8 @@ export function forEach(object: List, callback: ForEachCallbackType): void {
 		
 		// Handle default iteration
 		for (let k in object) {
-			if (!object.hasOwnProperty(k)) continue;
+			if (typeof object.hasOwnProperty === "function")
+				if (!object.hasOwnProperty(k)) continue;
 			let kReal: string | number = k;
 			if (parseInt(k) + "" === k) kReal = parseInt(k);
 			if (callback(object[k], kReal, object) === false) break;
