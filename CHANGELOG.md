@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.13.2](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.13.2%0Dv3.13.1#diff) (2019-12-30)
+
+
+### Bug Fixes
+
+* **forEach:** fix another issue with forEach where we run into the maximum call stack size ([48e7916](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/48e7916))
+
+
+
 ## [3.13.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.13.1%0Dv3.13.0#diff) (2019-12-30)
 
 
