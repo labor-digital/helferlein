@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.13.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.13.1%0Dv3.13.0#diff) (2019-12-30)
+
+
+### Bug Fixes
+
+* **forEach:** fix an issue when an iterated object does not have the hasOwnProperty() function. ([dcf0c6d](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/dcf0c6d))
+
+
+
 # [3.13.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.13.0%0Dv3.12.0#diff) (2019-12-30)
 
 
