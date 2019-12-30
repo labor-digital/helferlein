@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.13.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.13.0%0Dv3.12.0#diff) (2019-12-30)
+
+
+### Features
+
+* add new cloneList helper to deep-clone a list or a list-tree ([ac32d16](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/ac32d16))
+
+
+
 # [3.12.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.12.0%0Dv3.11.0#diff) (2019-12-23)
 
 
