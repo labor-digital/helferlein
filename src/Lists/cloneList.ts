@@ -16,27 +16,40 @@
  * Last modified: 2019.12.30 at 21:08
  */
 
+import clone from "clone";
 import {List} from "../Interfaces/List";
-import {forEach} from "./forEach";
-import {getListType, getNewList, ListType} from "./listAccess";
 
-/**
- * Internal helper to recursively clone the children of a given list
- * @param list
- */
-function cloneListCloner(list: List): List {
-	const clone = getNewList(getListType(list));
-	forEach(list, (v, k) => {
-		if (getListType(v) === ListType.NoList) clone[k] = v;
-		else clone[k] = cloneListCloner(v);
-	});
-	return clone;
+export interface CloneListOptionsInterface {
+	/**
+	 * Defaults to true. Call clone with circular set to false if you are certain that obj contains no circular
+	 * references. This will give better performance if needed. There is no error if undefined or null is passed as
+	 */
+	circular?: boolean
+	
+	/**
+	 * Depth to which the object is to be cloned (optional, defaults to Infinity)
+	 */
+	depth?: Number
+	
+	/**
+	 * Sets the prototype to be used when cloning an Object. (optional, defaults to __proto__ of the to be cloned value, ie.
+	 * the cloned object will have the same prototype as the original).
+	 */
+	prototype?: any
+	
+	/**
+	 * Set to true if the non-enumerable properties should be cloned as well. Non-enumerable properties on the prototype
+	 * chain will be ignored. (optional, defaults to false)
+	 */
+	includeNonEnumerable?: boolean
 }
 
 /**
- * Small helper to deep-clone a list, or list-tree of any type.
+ * A typescript wrapper for the clone package
  * @param list The list to be cloned
+ * @param options Additional options for the internal clone package
+ * @see https://github.com/pvorb/clone
  */
-export function cloneList(list: List): List {
-	return cloneListCloner(list);
+export function cloneList(list: List, options?: CloneListOptionsInterface): List {
+	return clone(list, options);
 }

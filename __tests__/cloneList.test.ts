@@ -51,3 +51,30 @@ test("cloneList of deep plain object", () => {
 	expect(clone.c[4]).toEqual(o.c[4]);
 	expect(clone.c[4]).not.toBe(o.c[4]);
 });
+
+test("cloneList of advanced plain object", () => {
+	const m = new Map();
+	m.set("foo", "bar");
+	m.set("bar", 123);
+	const s = new Set();
+	s.add(1);
+	s.add("foo");
+	const o = {
+		a: 1,
+		b: "asdf",
+		c: "foo",
+		d: m,
+		e: {
+			s: s
+		}
+	};
+	const clone: PlainObject = cloneList(o);
+	expect(clone).toEqual(o);
+	expect(clone).not.toBe(o);
+	expect(clone.d).toEqual(m);
+	expect(clone.d).not.toBe(m);
+	expect(clone.e).toEqual(o.e);
+	expect(clone.e).not.toBe(o.e);
+	expect(clone.e.s).toEqual(o.e.s);
+	expect(clone.e.s).not.toBe(s);
+});

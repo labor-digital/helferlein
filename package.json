@@ -19,13 +19,15 @@
 	"author": "Martin Neundorfer @LABOR",
 	"license": "MIT",
 	"homepage": "https://bitbucket.org/labor-digital/labor-js-helpers.js#readme",
-	"dependencies": {},
+	"dependencies": {
+		"clone": "^2.1.2"
+	},
 	"devDependencies": {
-		"@types/jest": "24.0.18",
-		"@types/node": "12.7.12",
+		"@types/jest": "24.0.25",
+		"@types/node": "13.1.2",
 		"jest": "24.9.0",
-		"ts-jest": "24.1.0",
-		"typedoc": "0.15.0",
-		"typescript": "3.6.3"
+		"ts-jest": "24.2.0",
+		"typedoc": "0.15.6",
+		"typescript": "3.7.4"
 	}
 }
