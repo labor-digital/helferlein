@@ -1,0 +1,16 @@
+{
+	"name": "browserbuild",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build": "node flushLib.js && cd .. && npm run build && cd browserBuild && webpack",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"webpack": "^4.41.5",
+		"webpack-cli": "^3.3.10"
+	}
+}

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 LABOR.digital
+ * Copyright 2020 LABOR.digital
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Last modified: 2019.01.30 at 13:21
+ * Last modified: 2020.01.02 at 16:25
  */
 const fs = require("fs");
 const path = require("path");
@@ -33,7 +33,7 @@ function rmdirRecursive(dirname, removeSelf) {
 }
 
 try {
-	rmdirRecursive(__dirname + "/lib", false);
+	rmdirRecursive(__dirname + "/../lib.browser", false);
 } catch (e) {
 	console.error("Failed to clear lib!");
 }
