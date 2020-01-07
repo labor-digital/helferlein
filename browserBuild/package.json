@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"build": "node flushLib.js && cd .. && npm run build && cd browserBuild && webpack",
+		"build": "node flushLib.js && cd .. && npm run build && cd browserBuild && webpack && node wrapperPostProcess.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",

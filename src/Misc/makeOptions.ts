@@ -437,7 +437,9 @@ export class OptionApplier {
  * @param definition
  * @param options Additional options
  */
-export default function makeOptions(input: List | any, definition: MakeOptionsDefinition, options?: MakeOptionsOptions): List | any {
+export function makeOptions(input: List | any, definition: MakeOptionsDefinition, options?: MakeOptionsOptions): List | any {
 	const applier = new OptionApplier();
 	return applier.apply(input, definition, options);
 }
+
+export default makeOptions;
