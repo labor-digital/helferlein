@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.15.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.15.0%0Dv3.14.0#diff) (2020-01-02)
+
+
+### Features
+
+* add support to build a packed version of the library ready for the use in a browser ([3a15f6b](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/3a15f6b))
+
+
+
 # [3.14.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.14.0%0Dv3.13.2#diff) (2019-12-30)
 
 
