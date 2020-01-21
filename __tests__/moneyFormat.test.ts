@@ -21,6 +21,10 @@ import {numberAsMoney} from "../src/FormatAndConvert/numberAsMoney";
 test("moneyAsNumber", () => {
 	expect(moneyAsNumber("1.000.000")).toBe(1000000);
 	expect(moneyAsNumber("98000.00000000003")).toBe(98000.00000000003);
+	expect(moneyAsNumber("2734,485")).toBe(2734.485);
+	expect(moneyAsNumber("2734.485")).toBe(2734.485);
+	expect(moneyAsNumber("-2734.485")).toBe(2734.485);
+	expect(moneyAsNumber(" 2734.485 asdf")).toBe(2734.485);
 	expect(moneyAsNumber("1.000.000,00")).toBe(1000000);
 	expect(moneyAsNumber("1,000,000.00")).toBe(1000000);
 	expect(moneyAsNumber("1,000,000")).toBe(1000000);
