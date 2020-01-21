@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.16.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.16.0%0Dv3.15.1#diff) (2020-01-21)
+
+
+### Features
+
+* **FormatAndConvert:** make moneyAsNumber more resilient on edge cases ([3a7687c](https://bitbucket.org/labor-digital/labor-js-helpers.js/commits/3a7687c))
+
+
+
 ## [3.15.1](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.15.1%0Dv3.15.0#diff) (2020-01-07)
 
 
