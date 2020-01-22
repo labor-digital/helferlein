@@ -105,6 +105,7 @@ export function forEach(object: List, callback: ForEachCallbackType): void {
 			if (!object.hasOwnProperty(k)) continue;
 			let kReal: string | number = k;
 			if (parseInt(k) + "" === k) kReal = parseInt(k);
+			else if (parseFloat(k) + "" === k) kReal = parseFloat(k);
 			if (callback(object[k], kReal, object) === false) break;
 		}
 		return;
