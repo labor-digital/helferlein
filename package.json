@@ -1,10 +1,10 @@
 {
-	"name": "@labor/helferlein",
+	"name": "@labor-digital/helferlein",
 	"version": "3.16.0",
-	"description": "General purpose Javascript helpers - Successor to helpers.js",
+	"description": "General purpose Javascript helpers",
 	"repository": {
 		"type": "git",
-		"url": "git+ssh://git@bitbucket.org/labor-digital/labor-js-helpers.js.git"
+		"url": "git+ssh://git@github.com:labor-digital/helferlein.git"
 	},
 	"scripts": {
 		"build": "node flushLib.js && tsc",
@@ -16,9 +16,9 @@
 		"node": ">=8.11.2",
 		"npm": ">=6.3.0"
 	},
-	"author": "Martin Neundorfer @LABOR",
-	"license": "MIT",
-	"homepage": "https://bitbucket.org/labor-digital/labor-js-helpers.js#readme",
+	"author": "Martin Neundorfer",
+	"license": "Apache-2.0",
+	"homepage": "https://github.com/labor-digital/helferlein",
 	"dependencies": {
 		"clone": "^2.1.2"
 	},

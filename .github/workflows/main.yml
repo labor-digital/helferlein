@@ -1,0 +1,35 @@
+name: Test & Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: actions/checkout@v1
+      -
+        name: Installing npm modules
+        run: npm install
+      -
+        name: Run tests
+        run: npm run test
+      -
+        name: Build library
+        run: npm run build
+      -
+        name: Build documentation
+        run: npm run doc
+      -
+        name: Create Changelog and bump release version
+        uses: labor-digital/conventional-release-action@master
+        with:
+          github-token: ${{ secrets.github_token }}
+      -
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+
