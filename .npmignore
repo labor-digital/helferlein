@@ -1,6 +1,8 @@
 .idea
 .gitignore
 node_modules
+browserBuild
+.github
 src
 tsconfig.json
 __tests__

@@ -26,21 +26,25 @@ jobs:
         name: Build library
         run: npm run build
       -
+        name: Build library for the browser
+        run: cd browserBuild && npm install && npm run build
+      -
         name: Build documentation
         run: npm run doc
-      #      -
-      #        name: Create Changelog and bump release version
-      #        uses: labor-digital/conventional-release-action@master
-      #        with:
-      #          github-token: ${{ secrets.github_token }}
+      -
+        name: Create Changelog and bump release version
+        uses: labor-digital/conventional-release-action@master
+        with:
+          github-token: ${{ secrets.github_token }}
       -
         name: Deploy documentation
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./doc
-#      -
-#        run: npm publish --access public
-#        env:
-#          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+      -
+        name: Publish library on npm
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
