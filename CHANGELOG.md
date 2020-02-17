@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.17.1](https://github.com/labor-digital/helferlein/compare/v3.17.0...v3.17.1) (2020-02-17)
+
+
+### Bug Fixes
+
+* try to fix npm login issue ([596810a](https://github.com/labor-digital/helferlein/commit/596810aa88b58c36382d8c7ab3b8b033c96945c9))
+
 ## [3.17.0](https://github.com/labor-digital/helferlein/compare/v3.16.0...v3.17.0) (2020-02-17)
 
 
