@@ -1,6 +1,19 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [3.17.0](https://github.com/labor-digital/helferlein/compare/v3.16.0...v3.17.0) (2020-02-17)
+
+
+### Features
+
+* preparation to move to github ([7e05e3e](https://github.com/labor-digital/helferlein/commit/7e05e3e28a3eb51d6bd0986993327e4718203948))
+
+
+### Bug Fixes
+
+* remove no longer required bitbucket pipeline conifg ([bd34c14](https://github.com/labor-digital/helferlein/commit/bd34c14fc1e7bb81aa2f4c0e0f239d2cbb30637f))
+* **forEach:** make sure float keys in object literals are handled as floats when they are passed to the callback ([1bf8198](https://github.com/labor-digital/helferlein/commit/1bf81988c257158aadb4bd676d50b6d90999feb8))
 
 # [3.16.0](https://bitbucket.org/labor-digital/labor-js-helpers.js/branches/compare/v3.16.0%0Dv3.15.1#diff) (2020-01-21)
 
