@@ -10,7 +10,7 @@
 		"build": "node flushLib.js && tsc",
 		"watch": "node flushLib.js && tsc --watch",
 		"test": "jest",
-		"doc": "typedoc --out doc --tsconfig ./tsconfig.json src --module commonjs"
+		"doc": "typedoc --out doc --tsconfig ./tsconfig.json src --module commonjs && echo helferlein.labor.tools >> doc/CNAME && echo include: ['*.html'] >> doc/_config.yml"
 	},
 	"engines": {
 		"node": ">=8.11.2",
