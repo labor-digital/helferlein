@@ -32,7 +32,7 @@ The documentation / API can be found [here](http://helferlein.labor.tools/) but 
 
 
 ## Postcardware
-You're free to use these images, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+You're free to use this package, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
 
 Our address is: LABOR.digital - Fischtorplatz 21 - 55116 Mainz, Germany
 
