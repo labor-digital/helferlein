@@ -64,16 +64,30 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<a href="#labor---helferlein-little-helper" id="labor---helferlein-little-helper" style="color: inherit; text-decoration: none;">
-					<h1>LABOR - Helferlein (Little Helper)</h1>
+				<a href="#labor---helferlein" id="labor---helferlein" style="color: inherit; text-decoration: none;">
+					<h1>LABOR - Helferlein</h1>
 				</a>
-				<p>This package contains a number of helper functions and their typescript definitions.
+				<p><em>&quot;Helferlein&quot; is german and means: Small Helper</em></p>
+				<p>This javascript package contains a number of helper functions and their typescript definitions.
 				Not all implementations are written by us; all external, included code is annotated with it&#39;s source.</p>
 				<p>All helpers should be able to run in a node.js context, as well as in the browser and even a SSR context without any issues. </p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<p>Install this package using npm:</p>
+				<pre><code><span class="hljs-built_in">npm</span> install @labor-digital/helferlein</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<p>This package is designed to run in a typescript application and not directly in the browser. A common usecase would look like:</p>
+				<pre><code><span class="hljs-keyword">import</span> {asArray} <span class="hljs-keyword">from</span> <span class="hljs-string">"@labor-digital/helferlein/lib/FormatAndConvert/asArray"</span>;
+<span class="hljs-keyword">const</span> objectAsArray = asArray({<span class="hljs-string">'a'</span>: <span class="hljs-number">1</span>, <span class="hljs-string">'b'</span>: <span class="hljs-number">2</span>, <span class="hljs-string">'d'</span>: <span class="hljs-number">3</span>, <span class="hljs-string">'e'</span>: <span class="hljs-string">'asdf'</span>});</code></pre><p>As you see in the import statement we did not add a &quot;main&quot; file to avoid overhead for bundlers that don&#39;t support treeshaking out of the box. </p>
+				<p>However, if you want to use the library in your browser, without typescript you can use the precompiled javascript files in the &quot;lib.browser&quot; directory.
+				You can simply import any file in your html and and access the helper functions using <code>Helferlein.asArray()</code> in your javascript.</p>
 				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
 					<h2>Documentation</h2>
 				</a>
-				<p>The documentation / API is rendered in &quot;./doc/index.html&quot;</p>
+				<p>The documentation / API can be found <a href="http://helferlein.labor.tools/">here</a> but is also rendered at &quot;./doc/index.html&quot; for local usage</p>
 				<a href="#postcardware" id="postcardware" style="color: inherit; text-decoration: none;">
 					<h2>Postcardware</h2>
 				</a>
