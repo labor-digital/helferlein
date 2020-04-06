@@ -52,7 +52,7 @@ if (isBrowser()) {
 }
 
 /**
- * This class utilizes the css to javascript breakpoint service provided by the "@labor/sassy" package
+ * This class utilizes the css to javascript breakpoint service provided by the "@neunerlei/sassy" package
  * to create a breakpoint api in javascript which is configured in css.
  *
  * If you don't want to use the sassy library, but still want access to this api you have

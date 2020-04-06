@@ -18,7 +18,7 @@
 
 import {inflectToDashed} from "./inflectToDashed";
 
-export const TransliterationReplacements:Array<Array<string|RegExp>> = [
+export const TransliterationReplacements: Array<Array<string | RegExp>> = [
 	[/[ÆǼ]/g, "AE"],
 	[/[Ä]/g, "Ae"],
 	[/[ÇĆĈĊČ]/g, "C"],
@@ -74,7 +74,10 @@ export const TransliterationReplacements:Array<Array<string|RegExp>> = [
 	[/[ýÿŷ]/g, "y"],
 	[/[є]/g, "ye"],
 	[/[ї]/g, "yi"],
-	[/[źżž]/g, "z"]
+	[/[źżž]/g, "z"],
+	[/[^\s\p{Zs}\p{Ll}\p{Lm}\p{Lo}\p{Lt}\p{Lu}\p{Nd}]/mu, " "],
+	[/[\s\p{Zs}]+/mu, "-"],
+	[/^[\\-]+|[\\-]+$/, ""]
 ];
 
 /**
@@ -82,7 +85,7 @@ export const TransliterationReplacements:Array<Array<string|RegExp>> = [
  * ä => ae, ö => oe...
  * @param string
  */
-export function unifyTransliterations(string: string):string {
+export function unifyTransliterations(string: string): string {
 	for (var i = 0; i < TransliterationReplacements.length; i++) {
 		var a = TransliterationReplacements[i][0] as RegExp;
 		var b = TransliterationReplacements[i][1] as string;
@@ -98,7 +101,7 @@ export function unifyTransliterations(string: string):string {
  *
  * @param string
  */
-export function inflectToSlug(string: string):string {
+export function inflectToSlug(string: string): string {
 	string = unifyTransliterations(string).trim();
 	return inflectToDashed(string);
 }

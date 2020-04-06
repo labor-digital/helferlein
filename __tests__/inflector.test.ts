@@ -33,8 +33,8 @@ test("inflectToArray default", () => {
 	const results = [["foo", "bar", "baz"], ["foo", "bar", "baz"], ["foo", "bar", "baz"], ["foo", "bar", "baz"], ["foo", "bar", "baz"],
 		["foo", "bar", "baz", "foo", "bar"], ["foo", "1", "asdf"], ["foobarbaz"], ["f", "o", "o", "bar", "b", "a", "z"],
 		["f", "o", "obar", "baz"], ["asdf", "123", "bar"], ["foo", "1", "bar"]];
-
-	for(var i = 0; i < inputs.length; i++){
+	
+	for (var i = 0; i < inputs.length; i++) {
 		const input = inputs[i];
 		const result = results[i];
 		expect(inflectToArray(input)).toEqual(result);
@@ -45,8 +45,8 @@ test("inflectToArray intelligent", () => {
 	const results = [["foo", "bar", "baz"], ["foo", "bar", "baz"], ["foo", "bar", "baz"], ["foo", "bar", "baz"], ["foo", "bar", "baz"],
 		["foo", "bar", "baz", "foo", "bar"], ["foo", "1", "asdf"], ["foobarbaz"], ["foo", "bar", "baz"],
 		["fo", "obar", "baz"], ["asdf", "123", "bar"], ["foo", "1", "bar"]];
-
-	for(var i = 0; i < inputs.length; i++){
+	
+	for (var i = 0; i < inputs.length; i++) {
 		const input = inputs[i];
 		const result = results[i];
 		expect(inflectToArray(input, true)).toEqual(result);
@@ -55,9 +55,9 @@ test("inflectToArray intelligent", () => {
 
 test("inflectToSpacedUpper", () => {
 	const results = ["Foo Bar Baz", "Foo Bar Baz", "Foo Bar Baz", "Foo Bar Baz", "Foo Bar Baz", "Foo Bar Baz Foo Bar",
-		"Foo 1 Asdf", "Foobarbaz",  "F O O Bar B A Z", "F O Obar Baz", "Asdf 123 Bar", "Foo 1 Bar"];
-
-	for(var i = 0; i < inputs.length; i++){
+		"Foo 1 Asdf", "Foobarbaz", "F O O Bar B A Z", "F O Obar Baz", "Asdf 123 Bar", "Foo 1 Bar"];
+	
+	for (var i = 0; i < inputs.length; i++) {
 		const input = inputs[i];
 		const result = results[i];
 		expect(inflectToSpacedUpper(input)).toEqual(result);
@@ -67,9 +67,9 @@ test("inflectToSpacedUpper", () => {
 
 test("inflectToCamelCase", () => {
 	const results = ["FooBarBaz", "FooBarBaz", "FooBarBaz", "FooBarBaz", "FooBarBaz", "FooBarBazFooBar",
-		"Foo1Asdf", "Foobarbaz",  "FOOBarBAZ", "FOObarBaz", "Asdf123Bar", "Foo1Bar"];
-
-	for(var i = 0; i < inputs.length; i++){
+		"Foo1Asdf", "Foobarbaz", "FOOBarBAZ", "FOObarBaz", "Asdf123Bar", "Foo1Bar"];
+	
+	for (var i = 0; i < inputs.length; i++) {
 		const input = inputs[i];
 		const result = results[i];
 		expect(inflectToCamelCase(input)).toEqual(result);
@@ -78,9 +78,9 @@ test("inflectToCamelCase", () => {
 
 test("inflectToCamelBack", () => {
 	const results = ["fooBarBaz", "fooBarBaz", "fooBarBaz", "fooBarBaz", "fooBarBaz", "fooBarBazFooBar",
-		"foo1Asdf", "foobarbaz",  "fOOBarBAZ", "fOObarBaz", "asdf123Bar", "foo1Bar"];
-
-	for(var i = 0; i < inputs.length; i++){
+		"foo1Asdf", "foobarbaz", "fOOBarBAZ", "fOObarBaz", "asdf123Bar", "foo1Bar"];
+	
+	for (var i = 0; i < inputs.length; i++) {
 		const input = inputs[i];
 		const result = results[i];
 		expect(inflectToCamelBack(input)).toEqual(result);
@@ -89,9 +89,9 @@ test("inflectToCamelBack", () => {
 
 test("inflectToDashed", () => {
 	const results = ["foo-bar-baz", "foo-bar-baz", "foo-bar-baz", "foo-bar-baz", "foo-bar-baz", "foo-bar-baz-foo-bar",
-		"foo-1-asdf", "foobarbaz",  "f-o-o-bar-b-a-z", "f-o-obar-baz", "asdf-123-bar", "foo-1-bar"];
-
-	for(var i = 0; i < inputs.length; i++){
+		"foo-1-asdf", "foobarbaz", "f-o-o-bar-b-a-z", "f-o-obar-baz", "asdf-123-bar", "foo-1-bar"];
+	
+	for (var i = 0; i < inputs.length; i++) {
 		const input = inputs[i];
 		const result = results[i];
 		expect(inflectToDashed(input)).toEqual(result);
@@ -100,9 +100,9 @@ test("inflectToDashed", () => {
 
 test("inflectToUnderscore", () => {
 	const results = ["foo_bar_baz", "foo_bar_baz", "foo_bar_baz", "foo_bar_baz", "foo_bar_baz", "foo_bar_baz_foo_bar",
-		"foo_1_asdf", "foobarbaz",  "f_o_o_bar_b_a_z", "f_o_obar_baz", "asdf_123_bar", "foo_1_bar"];
-
-	for(var i = 0; i < inputs.length; i++){
+		"foo_1_asdf", "foobarbaz", "f_o_o_bar_b_a_z", "f_o_obar_baz", "asdf_123_bar", "foo_1_bar"];
+	
+	for (var i = 0; i < inputs.length; i++) {
 		const input = inputs[i];
 		const result = results[i];
 		expect(inflectToUnderscore(input)).toEqual(result);
@@ -111,18 +111,18 @@ test("inflectToUnderscore", () => {
 
 test("inflectToSlug", () => {
 	const results = ["foo-bar-baz", "foo-bar-baz", "foo-bar-baz", "foo-bar-baz", "foo-bar-baz", "foo-bar-baz-foo-bar",
-		"foo-1-asdf", "foobarbaz",  "f-o-o-bar-b-a-z", "f-o-obar-baz", "asdf-123-bar", "foo-1-bar"];
-
-	for(var i = 0; i < inputs.length; i++){
+		"foo-1-asdf", "foobarbaz", "f-o-o-bar-b-a-z", "f-o-obar-baz", "asdf-123-bar", "foo-1-bar"];
+	
+	for (var i = 0; i < inputs.length; i++) {
 		const input = inputs[i];
 		const result = results[i];
 		expect(inflectToSlug(input)).toEqual(result);
 	}
-
-	const additionalInputs = ["föö-bär-böz", "nöMitÖUnd_Rächen", "bewölkt"];
-	const additionalResults = ["foeoe-baer-boez", "noe-mit-oe-und-raechen", "bewoelkt"];
-
-	for(var i = 0; i < additionalInputs.length; i++){
+	
+	const additionalInputs = ["föö-bär-böz", "nöMitÖUnd_Rächen", "bewölkt", "Anchor #1", "Anchor #"];
+	const additionalResults = ["foeoe-baer-boez", "noe-mit-oe-und-raechen", "bewoelkt", "anchor-1", "anchor"];
+	
+	for (var i = 0; i < additionalInputs.length; i++) {
 		const input = additionalInputs[i];
 		const result = additionalResults[i];
 		expect(inflectToSlug(input)).toEqual(result);
