@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.17.5](https://github.com/labor-digital/helferlein/compare/v3.17.4...v3.17.5) (2020-04-06)
+
+
+### Bug Fixes
+
+* **inflectToSlug:** make sure special chars are handled correctly ([1476954](https://github.com/labor-digital/helferlein/commit/1476954f1799cf1e9ae89ddc3fc4a41ef2b714b9))
+
 ### [3.17.4](https://github.com/labor-digital/helferlein/compare/v3.17.3...v3.17.4) (2020-03-23)
 
 ### [3.17.3](https://github.com/labor-digital/helferlein/compare/v3.17.2...v3.17.3) (2020-02-17)
