@@ -74,6 +74,7 @@
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_strings_inflector_inflecttoslug_.html#transliterationreplacements" class="tsd-kind-icon">Transliteration<wbr>Replacements</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_strings_inflector_inflecttoslug_.html#canuseunicode" class="tsd-kind-icon">can<wbr>Use<wbr>Unicode</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -91,10 +92,20 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
 					<a name="transliterationreplacements" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> Transliteration<wbr>Replacements</h3>
-					<div class="tsd-signature tsd-kind-icon">Transliteration<wbr>Replacements<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = [[/[ÆǼ]/g, &quot;AE&quot;],[/[Ä]/g, &quot;Ae&quot;],[/[ÇĆĈĊČ]/g, &quot;C&quot;],[/[ÐĎĐ]/g, &quot;D&quot;],[/[ÈÉÊËĒĔĖĘĚ]/g, &quot;E&quot;],[/[ĜĞĠĢҐ]/g, &quot;G&quot;],[/[ĤĦ]/g, &quot;H&quot;],[/[ÌÍÎÏĨĪĬǏĮİІ]/g, &quot;I&quot;],[/[Ĳ]/g, &quot;IJ&quot;],[/[Ĵ]/g, &quot;J&quot;],[/[Ķ]/g, &quot;K&quot;],[/[ĹĻĽĿŁ]/g, &quot;L&quot;],[/[ÑŃŅŇ]/g, &quot;N&quot;],[/[ÒÓÔÕŌŎǑŐƠØǾ]/g, &quot;O&quot;],[/[Œ]/g, &quot;OE&quot;],[/[Ö]/g, &quot;Oe&quot;],[/[ŔŖŘ]/g, &quot;R&quot;],[/[ŚŜŞȘŠ]/g, &quot;S&quot;],[/[ẞ]/g, &quot;SS&quot;],[/[ŢȚŤŦ]/g, &quot;T&quot;],[/[Þ]/g, &quot;TH&quot;],[/[ÙÚÛŨŪŬŮŰŲƯǓǕǗǙǛ]/g, &quot;U&quot;],[/[Ü]/g, &quot;Ue&quot;],[/[Ŵ]/g, &quot;W&quot;],[/[ÝŸŶ]/g, &quot;Y&quot;],[/[Є]/g, &quot;Ye&quot;],[/[Ї]/g, &quot;Yi&quot;],[/[ŹŻŽ]/g, &quot;Z&quot;],[/[àáâãåǻāăąǎª]/g, &quot;a&quot;],[/[äæǽ]/g, &quot;ae&quot;],[/[çćĉċč]/g, &quot;c&quot;],[/[ðďđ]/g, &quot;d&quot;],[/[èéêëēĕėęě]/g, &quot;e&quot;],[/[ƒ]/g, &quot;f&quot;],[/[ĝğġģґ]/g, &quot;g&quot;],[/[ĥħ]/g, &quot;h&quot;],[/[ìíîïĩīĭǐįıі]/g, &quot;i&quot;],[/[ĳ]/g, &quot;ij&quot;],[/[ĵ]/g, &quot;j&quot;],[/[ķ]/g, &quot;k&quot;],[/[ĺļľŀł]/g, &quot;l&quot;],[/[ñńņňŉ]/g, &quot;n&quot;],[/[òóôõōŏǒőơøǿº]/g, &quot;o&quot;],[/[öœ]/g, &quot;oe&quot;],[/[ŕŗř]/g, &quot;r&quot;],[/[śŝşșšſ]/g, &quot;s&quot;],[/[ß]/g, &quot;ss&quot;],[/[ţțťŧ]/g, &quot;t&quot;],[/[þ]/g, &quot;th&quot;],[/[ùúûũūŭůűųưǔǖǘǚǜ]/g, &quot;u&quot;],[/[ü]/g, &quot;ue&quot;],[/[ŵ]/g, &quot;w&quot;],[/[ýÿŷ]/g, &quot;y&quot;],[/[є]/g, &quot;ye&quot;],[/[ї]/g, &quot;yi&quot;],[/[źżž]/g, &quot;z&quot;],[/[^\s\p{Zs}\p{Ll}\p{Lm}\p{Lo}\p{Lt}\p{Lu}\p{Nd}]/mu, &quot; &quot;],[/[\s\p{Zs}]+/mu, &quot;-&quot;],[/^[\\-]+|[\\-]+$/, &quot;&quot;]]</span></div>
+					<div class="tsd-signature tsd-kind-icon">Transliteration<wbr>Replacements<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = [[/[ÆǼ]/g, &quot;AE&quot;],[/[Ä]/g, &quot;Ae&quot;],[/[ÇĆĈĊČ]/g, &quot;C&quot;],[/[ÐĎĐ]/g, &quot;D&quot;],[/[ÈÉÊËĒĔĖĘĚ]/g, &quot;E&quot;],[/[ĜĞĠĢҐ]/g, &quot;G&quot;],[/[ĤĦ]/g, &quot;H&quot;],[/[ÌÍÎÏĨĪĬǏĮİІ]/g, &quot;I&quot;],[/[Ĳ]/g, &quot;IJ&quot;],[/[Ĵ]/g, &quot;J&quot;],[/[Ķ]/g, &quot;K&quot;],[/[ĹĻĽĿŁ]/g, &quot;L&quot;],[/[ÑŃŅŇ]/g, &quot;N&quot;],[/[ÒÓÔÕŌŎǑŐƠØǾ]/g, &quot;O&quot;],[/[Œ]/g, &quot;OE&quot;],[/[Ö]/g, &quot;Oe&quot;],[/[ŔŖŘ]/g, &quot;R&quot;],[/[ŚŜŞȘŠ]/g, &quot;S&quot;],[/[ẞ]/g, &quot;SS&quot;],[/[ŢȚŤŦ]/g, &quot;T&quot;],[/[Þ]/g, &quot;TH&quot;],[/[ÙÚÛŨŪŬŮŰŲƯǓǕǗǙǛ]/g, &quot;U&quot;],[/[Ü]/g, &quot;Ue&quot;],[/[Ŵ]/g, &quot;W&quot;],[/[ÝŸŶ]/g, &quot;Y&quot;],[/[Є]/g, &quot;Ye&quot;],[/[Ї]/g, &quot;Yi&quot;],[/[ŹŻŽ]/g, &quot;Z&quot;],[/[àáâãåǻāăąǎª]/g, &quot;a&quot;],[/[äæǽ]/g, &quot;ae&quot;],[/[çćĉċč]/g, &quot;c&quot;],[/[ðďđ]/g, &quot;d&quot;],[/[èéêëēĕėęě]/g, &quot;e&quot;],[/[ƒ]/g, &quot;f&quot;],[/[ĝğġģґ]/g, &quot;g&quot;],[/[ĥħ]/g, &quot;h&quot;],[/[ìíîïĩīĭǐįıі]/g, &quot;i&quot;],[/[ĳ]/g, &quot;ij&quot;],[/[ĵ]/g, &quot;j&quot;],[/[ķ]/g, &quot;k&quot;],[/[ĺļľŀł]/g, &quot;l&quot;],[/[ñńņňŉ]/g, &quot;n&quot;],[/[òóôõōŏǒőơøǿº]/g, &quot;o&quot;],[/[öœ]/g, &quot;oe&quot;],[/[ŕŗř]/g, &quot;r&quot;],[/[śŝşșšſ]/g, &quot;s&quot;],[/[ß]/g, &quot;ss&quot;],[/[ţțťŧ]/g, &quot;t&quot;],[/[þ]/g, &quot;th&quot;],[/[ùúûũūŭůűųưǔǖǘǚǜ]/g, &quot;u&quot;],[/[ü]/g, &quot;ue&quot;],[/[ŵ]/g, &quot;w&quot;],[/[ýÿŷ]/g, &quot;y&quot;],[/[є]/g, &quot;ye&quot;],[/[ї]/g, &quot;yi&quot;],[/[źżž]/g, &quot;z&quot;],...(canUseUnicode ?[[new RegExp(&quot;[^\\s\\p{Zs}\\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu}\\p{Nd}]&quot;, &quot;gmu&quot;), &quot; &quot;],[new RegExp(&quot;[\\s\\p{Zs}]&quot;, &quot;gmu&quot;), &quot;-&quot;]]:[[new RegExp(&quot;[^a-zA-Z0-9 -]&quot;, &quot;gm&quot;), &quot; &quot;],[new RegExp(&quot;\\s+&quot;, &quot;gm&quot;), &quot;-&quot;],[new RegExp(&quot;-+&quot;, &quot;gm&quot;), &quot;-&quot;],[new RegExp(&quot;^-+&quot;, &quot;gm&quot;), &quot;&quot;],[new RegExp(&quot;-+$&quot;, &quot;gm&quot;), &quot;&quot;]]),[/^[\\-]+|[\\-]+$/g, &quot;&quot;]]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/530b036/src/Strings/Inflector/inflectToSlug.ts#L21">src/Strings/Inflector/inflectToSlug.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/f87c188/src/Strings/Inflector/inflectToSlug.ts#L23">src/Strings/Inflector/inflectToSlug.ts:23</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+					<a name="canuseunicode" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> can<wbr>Use<wbr>Unicode</h3>
+					<div class="tsd-signature tsd-kind-icon">can<wbr>Use<wbr>Unicode<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = typeof (new RegExp(&quot;&quot;)).unicode &#x3D;&#x3D;&#x3D; &quot;boolean&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/f87c188/src/Strings/Inflector/inflectToSlug.ts#L21">src/Strings/Inflector/inflectToSlug.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -111,7 +122,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/530b036/src/Strings/Inflector/inflectToSlug.ts#L104">src/Strings/Inflector/inflectToSlug.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/f87c188/src/Strings/Inflector/inflectToSlug.ts#L117">src/Strings/Inflector/inflectToSlug.ts:117</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -143,7 +154,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/530b036/src/Strings/Inflector/inflectToSlug.ts#L88">src/Strings/Inflector/inflectToSlug.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/f87c188/src/Strings/Inflector/inflectToSlug.ts#L101">src/Strings/Inflector/inflectToSlug.ts:101</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -181,6 +192,9 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
 						<a href="_strings_inflector_inflecttoslug_.html#transliterationreplacements" class="tsd-kind-icon">Transliteration<wbr>Replacements</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_strings_inflector_inflecttoslug_.html#canuseunicode" class="tsd-kind-icon">can<wbr>Use<wbr>Unicode</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_strings_inflector_inflecttoslug_.html#inflecttoslug" class="tsd-kind-icon">inflect<wbr>ToSlug</a>
