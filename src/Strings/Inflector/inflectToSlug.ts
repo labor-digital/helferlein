@@ -18,6 +18,8 @@
 
 import {inflectToDashed} from "./inflectToDashed";
 
+const canUseUnicode: boolean = typeof (new RegExp("")).unicode === "boolean";
+
 export const TransliterationReplacements: Array<Array<string | RegExp>> = [
 	[/[ÆǼ]/g, "AE"],
 	[/[Ä]/g, "Ae"],
@@ -75,9 +77,20 @@ export const TransliterationReplacements: Array<Array<string | RegExp>> = [
 	[/[є]/g, "ye"],
 	[/[ї]/g, "yi"],
 	[/[źżž]/g, "z"],
-	[/[^\s\p{Zs}\p{Ll}\p{Lm}\p{Lo}\p{Lt}\p{Lu}\p{Nd}]/mu, " "],
-	[/[\s\p{Zs}]+/mu, "-"],
-	[/^[\\-]+|[\\-]+$/, ""]
+	...(canUseUnicode ?
+		[
+			[new RegExp("[^\\s\\p{Zs}\\p{Ll}\\p{Lm}\\p{Lo}\\p{Lt}\\p{Lu}\\p{Nd}]", "gmu"), " "],
+			[new RegExp("[\\s\\p{Zs}]", "gmu"), "-"]
+		]
+		:
+		[
+			[new RegExp("[^a-zA-Z0-9 -]", "gm"), " "],
+			[new RegExp("\\s+", "gm"), "-"],
+			[new RegExp("-+", "gm"), "-"],
+			[new RegExp("^-+", "gm"), ""],
+			[new RegExp("-+$", "gm"), ""]
+		]),
+	[/^[\\-]+|[\\-]+$/g, ""]
 ];
 
 /**
