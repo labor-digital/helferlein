@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.17.6](https://github.com/labor-digital/helferlein/compare/v3.17.5...v3.17.6) (2020-04-07)
+
+
+### Bug Fixes
+
+* **inflectToSlug:** make sure IE does not break when using unicode regex ([d4bf449](https://github.com/labor-digital/helferlein/commit/d4bf44905f716cf83e1087f6017ea5853816be19))
+
 ### [3.17.5](https://github.com/labor-digital/helferlein/compare/v3.17.4...v3.17.5) (2020-04-06)
 
 
