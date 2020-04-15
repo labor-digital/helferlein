@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.17.7](https://github.com/labor-digital/helferlein/compare/v3.17.6...v3.17.7) (2020-04-13)
+
+
+### Bug Fixes
+
+* **ComponentProxy:** make sure events can be unbound even while the proxy dies ([bf630da](https://github.com/labor-digital/helferlein/commit/bf630da64617bced134733128af2bf7843100eba))
+
 ### [3.17.6](https://github.com/labor-digital/helferlein/compare/v3.17.5...v3.17.6) (2020-04-07)
 
 
