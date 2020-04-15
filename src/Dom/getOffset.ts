@@ -23,7 +23,7 @@ import {isObject} from "../Types/isObject";
 /**
  * Returns the offset of a given dom element relative to the document
  * @param element The element to get the offset of
- * @param container An optional container that is used as scroll target instead of the window
+ * @param container An optional container that is used as target instead of the window
  */
 export function getOffset(element: HTMLElement, container?: HTMLElement | string): { top: number, left: number } {
 	if (!isBrowser() || !isObject(element)) return {top: 0, left: 0};
