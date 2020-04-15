@@ -22,6 +22,7 @@ import {merge} from "../Lists/merge";
 import {isEmpty} from "../Types/isEmpty";
 import {isNumber} from "../Types/isNumber";
 import {isObject} from "../Types/isObject";
+import {isString} from "../Types/isString";
 import {isUndefined} from "../Types/isUndefined";
 import {scrollToPosition} from "./scrollToPosition";
 
@@ -38,8 +39,9 @@ interface ScrollToTopOfConfiguration extends PlainObject {
 	
 	/**
 	 * If set this will be used as as scroll container instead of the "window"
+	 * Can be a valid selector for document.querySelector() as a string, as well.
 	 */
-	container?: HTMLElement | Window;
+	container?: HTMLElement | Window | string;
 }
 
 const isInBrowser = isBrowser();
@@ -81,7 +83,7 @@ export function scrollToTopOf(target?: HTMLElement | null, options?: ScrollToTop
 	if (isUndefined(options)) options = {};
 	if (!isNumber(options.duration)) options.duration = config.duration;
 	if (!isNumber(options.offset)) options.offset = config.offset;
-	if (!isObject(options.container)) options.container = config.container;
+	if (!isObject(options.container) && !isString(options.container)) options.container = config.container;
 	if (isEmpty(options.container)) options.container = window;
 	
 	// Get the element's offset

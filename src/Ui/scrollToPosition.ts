@@ -17,6 +17,7 @@
  */
 import {requestFrame} from "../Browser/requestFrame";
 import {isBrowser} from "../Environment/isBrowser";
+import {isString} from "../Types/isString";
 import {getScrollPos} from "./getScrollPos";
 import {throttleEvent} from "./throttleEvent";
 
@@ -39,9 +40,10 @@ function easing(p) {
  *
  * @param position The pixel position on the Y axis to scroll to
  * @param duration (Default 300) The duration in milliseconds the animation should take
- * @param container (Default window) The container to scroll instead of the window
+ * @param container (Default window) The container to scroll instead of the window.
+ * Can be a valid selector for document.querySelector() as a string, as well.
  */
-export function scrollToPosition(position: number, duration?: number, container?: HTMLElement | Window): Promise<HTMLElement | Window> {
+export function scrollToPosition(position: number, duration?: number, container?: HTMLElement | Window | string): Promise<HTMLElement | Window | string> {
 	// Noop if not in browser
 	if (!isBrowser()) return Promise.resolve(container);
 	
@@ -52,6 +54,11 @@ export function scrollToPosition(position: number, duration?: number, container?
 	// Prepare input values
 	duration = duration || (duration === 0 ? 0 : 300);
 	container = container || window;
+	if (isString(container)) {
+		const resolvedContainer = document.querySelector(container as string) as HTMLElement | null;
+		if (resolvedContainer === null) return Promise.resolve(resolvedContainer);
+		container = resolvedContainer;
+	}
 	const containerIsWindow = container === window;
 	
 	// Start promise chain
