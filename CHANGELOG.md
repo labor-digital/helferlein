@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.19.0](https://github.com/labor-digital/helferlein/compare/v3.18.0...v3.19.0) (2020-04-15)
+
+
+### Features
+
+* **getOffset:** make sure string containers are supported as well ([50888dc](https://github.com/labor-digital/helferlein/commit/50888dccd7927e4d3afa745526017eb39ad18851))
+
 ## [3.18.0](https://github.com/labor-digital/helferlein/compare/v3.17.7...v3.18.0) (2020-04-15)
 
 
