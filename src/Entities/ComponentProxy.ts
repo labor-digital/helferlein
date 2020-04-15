@@ -70,11 +70,6 @@ export class ComponentProxy {
 	protected lives: boolean;
 	
 	/**
-	 * True while the instance is currently dying
-	 */
-	protected isDying: boolean;
-	
-	/**
 	 * Contains the list of all timeouts that are bound on this block
 	 */
 	protected timeouts: Array<number>;
@@ -104,11 +99,9 @@ export class ComponentProxy {
 	
 	constructor(thisContext) {
 		this.lives = true;
-		this.isDying = false;
 		this.thisContext = thisContext;
 		this.timeouts = [];
 		this.intervals = [];
-		
 		this.events = new Map();
 	}
 	
@@ -122,7 +115,7 @@ export class ComponentProxy {
 	 * @param handler
 	 * @param timeout
 	 */
-	setInterval(handler: (...args: any[]) => void, timeout: number): number;
+	public setInterval(handler: (...args: any[]) => void, timeout: number): number;
 	
 	/**
 	 * Registers a handler to run in a specified interval.
@@ -131,9 +124,9 @@ export class ComponentProxy {
 	 * @param timeout
 	 * @param args
 	 */
-	setInterval(handler: (...args: any[]) => void, timeout?: any, ...args: any[]): number;
-	setInterval(handler: (...args: any[]) => void, timeout: number, ...args: any[]): number {
-		if (this.isDying) return 0;
+	public setInterval(handler: (...args: any[]) => void, timeout?: any, ...args: any[]): number;
+	public setInterval(handler: (...args: any[]) => void, timeout: number, ...args: any[]): number {
+		if (!this.lives) return 0;
 		const i: any = setInterval(() => {
 			handler.apply(this.thisContext, args);
 		}, timeout);
@@ -145,8 +138,8 @@ export class ComponentProxy {
 	 * Removes a given interval on the current block
 	 * @param id
 	 */
-	clearInterval(id: number) {
-		if (this.isDestroyed()) return;
+	public clearInterval(id: number) {
+		if (!this.lives) return;
 		const k = this.intervals.indexOf(id);
 		clearInterval(id);
 		if (k === -1) return;
@@ -163,7 +156,7 @@ export class ComponentProxy {
 	 * @param handler
 	 * @param timeout
 	 */
-	setTimeout(handler: (...args: any[]) => void, timeout: number): number;
+	public setTimeout(handler: (...args: any[]) => void, timeout: number): number;
 	
 	/**
 	 * Registers a timeout to run after a specified timespan.
@@ -172,9 +165,9 @@ export class ComponentProxy {
 	 * @param timeout
 	 * @param args
 	 */
-	setTimeout(handler: (...args: any[]) => void, timeout?: any, ...args: any[]): number;
-	setTimeout(handler: (...args: any[]) => void, timeout: number, ...args: any[]): number {
-		if (this.isDying) return 0;
+	public setTimeout(handler: (...args: any[]) => void, timeout?: any, ...args: any[]): number;
+	public setTimeout(handler: (...args: any[]) => void, timeout: number, ...args: any[]): number {
+		if (!this.lives) return 0;
 		const i: any = setTimeout(() => {
 			// Clean up to keep the memory tidy
 			const k = this.timeouts.indexOf(i);
@@ -189,8 +182,8 @@ export class ComponentProxy {
 	 * Clears a given timeout id
 	 * @param id
 	 */
-	clearTimeout(id: number) {
-		if (this.isDestroyed()) return;
+	public clearTimeout(id: number) {
+		if (!this.lives) return;
 		const k = this.timeouts.indexOf(id);
 		clearTimeout(id);
 		if (k === -1) return;
@@ -206,10 +199,10 @@ export class ComponentProxy {
 	 * This makes sure that even if the current block is destroyed the chained functions will not be executed
 	 * and may break stuff.
 	 */
-	promiseProxy(): Function {
+	public promiseProxy(): Function {
 		const that = this;
 		return function (args?: any): Promise<any> | any {
-			if (isUndefined(that) || !isFunction(that.isDestroyed) || that.isDestroyed() === true || that.isDying === true) {
+			if (isUndefined(that) || !that.lives) {
 				const noopPromise = {
 					finally: () => noopPromise,
 					then: () => noopPromise,
@@ -227,10 +220,10 @@ export class ComponentProxy {
 	 * outsideFunction(proxy.callbackProxy((...args) => console.log(args)));
 	 * @param callback
 	 */
-	callbackProxy(callback): Function {
+	public callbackProxy(callback): Function {
 		const that = this;
 		return function (args?: any): Promise<any> | any {
-			if (isUndefined(that) || !isFunction(that.isDestroyed) || that.isDestroyed() === true || that.isDying === true) return;
+			if (isUndefined(that) || !that.lives) return;
 			return callback.apply(that.thisContext, Array.prototype.slice.call(arguments));
 		};
 	}
@@ -245,8 +238,8 @@ export class ComponentProxy {
 	 * @param event The name of the event to emit
 	 * @param args An object of arguments which then are transferred to e.args in your callback
 	 */
-	emit(target: ComponentProxyEventTarget, event: string, args?: PlainObject): ComponentProxy {
-		if (this.isDestroyed()) return this;
+	public emit(target: ComponentProxyEventTarget, event: string, args?: PlainObject): ComponentProxy {
+		if (!this.lives) return this;
 		
 		if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter))
 			target = (target as any).getEmitter();
@@ -266,7 +259,7 @@ export class ComponentProxy {
 	 * @see EventEmitter.emitHook()
 	 */
 	emitHook(target: ComponentProxyHookTarget, event: string, args: PlainObject): Promise<PlainObject> {
-		if (this.isDestroyed()) return Promise.resolve(args);
+		if (!this.lives) return Promise.resolve(args);
 		if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter))
 			target = (target as any).getEmitter();
 		if (isObject(target) && isFunction((target as any).emit))
@@ -286,7 +279,7 @@ export class ComponentProxy {
 	 *                    @todo add html event listener options like passive and capture!
 	 */
 	bind(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener, priority?: number): ComponentProxy {
-		if (this.isDying) return this;
+		if (!this.lives) return this;
 		
 		// Prepare the target
 		if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter))
@@ -349,8 +342,19 @@ export class ComponentProxy {
 	 *                    @todo While addEventListener() will let you add the same listener more than once for the same type if the options are different, the only option removeEventListener() checks is the capture/useCapture flag. Its value must match for removeEventListener() to match, but the other values don't.
 	 */
 	unbind(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener): ComponentProxy {
-		if (this.isDestroyed()) return this;
-		
+		if (!this.lives) return this;
+		this.unbindInternal(target, event, listener);
+		return this;
+	}
+	
+	/**
+	 * Internal logic to unbind an event from a listener.
+	 * This method does not do any validation if the proxy still lives so it can be called in the destroy method
+	 * @param target
+	 * @param event
+	 * @param listener
+	 */
+	protected unbindInternal(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener): void {
 		// Prepare the target
 		if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter))
 			target = (target as any).getEmitter();
@@ -381,17 +385,15 @@ export class ComponentProxy {
 			
 			// Special event handling for @mutation
 			if (event === "@mutation") {
-				if (isUndefined(this.mutationEmitter)) return this;
+				if (isUndefined(this.mutationEmitter)) return;
 				this.mutationEmitter.unbind("", listener);
-				return this;
+				return;
 			}
 			
 			// Default handling
 			(target as HTMLElement).removeEventListener(event, listener);
 		} else throw new Error("Could not bind to event \"" + event + "\", because the given target is invalid!");
 		
-		// Done
-		return this;
 	}
 	
 	/**
@@ -403,10 +405,9 @@ export class ComponentProxy {
 	 * The proxy will then unbind all events, timeouts, intervals and block all promises
 	 * which could lead to errors or memory leaks
 	 */
-	destroy(): ComponentProxy {
-		if (this.isDestroyed() || this.isDying) return this;
-		
-		this.isDying = true;
+	public destroy(): ComponentProxy {
+		if (!this.lives) return this;
+		this.lives = false;
 		
 		// Intervals
 		if (this.intervals.length > 0)
@@ -420,7 +421,7 @@ export class ComponentProxy {
 		forEach(this.events, (eventList, target) => {
 			forEach(eventList, (listeners, event) => {
 				forEach(listeners, (proxy, listener) => {
-					this.unbind(target, event, listener);
+					this.unbindInternal(target, event, listener);
 				});
 			});
 		});
@@ -442,15 +443,13 @@ export class ComponentProxy {
 		delete this.events;
 		
 		// Be dead
-		this.isDying = false;
-		this.lives = false;
 		return this;
 	}
 	
 	/**
 	 * Returns true if this proxy is destroyed, false if not
 	 */
-	isDestroyed(): boolean {
+	public isDestroyed(): boolean {
 		return !this.lives;
 	}
 }
