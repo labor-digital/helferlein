@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.18.0](https://github.com/labor-digital/helferlein/compare/v3.17.7...v3.18.0) (2020-04-15)
+
+
+### Features
+
+* **ScrollToPosition:** Allow scrollToTopOf and scrollToPosition to scroll to valid css selectors as well ([f3a3935](https://github.com/labor-digital/helferlein/commit/f3a3935f8e33e6af7d226d6bc266d5fe60d0ab25))
+* make dom helpers not crash if the given "element" is undefined ([675b01f](https://github.com/labor-digital/helferlein/commit/675b01ff152728a54c6d4052c438a747082ab2bf))
+
 ### [3.17.7](https://github.com/labor-digital/helferlein/compare/v3.17.6...v3.17.7) (2020-04-13)
 
 
