@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.19.1](https://github.com/labor-digital/helferlein/compare/v3.19.0...v3.19.1) (2020-04-15)
+
+
+### Bug Fixes
+
+* **scrollToPosition:** don't keep trying to scroll if the end of the page was reached ([4ebda7b](https://github.com/labor-digital/helferlein/commit/4ebda7b246e62a37c3dcdce8a3fa4fe065d2a1da))
+
 ## [3.19.0](https://github.com/labor-digital/helferlein/compare/v3.18.0...v3.19.0) (2020-04-15)
 
 
