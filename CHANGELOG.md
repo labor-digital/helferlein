@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.19.2](https://github.com/labor-digital/helferlein/compare/v3.19.1...v3.19.2) (2020-04-15)
+
+
+### Bug Fixes
+
+* **ComponentProxy:** make proxy more resilient against crashes ([a7f3389](https://github.com/labor-digital/helferlein/commit/a7f33895da300ed32bc85dc35080976842016184))
+
 ### [3.19.1](https://github.com/labor-digital/helferlein/compare/v3.19.0...v3.19.1) (2020-04-15)
 
 
