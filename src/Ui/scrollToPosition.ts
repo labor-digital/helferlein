@@ -90,6 +90,7 @@ export function scrollToPosition(position: number, duration?: number, container?
 		let expectedPosition = Math.ceil(initialPosition);
 		
 		// The animation loop
+		let retry = 0;
 		const tick = function () {
 			// Break if another animation was started or something else scrolled
 			if (localAnimation !== runningAnimation) return resolve(container);
@@ -98,9 +99,10 @@ export function scrollToPosition(position: number, duration?: number, container?
 			const actualPosition = Math.ceil(getScrollPos(container as HTMLElement));
 			if (expectedPosition !== actualPosition) {
 				// Check if we are still on the right way
-				if (direction === "up" && actualPosition > expectedPosition ||
-					direction === "down" && actualPosition < expectedPosition) {
+				if (retry < 5 && (direction === "up" && actualPosition > expectedPosition ||
+					direction === "down" && actualPosition < expectedPosition)) {
 					// Try again, for stupid iOs
+					retry++;
 					requestFrame(throttleEvent(tick, tickLength) as any);
 					setScrollPos(expectedPosition);
 					return;
@@ -109,6 +111,9 @@ export function scrollToPosition(position: number, duration?: number, container?
 				// No? Than there is something wrong here -> break
 				return resolve(container);
 			}
+			
+			// Reset retries
+			retry = 0;
 			
 			// Check if there is still work to do
 			if (c < ticks) {
