@@ -29,7 +29,7 @@ import {isString} from "../Types/isString";
  * @param fallback Optional value which will be returned if the data attribute for the selector was not found
  */
 export function getData(element: HTMLElement, selector?: string, fallback?: any) {
-	if (!isObject(element)) return undefined;
+	if (!isObject(element)) return fallback;
 	
 	// Auto convert json objects
 	function getDataConverter(value: any) {

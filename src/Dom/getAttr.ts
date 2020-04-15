@@ -25,7 +25,7 @@ import {isObject} from "../Types/isObject";
  * @param fallback Optional fallback to be returned when the attribute was not found
  */
 export function getAttr(element: HTMLElement | Element, attributeName: string, fallback?: any) {
-	if (!isObject(element)) return undefined;
+	if (!isObject(element)) return fallback;
 	if (!element.hasAttribute(attributeName)) return fallback;
 	return element.getAttribute(attributeName);
 }

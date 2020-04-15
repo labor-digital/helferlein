@@ -16,6 +16,7 @@
  * Last modified: 2019.02.18 at 13:52
  */
 
+import {isObject} from "../Types/isObject";
 import {addClass} from "./addClass";
 import {removeClass} from "./removeClass";
 
@@ -26,6 +27,7 @@ import {removeClass} from "./removeClass";
  * @param condition A condition to toggle the classes by
  */
 export function toggleClass(element: HTMLElement | NodeListOf<Element>, classes: string, condition: boolean) {
+	if (!isObject(element)) return;
 	if (condition === true) addClass(element, classes);
 	else removeClass(element, classes);
 }

@@ -20,6 +20,7 @@ import {PlainObject} from "../Interfaces/PlainObject";
 import {inflectToDashed} from "../Strings/Inflector/inflectToDashed";
 import {isNull} from "../Types/isNull";
 import {isNumber} from "../Types/isNumber";
+import {isObject} from "../Types/isObject";
 import {isString} from "../Types/isString";
 import {setAttr} from "./setAttr";
 
@@ -33,6 +34,7 @@ import {setAttr} from "./setAttr";
  * @param data The value to be set as data. Complex data will be json encoded. If NULL is given the data attribute will be removed
  */
 export function setData(element: HTMLElement, selector: string, data: string | number | Array<any> | PlainObject | null) {
+	if (!isObject(element)) return;
 	
 	// Prepare the data
 	if (!isNull(data) && !isString(data) && !isNumber(data)) data = JSON.stringify(data);

@@ -16,13 +16,15 @@
  * Last modified: 2019.04.04 at 16:36
  */
 import {isFunction} from "../Types/isFunction";
+import {isObject} from "../Types/isObject";
 
 /**
  * Returns the outer size of an html element in pixels
  * @param element
  */
-export function getSize(element: HTMLElement) {
-	if (isFunction(element.getBoundingClientRect)) {
+export function getSize(element: HTMLElement): { width: number, height: number } {
+	if (!isObject(element)) return {width: 0, height: 0};
+	if (isObject(element) && isFunction(element.getBoundingClientRect)) {
 		const rect = element.getBoundingClientRect();
 		return {
 			width: rect.width,
@@ -30,7 +32,7 @@ export function getSize(element: HTMLElement) {
 		};
 	}
 	return {
-		width: element.offsetWidth,
+		width: element.offsetWidth || 0,
 		height: element.offsetHeight
 	};
 }

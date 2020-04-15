@@ -17,6 +17,7 @@
  */
 
 import {forEach} from "../Lists/forEach";
+import {isObject} from "../Types/isObject";
 import {isUndefined} from "../Types/isUndefined";
 
 /**
@@ -37,6 +38,7 @@ function addClassAdder(element: HTMLElement | Element, classList: Array<string>)
  * @param classes The space-separated list of classes to add to the element
  */
 export function addClass(element: HTMLElement | NodeListOf<Element>, classes: string) {
+	if (!isObject(element)) return;
 	const classList = classes.split(" ");
 	if (isUndefined((element as NodeListOf<Element>).length))
 		return addClassAdder(element as HTMLElement, classList);

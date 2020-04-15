@@ -16,6 +16,7 @@
  * Last modified: 2019.01.11 at 19:43
  */
 import {isFunction} from "../Types/isFunction";
+import {isObject} from "../Types/isObject";
 
 /**
  * A polifill for "closest()" element in internet explorer without jquery:
@@ -25,6 +26,7 @@ import {isFunction} from "../Types/isFunction";
  * @param to The element to use as starting point
  */
 export function closest(selector: string, to: HTMLElement): HTMLElement | null {
+	if (!isObject(to)) return null;
 	if (!isFunction(to.closest)) {
 		let el = to;
 		while (el) {

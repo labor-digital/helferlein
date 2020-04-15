@@ -19,6 +19,7 @@
 import {forEach} from "../Lists/forEach";
 import {isBool} from "../Types/isBool";
 import {isNumber} from "../Types/isNumber";
+import {isObject} from "../Types/isObject";
 import {isString} from "../Types/isString";
 import {isUndefined} from "../Types/isUndefined";
 
@@ -41,6 +42,7 @@ function setAttrSetter(element: HTMLElement | Element, attributeName: string, va
  * @param value If null is given the attribute will be removed, otherwise the attribute will be set to this value
  */
 export function setAttr(element: HTMLElement | NodeListOf<Element>, attributeName: string, value: string | number | boolean | null) {
+	if (!isObject(element)) return;
 	let valueString = null;
 	if (isString(value)) valueString = value as string;
 	else if (isBool(value)) valueString = value ? "TRUE" : "FALSE";
