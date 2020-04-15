@@ -106,7 +106,6 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_entities_componentproxy_.componentproxy.html#events" class="tsd-kind-icon">events</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_entities_componentproxy_.componentproxy.html#intervals" class="tsd-kind-icon">intervals</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_entities_componentproxy_.componentproxy.html#isdying" class="tsd-kind-icon">is<wbr>Dying</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_entities_componentproxy_.componentproxy.html#lives" class="tsd-kind-icon">lives</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_entities_componentproxy_.componentproxy.html#mutationemitter" class="tsd-kind-icon">mutation<wbr>Emitter</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_entities_componentproxy_.componentproxy.html#mutationobservers" class="tsd-kind-icon">mutation<wbr>Observers</a></li>
@@ -129,6 +128,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_entities_componentproxy_.componentproxy.html#setinterval" class="tsd-kind-icon">set<wbr>Interval</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_entities_componentproxy_.componentproxy.html#settimeout" class="tsd-kind-icon">set<wbr>Timeout</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_entities_componentproxy_.componentproxy.html#unbind" class="tsd-kind-icon">unbind</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_entities_componentproxy_.componentproxy.html#unbindinternal" class="tsd-kind-icon">unbind<wbr>Internal</a></li>
 							</ul>
 						</section>
 					</div>
@@ -146,7 +146,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L103">src/Entities/ComponentProxy.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L98">src/Entities/ComponentProxy.ts:98</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -168,7 +168,7 @@
 					<div class="tsd-signature tsd-kind-icon">events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_entities_componentproxy_.html#componentproxyeventtarget" class="tsd-signature-type">ComponentProxyEventTarget</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_entities_componentproxy_.componentproxylistener.html" class="tsd-signature-type">ComponentProxyListener</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_lists_foreach_.foreachcallbacktype.html#function" class="tsd-signature-type">Function</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L91">src/Entities/ComponentProxy.ts:91</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L86">src/Entities/ComponentProxy.ts:86</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -184,7 +184,7 @@
 					<div class="tsd-signature tsd-kind-icon">intervals<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L85">src/Entities/ComponentProxy.ts:85</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L80">src/Entities/ComponentProxy.ts:80</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -194,27 +194,12 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-					<a name="isdying" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> is<wbr>Dying</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Dying<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L75">src/Entities/ComponentProxy.ts:75</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>True while the instance is currently dying</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="lives" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> lives</h3>
 					<div class="tsd-signature tsd-kind-icon">lives<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L70">src/Entities/ComponentProxy.ts:70</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L70">src/Entities/ComponentProxy.ts:70</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -229,7 +214,7 @@
 					<div class="tsd-signature tsd-kind-icon">mutation<wbr>Emitter<span class="tsd-signature-symbol">:</span> <a href="_events_eventemitter_.eventemitter.html" class="tsd-signature-type">EventEmitter</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L103">src/Entities/ComponentProxy.ts:103</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L98">src/Entities/ComponentProxy.ts:98</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -244,7 +229,7 @@
 					<div class="tsd-signature tsd-kind-icon">mutation<wbr>Observers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_entities_componentproxy_.html#componentproxyeventtarget" class="tsd-signature-type">ComponentProxyEventTarget</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">MutationObserver</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L98">src/Entities/ComponentProxy.ts:98</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L93">src/Entities/ComponentProxy.ts:93</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -259,7 +244,7 @@
 					<div class="tsd-signature tsd-kind-icon">this<wbr>Context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L65">src/Entities/ComponentProxy.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L65">src/Entities/ComponentProxy.ts:65</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -274,7 +259,7 @@
 					<div class="tsd-signature tsd-kind-icon">timeouts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L80">src/Entities/ComponentProxy.ts:80</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L75">src/Entities/ComponentProxy.ts:75</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -296,7 +281,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L288">src/Entities/ComponentProxy.ts:288</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L281">src/Entities/ComponentProxy.ts:281</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -348,7 +333,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L230">src/Entities/ComponentProxy.ts:230</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L223">src/Entities/ComponentProxy.ts:223</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -380,7 +365,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L148">src/Entities/ComponentProxy.ts:148</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L141">src/Entities/ComponentProxy.ts:141</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -410,7 +395,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L192">src/Entities/ComponentProxy.ts:192</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L185">src/Entities/ComponentProxy.ts:185</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -440,7 +425,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L406">src/Entities/ComponentProxy.ts:406</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L408">src/Entities/ComponentProxy.ts:408</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -464,7 +449,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L248">src/Entities/ComponentProxy.ts:248</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L241">src/Entities/ComponentProxy.ts:241</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -507,7 +492,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L268">src/Entities/ComponentProxy.ts:268</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L261">src/Entities/ComponentProxy.ts:261</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -555,7 +540,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L453">src/Entities/ComponentProxy.ts:453</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L452">src/Entities/ComponentProxy.ts:452</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -577,7 +562,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L209">src/Entities/ComponentProxy.ts:209</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L202">src/Entities/ComponentProxy.ts:202</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -602,7 +587,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L125">src/Entities/ComponentProxy.ts:125</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L118">src/Entities/ComponentProxy.ts:118</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -645,7 +630,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L134">src/Entities/ComponentProxy.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L127">src/Entities/ComponentProxy.ts:127</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -701,7 +686,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L166">src/Entities/ComponentProxy.ts:166</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L159">src/Entities/ComponentProxy.ts:159</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -744,7 +729,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L175">src/Entities/ComponentProxy.ts:175</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L168">src/Entities/ComponentProxy.ts:168</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -799,7 +784,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b63e546/src/Entities/ComponentProxy.ts#L351">src/Entities/ComponentProxy.ts:351</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L344">src/Entities/ComponentProxy.ts:344</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -834,6 +819,43 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="unbindinternal" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> unbind<wbr>Internal</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">unbind<wbr>Internal<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><a href="../modules/_entities_componentproxy_.html#componentproxyeventtarget" class="tsd-signature-type">ComponentProxyEventTarget</a>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, listener<span class="tsd-signature-symbol">: </span><a href="../interfaces/_entities_componentproxy_.componentproxylistener.html" class="tsd-signature-type">ComponentProxyListener</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/0a47230/src/Entities/ComponentProxy.ts#L357">src/Entities/ComponentProxy.ts:357</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Internal logic to unbind an event from a listener.
+									This method does not do any validation if the proxy still lives so it can be called in the destroy method</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <a href="../modules/_entities_componentproxy_.html#componentproxyeventtarget" class="tsd-signature-type">ComponentProxyEventTarget</a></h5>
+								</li>
+								<li>
+									<h5>event: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>listener: <a href="../interfaces/_entities_componentproxy_.componentproxylistener.html" class="tsd-signature-type">ComponentProxyListener</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -862,9 +884,6 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 								<a href="_entities_componentproxy_.componentproxy.html#intervals" class="tsd-kind-icon">intervals</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="_entities_componentproxy_.componentproxy.html#isdying" class="tsd-kind-icon">is<wbr>Dying</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 								<a href="_entities_componentproxy_.componentproxy.html#lives" class="tsd-kind-icon">lives</a>
@@ -917,6 +936,9 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_entities_componentproxy_.componentproxy.html#unbind" class="tsd-kind-icon">unbind</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="_entities_componentproxy_.componentproxy.html#unbindinternal" class="tsd-kind-icon">unbind<wbr>Internal</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -956,10 +978,11 @@
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 		</div>
 	</div>
