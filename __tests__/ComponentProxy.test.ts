@@ -67,6 +67,8 @@ test("Component Proxy, event unbinding on destroy", () => {
 			proxy.emit(EventBus, "test", {foo: 1});
 			proxy.unbind(EventBus, "test", callback);
 			proxy.emit(EventBus, "test", {foo: 1});
+			EventBus.emit("test", {foo: 1});
+			EventBus.getEmitter().emit("test", {foo: 1});
 			expect(c).toBe(3);
 		}
 	}
