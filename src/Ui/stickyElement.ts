@@ -114,7 +114,7 @@ function checkElementState(e, scrollPos, container?: HTMLElement) {
  * @param options
  */
 export function stickyElement(element: HTMLElement, options?: StickyElementOptions) {
-	if (!isBrowser()) return;
+	if (!isBrowser() || isEmpty(element)) return;
 	
 	// Check if element is already sticky
 	if (!isUndefined((element as any)._stickyGuid)) {
@@ -151,7 +151,7 @@ export function stickyElement(element: HTMLElement, options?: StickyElementOptio
  * @param element
  */
 export function destroyStickyElement(element: HTMLElement) {
-	if (!isBrowser()) return;
+	if (!isBrowser() || isEmpty(element)) return;
 	
 	// Ignore non-sticky elements
 	if (isUndefined((element as any)._stickyGuid)) return;
