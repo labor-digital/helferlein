@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.20.0](https://github.com/labor-digital/helferlein/compare/v3.19.2...v3.20.0) (2020-04-15)
+
+
+### Features
+
+* **stickyElement:** allow sticky elements to be placed inside containers ([1f668b8](https://github.com/labor-digital/helferlein/commit/1f668b8917465da4e8997b43c55def0f64747545))
+
 ### [3.19.2](https://github.com/labor-digital/helferlein/compare/v3.19.1...v3.19.2) (2020-04-15)
 
 
