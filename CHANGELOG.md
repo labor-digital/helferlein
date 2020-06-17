@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.20.1](https://github.com/labor-digital/helferlein/compare/v3.20.0...v3.20.1) (2020-04-20)
+
+
+### Bug Fixes
+
+* **StickyElement:** don't break the script if undefined is given ([787d86a](https://github.com/labor-digital/helferlein/commit/787d86a437363315bdab243d8be0d82a23c70e12))
+
 ## [3.20.0](https://github.com/labor-digital/helferlein/compare/v3.19.2...v3.20.0) (2020-04-15)
 
 
