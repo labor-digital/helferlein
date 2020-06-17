@@ -25,6 +25,7 @@ interface PromiseRegistryEntry {
 	event: string;
 	timeout: number | any;
 	guid: number;
+	promise: null | Promise<any>
 }
 
 const registry: Map<string, PromiseRegistryEntry> = new Map();
@@ -47,11 +48,11 @@ export function debouncePromise(key: string, promiseCreator: PromiseCreator,
 								limit: number, skipAllButLast?: boolean): Promise<any> {
 	// Initialize the wrapper if required
 	if (!registry.has(key)) {
-		const event = "debouncePromise__timeout--" + key;
 		registry.set(key, {
-			event,
+			event: "debouncePromise__timeout--" + key,
 			timeout: 0,
-			guid: 0
+			guid: 0,
+			promise: null
 		});
 	}
 	
@@ -76,8 +77,10 @@ export function debouncePromise(key: string, promiseCreator: PromiseCreator,
 			} else if (skipAllButLast === true) {
 				return reject("@skipAllButLast");
 			}
-			// Call the inner promise
-			e.args.promiseCreator().then(resolve).catch(reject);
+			
+			// Create or pass the real promise
+			if (config.promise === null) config.promise = e.args.promiseCreator();
+			config.promise.then(resolve).catch(reject);
 		};
 		EventBus.bind(config.event, callback);
 	}).catch((e) => {
