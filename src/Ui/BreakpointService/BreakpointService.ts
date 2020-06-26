@@ -78,30 +78,8 @@ export class BreakpointService {
 		// Skip if there are no configured breakpoints
 		if (context.current === null) return false;
 		
-		// Kill if there was an invalid breakpoint
-		if (!context.breakpoints.has(breakpointKey))
-			throw new Error("Request for unknown breakpoint: " + breakpointKey);
-		
 		// Compare
-		const compareId: number = context.breakpoints.get(breakpointKey).id;
-		const currentId = context.current.id;
-		
-		switch (comparator) {
-			case ">":
-				return currentId > compareId;
-			case "<":
-				return currentId < compareId;
-			case ">=":
-				return currentId >= compareId;
-			case "<=":
-				return currentId <= compareId;
-			case "==":
-				return currentId === compareId;
-			case "!=":
-				return currentId !== compareId;
-		}
-		
-		return false;
+		return context.current.is(comparator, breakpointKey);
 	}
 	
 	/**
@@ -128,8 +106,23 @@ export class BreakpointService {
 	 */
 	static getAll(): null | Map<string, Breakpoint> {
 		if (!isBrowser()) return null;
-		BreakpointHelpers.readBreakpoints(context);
+		BreakpointHelpers.ensureCurrent(context);
 		return context.breakpoints;
+	}
+	
+	/**
+	 * Returns the definition for a single breakpoint with the given key
+	 * It may return null if it is called on the server side.
+	 * It throws an error if a non existent breakpoint key was requested
+	 * @param key
+	 */
+	static getSingle(key: string): Breakpoint {
+		if (!isBrowser()) return null;
+		const all = this.getAll();
+		if (!all.has(key)) {
+			throw new Error("Request for unknown breakpoint: " + key);
+		}
+		return all.get(key);
 	}
 	
 	/**
