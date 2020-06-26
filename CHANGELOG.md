@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.20.2](https://github.com/labor-digital/helferlein/compare/v3.20.1...v3.20.2) (2020-06-17)
+
+
+### Bug Fixes
+
+* **debouncePromise:** make sure the promise generator is only called once ([f7826e5](https://github.com/labor-digital/helferlein/commit/f7826e58ded6e41b387ea8e2f3b06b792121206c))
+
 ### [3.20.1](https://github.com/labor-digital/helferlein/compare/v3.20.0...v3.20.1) (2020-04-20)
 
 
