@@ -16,11 +16,12 @@
  * Last modified: 2019.01.09 at 14:51
  */
 
-import {forEach, ForEachCallbackType} from "./forEach";
-import {getListType, getNewList, ListType, setListValue} from "./listAccess";
-import {List} from "../Interfaces/List";
+import {List} from '../Interfaces/List';
+import {forEach, ForEachCallbackType} from './forEach';
+import {getListType, getNewList, ListType, setListValue} from './listAccess';
 
-export interface FilterCallback extends ForEachCallbackType {
+export interface FilterCallback extends ForEachCallbackType
+{
 }
 
 /**
@@ -28,12 +29,17 @@ export interface FilterCallback extends ForEachCallbackType {
  * @param list
  * @param callback
  */
-export function filter(list: List, callback: FilterCallback): any {
-	const outputType = getListType(list);
-	if (outputType === ListType.NoList) throw new Error("Could not determine the output type of a given element!");
-	const output = getNewList(outputType);
-	forEach(list, (v, k) => {
-		if (callback(v, k, list) !== false) setListValue(output, v, k);
-	});
-	return output;
+export function filter(list: List, callback: FilterCallback): any
+{
+    const outputType = getListType(list);
+    if (outputType === ListType.NoList) {
+        throw new Error('Could not determine the output type of a given element!');
+    }
+    const output = getNewList(outputType);
+    forEach(list, (v, k) => {
+        if (callback(v, k, list) !== false) {
+            setListValue(output, v, k);
+        }
+    });
+    return output;
 }

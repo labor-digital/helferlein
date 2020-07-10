@@ -19,7 +19,10 @@
  * Returns true if the given value is a Map, false if not
  * @param object
  */
-export function isMap(object: any): boolean {
-	if (typeof object === "undefined" || object === null) return false;
-	return object instanceof Map || object.constructor === Map;
+export function isMap(object: any): boolean
+{
+    if (typeof object === 'undefined' || object === null) {
+        return false;
+    }
+    return object instanceof Map || object.constructor === Map;
 }

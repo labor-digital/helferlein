@@ -16,8 +16,8 @@
  * Last modified: 2019.02.07 at 15:37
  */
 
-import {isBrowser} from "../Environment/isBrowser";
-import {ajax} from "./ajax";
+import {isBrowser} from '../Environment/isBrowser';
+import {ajax} from './ajax';
 
 /**
  * True if the browser can reach the internet, false if not
@@ -32,24 +32,27 @@ let lastCheck: number = 0;
 /**
  * Checks if the client is currently online or not
  */
-export function checkOnlineState(): Promise<boolean> {
-	return new Promise(resolve => {
-		if (!isBrowser()) return resolve(false);
-		if (lastCheck > (Date.now() - (30 * 1000))) {
-			resolve(onlineState);
-			return;
-		}
-		ajax({
-			url: "http://laboranten.net/_extern/labor-javascript-online-check/",
-			timeout: 1000
-		}).then(() => {
-			lastCheck = Date.now();
-			onlineState = true;
-			resolve(true);
-		}).catch(() => {
-			lastCheck = 0;
-			onlineState = false;
-			resolve(false);
-		});
-	});
+export function checkOnlineState(): Promise<boolean>
+{
+    return new Promise(resolve => {
+        if (!isBrowser()) {
+            return resolve(false);
+        }
+        if (lastCheck > (Date.now() - (30 * 1000))) {
+            resolve(onlineState);
+            return;
+        }
+        ajax({
+            url: 'http://laboranten.net/_extern/labor-javascript-online-check/',
+            timeout: 1000
+        }).then(() => {
+            lastCheck = Date.now();
+            onlineState = true;
+            resolve(true);
+        }).catch(() => {
+            lastCheck = 0;
+            onlineState = false;
+            resolve(false);
+        });
+    });
 }

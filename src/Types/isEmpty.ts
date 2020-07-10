@@ -15,10 +15,10 @@
  *
  * Last modified: 2019.01.23 at 17:52
  */
-import {isArray} from "./isArray";
-import {isMap} from "./isMap";
-import {isSet} from "./isSet";
-import {isPlainObject} from "./isPlainObject";
+import {isArray} from './isArray';
+import {isMap} from './isMap';
+import {isPlainObject} from './isPlainObject';
+import {isSet} from './isSet';
 
 /**
  * Returns true if the given value counts as empty
@@ -26,19 +26,28 @@ import {isPlainObject} from "./isPlainObject";
  * @param value
  * @param includeZero By default zero (0) is not seen as "empty" if you set this to true, it will be, tho
  */
-export function isEmpty(value, includeZero?:boolean):boolean {
-	if(value === null) return true;
-	switch (typeof value) {
-		case "undefined":
-			return true;
-		case "string":
-			return value.trim().length === 0 || includeZero === true && value === "0";
-		case "number":
-			return includeZero === true ? value === 0 : false;
-		case "object":
-			if(isPlainObject(value)) return Object.keys(value).length === 0;
-			if(isArray(value)) return value.length === 0;
-			if(isMap(value) || isSet(value)) return value.size === 0;
-	}
-	return false;
+export function isEmpty(value, includeZero?: boolean): boolean
+{
+    if (value === null) {
+        return true;
+    }
+    switch (typeof value) {
+        case 'undefined':
+            return true;
+        case 'string':
+            return value.trim().length === 0 || includeZero === true && value === '0';
+        case 'number':
+            return includeZero === true ? value === 0 : false;
+        case 'object':
+            if (isPlainObject(value)) {
+                return Object.keys(value).length === 0;
+            }
+            if (isArray(value)) {
+                return value.length === 0;
+            }
+            if (isMap(value) || isSet(value)) {
+                return value.size === 0;
+            }
+    }
+    return false;
 }

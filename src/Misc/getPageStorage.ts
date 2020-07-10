@@ -15,17 +15,19 @@
  *
  * Last modified: 2019.01.11 at 18:39
  */
-import {GenericStorage} from "../Entities/GenericStorage";
-import {isBrowser} from "../Environment/isBrowser";
-import {PlainObject} from "../Interfaces/PlainObject";
-import {isNull} from "../Types/isNull";
-import {isString} from "../Types/isString";
-import {isUndefined} from "../Types/isUndefined";
+import {GenericStorage} from '../Entities/GenericStorage';
+import {isBrowser} from '../Environment/isBrowser';
+import {PlainObject} from '../Interfaces/PlainObject';
+import {isNull} from '../Types/isNull';
+import {isString} from '../Types/isString';
+import {isUndefined} from '../Types/isUndefined';
 
-declare global {
-	interface Window {
-		HELFERLEIN_GLOBAL_STORAGE?: PlainObject
-	}
+declare global
+{
+    interface Window
+    {
+        HELFERLEIN_GLOBAL_STORAGE?: PlainObject
+    }
 }
 
 /**
@@ -42,16 +44,23 @@ let fallbackStorage = null;
  *
  * @param namespace
  */
-export function getPageStorage(namespace?: string): GenericStorage {
-	if (!isBrowser()) {
-		if (isNull(fallbackStorage)) fallbackStorage = new GenericStorage();
-		return fallbackStorage;
-	}
-	
-	if (isUndefined(window.HELFERLEIN_GLOBAL_STORAGE))
-		window.HELFERLEIN_GLOBAL_STORAGE = {};
-	if (!isString(namespace)) namespace = "storage-" + (Math.random() + "").replace(/[^0-9]/g, "");
-	if (isUndefined(window.HELFERLEIN_GLOBAL_STORAGE[namespace]))
-		window.HELFERLEIN_GLOBAL_STORAGE[namespace] = new GenericStorage();
-	return window.HELFERLEIN_GLOBAL_STORAGE[namespace];
+export function getPageStorage(namespace?: string): GenericStorage
+{
+    if (!isBrowser()) {
+        if (isNull(fallbackStorage)) {
+            fallbackStorage = new GenericStorage();
+        }
+        return fallbackStorage;
+    }
+    
+    if (isUndefined(window.HELFERLEIN_GLOBAL_STORAGE)) {
+        window.HELFERLEIN_GLOBAL_STORAGE = {};
+    }
+    if (!isString(namespace)) {
+        namespace = 'storage-' + (Math.random() + '').replace(/[^0-9]/g, '');
+    }
+    if (isUndefined(window.HELFERLEIN_GLOBAL_STORAGE[namespace])) {
+        window.HELFERLEIN_GLOBAL_STORAGE[namespace] = new GenericStorage();
+    }
+    return window.HELFERLEIN_GLOBAL_STORAGE[namespace];
 }

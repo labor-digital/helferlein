@@ -15,8 +15,8 @@
  *
  * Last modified: 2019.02.17 at 17:19
  */
-import {lcFirst} from "../lcFirst";
-import {inflectToCamelCase} from "./inflectToCamelCase";
+import {lcFirst} from '../lcFirst';
+import {inflectToCamelCase} from './inflectToCamelCase';
 
 /**
  * Converts a "Given string" to "givenString" or
@@ -25,6 +25,7 @@ import {inflectToCamelCase} from "./inflectToCamelCase";
  * @param string  The string to inflect
  * @param intelligentSplitting Uses intelligent splitting for edge cases if set to true. @see inflectToArray() for details.
  */
-export function inflectToCamelBack(string: string, intelligentSplitting?: boolean): string {
-	return lcFirst(inflectToCamelCase(string, intelligentSplitting));
+export function inflectToCamelBack(string: string, intelligentSplitting?: boolean): string
+{
+    return lcFirst(inflectToCamelCase(string, intelligentSplitting));
 }

@@ -16,12 +16,12 @@
  * Last modified: 2019.05.07 at 18:22
  */
 
-import {forEach} from "../Lists/forEach";
-import {isBool} from "../Types/isBool";
-import {isNumber} from "../Types/isNumber";
-import {isObject} from "../Types/isObject";
-import {isString} from "../Types/isString";
-import {isUndefined} from "../Types/isUndefined";
+import {forEach} from '../Lists/forEach';
+import {isBool} from '../Types/isBool';
+import {isNumber} from '../Types/isNumber';
+import {isObject} from '../Types/isObject';
+import {isString} from '../Types/isString';
+import {isUndefined} from '../Types/isUndefined';
 
 /**
  * Internal helper
@@ -30,9 +30,13 @@ import {isUndefined} from "../Types/isUndefined";
  * @param attributeName
  * @param value
  */
-function setAttrSetter(element: HTMLElement | Element, attributeName: string, value: string | null) {
-	if (value === null) element.removeAttribute(attributeName);
-	else element.setAttribute(attributeName, value);
+function setAttrSetter(element: HTMLElement | Element, attributeName: string, value: string | null)
+{
+    if (value === null) {
+        element.removeAttribute(attributeName);
+    } else {
+        element.setAttribute(attributeName, value);
+    }
 }
 
 /**
@@ -41,14 +45,28 @@ function setAttrSetter(element: HTMLElement | Element, attributeName: string, va
  * @param attributeName The attribute to set / remove
  * @param value If null is given the attribute will be removed, otherwise the attribute will be set to this value
  */
-export function setAttr(element: HTMLElement | NodeListOf<Element>, attributeName: string, value: string | number | boolean | null) {
-	if (!isObject(element)) return;
-	let valueString = null;
-	if (isString(value)) valueString = value as string;
-	else if (isBool(value)) valueString = value ? "TRUE" : "FALSE";
-	else if (isNumber(value)) valueString = value + "";
-	else if (!isUndefined(value)) valueString = JSON.stringify(value);
-	if (isUndefined((element as NodeListOf<Element>).length))
-		setAttrSetter(element as HTMLElement, attributeName, valueString);
-	else forEach(element, (e) => setAttrSetter(e, attributeName, valueString));
+export function setAttr(
+    element: HTMLElement | NodeListOf<Element>,
+    attributeName: string,
+    value: string | number | boolean | null
+)
+{
+    if (!isObject(element)) {
+        return;
+    }
+    let valueString = null;
+    if (isString(value)) {
+        valueString = value as string;
+    } else if (isBool(value)) {
+        valueString = value ? 'TRUE' : 'FALSE';
+    } else if (isNumber(value)) {
+        valueString = value + '';
+    } else if (!isUndefined(value)) {
+        valueString = JSON.stringify(value);
+    }
+    if (isUndefined((element as NodeListOf<Element>).length)) {
+        setAttrSetter(element as HTMLElement, attributeName, valueString);
+    } else {
+        forEach(element, (e) => setAttrSetter(e, attributeName, valueString));
+    }
 }

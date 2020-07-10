@@ -16,14 +16,16 @@
  * Last modified: 2019.01.25 at 11:48
  */
 
-export interface ThrottleEventWrapper extends Function{
-	/**
-	 * If you need to cancel a scheduled throttle, you can call .cancel() on the throttled function.
-	 */
-	cancel?: Function;
+export interface ThrottleEventWrapper extends Function
+{
+    /**
+     * If you need to cancel a scheduled throttle, you can call .cancel() on the throttled function.
+     */
+    cancel?: Function;
 }
 
-export interface ThrottledEventHandler extends Function{
+export interface ThrottledEventHandler extends Function
+{
 
 }
 
@@ -35,43 +37,50 @@ export interface ThrottledEventHandler extends Function{
  * http://underscorejs.org
  * (c) 2009-2018 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
-export function throttleEvent (callback:ThrottledEventHandler, limit:number): any {
-	var timeout, context, args, result;
-	let previous = 0;
-
-	var later = function() {
-		previous = new Date().getTime();
-		timeout = null;
-		result = callback.apply(context, args);
-		if (!timeout) context = args = null;
-	};
-
-	var throttled:ThrottleEventWrapper = function throttleEventWrapper(foo, bar) {
-		args = arguments;
-		var now = new Date().getTime();
-		if (!previous) previous = now;
-		var remaining = limit - (now - previous);
-		context = this;
-
-		if (remaining <= 0 || remaining > limit) {
-			if (timeout) {
-				clearTimeout(timeout);
-				timeout = null;
-			}
-			previous = now;
-			result = callback.apply(context, args);
-			if (!timeout) context = args = null;
-		} else if (!timeout) {
-			timeout = setTimeout(later, remaining);
-		}
-		return result;
-	};
-
-	throttled.cancel = function() {
-		clearTimeout(timeout);
-		previous = 0;
-		timeout = context = args = null;
-	};
-
-	return throttled;
+export function throttleEvent(callback: ThrottledEventHandler, limit: number): any
+{
+    var timeout, context, args, result;
+    let previous = 0;
+    
+    var later = function () {
+        previous = new Date().getTime();
+        timeout = null;
+        result = callback.apply(context, args);
+        if (!timeout) {
+            context = args = null;
+        }
+    };
+    
+    var throttled: ThrottleEventWrapper = function throttleEventWrapper(foo, bar) {
+        args = arguments;
+        var now = new Date().getTime();
+        if (!previous) {
+            previous = now;
+        }
+        var remaining = limit - (now - previous);
+        context = this;
+        
+        if (remaining <= 0 || remaining > limit) {
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout = null;
+            }
+            previous = now;
+            result = callback.apply(context, args);
+            if (!timeout) {
+                context = args = null;
+            }
+        } else if (!timeout) {
+            timeout = setTimeout(later, remaining);
+        }
+        return result;
+    };
+    
+    throttled.cancel = function () {
+        clearTimeout(timeout);
+        previous = 0;
+        timeout = context = args = null;
+    };
+    
+    return throttled;
 }

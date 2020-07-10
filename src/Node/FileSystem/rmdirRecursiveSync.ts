@@ -16,27 +16,28 @@
  * Last modified: 2020.07.10 at 12:17
  */
 
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from 'fs';
+import * as path from 'path';
 
 /**
  * Helper to recursively delete a directory with contents
  * @param dirname The dirname to the directory to delete
  * @param removeSelf If set to false, the parent directory will not be removed
  */
-export function rmdirRecursiveSync(dirname: string, removeSelf?: boolean): void {
-	
-	if (fs.existsSync(dirname)) {
-		fs.readdirSync(dirname).forEach(function (file) {
-			var curPath = dirname + path.sep + file;
-			if (fs.lstatSync(curPath).isDirectory()) {
-				rmdirRecursiveSync(curPath);
-			} else {
-				fs.unlinkSync(curPath);
-			}
-		});
-		if (removeSelf !== false) {
-			fs.rmdirSync(dirname);
-		}
-	}
+export function rmdirRecursiveSync(dirname: string, removeSelf?: boolean): void
+{
+    
+    if (fs.existsSync(dirname)) {
+        fs.readdirSync(dirname).forEach(function (file) {
+            var curPath = dirname + path.sep + file;
+            if (fs.lstatSync(curPath).isDirectory()) {
+                rmdirRecursiveSync(curPath);
+            } else {
+                fs.unlinkSync(curPath);
+            }
+        });
+        if (removeSelf !== false) {
+            fs.rmdirSync(dirname);
+        }
+    }
 }

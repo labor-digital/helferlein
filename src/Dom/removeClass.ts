@@ -16,17 +16,18 @@
  * Last modified: 2019.02.01 at 10:50
  */
 
-import {forEach} from "../Lists/forEach";
-import {isObject} from "../Types/isObject";
-import {isUndefined} from "../Types/isUndefined";
+import {forEach} from '../Lists/forEach';
+import {isObject} from '../Types/isObject';
+import {isUndefined} from '../Types/isUndefined';
 
 /**
  * Internal helper to avoid unnecessary iteration
  * @param element
  * @param regex
  */
-function removeClassRemover(element: HTMLElement | Element, regex: RegExp) {
-	element.className = element.className.replace(regex, "$1 ").trim();
+function removeClassRemover(element: HTMLElement | Element, regex: RegExp)
+{
+    element.className = element.className.replace(regex, '$1 ').trim();
 }
 
 /**
@@ -34,12 +35,16 @@ function removeClassRemover(element: HTMLElement | Element, regex: RegExp) {
  * @param element Receives either a single element or multiple elements
  * @param classes The space-separated list of classes to remove from the element
  */
-export function removeClass(element: HTMLElement | NodeListOf<Element>, classes: string) {
-	if (!isObject(element)) return;
-	// Prepare regex
-	const pattern = "(^|\\s)" + classes.replace(/\*/g, "[^\\s]*?").split(" ").join("(\\s|$)|") + "(\\s|$)";
-	const regex = new RegExp(pattern, "g");
-	if (isUndefined((element as NodeListOf<Element>).length))
-		return removeClassRemover(element as HTMLElement, regex);
-	forEach(element, (e) => removeClassRemover(e, regex));
+export function removeClass(element: HTMLElement | NodeListOf<Element>, classes: string)
+{
+    if (!isObject(element)) {
+        return;
+    }
+    // Prepare regex
+    const pattern = '(^|\\s)' + classes.replace(/\*/g, '[^\\s]*?').split(' ').join('(\\s|$)|') + '(\\s|$)';
+    const regex = new RegExp(pattern, 'g');
+    if (isUndefined((element as NodeListOf<Element>).length)) {
+        return removeClassRemover(element as HTMLElement, regex);
+    }
+    forEach(element, (e) => removeClassRemover(e, regex));
 }

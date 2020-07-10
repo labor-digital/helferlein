@@ -16,8 +16,8 @@
  * Last modified: 2019.05.17 at 17:04
  */
 
-import {isObject} from "../Types/isObject";
-import {RgbColor} from "./Color.interfaces";
+import {isObject} from '../Types/isObject';
+import {RgbColor} from './Color.interfaces';
 
 export function rgbComplementaryColor(r: RgbColor): RgbColor;
 export function rgbComplementaryColor(r: number, g: number, b: number): RgbColor;
@@ -28,11 +28,14 @@ export function rgbComplementaryColor(r: number, g: number, b: number): RgbColor
  * @param g
  * @param b
  */
-export function rgbComplementaryColor(r: number | RgbColor, g?: number, b?: number): RgbColor {
-	if (isObject(r)) ({r, g, b} = (r as RgbColor));
-	return {
-		r: Math.abs((r as number) - 255),
-		g: Math.abs(g - 255),
-		b: Math.abs(b - 255)
-	};
+export function rgbComplementaryColor(r: number | RgbColor, g?: number, b?: number): RgbColor
+{
+    if (isObject(r)) {
+        ({r, g, b} = (r as RgbColor));
+    }
+    return {
+        r: Math.abs((r as number) - 255),
+        g: Math.abs(g - 255),
+        b: Math.abs(b - 255)
+    };
 }

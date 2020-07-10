@@ -16,9 +16,9 @@
  * Last modified: 2019.06.12 at 11:50
  */
 
-import {isUndefined} from "../../Types/isUndefined";
-import {forEach} from "../forEach";
-import {parsePath} from "./parsePath";
+import {isUndefined} from '../../Types/isUndefined';
+import {forEach} from '../forEach';
+import {parsePath} from './parsePath';
 
 /**
  * This function can be used to merge two path's together.
@@ -38,11 +38,16 @@ import {parsePath} from "./parsePath";
  * @param separatorA The separator for string paths in $pathA
  * @param separatorB The separator for string paths in $pathB
  */
-export function mergePaths(pathA, pathB, separatorA?: string, separatorB?: string): Array<string> {
-	if (isUndefined(separatorA)) separatorA = ".";
-	if (isUndefined(separatorB)) separatorB = separatorA;
-	const partsA = parsePath(pathA, separatorA);
-	const partsB = parsePath(pathB, separatorB);
-	forEach(partsB, (p) => partsA.push(p));
-	return partsA;
+export function mergePaths(pathA, pathB, separatorA?: string, separatorB?: string): Array<string>
+{
+    if (isUndefined(separatorA)) {
+        separatorA = '.';
+    }
+    if (isUndefined(separatorB)) {
+        separatorB = separatorA;
+    }
+    const partsA = parsePath(pathA, separatorA);
+    const partsB = parsePath(pathB, separatorB);
+    forEach(partsB, (p) => partsA.push(p));
+    return partsA;
 }

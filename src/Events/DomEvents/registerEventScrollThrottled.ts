@@ -15,10 +15,10 @@
  *
  * Last modified: 2019.02.13 at 17:42
  */
-import {isBrowser} from "../../Environment/isBrowser";
-import {throttleEvent} from "../../Ui/throttleEvent";
-import {EventBus} from "../EventBus";
-import {HelferleinEventList} from "../HelferleinEventList";
+import {isBrowser} from '../../Environment/isBrowser';
+import {throttleEvent} from '../../Ui/throttleEvent';
+import {EventBus} from '../EventBus';
+import {HelferleinEventList} from '../HelferleinEventList';
 
 let isRegistered = false;
 
@@ -26,10 +26,13 @@ let isRegistered = false;
  * Registers the "EVENT_SCROLL_THROTTLED" event which is called every time
  * the window is scrolled, but which has a debounce rate of 150ms
  */
-export function registerEventScrollThrottled(): void {
-	if (!isBrowser() || isRegistered) return;
-	isRegistered = true;
-	window.addEventListener("scroll", throttleEvent((e) => {
-		EventBus.emit(HelferleinEventList.EVENT_SCROLL_THROTTLED, {parent: e});
-	}, 50));
+export function registerEventScrollThrottled(): void
+{
+    if (!isBrowser() || isRegistered) {
+        return;
+    }
+    isRegistered = true;
+    window.addEventListener('scroll', throttleEvent((e) => {
+        EventBus.emit(HelferleinEventList.EVENT_SCROLL_THROTTLED, {parent: e});
+    }, 50));
 }

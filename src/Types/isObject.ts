@@ -20,6 +20,7 @@
  * @param value
  * @param allowNull True if null should also return TRUE
  */
-export function isObject(value, allowNull?:boolean): boolean {
-	return typeof value === "object" && (allowNull === true || value !== null);
+export function isObject(value, allowNull?: boolean): boolean
+{
+    return typeof value === 'object' && (allowNull === true || value !== null);
 }

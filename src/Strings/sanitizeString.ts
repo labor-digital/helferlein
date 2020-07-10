@@ -20,7 +20,10 @@
  * Also keeps - _ and /
  * @param string
  */
-export function sanitizeString(string:string):string {
-	if(typeof string !== "string") return "";
-	return string.replace(/[^a-zA-Z\-_/0-9]/g, "");
+export function sanitizeString(string: string): string
+{
+    if (typeof string !== 'string') {
+        return '';
+    }
+    return string.replace(/[^a-zA-Z\-_/0-9]/g, '');
 }

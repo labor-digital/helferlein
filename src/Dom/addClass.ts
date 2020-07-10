@@ -16,20 +16,22 @@
  * Last modified: 2019.02.01 at 10:50
  */
 
-import {forEach} from "../Lists/forEach";
-import {isObject} from "../Types/isObject";
-import {isUndefined} from "../Types/isUndefined";
+import {forEach} from '../Lists/forEach';
+import {isObject} from '../Types/isObject';
+import {isUndefined} from '../Types/isUndefined';
 
 /**
  * Internal helper to avoid unnecessary iteration
  * @param element
  * @param classList
  */
-function addClassAdder(element: HTMLElement | Element, classList: Array<string>) {
-	for (let i = 0; i < classList.length; i++) {
-		if (element.className.indexOf(classList[i]) === -1)
-			element.className += " " + classList[i];
-	}
+function addClassAdder(element: HTMLElement | Element, classList: Array<string>)
+{
+    for (let i = 0; i < classList.length; i++) {
+        if (element.className.indexOf(classList[i]) === -1) {
+            element.className += ' ' + classList[i];
+        }
+    }
 }
 
 /**
@@ -37,10 +39,14 @@ function addClassAdder(element: HTMLElement | Element, classList: Array<string>)
  * @param element Receives either a single element or multiple elements
  * @param classes The space-separated list of classes to add to the element
  */
-export function addClass(element: HTMLElement | NodeListOf<Element>, classes: string) {
-	if (!isObject(element)) return;
-	const classList = classes.split(" ");
-	if (isUndefined((element as NodeListOf<Element>).length))
-		return addClassAdder(element as HTMLElement, classList);
-	forEach(element, (e) => addClassAdder(e, classList));
+export function addClass(element: HTMLElement | NodeListOf<Element>, classes: string)
+{
+    if (!isObject(element)) {
+        return;
+    }
+    const classList = classes.split(' ');
+    if (isUndefined((element as NodeListOf<Element>).length)) {
+        return addClassAdder(element as HTMLElement, classList);
+    }
+    forEach(element, (e) => addClassAdder(e, classList));
 }

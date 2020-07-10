@@ -15,10 +15,10 @@
  *
  * Last modified: 2019.01.24 at 17:31
  */
-import {isBrowser} from "../../Environment/isBrowser";
-import {throttleEvent} from "../../Ui/throttleEvent";
-import {EventBus} from "../EventBus";
-import {HelferleinEventList} from "../HelferleinEventList";
+import {isBrowser} from '../../Environment/isBrowser';
+import {throttleEvent} from '../../Ui/throttleEvent';
+import {EventBus} from '../EventBus';
+import {HelferleinEventList} from '../HelferleinEventList';
 
 let isRegistered = false;
 
@@ -26,10 +26,13 @@ let isRegistered = false;
  * Registers the "EVENT_RESIZE_THROTTLED" event which is called every time
  * the window is resized, but which has a debounce rate of 150ms
  */
-export function registerEventResizeThrottled(): void {
-	if (!isBrowser() || isRegistered) return;
-	isRegistered = true;
-	window.addEventListener("resize", throttleEvent(() => {
-		EventBus.emit(HelferleinEventList.EVENT_RESIZE_THROTTLED);
-	}, 150));
+export function registerEventResizeThrottled(): void
+{
+    if (!isBrowser() || isRegistered) {
+        return;
+    }
+    isRegistered = true;
+    window.addEventListener('resize', throttleEvent(() => {
+        EventBus.emit(HelferleinEventList.EVENT_RESIZE_THROTTLED);
+    }, 150));
 }

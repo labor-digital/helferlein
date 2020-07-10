@@ -16,7 +16,7 @@
  * Last modified: 2019.04.02 at 15:57
  */
 
-import {isBrowser} from "../../Environment/isBrowser";
+import {isBrowser} from '../../Environment/isBrowser';
 
 /**
  * Creates a mutation observer for a given target object
@@ -24,21 +24,27 @@ import {isBrowser} from "../../Environment/isBrowser";
  * @param target
  * @param callback
  */
-export function onDomMutation(target: HTMLElement, callback: Function): MutationObserver {
-	if (!isBrowser()) return {
-		observe(target: Node, options?: MutationObserverInit): void {
-		},
-		disconnect(): void {
-		},
-		takeRecords(): any {
-		}
-	};
-	const observer = new MutationObserver((mutations: MutationRecord[], observer: MutationObserver) => {
-		callback({target, mutations, observer});
-	});
-	observer.observe(
-		target as any,
-		{attributes: true, childList: true, characterData: true, subtree: true}
-	);
-	return observer;
+export function onDomMutation(target: HTMLElement, callback: Function): MutationObserver
+{
+    if (!isBrowser()) {
+        return {
+            observe(target: Node, options?: MutationObserverInit): void
+            {
+            },
+            disconnect(): void
+            {
+            },
+            takeRecords(): any
+            {
+            }
+        };
+    }
+    const observer = new MutationObserver((mutations: MutationRecord[], observer: MutationObserver) => {
+        callback({target, mutations, observer});
+    });
+    observer.observe(
+        target as any,
+        {attributes: true, childList: true, characterData: true, subtree: true}
+    );
+    return observer;
 }

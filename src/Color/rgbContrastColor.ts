@@ -15,9 +15,9 @@
  *
  * Last modified: 2019.05.17 at 16:58
  */
-import {isObject} from "../Types/isObject";
-import {RgbColor} from "./Color.interfaces";
-import {rgbColorBrightness} from "./rgbColorBrightnesss";
+import {isObject} from '../Types/isObject';
+import {RgbColor} from './Color.interfaces';
+import {rgbColorBrightness} from './rgbColorBrightnesss';
 
 export function rgbContrastColor(r: RgbColor): RgbColor;
 export function rgbContrastColor(r: number, g: number, b: number): RgbColor;
@@ -30,17 +30,20 @@ export function rgbContrastColor(r: number, g: number, b: number): RgbColor;
  * @param g
  * @param b
  */
-export function rgbContrastColor(r: number | RgbColor, g?: number, b?: number): RgbColor {
-	if (isObject(r)) ({r, g, b} = (r as RgbColor));
-	const brightness = rgbColorBrightness((r as number), g, b);
-	const average = ((r as number) + g + b) / 3;
-	const isGrayScale = brightness > average - 10 && brightness < average + 10;
-	const modifier = brightness < 128 ? Math.abs(255 - brightness) : -brightness * 0.8;
-	// Note: Those "random numbers" like 1.701 are basically the numbers used for the brightness calculation
-	// e.g the r value is multiplied by 299, while green is multiplied by 587 to get a general brightness
-	// here I did 1000 - 587 to get 413 which lead to 1.413 in the g calculation.
-	r = Math.floor(Math.max(0, Math.min(255, (r as number) + (modifier * 0.7 * (isGrayScale ? 1 : 1.701)))));
-	g = Math.floor(Math.max(0, Math.min(255, g + (modifier * 0.7 * (isGrayScale ? 1 : 1.413)))));
-	b = Math.floor(Math.max(0, Math.min(255, b + (modifier * 0.7 * (isGrayScale ? 1 : 1.886)))));
-	return {r, g, b};
+export function rgbContrastColor(r: number | RgbColor, g?: number, b?: number): RgbColor
+{
+    if (isObject(r)) {
+        ({r, g, b} = (r as RgbColor));
+    }
+    const brightness = rgbColorBrightness((r as number), g, b);
+    const average = ((r as number) + g + b) / 3;
+    const isGrayScale = brightness > average - 10 && brightness < average + 10;
+    const modifier = brightness < 128 ? Math.abs(255 - brightness) : -brightness * 0.8;
+    // Note: Those "random numbers" like 1.701 are basically the numbers used for the brightness calculation
+    // e.g the r value is multiplied by 299, while green is multiplied by 587 to get a general brightness
+    // here I did 1000 - 587 to get 413 which lead to 1.413 in the g calculation.
+    r = Math.floor(Math.max(0, Math.min(255, (r as number) + (modifier * 0.7 * (isGrayScale ? 1 : 1.701)))));
+    g = Math.floor(Math.max(0, Math.min(255, g + (modifier * 0.7 * (isGrayScale ? 1 : 1.413)))));
+    b = Math.floor(Math.max(0, Math.min(255, b + (modifier * 0.7 * (isGrayScale ? 1 : 1.886)))));
+    return {r, g, b};
 }

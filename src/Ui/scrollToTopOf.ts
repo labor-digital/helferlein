@@ -15,41 +15,42 @@
  *
  * Last modified: 2019.02.01 at 15:10
  */
-import {getOffset} from "../Dom/getOffset";
-import {isBrowser} from "../Environment/isBrowser";
-import {PlainObject} from "../Interfaces/PlainObject";
-import {merge} from "../Lists/merge";
-import {isEmpty} from "../Types/isEmpty";
-import {isNumber} from "../Types/isNumber";
-import {isObject} from "../Types/isObject";
-import {isString} from "../Types/isString";
-import {isUndefined} from "../Types/isUndefined";
-import {scrollToPosition} from "./scrollToPosition";
+import {getOffset} from '../Dom/getOffset';
+import {isBrowser} from '../Environment/isBrowser';
+import {PlainObject} from '../Interfaces/PlainObject';
+import {merge} from '../Lists/merge';
+import {isEmpty} from '../Types/isEmpty';
+import {isNumber} from '../Types/isNumber';
+import {isObject} from '../Types/isObject';
+import {isString} from '../Types/isString';
+import {isUndefined} from '../Types/isUndefined';
+import {scrollToPosition} from './scrollToPosition';
 
-interface ScrollToTopOfConfiguration extends PlainObject {
-	/**
-	 * The speed in milliseconds the scroll operation should take
-	 */
-	duration?: number;
-	
-	/**
-	 * The offset to the top of the page when scrolling up
-	 */
-	offset?: number;
-	
-	/**
-	 * If set this will be used as as scroll container instead of the "window"
-	 * Can be a valid selector for document.querySelector() as a string, as well.
-	 */
-	container?: HTMLElement | Window | string;
+interface ScrollToTopOfConfiguration extends PlainObject
+{
+    /**
+     * The speed in milliseconds the scroll operation should take
+     */
+    duration?: number;
+    
+    /**
+     * The offset to the top of the page when scrolling up
+     */
+    offset?: number;
+    
+    /**
+     * If set this will be used as as scroll container instead of the "window"
+     * Can be a valid selector for document.querySelector() as a string, as well.
+     */
+    container?: HTMLElement | Window | string;
 }
 
 const isInBrowser = isBrowser();
 
 let config: ScrollToTopOfConfiguration = {
-	duration: 300,
-	offset: 0,
-	container: isInBrowser ? window : null
+    duration: 300,
+    offset: 0,
+    container: isInBrowser ? window : null
 };
 
 /**
@@ -60,8 +61,9 @@ let config: ScrollToTopOfConfiguration = {
  *            - offset: (Default 0) The offset to the top of the page when scrolling up
  *            - container: (Default null) The container to scroll instead of the window
  */
-export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration) {
-	config = merge(config, configuration) as ScrollToTopOfConfiguration;
+export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration)
+{
+    config = merge(config, configuration) as ScrollToTopOfConfiguration;
 }
 
 /**
@@ -75,23 +77,36 @@ export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration
  *            - container: (Default null) The container to scroll instead of the window
  */
 
-export function scrollToTopOf(target?: HTMLElement | null, options?: ScrollToTopOfConfiguration) {
-	// Noop if not in browser
-	if (!isBrowser()) return;
-	
-	// Prepare options
-	if (isUndefined(options)) options = {};
-	if (!isNumber(options.duration)) options.duration = config.duration;
-	if (!isNumber(options.offset)) options.offset = config.offset;
-	if (!isObject(options.container) && !isString(options.container)) options.container = config.container;
-	if (isEmpty(options.container)) options.container = window;
-	
-	// Get the element's offset
-	const offset =
-		isEmpty(target) ? {top: 0} :
-			getOffset(target, (options.container !== window ? options.container as HTMLElement : undefined));
-	
-	// Scroll there
-	const position = Math.max(0, offset.top - options.offset);
-	return scrollToPosition(position, options.duration, options.container);
+export function scrollToTopOf(target?: HTMLElement | null, options?: ScrollToTopOfConfiguration)
+{
+    // Noop if not in browser
+    if (!isBrowser()) {
+        return;
+    }
+    
+    // Prepare options
+    if (isUndefined(options)) {
+        options = {};
+    }
+    if (!isNumber(options.duration)) {
+        options.duration = config.duration;
+    }
+    if (!isNumber(options.offset)) {
+        options.offset = config.offset;
+    }
+    if (!isObject(options.container) && !isString(options.container)) {
+        options.container = config.container;
+    }
+    if (isEmpty(options.container)) {
+        options.container = window;
+    }
+    
+    // Get the element's offset
+    const offset =
+        isEmpty(target) ? {top: 0} :
+            getOffset(target, (options.container !== window ? options.container as HTMLElement : undefined));
+    
+    // Scroll there
+    const position = Math.max(0, offset.top - options.offset);
+    return scrollToPosition(position, options.duration, options.container);
 }

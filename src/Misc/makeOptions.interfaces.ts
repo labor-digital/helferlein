@@ -16,59 +16,64 @@
  * Last modified: 2019.07.25 at 10:03
  */
 
-import {List} from "../Interfaces/List";
+import {List} from '../Interfaces/List';
 
 export type MakeOptionTypes =
-	"boolean"
-	| "bool"
-	| "true"
-	| "false"
-	| "number"
-	| "numeric"
-	| "string"
-	| "null"
-	| "callable"
-	| "undefined"
-	| "object"
-	| "plainObject"
-	| string;
+    'boolean'
+    | 'bool'
+    | 'true'
+    | 'false'
+    | 'number'
+    | 'numeric'
+    | 'string'
+    | 'null'
+    | 'callable'
+    | 'undefined'
+    | 'object'
+    | 'plainObject'
+    | string;
 
-export interface MakeOptionsOptions {
-	/**
-	 * If set to true, unknown keys will be ignored and kept in the result, otherwise an exception is thrown
-	 */
-	allowUnknown: boolean
+export interface MakeOptionsOptions
+{
+    /**
+     * If set to true, unknown keys will be ignored and kept in the result, otherwise an exception is thrown
+     */
+    allowUnknown: boolean
 }
 
-export interface MakeOptionsFilter {
-	(v: any, k: string, list: List, def: MakeOptionsValueDefinition, path: Array<string>): any
+export interface MakeOptionsFilter
+{
+    (v: any, k: string, list: List, def: MakeOptionsValueDefinition, path: Array<string>): any
 }
 
-export interface MakeOptionsValidator {
-	(v: any, k: string, list: List, def: MakeOptionsValueDefinition, path: Array<string>): boolean | string | Array<any>
+export interface MakeOptionsValidator
+{
+    (v: any, k: string, list: List, def: MakeOptionsValueDefinition, path: Array<string>): boolean | string | Array<any>
 }
 
-export interface MakeOptionsValueDefinition {
-	/**
-	 * This is the default value to use when the key in $options is empty.
-	 * If not set the option key is required! If the default value is a Closure the closure is called
-	 * and it's result is used as value.
-	 * The callback receives $key, $options, $definition, $path(For child arrays)
-	 */
-	default?: any
-	
-	/**
-	 * Allows basic type validation of the input. Can either be a string or an array of strings.
-	 */
-	type?: MakeOptionTypes | Array<MakeOptionTypes>
-	
-	preFilter?: MakeOptionsFilter
-	filter?: MakeOptionsFilter
-	validator?: MakeOptionsValidator
-	values?: Array<any>
-	children?: MakeOptionsDefinition
+export interface MakeOptionsValueDefinition
+{
+    /**
+     * This is the default value to use when the key in $options is empty.
+     * If not set the option key is required! If the default value is a Closure the closure is called
+     * and it's result is used as value.
+     * The callback receives $key, $options, $definition, $path(For child arrays)
+     */
+    default?: any
+    
+    /**
+     * Allows basic type validation of the input. Can either be a string or an array of strings.
+     */
+    type?: MakeOptionTypes | Array<MakeOptionTypes>
+    
+    preFilter?: MakeOptionsFilter
+    filter?: MakeOptionsFilter
+    validator?: MakeOptionsValidator
+    values?: Array<any>
+    children?: MakeOptionsDefinition
 }
 
-export interface MakeOptionsDefinition {
-	[key: string]: MakeOptionsValueDefinition
+export interface MakeOptionsDefinition
+{
+    [key: string]: MakeOptionsValueDefinition
 }

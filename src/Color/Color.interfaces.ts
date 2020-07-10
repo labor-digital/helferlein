@@ -16,8 +16,9 @@
  * Last modified: 2019.05.17 at 16:40
  */
 
-export interface RgbColor {
-	r: number;
-	g: number;
-	b: number;
+export interface RgbColor
+{
+    r: number;
+    g: number;
+    b: number;
 }

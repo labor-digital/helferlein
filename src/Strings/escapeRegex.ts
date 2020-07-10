@@ -20,6 +20,7 @@
  * Escapes all regex special chars in a given string and returns the result
  * @param string
  */
-export function escapeRegex(string: string): string {
-	return string.replace(/[.*+?^${}()|[\]\\\/]/g, "\\$&");
+export function escapeRegex(string: string): string
+{
+    return string.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&');
 }

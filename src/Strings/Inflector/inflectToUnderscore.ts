@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.02.17 at 17:24
  */
-import {inflectToArray} from "./inflectToArray";
+import {inflectToArray} from './inflectToArray';
 
 /**
  * Converts a "Given string" to "given_string" or
@@ -24,6 +24,7 @@ import {inflectToArray} from "./inflectToArray";
  * @param string  The string to inflect
  * @param intelligentSplitting Uses intelligent splitting for edge cases if set to true. @see inflectToArray() for details.
  */
-export function inflectToUnderscore(string: string, intelligentSplitting?: boolean): string {
-	return inflectToArray(string, intelligentSplitting).join("_");
+export function inflectToUnderscore(string: string, intelligentSplitting?: boolean): string
+{
+    return inflectToArray(string, intelligentSplitting).join('_');
 }

@@ -16,21 +16,22 @@
  * Last modified: 2020.07.10 at 12:19
  */
 
-import * as fs from "fs";
+import * as fs from 'fs';
 
 /**
  * Generates a directory recursively
  * @see https://gist.github.com/bpedro/742162#gistcomment-828133
  * @param directory The directory to create
  */
-export function mkdirRecursiveSync(directory: string): void {
-	var parts = directory.replace(/[\\\/]/g, "/").replace(/\/$/, "").split("/");
-	
-	for (var i = 1; i <= parts.length; i++) {
-		var segment = parts.slice(0, i).join("/");
-		if (segment === "" || segment === undefined) {
-			continue;
-		}
-		!fs.existsSync(segment) ? fs.mkdirSync(segment) : null;
-	}
+export function mkdirRecursiveSync(directory: string): void
+{
+    var parts = directory.replace(/[\\\/]/g, '/').replace(/\/$/, '').split('/');
+    
+    for (var i = 1; i <= parts.length; i++) {
+        var segment = parts.slice(0, i).join('/');
+        if (segment === '' || segment === undefined) {
+            continue;
+        }
+        !fs.existsSync(segment) ? fs.mkdirSync(segment) : null;
+    }
 }

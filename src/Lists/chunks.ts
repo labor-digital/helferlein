@@ -16,9 +16,9 @@
  * Last modified: 2019.11.10 at 20:39
  */
 
-import {List} from "../Interfaces/List";
-import {forEach} from "./forEach";
-import {getListType, getNewList, setListValue} from "./listAccess";
+import {List} from '../Interfaces/List';
+import {forEach} from './forEach';
+import {getListType, getNewList, setListValue} from './listAccess';
 
 /**
  * Similar to PHP's array_chunks method this method will take any kind of list of chunks that are
@@ -27,19 +27,22 @@ import {getListType, getNewList, setListValue} from "./listAccess";
  * @param list The list to split into chunks
  * @param length The maximum number of items to put into a single chunk
  */
-export function chunks(list: List, length: number): Array<List> {
-	const result = [];
-	const listType = getListType(list);
-	let chunk = getNewList(listType);
-	let count = 0;
-	forEach(list, (v, k) => {
-		setListValue(chunk, v, k);
-		if (++count === length) {
-			result.push(chunk);
-			chunk = getNewList(listType);
-			count = 0;
-		}
-	});
-	if (count > 0) result.push(chunk);
-	return result;
+export function chunks(list: List, length: number): Array<List>
+{
+    const result = [];
+    const listType = getListType(list);
+    let chunk = getNewList(listType);
+    let count = 0;
+    forEach(list, (v, k) => {
+        setListValue(chunk, v, k);
+        if (++count === length) {
+            result.push(chunk);
+            chunk = getNewList(listType);
+            count = 0;
+        }
+    });
+    if (count > 0) {
+        result.push(chunk);
+    }
+    return result;
 }

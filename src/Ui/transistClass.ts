@@ -15,15 +15,15 @@
  *
  * Last modified: 2019.02.01 at 14:10
  */
-import {requestFrame} from "../Browser/requestFrame";
-import {addClass} from "../Dom/addClass";
-import {removeClass} from "../Dom/removeClass";
-import {isBrowser} from "../Environment/isBrowser";
-import {PlainObject} from "../Interfaces/PlainObject";
-import {forEach} from "../Lists/forEach";
-import {isPlainObject} from "../Types/isPlainObject";
-import {isString} from "../Types/isString";
-import {throttleEvent} from "./throttleEvent";
+import {requestFrame} from '../Browser/requestFrame';
+import {addClass} from '../Dom/addClass';
+import {removeClass} from '../Dom/removeClass';
+import {isBrowser} from '../Environment/isBrowser';
+import {PlainObject} from '../Interfaces/PlainObject';
+import {forEach} from '../Lists/forEach';
+import {isPlainObject} from '../Types/isPlainObject';
+import {isString} from '../Types/isString';
+import {throttleEvent} from './throttleEvent';
 
 // The number of milliseconds for each frame / tick
 const tickLength = 15;
@@ -31,47 +31,48 @@ const tickLength = 15;
 let guid = 0;
 const runningTransitions = new Map();
 
-export interface TransistClassOptions {
-	
-	/**
-	 * If set this class will be set at the second tick/frame to add your own fancy transitions
-	 */
-	addBeforeTransition?: string
-	
-	/**
-	 * If this is set, this class / classes will be removed at the second tick/frame of the transition
-	 * This is done AFTER the addBeforeTransition classes were added
-	 */
-	removeBeforeTransition?: string
-	
-	/**
-	 * If this is set, this class / classes will be removed on the last tick/frame of the transition
-	 */
-	removeAfterTransition?: string
-	
-	/**
-	 * If this is set, this class / classes will be set on the last tick/frame of the transition
-	 * This is done AFTER the removeAfterTransition classes were removed
-	 */
-	addAfterTransition?: string
-	
-	/**
-	 * The prefix before the class definition
-	 * Default: h
-	 */
-	prefix?: string
-	
-	/**
-	 * The type of transition you want to use
-	 * Default: enter
-	 */
-	type?: string
-	
-	/**
-	 * By default multiple transitions cancel each other out
-	 * If you don't want to interfere with already running transactions set this to false
-	 */
-	cancelOthers?: boolean
+export interface TransistClassOptions
+{
+    
+    /**
+     * If set this class will be set at the second tick/frame to add your own fancy transitions
+     */
+    addBeforeTransition?: string
+    
+    /**
+     * If this is set, this class / classes will be removed at the second tick/frame of the transition
+     * This is done AFTER the addBeforeTransition classes were added
+     */
+    removeBeforeTransition?: string
+    
+    /**
+     * If this is set, this class / classes will be removed on the last tick/frame of the transition
+     */
+    removeAfterTransition?: string
+    
+    /**
+     * If this is set, this class / classes will be set on the last tick/frame of the transition
+     * This is done AFTER the removeAfterTransition classes were removed
+     */
+    addAfterTransition?: string
+    
+    /**
+     * The prefix before the class definition
+     * Default: h
+     */
+    prefix?: string
+    
+    /**
+     * The type of transition you want to use
+     * Default: enter
+     */
+    type?: string
+    
+    /**
+     * By default multiple transitions cancel each other out
+     * If you don't want to interfere with already running transactions set this to false
+     */
+    cancelOthers?: boolean
 }
 
 /**
@@ -93,64 +94,80 @@ export interface TransistClassOptions {
  * @param duration
  * @param options
  */
-export function transistClass(element: HTMLElement, duration: number, options?: TransistClassOptions): Promise<HTMLElement> {
-	if (!isBrowser()) return Promise.resolve(element);
-	
-	return new Promise(resolve => {
-		if (!isPlainObject(options)) options = {};
-		
-		// Prepare internal markers
-		const eGuid = (element as any)._transitionGuid = (element as any)._transitionGuid || ++guid;
-		const ticks = Math.floor(duration / tickLength);
-		let c = 0;
-		
-		// Cancel running transitions
-		const context = {cancel: false};
-		const contextList: Array<PlainObject> = runningTransitions.has(eGuid) ? runningTransitions.get(eGuid) : [];
-		if (options.cancelOthers !== false && contextList.length > 0) {
-			forEach(contextList, c => c.cancel = true);
-		}
-		contextList.push(context);
-		runningTransitions.set(eGuid, contextList);
-		
-		// Prepare classes
-		const classPrefix = isString(options.prefix) ? options.prefix : "h";
-		const type = isString(options.type) ? options.type : "enter";
-		const addBeforeTransition = isString(options.addBeforeTransition) ? options.addBeforeTransition : "";
-		const removeBeforeTransition = isString(options.removeBeforeTransition) ? options.removeBeforeTransition : "";
-		const removeAfterTransition = isString(options.removeAfterTransition) ? options.removeAfterTransition : "";
-		const addAfterTransition = isString(options.addAfterTransition) ? options.addAfterTransition : "";
-		const activeClass = classPrefix + "-" + type + "-active";
-		const enterClass = classPrefix + "-" + type;
-		
-		const tick = function () {
-			// Check if we were canceled
-			if (c > 1 && context.cancel === true) {
-				removeClass(element, enterClass + " " + activeClass + " " + removeBeforeTransition + " " + removeAfterTransition);
-				addClass(element, addBeforeTransition + " " + addAfterTransition);
-				return resolve(element);
-			}
-			
-			if (c < ticks) {
-				requestFrame(throttleEvent(tick, tickLength));
-				if (c === 0) {
-					addClass(element, enterClass + " " + activeClass);
-				} else if (c === 1) {
-					removeClass(element, enterClass);
-					if (addBeforeTransition !== "") addClass(element, addBeforeTransition);
-					if (removeBeforeTransition !== "") removeClass(element, removeBeforeTransition);
-				}
-			} else {
-				// Clean up
-				removeClass(element, enterClass + " " + activeClass + " " + removeAfterTransition);
-				if (addAfterTransition !== "") addClass(element, addAfterTransition);
-				delete (element as any)._transitionGuid;
-				runningTransitions.delete(eGuid);
-				return resolve(element);
-			}
-			c++;
-		};
-		
-		tick();
-	});
+export function transistClass(
+    element: HTMLElement,
+    duration: number,
+    options?: TransistClassOptions
+): Promise<HTMLElement>
+{
+    if (!isBrowser()) {
+        return Promise.resolve(element);
+    }
+    
+    return new Promise(resolve => {
+        if (!isPlainObject(options)) {
+            options = {};
+        }
+        
+        // Prepare internal markers
+        const eGuid = (element as any)._transitionGuid = (element as any)._transitionGuid || ++guid;
+        const ticks = Math.floor(duration / tickLength);
+        let c = 0;
+        
+        // Cancel running transitions
+        const context = {cancel: false};
+        const contextList: Array<PlainObject> = runningTransitions.has(eGuid) ? runningTransitions.get(eGuid) : [];
+        if (options.cancelOthers !== false && contextList.length > 0) {
+            forEach(contextList, c => c.cancel = true);
+        }
+        contextList.push(context);
+        runningTransitions.set(eGuid, contextList);
+        
+        // Prepare classes
+        const classPrefix = isString(options.prefix) ? options.prefix : 'h';
+        const type = isString(options.type) ? options.type : 'enter';
+        const addBeforeTransition = isString(options.addBeforeTransition) ? options.addBeforeTransition : '';
+        const removeBeforeTransition = isString(options.removeBeforeTransition) ? options.removeBeforeTransition : '';
+        const removeAfterTransition = isString(options.removeAfterTransition) ? options.removeAfterTransition : '';
+        const addAfterTransition = isString(options.addAfterTransition) ? options.addAfterTransition : '';
+        const activeClass = classPrefix + '-' + type + '-active';
+        const enterClass = classPrefix + '-' + type;
+        
+        const tick = function () {
+            // Check if we were canceled
+            if (c > 1 && context.cancel === true) {
+                removeClass(element,
+                    enterClass + ' ' + activeClass + ' ' + removeBeforeTransition + ' ' + removeAfterTransition);
+                addClass(element, addBeforeTransition + ' ' + addAfterTransition);
+                return resolve(element);
+            }
+            
+            if (c < ticks) {
+                requestFrame(throttleEvent(tick, tickLength));
+                if (c === 0) {
+                    addClass(element, enterClass + ' ' + activeClass);
+                } else if (c === 1) {
+                    removeClass(element, enterClass);
+                    if (addBeforeTransition !== '') {
+                        addClass(element, addBeforeTransition);
+                    }
+                    if (removeBeforeTransition !== '') {
+                        removeClass(element, removeBeforeTransition);
+                    }
+                }
+            } else {
+                // Clean up
+                removeClass(element, enterClass + ' ' + activeClass + ' ' + removeAfterTransition);
+                if (addAfterTransition !== '') {
+                    addClass(element, addAfterTransition);
+                }
+                delete (element as any)._transitionGuid;
+                runningTransitions.delete(eGuid);
+                return resolve(element);
+            }
+            c++;
+        };
+        
+        tick();
+    });
 }

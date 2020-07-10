@@ -16,7 +16,7 @@
  * Last modified: 2019.01.31 at 15:38
  */
 
-import {isBrowser} from "../Environment/isBrowser";
+import {isBrowser} from '../Environment/isBrowser';
 
 /**
  * This part is mostly stolen and only slightly modified
@@ -27,34 +27,40 @@ var lastTime = 0;
 let req = null;
 let can = null;
 if (isBrowser()) {
-	const vendors = ["ms", "moz", "webkit", "o"];
-	for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-		req = window[vendors[x] + "RequestAnimationFrame"].bind(window);
-		can = window[vendors[x] + "CancelAnimationFrame"].bind(window) || window[vendors[x] + "CancelRequestAnimationFrame"].bind(window);
-	}
+    const vendors = ['ms', 'moz', 'webkit', 'o'];
+    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        req = window[vendors[x] + 'RequestAnimationFrame'].bind(window);
+        can = window[vendors[x] + 'CancelAnimationFrame'].bind(window) ||
+              window[vendors[x] + 'CancelRequestAnimationFrame'].bind(window);
+    }
 }
-if (req === null)
-	req = function (callback, element) {
-		const currTime = new Date().getTime();
-		const timeToCall = Math.max(0, 16 - (currTime - lastTime));
-		const id = window.setTimeout(() => callback(currTime + timeToCall), timeToCall);
-		lastTime = currTime + timeToCall;
-		return id;
-	};
-if (can === null) can = (id) => clearTimeout(id);
+if (req === null) {
+    req = function (callback, element) {
+        const currTime = new Date().getTime();
+        const timeToCall = Math.max(0, 16 - (currTime - lastTime));
+        const id = window.setTimeout(() => callback(currTime + timeToCall), timeToCall);
+        lastTime = currTime + timeToCall;
+        return id;
+    };
+}
+if (can === null) {
+    can = (id) => clearTimeout(id);
+}
 
 /**
  * Wrapper around a requestAnimationFrame polyfill to avoid global namespace pollution
  * @param callback
  */
-export function requestFrame(callback: Function | any): number {
-	return req(callback);
+export function requestFrame(callback: Function | any): number
+{
+    return req(callback);
 }
 
 /**
  * Wrapper around cancelAnimationFrame to avoid global namespace pollution
  * @param id
  */
-export function cancelFrame(id: number) {
-	can(id);
+export function cancelFrame(id: number)
+{
+    can(id);
 }

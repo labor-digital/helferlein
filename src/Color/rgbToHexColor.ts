@@ -16,8 +16,8 @@
  * Last modified: 2019.05.17 at 16:43
  */
 
-import {isObject} from "../Types/isObject";
-import {RgbColor} from "./Color.interfaces";
+import {isObject} from '../Types/isObject';
+import {RgbColor} from './Color.interfaces';
 
 export function rgbToHexColor(r: RgbColor): string;
 export function rgbToHexColor(r: number, g: number, b: number): string;
@@ -28,7 +28,10 @@ export function rgbToHexColor(r: number, g: number, b: number): string;
  * @param g
  * @param b
  */
-export function rgbToHexColor(r: number | RgbColor, g?: number, b?: number): string {
-	if (isObject(r)) ({r, g, b} = (r as RgbColor));
-	return "#" + ((1 << 24) + ((r as number) << 16) + (g << 8) + b).toString(16).slice(1);
+export function rgbToHexColor(r: number | RgbColor, g?: number, b?: number): string
+{
+    if (isObject(r)) {
+        ({r, g, b} = (r as RgbColor));
+    }
+    return '#' + ((1 << 24) + ((r as number) << 16) + (g << 8) + b).toString(16).slice(1);
 }

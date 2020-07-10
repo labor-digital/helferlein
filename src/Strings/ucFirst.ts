@@ -19,8 +19,11 @@
  * Receives a string, trims it and sets the first char to uppercase
  * @param value
  */
-export function ucFirst(value:string):string {
-	if(typeof value !== "string") return "";
-	value = value.trim();
-	return value.charAt(0).toUpperCase() + value.substr(1)
+export function ucFirst(value: string): string
+{
+    if (typeof value !== 'string') {
+        return '';
+    }
+    value = value.trim();
+    return value.charAt(0).toUpperCase() + value.substr(1)
 }

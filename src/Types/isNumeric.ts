@@ -16,12 +16,13 @@
  * Last modified: 2019.07.25 at 14:28
  */
 
-import {isNumber} from "./isNumber";
+import {isNumber} from './isNumber';
 
 /**
  * Returns true if the given value seems to be numeric. Either a number or a string, representing a number
  * @param v
  */
-export function isNumeric(v: any): boolean {
-	return isNumber(v) || typeof v === "string" && (!isNaN(parseInt(v)) || !isNaN(parseFloat(v)));
+export function isNumeric(v: any): boolean
+{
+    return isNumber(v) || typeof v === 'string' && (!isNaN(parseInt(v)) || !isNaN(parseFloat(v)));
 }

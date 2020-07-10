@@ -16,14 +16,17 @@
  * Last modified: 2019.06.14 at 17:09
  */
 
-import {isObject} from "../Types/isObject";
+import {isObject} from '../Types/isObject';
 
 /**
  * Returns true if the given element has the given class name
  * @param element A single html element to check if it has a given class
  * @param className A single class to check for existence
  */
-export function hasClass(element: HTMLElement, className: string): boolean {
-	if (!isObject(element)) return false;
-	return (" " + element.className + " ").replace(/[\n\t]/g, " ").indexOf(" " + className.trim() + " ") > -1;
+export function hasClass(element: HTMLElement, className: string): boolean
+{
+    if (!isObject(element)) {
+        return false;
+    }
+    return (' ' + element.className + ' ').replace(/[\n\t]/g, ' ').indexOf(' ' + className.trim() + " ") > -1;
 }

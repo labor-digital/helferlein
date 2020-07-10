@@ -15,16 +15,17 @@
  *
  * Last modified: 2019.01.10 at 15:08
  */
-import {PlainObject} from "../Interfaces/PlainObject";
-import {forEach} from "../Lists/forEach";
-import {List} from "../Interfaces/List";
+import {List} from '../Interfaces/List';
+import {PlainObject} from '../Interfaces/PlainObject';
+import {forEach} from '../Lists/forEach';
 
 /**
  * Converts a given object/map/set/array into a generic object literal
  * @param object
  */
-export function asObject(object:List): PlainObject {
-	const out = {};
-	forEach(object, (v,k) => out[k] = v);
-	return out;
+export function asObject(object: List): PlainObject
+{
+    const out = {};
+    forEach(object, (v, k) => out[k] = v);
+    return out;
 }

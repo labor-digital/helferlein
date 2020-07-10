@@ -15,17 +15,22 @@
  *
  * Last modified: 2019.02.15 at 16:55
  */
-import {isBrowser} from "../Environment/isBrowser";
-import {isUndefined} from "../Types/isUndefined";
+import {isBrowser} from '../Environment/isBrowser';
+import {isUndefined} from '../Types/isUndefined';
 
 /**
  * Returns the height of the document in pixels
  * Returns -1 if the function is not called in a browser!
  * @param doc Can be used to set another element as the current document
  */
-export function getDocumentHeight(doc?: Document | any): number {
-	if (!isBrowser()) return -1;
-	if (isUndefined(doc)) doc = document;
-	return Math.max(doc.body.scrollHeight, doc.body.offsetHeight,
-		doc.documentElement.clientHeight, doc.documentElement.scrollHeight, doc.documentElement.offsetHeight);
+export function getDocumentHeight(doc?: Document | any): number
+{
+    if (!isBrowser()) {
+        return -1;
+    }
+    if (isUndefined(doc)) {
+        doc = document;
+    }
+    return Math.max(doc.body.scrollHeight, doc.body.offsetHeight,
+        doc.documentElement.clientHeight, doc.documentElement.scrollHeight, doc.documentElement.offsetHeight);
 }

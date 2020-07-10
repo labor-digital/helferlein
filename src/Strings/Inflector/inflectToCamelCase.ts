@@ -15,8 +15,8 @@
  *
  * Last modified: 2019.02.17 at 17:17
  */
-import {ucFirst} from "../ucFirst";
-import {inflectToArray} from "./inflectToArray";
+import {ucFirst} from '../ucFirst';
+import {inflectToArray} from './inflectToArray';
 
 /**
  * Converts a "Given string" to "GivenString" or
@@ -25,6 +25,7 @@ import {inflectToArray} from "./inflectToArray";
  * @param string  The string to inflect
  * @param intelligentSplitting Uses intelligent splitting for edge cases if set to true. @see inflectToArray() for details.
  */
-export function inflectToCamelCase(string: string, intelligentSplitting?: boolean): string {
-	return inflectToArray(string, intelligentSplitting).map(v => ucFirst(v)).join("");
+export function inflectToCamelCase(string: string, intelligentSplitting?: boolean): string
+{
+    return inflectToArray(string, intelligentSplitting).map(v => ucFirst(v)).join('');
 }

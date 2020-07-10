@@ -15,19 +15,28 @@
  *
  * Last modified: 2019.04.02 at 13:25
  */
-import {isBrowser} from "../../Environment/isBrowser";
-import {isFunction} from "../../Types/isFunction";
+import {isBrowser} from '../../Environment/isBrowser';
+import {isFunction} from '../../Types/isFunction';
 
 /**
  * Registers a special event handler which is called as soon as the document reports to be ready.
  * If this is called after the document is ready, the handler will be executed immediately
  * @param listener
  */
-export function onDomReady(listener: Function) {
-	if (!isBrowser() || document.readyState !== "loading") listener();
-	else if (document.addEventListener) document.addEventListener("DOMContentLoaded", listener as any);
-	else if (isFunction((document as any).attachEvent)) (document as any).attachEvent("onreadystatechange", function () {
-		if (document.readyState == "complete") listener();
-	});
-	else listener();
+export function onDomReady(listener: Function)
+{
+    if (!isBrowser() || document.readyState !== 'loading') {
+        listener();
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', listener as any);
+    } else if (isFunction((document as any).attachEvent)) {
+        (document as any).attachEvent('onreadystatechange',
+            function () {
+                if (document.readyState == 'complete') {
+                    listener();
+                }
+            });
+    } else {
+        listener();
+    }
 }

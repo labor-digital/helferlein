@@ -15,17 +15,19 @@
  *
  * Last modified: 2019.01.25 at 12:17
  */
-import {EventBus} from "../Events/EventBus";
+import {EventBus} from '../Events/EventBus';
 
-interface PromiseCreator {
-	(): Promise<any>
+interface PromiseCreator
+{
+    (): Promise<any>
 }
 
-interface PromiseRegistryEntry {
-	event: string;
-	timeout: number | any;
-	guid: number;
-	promise: null | Promise<any>
+interface PromiseRegistryEntry
+{
+    event: string;
+    timeout: number | any;
+    guid: number;
+    promise: null | Promise<any>
 }
 
 const registry: Map<string, PromiseRegistryEntry> = new Map();
@@ -45,54 +47,58 @@ const registry: Map<string, PromiseRegistryEntry> = new Map();
  * Otherwise all .then() methods will be executed, but receive the same result
  */
 export function debouncePromise(key: string, promiseCreator: PromiseCreator,
-								limit: number, skipAllButLast?: boolean): Promise<any> {
-	// Initialize the wrapper if required
-	if (!registry.has(key)) {
-		registry.set(key, {
-			event: "debouncePromise__timeout--" + key,
-			timeout: 0,
-			guid: 0,
-			promise: null
-		});
-	}
-	
-	// Load config
-	const config = registry.get(key);
-	
-	// Register timeout
-	clearTimeout(config.timeout);
-	config.timeout = setTimeout(() => {
-		EventBus.emit(config.event, {promiseCreator});
-	}, limit);
-	
-	return new Promise((resolve, reject) => {
-		const localGuid = ++config.guid;
-		const callback = function (e) {
-			// Clean our callback
-			EventBus.unbind(config.event, callback);
-			
-			// Check if this is the last promise
-			if (localGuid === config.guid) {
-				registry.delete(key);
-			} else if (skipAllButLast === true) {
-				return reject("@skipAllButLast");
-			}
-			
-			// Create or pass the real promise
-			if (config.promise === null) config.promise = e.args.promiseCreator();
-			config.promise.then(resolve).catch(reject);
-		};
-		EventBus.bind(config.event, callback);
-	}).catch((e) => {
-		// Check if we should skip all other executions
-		if (e === "@skipAllButLast") {
-			const noopPromise = {
-				finally: () => noopPromise,
-				then: () => noopPromise,
-				catch: () => noopPromise
-			};
-			return noopPromise;
-		}
-		return Promise.reject(e);
-	});
+    limit: number, skipAllButLast?: boolean
+): Promise<any>
+{
+    // Initialize the wrapper if required
+    if (!registry.has(key)) {
+        registry.set(key, {
+            event: 'debouncePromise__timeout--' + key,
+            timeout: 0,
+            guid: 0,
+            promise: null
+        });
+    }
+    
+    // Load config
+    const config = registry.get(key);
+    
+    // Register timeout
+    clearTimeout(config.timeout);
+    config.timeout = setTimeout(() => {
+        EventBus.emit(config.event, {promiseCreator});
+    }, limit);
+    
+    return new Promise((resolve, reject) => {
+        const localGuid = ++config.guid;
+        const callback = function (e) {
+            // Clean our callback
+            EventBus.unbind(config.event, callback);
+            
+            // Check if this is the last promise
+            if (localGuid === config.guid) {
+                registry.delete(key);
+            } else if (skipAllButLast === true) {
+                return reject('@skipAllButLast');
+            }
+            
+            // Create or pass the real promise
+            if (config.promise === null) {
+                config.promise = e.args.promiseCreator();
+            }
+            config.promise.then(resolve).catch(reject);
+        };
+        EventBus.bind(config.event, callback);
+    }).catch((e) => {
+        // Check if we should skip all other executions
+        if (e === '@skipAllButLast') {
+            const noopPromise = {
+                finally: () => noopPromise,
+                then: () => noopPromise,
+                catch: () => noopPromise
+            };
+            return noopPromise;
+        }
+        return Promise.reject(e);
+    });
 }

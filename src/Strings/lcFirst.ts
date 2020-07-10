@@ -19,8 +19,11 @@
  * Receives a string, trims it and sets the first char to lowercase
  * @param value
  */
-export function lcFirst(value:string):string {
-	if(typeof value !== "string") return "";
-	value = value.trim();
-	return value.charAt(0).toLowerCase() + value.substr(1)
+export function lcFirst(value: string): string
+{
+    if (typeof value !== 'string') {
+        return '';
+    }
+    value = value.trim();
+    return value.charAt(0).toLowerCase() + value.substr(1)
 }

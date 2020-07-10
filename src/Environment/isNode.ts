@@ -21,9 +21,12 @@ let isNodeCache = null;
 /**
  * Returns true if the script is called from within a node context
  */
-export function isNode(): boolean {
-	if (isNodeCache !== null) return isNodeCache;
-	return isNodeCache = typeof process !== "undefined" &&
-		process.versions != null &&
-		process.versions.node != null;
+export function isNode(): boolean
+{
+    if (isNodeCache !== null) {
+        return isNodeCache;
+    }
+    return isNodeCache = typeof process !== 'undefined' &&
+                         process.versions != null &&
+                         process.versions.node != null;
 }

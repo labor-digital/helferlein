@@ -15,18 +15,20 @@
  *
  * Last modified: 2019.01.24 at 10:40
  */
-import {isUndefined} from "../Types/isUndefined";
-import {isFunction} from "../Types/isFunction";
+import {isFunction} from '../Types/isFunction';
+import {isUndefined} from '../Types/isUndefined';
 
 /**
  * This helper removes all html tags from a given string, returning only
  * the containing text
  * @param value
  */
-export function stripTags(value: string): string {
-	if (isUndefined(document) || !isFunction(document.createElement))
-		throw new Error("This stripTags implementation only works in browsers!");
-	const div = document.createElement("div");
-	div.innerHTML = value;
-	return div.textContent || div.innerText || "";
+export function stripTags(value: string): string
+{
+    if (isUndefined(document) || !isFunction(document.createElement)) {
+        throw new Error('This stripTags implementation only works in browsers!');
+    }
+    const div = document.createElement('div');
+    div.innerHTML = value;
+    return div.textContent || div.innerText || '';
 }

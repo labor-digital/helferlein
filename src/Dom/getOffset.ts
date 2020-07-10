@@ -16,28 +16,33 @@
  * Last modified: 2019.01.10 at 10:28
  */
 
-import {isBrowser} from "../Environment/isBrowser";
-import {isEmpty} from "../Types/isEmpty";
-import {isObject} from "../Types/isObject";
+import {isBrowser} from '../Environment/isBrowser';
+import {isEmpty} from '../Types/isEmpty';
+import {isObject} from '../Types/isObject';
 
 /**
  * Returns the offset of a given dom element relative to the document
  * @param element The element to get the offset of
  * @param container An optional container that is used as target instead of the window
  */
-export function getOffset(element: HTMLElement, container?: HTMLElement | string): { top: number, left: number } {
-	if (!isBrowser() || !isObject(element)) return {top: 0, left: 0};
-	const rect = element.getBoundingClientRect();
-	let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-	let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-	if (!isEmpty(container)) {
-		if (typeof container === "string") container = document.querySelector(container as string) as HTMLElement;
-		const containerRect = container.getBoundingClientRect();
-		scrollLeft = container.scrollLeft - containerRect.left;
-		scrollTop = container.scrollTop - containerRect.top;
-	}
-	return {
-		top: rect.top + scrollTop,
-		left: rect.left + scrollLeft
-	};
+export function getOffset(element: HTMLElement, container?: HTMLElement | string): { top: number, left: number }
+{
+    if (!isBrowser() || !isObject(element)) {
+        return {top: 0, left: 0};
+    }
+    const rect = element.getBoundingClientRect();
+    let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (!isEmpty(container)) {
+        if (typeof container === 'string') {
+            container = document.querySelector(container as string) as HTMLElement;
+        }
+        const containerRect = container.getBoundingClientRect();
+        scrollLeft = container.scrollLeft - containerRect.left;
+        scrollTop = container.scrollTop - containerRect.top;
+    }
+    return {
+        top: rect.top + scrollTop,
+        left: rect.left + scrollLeft
+    };
 }

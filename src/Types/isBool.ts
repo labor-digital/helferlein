@@ -19,6 +19,7 @@
  * Returns true if the given value is a boolean value
  * @param value
  */
-export function isBool(value):boolean {
-	return value === true || value === false;
+export function isBool(value): boolean
+{
+    return value === true || value === false;
 }

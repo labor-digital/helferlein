@@ -16,13 +16,14 @@
  * Last modified: 2020.07.10 at 12:14
  */
 
-import {getLongestCommonPrefix} from "./getLongestCommonPrefix";
-import {strReverse} from "./strReverse";
+import {getLongestCommonPrefix} from './getLongestCommonPrefix';
+import {strReverse} from './strReverse';
 
 /**
  * Finds the longest common suffix in a list of strings
  * @param list A list of strings to fetch the suffix from
  */
-export function getLongestCommonSuffix(list: Array<string>): string {
-	return strReverse(getLongestCommonPrefix(list.map(strReverse)));
+export function getLongestCommonSuffix(list: Array<string>): string
+{
+    return strReverse(getLongestCommonPrefix(list.map(strReverse)));
 }

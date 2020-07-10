@@ -15,12 +15,12 @@
  *
  * Last modified: 2019.02.01 at 18:58
  */
-import {List, ListPath} from "../Interfaces/List";
-import {isNull} from "../Types/isNull";
-import {isUndefined} from "../Types/isUndefined";
-import {forEach} from "./forEach";
-import {getListType, getNewList, setListValue} from "./listAccess";
-import {getPath} from "./Paths/getPath";
+import {List, ListPath} from '../Interfaces/List';
+import {isNull} from '../Types/isNull';
+import {isUndefined} from '../Types/isUndefined';
+import {forEach} from './forEach';
+import {getListType, getNewList, setListValue} from './listAccess';
+import {getPath} from './Paths/getPath';
 
 /**
  * Can be used to sort arrays containing objects by a property of said objects
@@ -30,24 +30,25 @@ import {getPath} from "./Paths/getPath";
  * @param by The property of the child objects to sort by
  * @param desc If set to true the result will be sorted descending instead of the default which is ascending
  */
-export function sort(list: List, by?: ListPath | null, desc?: boolean): List {
-	// Build the sorter
-	let sorter = [];
-	forEach(list, (v, k) => {
-		sorter.push({
-			by: isNull(by) || isUndefined(by) ? v : getPath(v, by),
-			k, v
-		});
-	});
-	
-	// Sort the sorter array
-	sorter = sorter.sort((a, b) =>
-		desc ?
-			((a.by > b.by) ? -1 : ((a.by < b.by) ? 1 : 0)) :
-			((a.by < b.by) ? -1 : ((a.by > b.by) ? 1 : 0)));
-	
-	// Build result
-	const result = getNewList(getListType(list));
-	forEach(sorter, (o) => setListValue(result, o.v, o.k));
-	return result;
+export function sort(list: List, by?: ListPath | null, desc?: boolean): List
+{
+    // Build the sorter
+    let sorter = [];
+    forEach(list, (v, k) => {
+        sorter.push({
+            by: isNull(by) || isUndefined(by) ? v : getPath(v, by),
+            k, v
+        });
+    });
+    
+    // Sort the sorter array
+    sorter = sorter.sort((a, b) =>
+        desc ?
+            ((a.by > b.by) ? -1 : ((a.by < b.by) ? 1 : 0)) :
+            ((a.by < b.by) ? -1 : ((a.by > b.by) ? 1 : 0)));
+    
+    // Build result
+    const result = getNewList(getListType(list));
+    forEach(sorter, (o) => setListValue(result, o.v, o.k));
+    return result;
 }

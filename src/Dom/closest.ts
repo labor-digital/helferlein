@@ -15,8 +15,8 @@
  *
  * Last modified: 2019.01.11 at 19:43
  */
-import {isFunction} from "../Types/isFunction";
-import {isObject} from "../Types/isObject";
+import {isFunction} from '../Types/isFunction';
+import {isObject} from '../Types/isObject';
 
 /**
  * A polifill for "closest()" element in internet explorer without jquery:
@@ -25,17 +25,22 @@ import {isObject} from "../Types/isObject";
  * @param selector The selector to find
  * @param to The element to use as starting point
  */
-export function closest(selector: string, to: HTMLElement): HTMLElement | null {
-	if (!isObject(to)) return null;
-	if (!isFunction(to.closest)) {
-		let el = to;
-		while (el) {
-			const matches = isFunction(el.matches) ? el.matches : (el as any).msMatchesSelector.bind(el);
-			if (matches(selector)) return el;
-			el = el.parentElement;
-		}
-		return null;
-	} else {
-		return to.closest(selector) as HTMLElement | null;
-	}
+export function closest(selector: string, to: HTMLElement): HTMLElement | null
+{
+    if (!isObject(to)) {
+        return null;
+    }
+    if (!isFunction(to.closest)) {
+        let el = to;
+        while (el) {
+            const matches = isFunction(el.matches) ? el.matches : (el as any).msMatchesSelector.bind(el);
+            if (matches(selector)) {
+                return el;
+            }
+            el = el.parentElement;
+        }
+        return null;
+    } else {
+        return to.closest(selector) as HTMLElement | null;
+    }
 }

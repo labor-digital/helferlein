@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.02.17 at 17:23
  */
-import {inflectToArray} from "./inflectToArray";
+import {inflectToArray} from './inflectToArray';
 
 /**
  * Converts a "Given string" to "given-string" or
@@ -24,6 +24,7 @@ import {inflectToArray} from "./inflectToArray";
  * @param string  The string to inflect
  * @param intelligentSplitting Uses intelligent splitting for edge cases if set to true. @see inflectToArray() for details.
  */
-export function inflectToDashed(string: string, intelligentSplitting?: boolean): string {
-	return inflectToArray(string, intelligentSplitting).join("-");
+export function inflectToDashed(string: string, intelligentSplitting?: boolean): string
+{
+    return inflectToArray(string, intelligentSplitting).join('-');
 }

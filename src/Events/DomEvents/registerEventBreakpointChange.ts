@@ -16,11 +16,12 @@
  * Last modified: 2019.12.23 at 16:43
  */
 
-import {BreakpointService} from "../../Ui/BreakpointService/BreakpointService";
+import {BreakpointService} from '../../Ui/BreakpointService/BreakpointService';
 
 /**
  * An alias for the breakpoint service to register the EVENT_BREAKPOINT_CHANGE event on a global scale
  */
-export function registerEventBreakPointChange() {
-	BreakpointService.getCurrent();
+export function registerEventBreakPointChange()
+{
+    BreakpointService.getCurrent();
 }

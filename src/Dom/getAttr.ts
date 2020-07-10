@@ -16,7 +16,7 @@
  * Last modified: 2019.05.07 at 18:19
  */
 
-import {isObject} from "../Types/isObject";
+import {isObject} from '../Types/isObject';
 
 /**
  * Returns the value of one attribute of the given element
@@ -24,8 +24,13 @@ import {isObject} from "../Types/isObject";
  * @param attributeName the name of the attribute to look up (e.g. class)
  * @param fallback Optional fallback to be returned when the attribute was not found
  */
-export function getAttr(element: HTMLElement | Element, attributeName: string, fallback?: any) {
-	if (!isObject(element)) return fallback;
-	if (!element.hasAttribute(attributeName)) return fallback;
-	return element.getAttribute(attributeName);
+export function getAttr(element: HTMLElement | Element, attributeName: string, fallback?: any)
+{
+    if (!isObject(element)) {
+        return fallback;
+    }
+    if (!element.hasAttribute(attributeName)) {
+        return fallback;
+    }
+    return element.getAttribute(attributeName);
 }

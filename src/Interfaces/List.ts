@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.01.09 at 12:53
  */
-import {PlainObject} from "./PlainObject";
+import {PlainObject} from './PlainObject';
 
 export type List = Array<any> | Set<any> | Map<any, any> | PlainObject;
 

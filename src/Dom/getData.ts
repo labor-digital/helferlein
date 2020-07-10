@@ -16,8 +16,8 @@
  * Last modified: 2019.02.06 at 12:03
  */
 
-import {isObject} from "../Types/isObject";
-import {isString} from "../Types/isString";
+import {isObject} from '../Types/isObject';
+import {isString} from '../Types/isString';
 
 /**
  * This helper receives a html element and extracts either a single,
@@ -28,39 +28,45 @@ import {isString} from "../Types/isString";
  * @param selector Optionally, the name of the data attribute to read from (data-)some-attribute. (The data- part is optional)
  * @param fallback Optional value which will be returned if the data attribute for the selector was not found
  */
-export function getData(element: HTMLElement, selector?: string, fallback?: any) {
-	if (!isObject(element)) return fallback;
-	
-	// Auto convert json objects
-	function getDataConverter(value: any) {
-		if (isString(value)) {
-			try {
-				return JSON.parse(value);
-			} catch (e) {
-			}
-		}
-		return value;
-	}
-	
-	// Load a single selector
-	if (isString(selector)) {
-		selector = "data-" + selector.trim().replace(/^data-/, "");
-		if (!element.hasAttribute(selector)) return fallback;
-		return getDataConverter(element.getAttribute(selector));
-	}
-	
-	// Load all data values of element
-	// Courtesy of https://stackoverflow.com/a/18540799
-	var dataset = {};
-	var attrs = element.attributes;
-	for (var i = 0; i < attrs.length; i++) {
-		var attr = attrs.item(i);
-		// make sure it is a data attribute
-		if (attr.nodeName.match(new RegExp(/^data-/))) {
-			// remove the 'data-' from the string
-			dataset[attr.nodeName.replace(new RegExp("^data-"), "")] =
-				getDataConverter(attr.nodeValue);
-		}
-	}
-	return dataset;
+export function getData(element: HTMLElement, selector?: string, fallback?: any)
+{
+    if (!isObject(element)) {
+        return fallback;
+    }
+    
+    // Auto convert json objects
+    function getDataConverter(value: any)
+    {
+        if (isString(value)) {
+            try {
+                return JSON.parse(value);
+            } catch (e) {
+            }
+        }
+        return value;
+    }
+    
+    // Load a single selector
+    if (isString(selector)) {
+        selector = 'data-' + selector.trim().replace(/^data-/, '');
+        if (!element.hasAttribute(selector)) {
+            return fallback;
+        }
+        return getDataConverter(element.getAttribute(selector));
+    }
+    
+    // Load all data values of element
+    // Courtesy of https://stackoverflow.com/a/18540799
+    var dataset = {};
+    var attrs = element.attributes;
+    for (var i = 0; i < attrs.length; i++) {
+        var attr = attrs.item(i);
+        // make sure it is a data attribute
+        if (attr.nodeName.match(new RegExp(/^data-/))) {
+            // remove the 'data-' from the string
+            dataset[attr.nodeName.replace(new RegExp('^data-'), '')] =
+                getDataConverter(attr.nodeValue);
+        }
+    }
+    return dataset;
 }

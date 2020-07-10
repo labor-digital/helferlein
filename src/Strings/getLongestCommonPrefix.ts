@@ -21,19 +21,20 @@
  * @param list A list of strings to fetch the prefix from
  * @source https://codereview.stackexchange.com/a/182245
  */
-export function getLongestCommonPrefix(list: Array<string>): string {
-	if (!list) {
-		return "";
-	}
-	
-	let smallest = list.reduce((min, str) => min < str ? min : str, list[0]);
-	let largest = list.reduce((min, str) => min > str ? min : str, list[0]);
-	
-	for (let i = 0; i < smallest.length; i++) {
-		if (smallest[i] != largest[i]) {
-			return smallest.substr(0, i);
-		}
-	}
-	
-	return "";
+export function getLongestCommonPrefix(list: Array<string>): string
+{
+    if (!list) {
+        return '';
+    }
+    
+    let smallest = list.reduce((min, str) => min < str ? min : str, list[0]);
+    let largest = list.reduce((min, str) => min > str ? min : str, list[0]);
+    
+    for (let i = 0; i < smallest.length; i++) {
+        if (smallest[i] != largest[i]) {
+            return smallest.substr(0, i);
+        }
+    }
+    
+    return '';
 }

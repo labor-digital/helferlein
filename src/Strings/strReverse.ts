@@ -20,6 +20,7 @@
  * Reverses the given string
  * @param string
  */
-export function strReverse(string: string): string {
-	return string.split("").reverse().join("");
+export function strReverse(string: string): string
+{
+    return string.split('').reverse().join('');
 }

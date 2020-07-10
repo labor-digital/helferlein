@@ -15,14 +15,15 @@
  *
  * Last modified: 2019.05.17 at 17:06
  */
-import {hexToRgbColor} from "./hexToRgbColor";
-import {rgbComplementaryColor} from "./rgbComplementaryColor";
-import {rgbToHexColor} from "./rgbToHexColor";
+import {hexToRgbColor} from './hexToRgbColor';
+import {rgbComplementaryColor} from './rgbComplementaryColor';
+import {rgbToHexColor} from './rgbToHexColor';
 
 /**
  * Calculates the opposite/complementary color for the given color and returns it
  * @param hexRaw
  */
-export function hexComplementaryColor(hexRaw: string): string {
-	return rgbToHexColor(rgbComplementaryColor(hexToRgbColor(hexRaw)));
+export function hexComplementaryColor(hexRaw: string): string
+{
+    return rgbToHexColor(rgbComplementaryColor(hexToRgbColor(hexRaw)));
 }

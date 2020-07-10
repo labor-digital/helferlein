@@ -15,7 +15,10 @@
  *
  * Last modified: 2019.01.09 at 11:10
  */
-export function isSet(object: any): boolean {
-	if (typeof object === "undefined" || object === null) return false;
-	return object instanceof Set || object.constructor === Set;
+export function isSet(object: any): boolean
+{
+    if (typeof object === 'undefined' || object === null) {
+        return false;
+    }
+    return object instanceof Set || object.constructor === Set;
 }

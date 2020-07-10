@@ -16,17 +16,18 @@
  * Last modified: 2019.05.17 at 16:53
  */
 
-import {RgbColor} from "./Color.interfaces";
+import {RgbColor} from './Color.interfaces';
 
 /**
  * Converts an rgb string like rgb(0, 233, 25) or rgba(0, 200, 33, 0.2) into it's hex representation.
  * @param rgbRaw
  */
-export function rgbStringToRgbColor(rgbRaw: string): RgbColor {
-	const rgb = rgbRaw.match(/^rgba?\((\d+|0),\s*(\d+|0),\s*(\d+|0)(?:,\s*\d+)?\)$/);
-	return {
-		r: parseInt(rgb[1]),
-		g: parseInt(rgb[2]),
-		b: parseInt(rgb[3])
-	};
+export function rgbStringToRgbColor(rgbRaw: string): RgbColor
+{
+    const rgb = rgbRaw.match(/^rgba?\((\d+|0),\s*(\d+|0),\s*(\d+|0)(?:,\s*\d+)?\)$/);
+    return {
+        r: parseInt(rgb[1]),
+        g: parseInt(rgb[2]),
+        b: parseInt(rgb[3])
+    };
 }

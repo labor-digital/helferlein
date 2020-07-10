@@ -16,8 +16,8 @@
  * Last modified: 2019.02.15 at 20:21
  */
 
-import {ucFirst} from "../ucFirst";
-import {inflectToArray} from "./inflectToArray";
+import {ucFirst} from '../ucFirst';
+import {inflectToArray} from './inflectToArray';
 
 /**
  * Converts a "Given string" to "Given String" or
@@ -26,8 +26,9 @@ import {inflectToArray} from "./inflectToArray";
  * @param string  The string to inflect
  * @param intelligentSplitting Uses intelligent splitting for edge cases if set to true. @see inflectToArray() for details.
  */
-export function inflectToSpacedUpper(string: string, intelligentSplitting?: boolean): string {
-	return inflectToArray(string, intelligentSplitting).map(v => ucFirst(v)).join(" ");
+export function inflectToSpacedUpper(string: string, intelligentSplitting?: boolean): string
+{
+    return inflectToArray(string, intelligentSplitting).map(v => ucFirst(v)).join(' ');
 }
 
 /**
@@ -38,6 +39,7 @@ export function inflectToSpacedUpper(string: string, intelligentSplitting?: bool
  *
  * @return string
  */
-export function inflectToHuman(string:string, intelligentSplitting?: boolean): string {
-	return inflectToSpacedUpper(string, intelligentSplitting);
+export function inflectToHuman(string: string, intelligentSplitting?: boolean): string
+{
+    return inflectToSpacedUpper(string, intelligentSplitting);
 }

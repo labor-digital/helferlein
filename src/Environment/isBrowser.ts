@@ -16,16 +16,19 @@
  * Last modified: 2019.10.05 at 14:59
  */
 
-import {isNode} from "./isNode";
+import {isNode} from './isNode';
 
 let isBrowserCache = null;
 
 /**
  * Returns true if this js script is called in a browser and not in node
  */
-export function isBrowser(): boolean {
-	if (isBrowserCache !== null) return isBrowserCache;
-	return isBrowserCache = !isNode() &&
-		typeof window !== "undefined" &&
-		typeof window.document !== "undefined";
+export function isBrowser(): boolean
+{
+    if (isBrowserCache !== null) {
+        return isBrowserCache;
+    }
+    return isBrowserCache = !isNode() &&
+                            typeof window !== 'undefined' &&
+                            typeof window.document !== 'undefined';
 }

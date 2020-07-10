@@ -16,32 +16,33 @@
  * Last modified: 2019.12.30 at 21:08
  */
 
-import clone from "clone";
-import {List} from "../Interfaces/List";
+import clone from 'clone';
+import {List} from '../Interfaces/List';
 
-export interface CloneListOptionsInterface {
-	/**
-	 * Defaults to true. Call clone with circular set to false if you are certain that obj contains no circular
-	 * references. This will give better performance if needed. There is no error if undefined or null is passed as
-	 */
-	circular?: boolean
-	
-	/**
-	 * Depth to which the object is to be cloned (optional, defaults to Infinity)
-	 */
-	depth?: Number
-	
-	/**
-	 * Sets the prototype to be used when cloning an Object. (optional, defaults to __proto__ of the to be cloned value, ie.
-	 * the cloned object will have the same prototype as the original).
-	 */
-	prototype?: any
-	
-	/**
-	 * Set to true if the non-enumerable properties should be cloned as well. Non-enumerable properties on the prototype
-	 * chain will be ignored. (optional, defaults to false)
-	 */
-	includeNonEnumerable?: boolean
+export interface CloneListOptionsInterface
+{
+    /**
+     * Defaults to true. Call clone with circular set to false if you are certain that obj contains no circular
+     * references. This will give better performance if needed. There is no error if undefined or null is passed as
+     */
+    circular?: boolean
+    
+    /**
+     * Depth to which the object is to be cloned (optional, defaults to Infinity)
+     */
+    depth?: Number
+    
+    /**
+     * Sets the prototype to be used when cloning an Object. (optional, defaults to __proto__ of the to be cloned value, ie.
+     * the cloned object will have the same prototype as the original).
+     */
+    prototype?: any
+    
+    /**
+     * Set to true if the non-enumerable properties should be cloned as well. Non-enumerable properties on the prototype
+     * chain will be ignored. (optional, defaults to false)
+     */
+    includeNonEnumerable?: boolean
 }
 
 /**
@@ -50,6 +51,7 @@ export interface CloneListOptionsInterface {
  * @param options Additional options for the internal clone package
  * @see https://github.com/pvorb/clone
  */
-export function cloneList(list: List, options?: CloneListOptionsInterface): List {
-	return clone(list, options);
+export function cloneList(list: List, options?: CloneListOptionsInterface): List
+{
+    return clone(list, options);
 }

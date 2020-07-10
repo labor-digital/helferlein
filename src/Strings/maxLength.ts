@@ -15,8 +15,8 @@
  *
  * Last modified: 2019.01.24 at 10:47
  */
-import {isString} from "../Types/isString";
-import {forEach} from "../Lists/forEach";
+import {forEach} from '../Lists/forEach';
+import {isString} from '../Types/isString';
 
 /**
  * This helper is used to cut a string to a fixed number of characters.
@@ -30,16 +30,23 @@ import {forEach} from "../Lists/forEach";
  * @param limit The number of characters
  * @param ellipsis Optional: Used to override the ... added to a cut of string
  */
-export function maxLength(value:string, limit:number, ellipsis?:string):string {
-	if(!isString(ellipsis)) ellipsis = "...";
-	const words = value.trim().split(" ");
-	let length = 0;
-	let result = [];
-	forEach(words, word => {
-		if((length += word.length) >= limit) return false;
-		result.push(word);
-	});
-	let string = result.join(" ");
-	if(words.length !== result.length) string += ellipsis;
-	return string;
+export function maxLength(value: string, limit: number, ellipsis?: string): string
+{
+    if (!isString(ellipsis)) {
+        ellipsis = '...';
+    }
+    const words = value.trim().split(' ');
+    let length = 0;
+    let result = [];
+    forEach(words, word => {
+        if ((length += word.length) >= limit) {
+            return false;
+        }
+        result.push(word);
+    });
+    let string = result.join(' ');
+    if (words.length !== result.length) {
+        string += ellipsis;
+    }
+    return string;
 }

@@ -16,11 +16,11 @@
  * Last modified: 2019.06.12 at 12:08
  */
 
-import {List, ListPath} from "../../Interfaces/List";
-import {isArray} from "../../Types/isArray";
-import {isUndefined} from "../../Types/isUndefined";
-import {getListType, getListValue, ListType} from "../listAccess";
-import {_initPathWalkerPath, _initPathWalkerStep} from "./_internals";
+import {List, ListPath} from '../../Interfaces/List';
+import {isArray} from '../../Types/isArray';
+import {isUndefined} from '../../Types/isUndefined';
+import {getListType, getListValue, ListType} from '../listAccess';
+import {_initPathWalkerPath, _initPathWalkerStep} from './_internals';
 
 /**
  * This method checks if a given path exists in a given $input array
@@ -29,34 +29,39 @@ import {_initPathWalkerPath, _initPathWalkerStep} from "./_internals";
  * @param path The path to check for in $list
  * @param separator Default: "." Can be set to any string you want to use as separator of path parts.
  */
-export function hasPath(list: List, path: ListPath, separator?: string): boolean {
-	// Check recursive if the path exists
-	const walker = function hasPathWalker(list: List, path: Array<any>) {
-		const [keys, isLastKey] = _initPathWalkerStep(list, path);
-		for (let i = 0; i < keys.length; i++) {
-			
-			// Handle nested paths
-			if (isArray(keys[i])) {
-				walker(list, keys[i]);
-				return;
-			}
-			
-			// Validate if the requested value exists
-			const value = getListValue(list, keys[i]);
-			if (isUndefined(value)) throw new Error();
-			
-			// Follow the path deeper
-			if (!isLastKey) {
-				if (getListType(value) === ListType.NoList) throw new Error();
-				walker(value, path.slice(0));
-			}
-		}
-	};
-	
-	try {
-		walker(list, _initPathWalkerPath(list, path, separator));
-		return true;
-	} catch (e) {
-		return false;
-	}
+export function hasPath(list: List, path: ListPath, separator?: string): boolean
+{
+    // Check recursive if the path exists
+    const walker = function hasPathWalker(list: List, path: Array<any>) {
+        const [keys, isLastKey] = _initPathWalkerStep(list, path);
+        for (let i = 0; i < keys.length; i++) {
+            
+            // Handle nested paths
+            if (isArray(keys[i])) {
+                walker(list, keys[i]);
+                return;
+            }
+            
+            // Validate if the requested value exists
+            const value = getListValue(list, keys[i]);
+            if (isUndefined(value)) {
+                throw new Error();
+            }
+            
+            // Follow the path deeper
+            if (!isLastKey) {
+                if (getListType(value) === ListType.NoList) {
+                    throw new Error();
+                }
+                walker(value, path.slice(0));
+            }
+        }
+    };
+    
+    try {
+        walker(list, _initPathWalkerPath(list, path, separator));
+        return true;
+    } catch (e) {
+        return false;
+    }
 }

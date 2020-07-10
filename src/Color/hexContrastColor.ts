@@ -16,15 +16,16 @@
  * Last modified: 2019.05.17 at 17:03
  */
 
-import {hexToRgbColor} from "./hexToRgbColor";
-import {rgbContrastColor} from "./rgbContrastColor";
-import {rgbToHexColor} from "./rgbToHexColor";
+import {hexToRgbColor} from './hexToRgbColor';
+import {rgbContrastColor} from './rgbContrastColor';
+import {rgbToHexColor} from './rgbToHexColor';
 
 /**
  * Receives a color and calculates another color which is either lighter or darker as the given color
  * and should be readable when used as text color in front of the given color.
  * @param hexRaw
  */
-export function hexContrastColor(hexRaw: string): string {
-	return rgbToHexColor(rgbContrastColor(hexToRgbColor(hexRaw)));
+export function hexContrastColor(hexRaw: string): string
+{
+    return rgbToHexColor(rgbContrastColor(hexToRgbColor(hexRaw)));
 }
