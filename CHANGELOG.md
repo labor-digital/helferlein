@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.23.0](https://github.com/labor-digital/helferlein/compare/v3.22.0...v3.23.0) (2020-07-10)
+
+
+### Features
+
+* add "copySync" helper ([04a9cc9](https://github.com/labor-digital/helferlein/commit/04a9cc9225413220689cca48bfdf920833aa3d85))
+
 ## [3.22.0](https://github.com/labor-digital/helferlein/compare/v3.21.0...v3.22.0) (2020-07-10)
 
 
