@@ -53,10 +53,11 @@ function _copyFolderRecursiveSync(source: string, target: string): void
         fs.readdirSync(source)
           .forEach(function (file) {
               const currentSource = path.join(source, file);
+              const currentTarget = path.join(target, path.basename(file));
               if (fs.lstatSync(currentSource).isDirectory()) {
-                  _copyFolderRecursiveSync(currentSource, target);
+                  _copyFolderRecursiveSync(currentSource, currentTarget);
               } else {
-                  _copyFileSync(currentSource, target);
+                  _copyFileSync(currentSource, currentTarget);
               }
           });
     }
