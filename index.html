@@ -80,8 +80,8 @@
 					<h2>Usage</h2>
 				</a>
 				<p>This package is designed to run in a typescript application and not directly in the browser. A common usecase would look like:</p>
-				<pre><code><span class="hljs-keyword">import</span> {asArray} <span class="hljs-keyword">from</span> <span class="hljs-string">"@labor-digital/helferlein/lib/FormatAndConvert/asArray"</span>;
-<span class="hljs-keyword">const</span> objectAsArray = asArray({<span class="hljs-string">'a'</span>: <span class="hljs-number">1</span>, <span class="hljs-string">'b'</span>: <span class="hljs-number">2</span>, <span class="hljs-string">'d'</span>: <span class="hljs-number">3</span>, <span class="hljs-string">'e'</span>: <span class="hljs-string">'asdf'</span>});</code></pre><p>As you see in the import statement we did not add a &quot;main&quot; file to avoid overhead for bundlers that don&#39;t support treeshaking out of the box. </p>
+				<pre><code><span class="hljs-keyword">import</span> {asArray} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@labor-digital/helferlein/lib/FormatAndConvert/asArray&quot;</span>;
+<span class="hljs-keyword">const</span> objectAsArray = asArray({<span class="hljs-string">&#x27;a&#x27;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;b&#x27;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;d&#x27;</span>: <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;e&#x27;</span>: <span class="hljs-string">&#x27;asdf&#x27;</span>});</code></pre><p>As you see in the import statement we did not add a &quot;main&quot; file to avoid overhead for bundlers that don&#39;t support treeshaking out of the box. </p>
 				<p>However, if you want to use the library in your browser, without typescript you can use the precompiled javascript files in the &quot;lib.browser&quot; directory.
 				You can simply import any file in your html and and access the helper functions using <code>Helferlein.asArray()</code> in your javascript.</p>
 				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
@@ -325,6 +325,12 @@
 						<a href="modules/_misc_md5_.html">&quot;<wbr>Misc/md5&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/_node_filesystem_mkdirrecursivesync_.html">&quot;<wbr>Node/<wbr>File<wbr>System/mkdir<wbr>Recursive<wbr>Sync&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_node_filesystem_rmdirrecursivesync_.html">&quot;<wbr>Node/<wbr>File<wbr>System/rmdir<wbr>Recursive<wbr>Sync&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/_strings_inflector_inflecttoarray_.html">&quot;<wbr>Strings/<wbr>Inflector/inflect<wbr>ToArray&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -349,6 +355,12 @@
 						<a href="modules/_strings_escaperegex_.html">&quot;<wbr>Strings/escape<wbr>Regex&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/_strings_getlongestcommonprefix_.html">&quot;<wbr>Strings/get<wbr>Longest<wbr>Common<wbr>Prefix&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_strings_getlongestcommonsuffix_.html">&quot;<wbr>Strings/get<wbr>Longest<wbr>Common<wbr>Suffix&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/_strings_getsimilarity_.html">&quot;<wbr>Strings/get<wbr>Similarity&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -362,6 +374,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_strings_sanitizestring_.html">&quot;<wbr>Strings/sanitize<wbr>String&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_strings_strreverse_.html">&quot;<wbr>Strings/str<wbr>Reverse&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_strings_striptags_.html">&quot;<wbr>Strings/strip<wbr>Tags&quot;</a>
@@ -497,6 +512,5 @@
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
