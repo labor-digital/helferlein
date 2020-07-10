@@ -16,21 +16,21 @@
  * Last modified: 2019.07.25 at 14:31
  */
 
-import {isNumeric} from "../src/Types/isNumeric";
+import {isNumeric} from '../src/Types/isNumeric';
 
-test("isNumeric", () => {
-	expect(isNumeric([])).toBe(false);
-	expect(isNumeric("123")).toBe(true);
-	expect(isNumeric("123.5354")).toBe(true);
-	expect(isNumeric(".5354")).toBe(true);
-	expect(isNumeric("0.5354")).toBe(true);
-	expect(isNumeric([123, 2345, 35464, "asdf"])).toBe(false);
-	expect(isNumeric({})).toBe(false);
-	expect(isNumeric({"a": "b"})).toBe(false);
-	expect(isNumeric(undefined)).toBe(false);
-	expect(isNumeric(null)).toBe(false);
-	expect(isNumeric("string")).toBe(false);
-	expect(isNumeric(123)).toBe(true);
-	expect(isNumeric(123.12)).toBe(true);
-	expect(isNumeric(NaN)).toBe(false);
+test('isNumeric', () => {
+    expect(isNumeric([])).toBe(false);
+    expect(isNumeric('123')).toBe(true);
+    expect(isNumeric('123.5354')).toBe(true);
+    expect(isNumeric('.5354')).toBe(true);
+    expect(isNumeric('0.5354')).toBe(true);
+    expect(isNumeric([123, 2345, 35464, 'asdf'])).toBe(false);
+    expect(isNumeric({})).toBe(false);
+    expect(isNumeric({'a': 'b'})).toBe(false);
+    expect(isNumeric(undefined)).toBe(false);
+    expect(isNumeric(null)).toBe(false);
+    expect(isNumeric('string')).toBe(false);
+    expect(isNumeric(123)).toBe(true);
+    expect(isNumeric(123.12)).toBe(true);
+    expect(isNumeric(NaN)).toBe(false);
 });

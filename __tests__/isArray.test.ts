@@ -15,16 +15,16 @@
  *
  * Last modified: 2019.01.09 at 13:42
  */
-import {isArray} from "../src/Types/isArray";
+import {isArray} from '../src/Types/isArray';
 
-test("isArray", () => {
-	expect(isArray([])).toBe(true);
-	expect(isArray([123,2345,35464, "asdf"])).toBe(true);
-	expect(isArray({})).toBe(false);
-	expect(isArray({"a": "b"})).toBe(false);
-	expect(isArray(undefined)).toBe(false);
-	expect(isArray(null)).toBe(false);
-	expect(isArray("string")).toBe(false);
-	expect(isArray(123)).toBe(false);
-	expect(isArray(123.12)).toBe(false);
+test('isArray', () => {
+    expect(isArray([])).toBe(true);
+    expect(isArray([123, 2345, 35464, 'asdf'])).toBe(true);
+    expect(isArray({})).toBe(false);
+    expect(isArray({'a': 'b'})).toBe(false);
+    expect(isArray(undefined)).toBe(false);
+    expect(isArray(null)).toBe(false);
+    expect(isArray('string')).toBe(false);
+    expect(isArray(123)).toBe(false);
+    expect(isArray(123.12)).toBe(false);
 });

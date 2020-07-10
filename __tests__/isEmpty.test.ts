@@ -15,19 +15,19 @@
  *
  * Last modified: 2019.01.09 at 13:42
  */
-import {isEmpty} from "../src/Types/isEmpty";
+import {isEmpty} from '../src/Types/isEmpty';
 
-test("isEmpty", () => {
-	expect(isEmpty([])).toBe(true);
-	expect(isEmpty([123, 2345, 35464, "asdf"])).toBe(false);
-	expect(isEmpty({})).toBe(true);
-	expect(isEmpty({"a": "b"})).toBe(false);
-	expect(isEmpty(undefined)).toBe(true);
-	expect(isEmpty(null)).toBe(true);
-	expect(isEmpty("string")).toBe(false);
-	expect(isEmpty("")).toBe(true);
-	expect(isEmpty(0)).toBe(false);
-	expect(isEmpty(0, true)).toBe(true);
-	expect(isEmpty(123)).toBe(false);
-	expect(isEmpty(123.12)).toBe(false);
+test('isEmpty', () => {
+    expect(isEmpty([])).toBe(true);
+    expect(isEmpty([123, 2345, 35464, 'asdf'])).toBe(false);
+    expect(isEmpty({})).toBe(true);
+    expect(isEmpty({'a': 'b'})).toBe(false);
+    expect(isEmpty(undefined)).toBe(true);
+    expect(isEmpty(null)).toBe(true);
+    expect(isEmpty('string')).toBe(false);
+    expect(isEmpty('')).toBe(true);
+    expect(isEmpty(0)).toBe(false);
+    expect(isEmpty(0, true)).toBe(true);
+    expect(isEmpty(123)).toBe(false);
+    expect(isEmpty(123.12)).toBe(false);
 });

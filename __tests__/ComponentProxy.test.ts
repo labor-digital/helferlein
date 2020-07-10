@@ -16,62 +16,66 @@
  * Last modified: 2019.04.02 at 17:41
  */
 
-import {ComponentProxy} from "../src/Entities/ComponentProxy";
-import {EventBus} from "../src/Events/EventBus";
+import {ComponentProxy} from '../src/Entities/ComponentProxy';
+import {EventBus} from '../src/Events/EventBus';
 
-test("Component Proxy, event binding and unbinding", () => {
-	class CPTestDummy {
-		public test() {
-			const proxy = new ComponentProxy(this);
-			let c = 0;
-			const that = this;
-			const callback = function (e) {
-				c++;
-				expect(this).toBe(that);
-				expect(e.args.foo).toBe(1);
-			};
-			proxy.bind(EventBus, "test", callback);
-			proxy.emit(EventBus, "test", {foo: 1});
-			EventBus.emit("test", {foo: 1});
-			EventBus.getEmitter().emit("test", {foo: 1});
-			expect((proxy as any).events.size).toBe(1);
-			
-			proxy.unbind(EventBus, "test", callback);
-			proxy.emit(EventBus, "test", {foo: 1});
-			expect(c).toBe(3);
-			expect((proxy as any).events).toEqual(new Map());
-		}
-	}
-	
-	(new CPTestDummy()).test();
+test('Component Proxy, event binding and unbinding', () => {
+    class CPTestDummy
+    {
+        public test()
+        {
+            const proxy = new ComponentProxy(this);
+            let c = 0;
+            const that = this;
+            const callback = function (e) {
+                c++;
+                expect(this).toBe(that);
+                expect(e.args.foo).toBe(1);
+            };
+            proxy.bind(EventBus, 'test', callback);
+            proxy.emit(EventBus, 'test', {foo: 1});
+            EventBus.emit('test', {foo: 1});
+            EventBus.getEmitter().emit('test', {foo: 1});
+            expect((proxy as any).events.size).toBe(1);
+            
+            proxy.unbind(EventBus, 'test', callback);
+            proxy.emit(EventBus, 'test', {foo: 1});
+            expect(c).toBe(3);
+            expect((proxy as any).events).toEqual(new Map());
+        }
+    }
+    
+    (new CPTestDummy()).test();
 });
 
-test("Component Proxy, event unbinding on destroy", () => {
-	class CPTestDummy {
-		public test() {
-			const proxy = new ComponentProxy(this);
-			let c = 0;
-			const that = this;
-			const callback = function (e) {
-				c++;
-				expect(this).toBe(that);
-				expect(e.args.foo).toBe(1);
-			};
-			proxy.bind(EventBus, "test", callback);
-			proxy.emit(EventBus, "test", {foo: 1});
-			EventBus.emit("test", {foo: 1});
-			EventBus.getEmitter().emit("test", {foo: 1});
-			
-			proxy.destroy();
-			
-			proxy.emit(EventBus, "test", {foo: 1});
-			proxy.unbind(EventBus, "test", callback);
-			proxy.emit(EventBus, "test", {foo: 1});
-			EventBus.emit("test", {foo: 1});
-			EventBus.getEmitter().emit("test", {foo: 1});
-			expect(c).toBe(3);
-		}
-	}
-	
-	(new CPTestDummy()).test();
+test('Component Proxy, event unbinding on destroy', () => {
+    class CPTestDummy
+    {
+        public test()
+        {
+            const proxy = new ComponentProxy(this);
+            let c = 0;
+            const that = this;
+            const callback = function (e) {
+                c++;
+                expect(this).toBe(that);
+                expect(e.args.foo).toBe(1);
+            };
+            proxy.bind(EventBus, 'test', callback);
+            proxy.emit(EventBus, 'test', {foo: 1});
+            EventBus.emit('test', {foo: 1});
+            EventBus.getEmitter().emit('test', {foo: 1});
+            
+            proxy.destroy();
+            
+            proxy.emit(EventBus, 'test', {foo: 1});
+            proxy.unbind(EventBus, 'test', callback);
+            proxy.emit(EventBus, 'test', {foo: 1});
+            EventBus.emit('test', {foo: 1});
+            EventBus.getEmitter().emit('test', {foo: 1});
+            expect(c).toBe(3);
+        }
+    }
+    
+    (new CPTestDummy()).test();
 });

@@ -16,25 +16,25 @@
  * Last modified: 2019.06.12 at 12:32
  */
 
-import {getListKeys} from "../src/Lists/listAccess";
+import {getListKeys} from '../src/Lists/listAccess';
 
-test("getListKeys of array", () => {
-	expect(getListKeys([1, 2, 3, 4])).toEqual([0, 1, 2, 3]);
+test('getListKeys of array', () => {
+    expect(getListKeys([1, 2, 3, 4])).toEqual([0, 1, 2, 3]);
 });
 
-test("getListKeys of set", () => {
-	const s = new Set();
-	s.add(1);
-	s.add(2);
-	s.add(2);
-	s.add(3);
-	expect(getListKeys(s)).toEqual([0, 1, 2]);
+test('getListKeys of set', () => {
+    const s = new Set();
+    s.add(1);
+    s.add(2);
+    s.add(2);
+    s.add(3);
+    expect(getListKeys(s)).toEqual([0, 1, 2]);
 });
 
-test("getListKeys of map", () => {
-	const m = new Map();
-	m.set("foo", "bar");
-	m.set("bar", "baz");
-	m.set(1, "foo");
-	expect(getListKeys(m)).toEqual(["foo", "bar", 1]);
+test('getListKeys of map', () => {
+    const m = new Map();
+    m.set('foo', 'bar');
+    m.set('bar', 'baz');
+    m.set(1, 'foo');
+    expect(getListKeys(m)).toEqual(['foo', 'bar', 1]);
 });

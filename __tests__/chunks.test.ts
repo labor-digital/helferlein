@@ -16,32 +16,32 @@
  * Last modified: 2019.11.10 at 20:55
  */
 
-import {chunks} from "../src/Lists/chunks";
+import {chunks} from '../src/Lists/chunks';
 
-test("chunks with object", () => {
-	expect(chunks({"a": 1, "b": 2, "d": 3, "e": "asdf", "f": 4, "g": 5, "h": 6}, 3)).toEqual([
-		{a: 1, b: 2, d: 3},
-		{e: "asdf", f: 4, g: 5},
-		{h: 6}
-	]);
+test('chunks with object', () => {
+    expect(chunks({'a': 1, 'b': 2, 'd': 3, 'e': 'asdf', 'f': 4, 'g': 5, 'h': 6}, 3)).toEqual([
+        {a: 1, b: 2, d: 3},
+        {e: 'asdf', f: 4, g: 5},
+        {h: 6}
+    ]);
 });
-test("chunks with exact object", () => {
-	expect(chunks({"a": 1, "b": 2, "d": 3, "e": "asdf", "f": 4, "g": 5}, 3)).toEqual([
-		{a: 1, b: 2, d: 3},
-		{e: "asdf", f: 4, g: 5}
-	]);
+test('chunks with exact object', () => {
+    expect(chunks({'a': 1, 'b': 2, 'd': 3, 'e': 'asdf', 'f': 4, 'g': 5}, 3)).toEqual([
+        {a: 1, b: 2, d: 3},
+        {e: 'asdf', f: 4, g: 5}
+    ]);
 });
-test("chunks with array", () => {
-	expect(chunks(["a", "b", "c", "d", "e", "f", "g", "h"], 3)).toEqual([
-		["a", "b", "c"],
-		["d", "e", "f"],
-		["g", "h"]
-	]);
+test('chunks with array', () => {
+    expect(chunks(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], 3)).toEqual([
+        ['a', 'b', 'c'],
+        ['d', 'e', 'f'],
+        ['g', 'h']
+    ]);
 });
-test("chunks with exact array", () => {
-	expect(chunks(["a", "b", "c", "d", "e", "f", "g", "h", "i"], 3)).toEqual([
-		["a", "b", "c"],
-		["d", "e", "f"],
-		["g", "h", "i"]
-	]);
+test('chunks with exact array', () => {
+    expect(chunks(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'], 3)).toEqual([
+        ['a', 'b', 'c'],
+        ['d', 'e', 'f'],
+        ['g', 'h', 'i']
+    ]);
 });
