@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.21.0](https://github.com/labor-digital/helferlein/compare/v3.20.2...v3.21.0) (2020-06-26)
+
+
+### Features
+
+* **BreakpointService:** push the "is" computation into a breakpoint to allow relative lookups ([097cf88](https://github.com/labor-digital/helferlein/commit/097cf88ac18d351207c0ea8af159ec1d75312a1e))
+
 ### [3.20.2](https://github.com/labor-digital/helferlein/compare/v3.20.1...v3.20.2) (2020-06-17)
 
 
