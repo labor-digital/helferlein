@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.22.0](https://github.com/labor-digital/helferlein/compare/v3.21.0...v3.22.0) (2020-07-10)
+
+
+### Features
+
+* implement multiple new helpers ([8715591](https://github.com/labor-digital/helferlein/commit/871559144da58a948d3017ad5c61a7acce37398c))
+* make code PSR-2 compliant ([b24a611](https://github.com/labor-digital/helferlein/commit/b24a611d46433e7c4b4df8bc839e5509ae16d5f9))
+* make tests PSR-2 compliant ([e9fa8df](https://github.com/labor-digital/helferlein/commit/e9fa8dfcdd6b6b799c26297d224780556f30d37d))
+* update dependencies ([fd9e244](https://github.com/labor-digital/helferlein/commit/fd9e244547cede2edb5d27d9015a7c77e9cab180))
+
+
+### Bug Fixes
+
+* fix browser build ([37a7724](https://github.com/labor-digital/helferlein/commit/37a7724b3ccce2e5b6ab377ea10d56cbf77a4362))
+
 ## [3.21.0](https://github.com/labor-digital/helferlein/compare/v3.20.2...v3.21.0) (2020-06-26)
 
 
