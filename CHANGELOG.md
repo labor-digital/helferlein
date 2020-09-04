@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.24.0](https://github.com/labor-digital/helferlein/compare/v3.23.1...v3.24.0) (2020-09-04)
+
+
+### Features
+
+* update dependencies ([44ab0e1](https://github.com/labor-digital/helferlein/commit/44ab0e144b0131bf8cbd6811812d89f25570bb79))
+
+
+### Bug Fixes
+
+* **makeOptions:** add missing path.pop() ([d7b6f16](https://github.com/labor-digital/helferlein/commit/d7b6f16a01055946f7a4d02ac0e347ea4954e13e))
+
 ### [3.23.1](https://github.com/labor-digital/helferlein/compare/v3.23.0...v3.23.1) (2020-07-10)
 
 
