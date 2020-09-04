@@ -129,6 +129,7 @@ export class OptionApplier
             // Apply the defaults
             this.applyDefaultsFor(result, k, def, path);
         });
+        path.pop();
         
         // Traverse the list
         forEach(result, (v, k: string) => {
