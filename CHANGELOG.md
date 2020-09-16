@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.25.0](https://github.com/labor-digital/helferlein/compare/v3.24.0...v3.25.0) (2020-09-16)
+
+
+### Features
+
+* add new helper to check if color is Hex, RGB, RGBA or a valid color name ([ffe0bf1](https://github.com/labor-digital/helferlein/commit/ffe0bf1a285acf85f454f79b0dc58620ad477229))
+
 ## [3.24.0](https://github.com/labor-digital/helferlein/compare/v3.23.1...v3.24.0) (2020-09-04)
 
 
