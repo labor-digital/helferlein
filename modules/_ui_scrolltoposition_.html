@@ -73,7 +73,8 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_ui_scrolltoposition_.html#runninganimation" class="tsd-kind-icon">running<wbr>Animation</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_ui_scrolltoposition_.html#runninganimations" class="tsd-kind-icon">running<wbr>Animations</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_ui_scrolltoposition_.html#scrollevents" class="tsd-kind-icon">scroll<wbr>Events</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_ui_scrolltoposition_.html#ticklength" class="tsd-kind-icon">tick<wbr>Length</a></li>
 							</ul>
 						</section>
@@ -81,7 +82,9 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_ui_scrolltoposition_.html#easing" class="tsd-kind-icon">easing</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_ui_scrolltoposition_.html#resolvecontainer" class="tsd-kind-icon">resolve<wbr>Container</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_ui_scrolltoposition_.html#scrolltoposition" class="tsd-kind-icon">scroll<wbr>ToPosition</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_ui_scrolltoposition_.html#setscrollpos" class="tsd-kind-icon">set<wbr>Scroll<wbr>Pos</a></li>
 							</ul>
 						</section>
 					</div>
@@ -90,14 +93,34 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
-					<a name="runninganimation" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagLet">Let</span> running<wbr>Animation</h3>
-					<div class="tsd-signature tsd-kind-icon">running<wbr>Animation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
+					<a name="runninganimations" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> running<wbr>Animations</h3>
+					<div class="tsd-signature tsd-kind-icon">running<wbr>Animations<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous class)</span><span class="tsd-signature-symbol"> = new class{protected containers: Array&lt;Window | HTMLElement&gt;;protected resolvers: Array&lt;Function&gt;;protected eventHandlers: Array&lt;Function | null&gt;;constructor(){this.containers &#x3D; [];this.resolvers &#x3D; [];this.eventHandlers &#x3D; [];}public startAnimation(container: Window | HTMLElement, resolver: Function, breakOnManualScroll?: boolean){const index &#x3D; this.containers.indexOf(container);if (index !&#x3D;&#x3D; -1) {this.stopAnimation(index);}this.containers.push(container);this.resolvers.push(resolver);if (breakOnManualScroll) {const handler &#x3D; () &#x3D;&gt; {this.stopAnimation(container);};this.eventHandlers.push(handler);forEach(scrollEvents, event &#x3D;&gt; {container.addEventListener(event, handler);});} else {this.eventHandlers.push(null);}}public stopAnimation(container: Window | HTMLElement | number): void{const otherAnimationWasStarted &#x3D; typeof container &#x3D;&#x3D;&#x3D; &#x27;number&#x27;;const index &#x3D; otherAnimationWasStarted ? container as number : this.containers.indexOf(container as any);if (isUndefined(this.resolvers[index])) {return;}this.resolvers[index](otherAnimationWasStarted);this.containers.splice(index, 1);this.resolvers.splice(index, 1);this.eventHandlers.splice(index, 1);}}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/ffe0bf1/src/Ui/scrollToPosition.ts#L28">src/Ui/scrollToPosition.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9c2428b/src/Ui/scrollToPosition.ts#L42">src/Ui/scrollToPosition.ts:42</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Holds the information about the currently running animations</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+					<a name="scrollevents" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> scroll<wbr>Events</h3>
+					<div class="tsd-signature tsd-kind-icon">scroll<wbr>Events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&#x27;wheel&#x27;,&#x27;mousedown&#x27;,&#x27;keydown&#x27;,&#x27;touchstart&#x27;]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9c2428b/src/Ui/scrollToPosition.ts#L32">src/Ui/scrollToPosition.ts:32</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The list of events that might stop the scroll interaction</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
 					<a name="ticklength" class="tsd-anchor"></a>
@@ -105,7 +128,7 @@
 					<div class="tsd-signature tsd-kind-icon">tick<wbr>Length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">15</span><span class="tsd-signature-symbol"> = 15</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/ffe0bf1/src/Ui/scrollToPosition.ts#L25">src/Ui/scrollToPosition.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9c2428b/src/Ui/scrollToPosition.ts#L27">src/Ui/scrollToPosition.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -122,7 +145,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/ffe0bf1/src/Ui/scrollToPosition.ts#L34">src/Ui/scrollToPosition.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9c2428b/src/Ui/scrollToPosition.ts#L95">src/Ui/scrollToPosition.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -142,17 +165,47 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="scrolltoposition" class="tsd-anchor"></a>
-					<h3>scroll<wbr>ToPosition</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">scroll<wbr>ToPosition<span class="tsd-signature-symbol">(</span>position<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, container<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+					<a name="resolvecontainer" class="tsd-anchor"></a>
+					<h3>resolve<wbr>Container</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">resolve<wbr>Container<span class="tsd-signature-symbol">(</span>container<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/ffe0bf1/src/Ui/scrollToPosition.ts#L47">src/Ui/scrollToPosition.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9c2428b/src/Ui/scrollToPosition.ts#L114">src/Ui/scrollToPosition.ts:114</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Resolves the container selecor into either a window or element instance</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>container: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="scrolltoposition" class="tsd-anchor"></a>
+					<h3>scroll<wbr>ToPosition</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">scroll<wbr>ToPosition<span class="tsd-signature-symbol">(</span>position<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, container<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, breakOnManualScroll<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9c2428b/src/Ui/scrollToPosition.ts#L137">src/Ui/scrollToPosition.ts:137</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -177,12 +230,45 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> container: <a href="../interfaces/_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>(Default window) The container to scroll instead of the window.
+										<p>(Default window) The container to scroll instead of the window.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> breakOnManualScroll: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(Default true) By default the animation is stopped when the user manually starts to interact with the scrolling.
+											If you set this to false the scrolling will continue even on interaction
 										Can be a valid selector for document.querySelector() as a string, as well.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+					<a name="setscrollpos" class="tsd-anchor"></a>
+					<h3>set<wbr>Scroll<wbr>Pos</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Scroll<wbr>Pos<span class="tsd-signature-symbol">(</span>pos<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, container<span class="tsd-signature-symbol">: </span><a href="../interfaces/_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9c2428b/src/Ui/scrollToPosition.ts#L101">src/Ui/scrollToPosition.ts:101</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>pos: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>container: <a href="../interfaces/_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -202,7 +288,10 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_ui_scrolltoposition_.html#runninganimation" class="tsd-kind-icon">running<wbr>Animation</a>
+						<a href="_ui_scrolltoposition_.html#runninganimations" class="tsd-kind-icon">running<wbr>Animations</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_ui_scrolltoposition_.html#scrollevents" class="tsd-kind-icon">scroll<wbr>Events</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_ui_scrolltoposition_.html#ticklength" class="tsd-kind-icon">tick<wbr>Length</a>
@@ -210,8 +299,14 @@
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_ui_scrolltoposition_.html#easing" class="tsd-kind-icon">easing</a>
 					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_ui_scrolltoposition_.html#resolvecontainer" class="tsd-kind-icon">resolve<wbr>Container</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_ui_scrolltoposition_.html#scrolltoposition" class="tsd-kind-icon">scroll<wbr>ToPosition</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_ui_scrolltoposition_.html#setscrollpos" class="tsd-kind-icon">set<wbr>Scroll<wbr>Pos</a>
 					</li>
 				</ul>
 			</nav>

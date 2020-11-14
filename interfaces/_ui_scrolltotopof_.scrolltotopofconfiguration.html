@@ -101,6 +101,7 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html#breakonmanualscroll" class="tsd-kind-icon">break<wbr>OnManual<wbr>Scroll</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html#container" class="tsd-kind-icon">container</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html#duration" class="tsd-kind-icon">duration</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html#offset" class="tsd-kind-icon">offset</a></li>
@@ -112,12 +113,28 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="breakonmanualscroll" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> break<wbr>OnManual<wbr>Scroll</h3>
+					<div class="tsd-signature tsd-kind-icon">break<wbr>OnManual<wbr>Scroll<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9c2428b/src/Ui/scrollToTopOf.ts#L58">src/Ui/scrollToTopOf.ts:58</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>By default the animation is stopped when the user manually starts to interact with the scrolling.
+							If you set this to false the scrolling will continue even on interaction</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="container" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> container</h3>
 					<div class="tsd-signature tsd-kind-icon">container<span class="tsd-signature-symbol">:</span> <a href="_ui_selecttextofelement_.__global.htmlelement.html" class="tsd-signature-type">HTMLElement</a><span class="tsd-signature-symbol"> | </span><a href="_misc_getpagestorage_.__global.window.html" class="tsd-signature-type">Window</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/ffe0bf1/src/Ui/scrollToTopOf.ts#L45">src/Ui/scrollToTopOf.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9c2428b/src/Ui/scrollToTopOf.ts#L64">src/Ui/scrollToTopOf.ts:64</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -133,7 +150,7 @@
 					<div class="tsd-signature tsd-kind-icon">duration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/ffe0bf1/src/Ui/scrollToTopOf.ts#L34">src/Ui/scrollToTopOf.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9c2428b/src/Ui/scrollToTopOf.ts#L45">src/Ui/scrollToTopOf.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -145,15 +162,17 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="offset" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> offset</h3>
-					<div class="tsd-signature tsd-kind-icon">offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<div class="tsd-signature tsd-kind-icon">offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><a href="_ui_scrolltotopof_.scrolloffsetcalculator.html" class="tsd-signature-type">ScrollOffsetCalculator</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/ffe0bf1/src/Ui/scrollToTopOf.ts#L39">src/Ui/scrollToTopOf.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9c2428b/src/Ui/scrollToTopOf.ts#L52">src/Ui/scrollToTopOf.ts:52</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The offset to the top of the page when scrolling up</p>
+							<p>The offset to the top of the page when scrolling up
+								If you provide a function you can also calculate the offset dynamically,
+							which comes in handy if you want to modify the offset based on dynamic values</p>
 						</div>
 					</div>
 				</section>
@@ -172,11 +191,17 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_ui_scrolltotopof_.scrolloffsetcalculator.html" class="tsd-kind-icon">Scroll<wbr>Offset<wbr>Calculator</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
 						<a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html" class="tsd-kind-icon">Scroll<wbr>ToTop<wbr>OfConfiguration</a>
 						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html#breakonmanualscroll" class="tsd-kind-icon">break<wbr>OnManual<wbr>Scroll</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 								<a href="_ui_scrolltotopof_.scrolltotopofconfiguration.html#container" class="tsd-kind-icon">container</a>
 							</li>
@@ -195,6 +220,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="../modules/_ui_scrolltotopof_.html#configurescrolltotopof" class="tsd-kind-icon">configure<wbr>Scroll<wbr>ToTop<wbr>Of</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+						<a href="../modules/_ui_scrolltotopof_.html#initializeoptions" class="tsd-kind-icon">initialize<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="../modules/_ui_scrolltotopof_.html#scrolltotopof" class="tsd-kind-icon">scroll<wbr>ToTop<wbr>Of</a>
