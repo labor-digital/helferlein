@@ -19,12 +19,23 @@ import {getOffset} from '../Dom/getOffset';
 import {isBrowser} from '../Environment/isBrowser';
 import {PlainObject} from '../Interfaces/PlainObject';
 import {merge} from '../Lists/merge';
+import {isBool} from '../Types/isBool';
 import {isEmpty} from '../Types/isEmpty';
+import {isFunction} from '../Types/isFunction';
 import {isNumber} from '../Types/isNumber';
 import {isObject} from '../Types/isObject';
 import {isString} from '../Types/isString';
-import {isUndefined} from '../Types/isUndefined';
 import {scrollToPosition} from './scrollToPosition';
+
+interface ScrollOffsetCalculator
+{
+    /**
+     * Receives the base offset, or 0 if set in the default configuration
+     * and must return the actual offset to use
+     * @param offset
+     */
+    (offset: number): number
+}
 
 interface ScrollToTopOfConfiguration extends PlainObject
 {
@@ -35,8 +46,16 @@ interface ScrollToTopOfConfiguration extends PlainObject
     
     /**
      * The offset to the top of the page when scrolling up
+     * If you provide a function you can also calculate the offset dynamically,
+     * which comes in handy if you want to modify the offset based on dynamic values
      */
-    offset?: number;
+    offset?: number | ScrollOffsetCalculator;
+    
+    /**
+     * By default the animation is stopped when the user manually starts to interact with the scrolling.
+     * If you set this to false the scrolling will continue even on interaction
+     */
+    breakOnManualScroll?: boolean;
     
     /**
      * If set this will be used as as scroll container instead of the "window"
@@ -52,6 +71,32 @@ let config: ScrollToTopOfConfiguration = {
     offset: 0,
     container: isInBrowser ? window : null
 };
+
+/**
+ * Helper to initialize the options without polluting the original options object
+ * @param options
+ */
+function initializeOptions(options?: ScrollToTopOfConfiguration): ScrollToTopOfConfiguration
+{
+    const result: any = {...options};
+    if (!isNumber(result.duration)) {
+        result.duration = config.duration;
+    }
+    if (!isNumber(result.offset)) {
+        const defaultOffset = isFunction(config.offset) ? (config.offset as any)(0) : config.offset;
+        result.offset = isFunction(result.offset) ? (result.offset as any)(defaultOffset) : defaultOffset;
+    }
+    if (!isObject(result.container) && !isString(result.container)) {
+        result.container = config.container;
+    }
+    if (isEmpty(result.container)) {
+        result.container = window;
+    }
+    if (!isBool(result.breakOnManualScroll)) {
+        result.breakOnManualScroll = true;
+    }
+    return result;
+}
 
 /**
  * Helper to define the default configuration for the scroll methods
@@ -76,7 +121,6 @@ export function configureScrollToTopOf(configuration: ScrollToTopOfConfiguration
  *            - offset: (Default 0) The offset to the top of the page when scrolling up
  *            - container: (Default null) The container to scroll instead of the window
  */
-
 export function scrollToTopOf(target?: HTMLElement | null, options?: ScrollToTopOfConfiguration)
 {
     // Noop if not in browser
@@ -84,29 +128,20 @@ export function scrollToTopOf(target?: HTMLElement | null, options?: ScrollToTop
         return;
     }
     
-    // Prepare options
-    if (isUndefined(options)) {
-        options = {};
-    }
-    if (!isNumber(options.duration)) {
-        options.duration = config.duration;
-    }
-    if (!isNumber(options.offset)) {
-        options.offset = config.offset;
-    }
-    if (!isObject(options.container) && !isString(options.container)) {
-        options.container = config.container;
-    }
-    if (isEmpty(options.container)) {
-        options.container = window;
-    }
+    const opt = initializeOptions(options);
     
-    // Get the element's offset
-    const offset =
-        isEmpty(target) ? {top: 0} :
-            getOffset(target, (options.container !== window ? options.container as HTMLElement : undefined));
-    
-    // Scroll there
-    const position = Math.max(0, offset.top - options.offset);
-    return scrollToPosition(position, options.duration, options.container);
+    if (!target) {
+        // Simply scroll to the top
+        return scrollToPosition(0, opt.duration, opt.container);
+    } else {
+        // Scroll to a container position
+        const containerIsWindow = opt.container === window;
+        const offset = getOffset(target, !containerIsWindow ? opt.container as HTMLElement : undefined);
+        return scrollToPosition(
+            offset.top - (opt.offset as number),
+            opt.duration,
+            opt.container,
+            opt.breakOnManualScroll
+        );
+    }
 }
