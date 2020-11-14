@@ -165,8 +165,8 @@ export function stopBodyScrolling(state?: boolean)
         }
         
         // Reset fixed elements
-        forEach(document.querySelectorAll("*[data-stop-body-scrolling-fixed]") as List, (element: HTMLElement) => {
-            element.style.transform = "";
+        forEach(document.querySelectorAll('*[data-stop-body-scrolling-fixed]') as List, (element: HTMLElement) => {
+            element.style.transform = '';
         });
     }
 }
