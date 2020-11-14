@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.26.0](https://github.com/labor-digital/helferlein/compare/v3.25.0...v3.26.0) (2020-11-14)
+
+
+### Features
+
+* update dependencies ([9c2428b](https://github.com/labor-digital/helferlein/commit/9c2428ba08e27f7682eebc97dad651ec5b750ac8))
+* **scrollToPosition:** make scroller more reliable + implement dynamic offset + implement break on scroll event ([6959cf0](https://github.com/labor-digital/helferlein/commit/6959cf0c54360eae8f2f4ef0f348cca2f187c204))
+* implement isList helper ([2943e51](https://github.com/labor-digital/helferlein/commit/2943e518234f0b2856c4ee3d1dff0e38791cb356))
+
 ## [3.25.0](https://github.com/labor-digital/helferlein/compare/v3.24.0...v3.25.0) (2020-09-16)
 
 
