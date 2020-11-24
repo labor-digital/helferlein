@@ -12,6 +12,7 @@
 		"test": "jest",
 		"doc": "typedoc --out doc --tsconfig ./tsconfig.json src --module commonjs && echo helferlein.labor.tools >> doc/CNAME && touch doc/.nojekyll"
 	},
+	"main": "lib/index.js",
 	"engines": {
 		"node": ">=8.11.2",
 		"npm": ">=6.3.0"
