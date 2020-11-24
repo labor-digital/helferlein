@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.31.1](https://github.com/labor-digital/helferlein/compare/v3.31.0...v3.31.1) (2020-11-24)
+
+
+### Bug Fixes
+
+* flip module/main files in package.json ([93a693d](https://github.com/labor-digital/helferlein/commit/93a693d5eb81c8584538e0637e1ad953529c3e78))
+
 ## [3.31.0](https://github.com/labor-digital/helferlein/compare/v3.30.1...v3.31.0) (2020-11-24)
 
 
