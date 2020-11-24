@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.27.0](https://github.com/labor-digital/helferlein/compare/v3.26.0...v3.27.0) (2020-11-24)
+
+
+### Features
+
+* implement validateEmail + validateUrl helpers ([fa18306](https://github.com/labor-digital/helferlein/commit/fa18306bd388cf512390219ed59c0676ae7c9744))
+
+
+### Bug Fixes
+
+* **htmlEncode:** support serverside usage ([9c15286](https://github.com/labor-digital/helferlein/commit/9c15286ba236eaeefcf445db542b31d61300c7d1))
+
 ## [3.26.0](https://github.com/labor-digital/helferlein/compare/v3.25.0...v3.26.0) (2020-11-14)
 
 
