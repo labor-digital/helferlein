@@ -1,8 +1,7 @@
 {
 	"compilerOptions": {
 		"moduleResolution": "node",
-		"target": "es6",
-		"module": "es6",
+		"target": "es5",
 		"sourceMap": false,
 		"declaration": true,
 		"noImplicitAny": false,
