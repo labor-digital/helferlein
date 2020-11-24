@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.28.0](https://github.com/labor-digital/helferlein/compare/v3.27.0...v3.28.0) (2020-11-24)
+
+
+### Features
+
+* update dependencies ([c830632](https://github.com/labor-digital/helferlein/commit/c830632bfe7f10d878be7c0a563457e73fee51e4))
+
+
+### Bug Fixes
+
+* **loadAsset:** fix broken promise ([61f243b](https://github.com/labor-digital/helferlein/commit/61f243be1c8189867230773bcb52cc14193409c0))
+* **md5:** remove isNode dependency and rely on internal hasher ([73eebdc](https://github.com/labor-digital/helferlein/commit/73eebdcfaafd7771082f5838cf3f7086881fbbb4))
+
 ## [3.27.0](https://github.com/labor-digital/helferlein/compare/v3.26.0...v3.27.0) (2020-11-24)
 
 
