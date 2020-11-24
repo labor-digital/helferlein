@@ -51,14 +51,126 @@ export * from './Dom/setAttr';
 export * from './Dom/setFocus';
 export * from './Dom/toggleClass';
 
-// Entities
+// ENTITIES
 export * from './Entities/ComponentProxy';
+export * from './Entities/GenericStorage';
+export * from './Entities/GenericStorageInterface';
+
+// ENVIRONMENT
+export * from './Environment/isBrowser';
+export * from './Environment/isNode';
+
+// EVENTS
+export * from './Events/EventBus';
+export * from './Events/EventEmitter';
+export * from './Events/HelferleinEventList';
+
+// -- DomEvents
+export * from './Events/DomEvents/emitDomEvent';
+export * from './Events/DomEvents/onDomMutation';
+export * from './Events/DomEvents/onDomReady';
+export * from './Events/DomEvents/registerEventBreakpointChange';
+export * from './Events/DomEvents/registerEventOnHashChange';
+export * from './Events/DomEvents/registerEventResizeThrottled';
+export * from './Events/DomEvents/registerEventScrollThrottled';
+
+// FORMAT AND CONVERT
+export * from './FormatAndConvert/asArray';
+export * from './FormatAndConvert/asObject';
+export * from './FormatAndConvert/formatDateAndTime';
+export * from './FormatAndConvert/moneyAsNumber';
+export * from './FormatAndConvert/numberAsFileSize';
+export * from './FormatAndConvert/numberAsMoney';
+export * from './FormatAndConvert/numberAsPercent';
+export * from './FormatAndConvert/percentAsNumber';
+
+// INTERFACES
+export * from './Interfaces/List';
+export * from './Interfaces/PlainObject';
+
+// LISTS
+export * from './Lists/chunks';
+export * from './Lists/cloneList';
+export * from './Lists/filter';
+export * from './Lists/forEach';
+export * from './Lists/listAccess';
+export * from './Lists/map';
+export * from './Lists/merge';
+export * from './Lists/reduce';
+export * from './Lists/sort';
+
+// -- Paths
+export * from './Lists/Paths/getPath';
+export * from './Lists/Paths/hasPath';
+export * from './Lists/Paths/mergePaths';
+export * from './Lists/Paths/parsePath';
+
+// MISC
+export * from './Misc/debouncePromise';
+export * from './Misc/getGuid';
+export * from './Misc/getLocalStorage';
+export * from './Misc/getPageStorage';
+export * from './Misc/makeOptions';
+export * from './Misc/makeOptions.interfaces';
+export * from './Misc/md5';
 
 // STRINGS
+export * from './Strings/escapeRegex';
+export * from './Strings/getLongestCommonPrefix';
+export * from './Strings/getLongestCommonSuffix';
+export * from './Strings/getSimilarity';
 export * from './Strings/htmlEncode';
+export * from './Strings/lcFirst';
+export * from './Strings/maxLength';
+export * from './Strings/sanitizeString';
+export * from './Strings/stripTags';
+export * from './Strings/strReverse';
+export * from './Strings/ucFirst';
+
+// -- Inflector
+export * from './Strings/Inflector/inflectToArray';
+export * from './Strings/Inflector/inflectToCamelBack';
+export * from './Strings/Inflector/inflectToCamelCase';
+export * from './Strings/Inflector/inflectToDashed';
+export * from './Strings/Inflector/inflectToSlug';
+export * from './Strings/Inflector/inflectToSpacedUpper';
+export * from './Strings/Inflector/inflectToUnderscore';
 
 // -- Validate
 export * from './Strings/Validate/validateEmail';
 export * from './Strings/Validate/validatePattern';
 export * from './Strings/Validate/validateUrl';
 
+// TYPES
+export * from './Types/isArray';
+export * from './Types/isBool';
+export * from './Types/isEmpty';
+export * from './Types/isFunction';
+export * from './Types/isIterator';
+export * from './Types/isMap';
+export * from './Types/isNull';
+export * from './Types/isNumber';
+export * from './Types/isNumeric';
+export * from './Types/isObject';
+export * from './Types/isPlainObject';
+export * from './Types/isSet';
+export * from './Types/isString';
+export * from './Types/isUndefined';
+
+// UI
+export * from './Ui/getDocumentHeight';
+export * from './Ui/getScrollPos';
+export * from './Ui/getViewportSize';
+export * from './Ui/isElementInViewport';
+export * from './Ui/scrollToPosition';
+export * from './Ui/scrollToTopOf';
+export * from './Ui/selectTextOfElement';
+export * from './Ui/stickyElement';
+export * from './Ui/stopBodyScrolling';
+export * from './Ui/throttleEvent';
+export * from './Ui/transistClass';
+
+// -- BreakpointService
+export * from './Ui/BreakpointService/BreakpointService';
+export * from './Ui/BreakpointService/BreakpointService.interfaces';
+export * from './Ui/BreakpointService/Entities/Breakpoint';
