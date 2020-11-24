@@ -16,7 +16,13 @@
  * Last modified: 2019.07.24 at 17:27
  */
 
-import {inflectToDashed, isNull, isNumber, isObject, isString, PlainObject, setAttr} from '..';
+import {PlainObject} from '../Interfaces/PlainObject';
+import {inflectToDashed} from '../Strings/Inflector/inflectToDashed';
+import {isNull} from '../Types/isNull';
+import {isNumber} from '../Types/isNumber';
+import {isObject} from '../Types/isObject';
+import {isString} from '../Types/isString';
+import {setAttr} from './setAttr';
 
 /**
  * Can be used to set a HTML data- attribute to a certain element.

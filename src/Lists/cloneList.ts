@@ -17,7 +17,7 @@
  */
 
 import clone from 'clone';
-import {List} from '..';
+import {List} from '../Interfaces/List';
 
 export interface CloneListOptionsInterface
 {

@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.01.10 at 10:00
  */
-import {isBrowser} from '..';
+import {isBrowser} from '../Environment/isBrowser';
 
 declare global
 {

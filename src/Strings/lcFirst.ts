@@ -15,17 +15,15 @@
  *
  * Last modified: 2019.02.17 at 17:20
  */
-import {isString} from '..';
-
 /**
  * Receives a string, trims it and sets the first char to lowercase
  * @param value
  */
 export function lcFirst(value: string): string
 {
-    if (!isString(value)) {
+    if (typeof value !== 'string') {
         return '';
     }
     value = value.trim();
-    return value.charAt(0).toLowerCase() + value.substr(1);
+    return value.charAt(0).toLowerCase() + value.substr(1)
 }

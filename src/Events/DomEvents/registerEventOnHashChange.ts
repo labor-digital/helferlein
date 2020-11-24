@@ -15,7 +15,9 @@
  *
  * Last modified: 2019.01.24 at 15:25
  */
-import {EventBus, HelferleinEventList, isBrowser} from '../..';
+import {isBrowser} from '../../Environment/isBrowser';
+import {EventBus} from '../EventBus';
+import {HelferleinEventList} from '../HelferleinEventList';
 
 let isRegistered = false;
 let currentHash = isBrowser() ? window.location.hash : null;

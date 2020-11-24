@@ -16,7 +16,8 @@
  * Last modified: 2019.05.17 at 16:46
  */
 
-import {hexToRgbColor, rgbColorBrightness} from '..';
+import {hexToRgbColor} from './hexToRgbColor';
+import {rgbColorBrightness} from './rgbColorBrightnesss';
 
 /**
  * Returns a value from (dark) 0 - 255 (bright) representing the given color's brightness on the screen.

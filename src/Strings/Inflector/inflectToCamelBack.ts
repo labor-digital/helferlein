@@ -15,7 +15,8 @@
  *
  * Last modified: 2019.02.17 at 17:19
  */
-import {inflectToCamelCase, lcFirst} from '../..';
+import {lcFirst} from '../lcFirst';
+import {inflectToCamelCase} from './inflectToCamelCase';
 
 /**
  * Converts a "Given string" to "givenString" or

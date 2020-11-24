@@ -16,7 +16,9 @@
  * Last modified: 2019.05.17 at 17:03
  */
 
-import {hexToRgbColor, rgbContrastColor, rgbToHexColor} from '..';
+import {hexToRgbColor} from './hexToRgbColor';
+import {rgbContrastColor} from './rgbContrastColor';
+import {rgbToHexColor} from './rgbToHexColor';
 
 /**
  * Receives a color and calculates another color which is either lighter or darker as the given color

@@ -15,7 +15,8 @@
  *
  * Last modified: 2019.01.11 at 19:43
  */
-import {isFunction, isObject} from '..';
+import {isFunction} from '../Types/isFunction';
+import {isObject} from '../Types/isObject';
 
 /**
  * A polifill for "closest()" element in internet explorer without jquery:

@@ -15,7 +15,15 @@
  *
  * Last modified: 2019.02.04 at 14:11
  */
-import {forEach, isBrowser, isEmpty, isNull, isNumber, isPlainObject, isString, isUndefined, PlainObject} from '..';
+import {isBrowser} from '../Environment/isBrowser';
+import {PlainObject} from '../Interfaces/PlainObject';
+import {forEach} from '../Lists/forEach';
+import {isEmpty} from '../Types/isEmpty';
+import {isNull} from '../Types/isNull';
+import {isNumber} from '../Types/isNumber';
+import {isPlainObject} from '../Types/isPlainObject';
+import {isString} from '../Types/isString';
+import {isUndefined} from '../Types/isUndefined';
 
 export interface AjaxRequest
 {

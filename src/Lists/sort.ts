@@ -15,7 +15,12 @@
  *
  * Last modified: 2019.02.01 at 18:58
  */
-import {forEach, getListType, getNewList, getPath, isNull, isUndefined, List, ListPath, setListValue} from '..';
+import {List, ListPath} from '../Interfaces/List';
+import {isNull} from '../Types/isNull';
+import {isUndefined} from '../Types/isUndefined';
+import {forEach} from './forEach';
+import {getListType, getNewList, setListValue} from './listAccess';
+import {getPath} from './Paths/getPath';
 
 /**
  * Can be used to sort arrays containing objects by a property of said objects

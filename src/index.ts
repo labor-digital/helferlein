@@ -93,7 +93,6 @@ export * from './Lists/chunks';
 export * from './Lists/cloneList';
 export * from './Lists/filter';
 export * from './Lists/forEach';
-export * from './Lists/isList';
 export * from './Lists/listAccess';
 export * from './Lists/map';
 export * from './Lists/merge';

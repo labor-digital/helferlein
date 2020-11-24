@@ -15,7 +15,8 @@
  *
  * Last modified: 2019.04.04 at 16:36
  */
-import {isFunction, isObject} from '..';
+import {isFunction} from '../Types/isFunction';
+import {isObject} from '../Types/isObject';
 
 /**
  * Returns the outer size of an html element in pixels

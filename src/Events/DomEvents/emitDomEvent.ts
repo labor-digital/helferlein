@@ -16,7 +16,9 @@
  * Last modified: 2019.04.02 at 15:38
  */
 
-import {isBrowser, isPlainObject, PlainObject} from '../..';
+import {isBrowser} from '../../Environment/isBrowser';
+import {PlainObject} from '../../Interfaces/PlainObject';
+import {isPlainObject} from '../../Types/isPlainObject';
 
 /**
  * Emits a dom event on a single html element, the document or the window object

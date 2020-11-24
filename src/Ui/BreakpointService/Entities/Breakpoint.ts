@@ -15,7 +15,8 @@
  *
  * Last modified: 2018.10.17 at 17:45
  */
-import {BreakpointService, isBrowser} from '../../..';
+import {isBrowser} from '../../../Environment/isBrowser';
+import {BreakpointService} from '../BreakpointService';
 
 export class Breakpoint
 {

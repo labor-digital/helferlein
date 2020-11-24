@@ -15,7 +15,8 @@
  *
  * Last modified: 2019.02.01 at 14:36
  */
-import {isBrowser, isUndefined} from '..';
+import {isBrowser} from '../Environment/isBrowser';
+import {isUndefined} from '../Types/isUndefined';
 
 /**
  * Returns the vertical scroll position of either the window or the given container object

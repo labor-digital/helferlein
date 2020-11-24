@@ -15,7 +15,9 @@
  *
  * Last modified: 2019.05.17 at 16:58
  */
-import {isObject, RgbColor, rgbColorBrightness} from '..';
+import {isObject} from '../Types/isObject';
+import {RgbColor} from './Color.interfaces';
+import {rgbColorBrightness} from './rgbColorBrightnesss';
 
 export function rgbContrastColor(r: RgbColor): RgbColor;
 export function rgbContrastColor(r: number, g: number, b: number): RgbColor;

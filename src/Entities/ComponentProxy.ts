@@ -16,18 +16,15 @@
  * Last modified: 2019.04.02 at 11:43
  */
 
-import {
-    emitDomEvent,
-    EventBus,
-    EventEmitter,
-    EventEmitterEvent,
-    forEach,
-    isFunction,
-    isObject,
-    isUndefined,
-    onDomMutation,
-    PlainObject
-} from '..';
+import {emitDomEvent} from '../Events/DomEvents/emitDomEvent';
+import {onDomMutation} from '../Events/DomEvents/onDomMutation';
+import {EventBus} from '../Events/EventBus';
+import {EventEmitter, EventEmitterEvent} from '../Events/EventEmitter';
+import {PlainObject} from '../Interfaces/PlainObject';
+import {forEach} from '../Lists/forEach';
+import {isFunction} from '../Types/isFunction';
+import {isObject} from '../Types/isObject';
+import {isUndefined} from '../Types/isUndefined';
 import {GenericStorageInterface} from './GenericStorageInterface';
 
 export type ComponentProxyEventTarget =

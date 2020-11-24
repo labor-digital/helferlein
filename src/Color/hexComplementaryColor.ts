@@ -15,7 +15,9 @@
  *
  * Last modified: 2019.05.17 at 17:06
  */
-import {hexToRgbColor, rgbComplementaryColor, rgbToHexColor} from '..';
+import {hexToRgbColor} from './hexToRgbColor';
+import {rgbComplementaryColor} from './rgbComplementaryColor';
+import {rgbToHexColor} from './rgbToHexColor';
 
 /**
  * Calculates the opposite/complementary color for the given color and returns it

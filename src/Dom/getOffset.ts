@@ -16,7 +16,9 @@
  * Last modified: 2019.01.10 at 10:28
  */
 
-import {isBrowser, isEmpty, isObject} from '..';
+import {isBrowser} from '../Environment/isBrowser';
+import {isEmpty} from '../Types/isEmpty';
+import {isObject} from '../Types/isObject';
 
 /**
  * Returns the offset of a given dom element relative to the document

@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.02.15 at 16:59
  */
-import {isBrowser} from '..';
+import {isBrowser} from '../Environment/isBrowser';
 
 interface ViewportSize
 {

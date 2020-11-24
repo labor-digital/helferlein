@@ -19,7 +19,7 @@
  * Returns true if the given value is a function, false if not
  * @param value
  */
-export function isFunction(value: any): boolean
+export function isFunction(value): boolean
 {
     return typeof value === 'function';
 }

@@ -15,7 +15,8 @@
  *
  * Last modified: 2019.02.15 at 16:55
  */
-import {isBrowser, isUndefined} from '..';
+import {isBrowser} from '../Environment/isBrowser';
+import {isUndefined} from '../Types/isUndefined';
 
 /**
  * Returns the height of the document in pixels

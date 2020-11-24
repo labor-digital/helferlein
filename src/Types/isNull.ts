@@ -19,7 +19,7 @@
  * Returns true if the given value is NULL, false if not
  * @param value
  */
-export function isNull(value: any): boolean
+export function isNull(value): boolean
 {
     return value === null;
 }

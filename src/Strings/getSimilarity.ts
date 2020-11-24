@@ -16,8 +16,6 @@
  * Last modified: 2019.06.13 at 21:10
  */
 
-import {isString} from '..';
-
 /**
  * Returns a fraction between 0 and 1, which indicates the degree of similarity between the two strings.
  * 0 indicates completely different strings, 1 indicates identical strings. The comparison is case-sensitive.
@@ -55,11 +53,6 @@ export function getSimilarity(a: string, b: string): number
      
      https://github.com/aceakash/string-similarity/blob/master/LICENSE
      */
-    
-    if (!isString(a) || !isString(b)) {
-        return 0;
-    }
-    
     a = a.replace(/\s+/g, '');
     b = b.replace(/\s+/g, '');
     const aLen = a.length;

@@ -16,7 +16,10 @@
  * Last modified: 2019.01.11 at 18:55
  */
 
-import {EventEmitter, forEach, isUndefined, PlainObject} from '..';
+import {EventEmitter} from '../Events/EventEmitter';
+import {PlainObject} from '../Interfaces/PlainObject';
+import {forEach} from '../Lists/forEach';
+import {isUndefined} from '../Types/isUndefined';
 import {GenericStorageInterface, GenericStorageWatcher} from './GenericStorageInterface';
 
 export class GenericStorage implements GenericStorageInterface

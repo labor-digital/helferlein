@@ -15,7 +15,10 @@
  *
  * Last modified: 2019.01.24 at 17:31
  */
-import {EventBus, HelferleinEventList, isBrowser, throttleEvent} from '../..';
+import {isBrowser} from '../../Environment/isBrowser';
+import {throttleEvent} from '../../Ui/throttleEvent';
+import {EventBus} from '../EventBus';
+import {HelferleinEventList} from '../HelferleinEventList';
 
 let isRegistered = false;
 

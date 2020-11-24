@@ -16,7 +16,8 @@
  * Last modified: 2019.01.10 at 10:55
  */
 
-import {EventEmitterCallbackEventListener, PlainObject} from '..';
+import {EventEmitterCallbackEventListener} from '../Events/EventEmitter';
+import {PlainObject} from '../Interfaces/PlainObject';
 
 export interface GenericStorageWatcher extends EventEmitterCallbackEventListener
 {

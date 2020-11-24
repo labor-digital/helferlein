@@ -16,7 +16,11 @@
  * Last modified: 2019.06.12 at 21:02
  */
 
-import {asArray, isArray, isEmpty, isUndefined, List, ListPath} from '../..';
+import {asArray} from '../../FormatAndConvert/asArray';
+import {List, ListPath} from '../../Interfaces/List';
+import {isArray} from '../../Types/isArray';
+import {isEmpty} from '../../Types/isEmpty';
+import {isUndefined} from '../../Types/isUndefined';
 import {getListType, getListValue, ListType} from '../listAccess';
 import {merge} from '../merge';
 import {_initPathWalkerPath, _initPathWalkerStep, KeyTypes} from './_internals';

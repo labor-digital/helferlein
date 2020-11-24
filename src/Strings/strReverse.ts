@@ -16,16 +16,11 @@
  * Last modified: 2020.07.10 at 12:14
  */
 
-import {isString} from '..';
-
 /**
  * Reverses the given string
- * @param value
+ * @param string
  */
-export function strReverse(value: string): string
+export function strReverse(string: string): string
 {
-    if (!isString(value)) {
-        return '';
-    }
-    return value.split('').reverse().join('');
+    return string.split('').reverse().join('');
 }

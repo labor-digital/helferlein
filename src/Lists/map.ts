@@ -15,7 +15,9 @@
  *
  * Last modified: 2019.01.09 at 12:58
  */
-import {forEach, getListType, getNewList, List, ListType, setListValue} from '..';
+import {List} from '../Interfaces/List';
+import {forEach} from './forEach';
+import {getListType, getNewList, ListType, setListValue} from './listAccess';
 
 interface MapCallbackType
 {

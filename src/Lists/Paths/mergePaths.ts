@@ -16,7 +16,9 @@
  * Last modified: 2019.06.12 at 11:50
  */
 
-import {forEach, isUndefined, parsePath} from '../..';
+import {isUndefined} from '../../Types/isUndefined';
+import {forEach} from '../forEach';
+import {parsePath} from './parsePath';
 
 /**
  * This function can be used to merge two path's together.

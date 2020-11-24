@@ -15,7 +15,8 @@
  *
  * Last modified: 2019.04.02 at 13:25
  */
-import {isBrowser, isFunction} from '../..';
+import {isBrowser} from '../../Environment/isBrowser';
+import {isFunction} from '../../Types/isFunction';
 
 /**
  * Registers a special event handler which is called as soon as the document reports to be ready.

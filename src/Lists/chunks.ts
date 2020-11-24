@@ -16,7 +16,9 @@
  * Last modified: 2019.11.10 at 20:39
  */
 
-import {forEach, getListType, getNewList, List, setListValue} from '..';
+import {List} from '../Interfaces/List';
+import {forEach} from './forEach';
+import {getListType, getNewList, setListValue} from './listAccess';
 
 /**
  * Similar to PHP's array_chunks method this method will take any kind of list of chunks that are

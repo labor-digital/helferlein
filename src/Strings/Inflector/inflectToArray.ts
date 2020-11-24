@@ -28,7 +28,6 @@
  */
 export function inflectToArray(string: string, intelligentSplitting?: boolean): Array<string>
 {
-    string += '';
     let pattern = /(?=[A-Z])|[\-]+|[_]+|[.]+|[\s]+/;
     
     // Handle intelligent splitting

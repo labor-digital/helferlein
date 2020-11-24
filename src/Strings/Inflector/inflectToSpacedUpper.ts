@@ -16,7 +16,8 @@
  * Last modified: 2019.02.15 at 20:21
  */
 
-import {inflectToArray, ucFirst} from '../..';
+import {ucFirst} from '../ucFirst';
+import {inflectToArray} from './inflectToArray';
 
 /**
  * Converts a "Given string" to "Given String" or

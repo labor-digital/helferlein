@@ -15,17 +15,15 @@
  *
  * Last modified: 2019.02.01 at 14:10
  */
-import {
-    addClass,
-    forEach,
-    isBrowser,
-    isPlainObject,
-    isString,
-    PlainObject,
-    removeClass,
-    requestFrame,
-    throttleEvent
-} from '..';
+import {requestFrame} from '../Browser/requestFrame';
+import {addClass} from '../Dom/addClass';
+import {removeClass} from '../Dom/removeClass';
+import {isBrowser} from '../Environment/isBrowser';
+import {PlainObject} from '../Interfaces/PlainObject';
+import {forEach} from '../Lists/forEach';
+import {isPlainObject} from '../Types/isPlainObject';
+import {isString} from '../Types/isString';
+import {throttleEvent} from './throttleEvent';
 
 // The number of milliseconds for each frame / tick
 const tickLength = 15;

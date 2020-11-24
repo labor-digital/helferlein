@@ -19,7 +19,7 @@
  * Returns true if the given value is a string, false if not
  * @param value
  */
-export function isString(value: any): boolean
+export function isString(value): boolean
 {
     return typeof value === 'string';
 }

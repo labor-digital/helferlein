@@ -15,7 +15,8 @@
  *
  * Last modified: 2019.05.17 at 16:51
  */
-import {rgbStringToRgbColor, rgbToHexColor} from '..';
+import {rgbStringToRgbColor} from './rgbStringToRgbColor';
+import {rgbToHexColor} from './rgbToHexColor';
 
 /**
  * Converts an rgb string like rgb(0, 233, 25) or rgba(0, 200, 33, 0.2) into it's hex representation.

@@ -16,7 +16,10 @@
  * Last modified: 2019.06.12 at 12:08
  */
 
-import {getListType, getListValue, isArray, isUndefined, List, ListPath, ListType} from '../..';
+import {List, ListPath} from '../../Interfaces/List';
+import {isArray} from '../../Types/isArray';
+import {isUndefined} from '../../Types/isUndefined';
+import {getListType, getListValue, ListType} from '../listAccess';
 import {_initPathWalkerPath, _initPathWalkerStep} from './_internals';
 
 /**

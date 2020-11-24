@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.01.25 at 12:17
  */
-import {EventBus} from '..';
+import {EventBus} from '../Events/EventBus';
 
 interface PromiseCreator
 {

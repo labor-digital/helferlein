@@ -16,18 +16,13 @@
  * Last modified: 2019.07.02 at 15:26
  */
 
-import {isString} from '..';
-
 /**
  * Can be used to html-encode a given string and return the result.
  * @param code
  */
 export function htmlEncode(code: string): string
 {
-    if (!isString(code)) {
-        return '';
-    }
-    return code.replace(/[\u00A0-\u9999<>&]/gim, function (i) {
+    return (code + '').replace(/[\u00A0-\u9999<>&]/gim, function (i) {
         return '&#' + i.charCodeAt(0) + ';';
     });
 }

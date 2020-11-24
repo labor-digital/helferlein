@@ -15,7 +15,11 @@
  *
  * Last modified: 2019.03.31 at 19:36
  */
-import {getScrollPos, getViewportSize, isBrowser, isNumber, isUndefined} from '..';
+import {isBrowser} from '../Environment/isBrowser';
+import {isNumber} from '../Types/isNumber';
+import {isUndefined} from '../Types/isUndefined';
+import {getScrollPos} from './getScrollPos';
+import {getViewportSize} from './getViewportSize';
 
 export interface IsElementInViewportOptions
 {

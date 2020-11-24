@@ -16,7 +16,10 @@
  * Last modified: 2019.01.09 at 14:51
  */
 
-import {forEach, ForEachCallbackType, getListType, getNewList, isList, List, setListValue} from '..';
+import {List} from '../Interfaces/List';
+import {forEach, ForEachCallbackType} from './forEach';
+import {isList} from './isList';
+import {getListType, getNewList, setListValue} from './listAccess';
 
 export interface FilterCallback extends ForEachCallbackType
 {
