@@ -16,11 +16,49 @@
  * Last modified: 2020.11.24 at 00:23
  */
 
+// BROWSER
+export * from './Browser/ajax';
+export * from './Browser/checkOnlineState';
+export * from './Browser/loadAsset';
+export * from './Browser/requestFrame';
+export * from './Browser/UrlHash';
+
+// COLOR
+export * from './Color/Color.interfaces';
+export * from './Color/getBackgroundColor';
+export * from './Color/hexColorBrightness';
+export * from './Color/hexComplementaryColor';
+export * from './Color/hexContrastColor';
+export * from './Color/hexToRgbColor';
+export * from './Color/isValidColor';
+export * from './Color/rgbColorBrightness';
+export * from './Color/rgbComplementaryColor';
+export * from './Color/rgbContrastColor';
+export * from './Color/rgbStringToHexColor';
+export * from './Color/rgbStringToRgbColor';
+export * from './Color/rgbToHexColor';
+
+// DOM
+export * from './Dom/addClass';
+export * from './Dom/closest';
+export * from './Dom/getAttr';
+export * from './Dom/getData';
+export * from './Dom/getOffset';
+export * from './Dom/getSize';
+export * from './Dom/hasClass';
+export * from './Dom/removeClass';
+export * from './Dom/setAttr';
+export * from './Dom/setFocus';
+export * from './Dom/toggleClass';
+
+// Entities
+export * from './Entities/ComponentProxy';
+
 // STRINGS
-export {htmlEncode} from './Strings/htmlEncode';
+export * from './Strings/htmlEncode';
 
 // -- Validate
-export {validateEmail} from './Strings/Validate/validateEmail';
-export {validatePattern} from './Strings/Validate/validatePattern';
-export {validateUrl} from './Strings/Validate/validateUrl';
+export * from './Strings/Validate/validateEmail';
+export * from './Strings/Validate/validatePattern';
+export * from './Strings/Validate/validateUrl';
 
