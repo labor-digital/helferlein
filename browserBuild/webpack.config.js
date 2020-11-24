@@ -52,6 +52,11 @@ module.exports = {
         library: ['Helferlein'],
         libraryTarget: 'umd'
     },
+    resolve: {
+        fallback: {
+            'crypto': false
+        }
+    },
     performance: {
         hints: false
     }
