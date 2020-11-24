@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.31.3](https://github.com/labor-digital/helferlein/compare/v3.31.2...v3.31.3) (2020-11-24)
+
+
+### Bug Fixes
+
+* make legacy "lib" es5 ready again ([d010d2e](https://github.com/labor-digital/helferlein/commit/d010d2e17d7d8e2a6957063eb8f0f1ea3890caa2))
+
 ### [3.31.2](https://github.com/labor-digital/helferlein/compare/v3.31.1...v3.31.2) (2020-11-24)
 
 
