@@ -15,10 +15,10 @@
  *
  * Last modified: 2019.02.01 at 13:32
  */
-import {isString} from '../Types/isString';
-import {getPageStorage} from './getPageStorage';
+import {isNumber} from '..';
 
-const storage = getPageStorage();
+const storageKey = 'HELFERLEIN_GUID_STORAGE';
+const storage = window ?? global ?? {};
 
 /**
  * Returns a globally unique, numeric id as a string
@@ -26,7 +26,8 @@ const storage = getPageStorage();
  */
 export function getGuid(prefix?: string): string
 {
-    let guid = storage.get('guid', 0) + 1;
-    storage.set('guid', guid);
-    return (isString(prefix) ? prefix : '') + guid;
+    if (!isNumber(storage[storageKey])) {
+        storage[storageKey] = 0;
+    }
+    return prefix + '' + storage[storageKey]++;
 }
