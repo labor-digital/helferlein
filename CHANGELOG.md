@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.31.4](https://github.com/labor-digital/helferlein/compare/v3.31.3...v3.31.4) (2020-11-24)
+
+
+### Bug Fixes
+
+* **getGuid:** don't crash ssr if there is no window ([ad96d1d](https://github.com/labor-digital/helferlein/commit/ad96d1dab57ea6a4a6848f06132be3293f22b8ee))
+
 ### [3.31.3](https://github.com/labor-digital/helferlein/compare/v3.31.2...v3.31.3) (2020-11-24)
 
 
