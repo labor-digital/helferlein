@@ -15,10 +15,15 @@
  *
  * Last modified: 2019.02.01 at 13:32
  */
-import {isNumber} from '..';
+import {isBrowser, isNumber} from '..';
 
 const storageKey = 'HELFERLEIN_GUID_STORAGE';
-const storage = window ?? global ?? {};
+const storage = (function () {
+    if (isBrowser()) {
+        return window;
+    }
+    return global;
+})();
 
 /**
  * Returns a globally unique, numeric id as a string
