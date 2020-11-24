@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.30.0](https://github.com/labor-digital/helferlein/compare/v3.29.0...v3.30.0) (2020-11-24)
+
+
+### Features
+
+* **getGuid:** don't store the guid in the page storage ([68f8f6a](https://github.com/labor-digital/helferlein/commit/68f8f6a49deef8e0ca4d12e3f8f71b2ca6971070))
+
+
+### Bug Fixes
+
+* optimize imports ([6b7ebd3](https://github.com/labor-digital/helferlein/commit/6b7ebd3f9a6dbbff4ee08c2159e9136e1d3f9f3c))
+
 ## [3.29.0](https://github.com/labor-digital/helferlein/compare/v3.28.0...v3.29.0) (2020-11-24)
 
 
