@@ -16,7 +16,7 @@
  * Last modified: 2019.04.02 at 15:57
  */
 
-import {isBrowser} from '../../Environment/isBrowser';
+import {isBrowser} from '../..';
 
 /**
  * Creates a mutation observer for a given target object

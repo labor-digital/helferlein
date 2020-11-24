@@ -15,8 +15,7 @@
  *
  * Last modified: 2019.01.09 at 12:59
  */
-import {List} from '../Interfaces/List';
-import {forEach} from './forEach';
+import {forEach, List} from '..';
 
 interface ReduceCallbackType
 {

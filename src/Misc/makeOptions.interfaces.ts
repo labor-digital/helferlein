@@ -16,7 +16,7 @@
  * Last modified: 2019.07.25 at 10:03
  */
 
-import {List} from '../Interfaces/List';
+import {List} from '..';
 
 export type MakeOptionTypes =
     'boolean'

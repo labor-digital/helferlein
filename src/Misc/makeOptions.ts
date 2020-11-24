@@ -16,25 +16,28 @@
  * Last modified: 2019.07.25 at 10:02
  */
 
-import {List} from '../Interfaces/List';
-import {PlainObject} from '../Interfaces/PlainObject';
-import {forEach} from '../Lists/forEach';
-import {getListType, getListValue, ListType, setListValue} from '../Lists/listAccess';
-import {merge} from '../Lists/merge';
-import {isArray} from '../Types/isArray';
-import {isFunction} from '../Types/isFunction';
-import {isNumber} from '../Types/isNumber';
-import {isNumeric} from '../Types/isNumeric';
-import {isObject} from '../Types/isObject';
-import {isPlainObject} from '../Types/isPlainObject';
-import {isString} from '../Types/isString';
-import {isUndefined} from '../Types/isUndefined';
 import {
+    forEach,
+    getListType,
+    getListValue,
+    isArray,
+    isFunction,
+    isNumber,
+    isNumeric,
+    isObject,
+    isPlainObject,
+    isString,
+    isUndefined,
+    List,
+    ListType,
     MakeOptionsDefinition,
     MakeOptionsOptions,
     MakeOptionsValueDefinition,
-    MakeOptionTypes
-} from './makeOptions.interfaces';
+    MakeOptionTypes,
+    merge,
+    PlainObject,
+    setListValue
+} from '..';
 
 // The list of allowed keys inside a definition object
 const ALLOWED_DEFINITION_KEYS = ['default', 'validator', 'preFilter', 'filter', 'type', 'children', 'values'];

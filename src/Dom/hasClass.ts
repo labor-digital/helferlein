@@ -16,7 +16,7 @@
  * Last modified: 2019.06.14 at 17:09
  */
 
-import {isObject} from '../Types/isObject';
+import {isObject} from '..';
 
 /**
  * Returns true if the given element has the given class name
@@ -28,5 +28,5 @@ export function hasClass(element: HTMLElement, className: string): boolean
     if (!isObject(element)) {
         return false;
     }
-    return (' ' + element.className + ' ').replace(/[\n\t]/g, ' ').indexOf(' ' + className.trim() + " ") > -1;
+    return (' ' + element.className + ' ').replace(/[\n\t]/g, ' ').indexOf(' ' + className.trim() + ' ') > -1;
 }

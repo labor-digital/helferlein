@@ -19,7 +19,7 @@
  * Returns true if the given value is a child of a plain object created with {} or new Object()
  * @param value
  */
-export function isPlainObject(value): boolean
+export function isPlainObject(value: any): boolean
 {
     return typeof value === 'object' && Object.prototype.toString.call(value) === '[object Object]' &&
            typeof value.constructor === 'function' && value.constructor.prototype.hasOwnProperty('isPrototypeOf');

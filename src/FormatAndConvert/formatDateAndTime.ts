@@ -15,10 +15,7 @@
  *
  * Last modified: 2019.02.08 at 10:40
  */
-import {isArray} from '../Types/isArray';
-import {isFunction} from '../Types/isFunction';
-import {isString} from '../Types/isString';
-import {isUndefined} from '../Types/isUndefined';
+import {isArray, isFunction, isString, isUndefined} from '..';
 
 interface FormateDateAndTimeResolver
 {

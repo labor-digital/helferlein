@@ -15,10 +15,7 @@
  *
  * Last modified: 2019.01.09 at 18:42
  */
-import {asArray} from '../FormatAndConvert/asArray';
-import {List} from '../Interfaces/List';
-import {forEach} from './forEach';
-import {getListType, getListValue, getNewList, ListType, setListValue} from './listAccess';
+import {asArray, forEach, getListType, getListValue, getNewList, List, ListType, setListValue} from '..';
 
 function _mergeInternal(output: List, list: List)
 {
@@ -91,7 +88,7 @@ export function merge(...args): List
     
     // Merge all given lists into the output
     forEach(args, list => {
-        _mergeInternal(output, list)
+        _mergeInternal(output, list);
     });
     
     // Done

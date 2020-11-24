@@ -15,22 +15,24 @@
  *
  * Last modified: 2019.02.01 at 17:38
  */
-import {addClass} from '../Dom/addClass';
-import {getOffset} from '../Dom/getOffset';
-import {removeClass} from '../Dom/removeClass';
-import {isBrowser} from '../Environment/isBrowser';
-import {PlainObject} from '../Interfaces/PlainObject';
-import {forEach} from '../Lists/forEach';
-import {getGuid} from '../Misc/getGuid';
-import {isBool} from '../Types/isBool';
-import {isEmpty} from '../Types/isEmpty';
-import {isNumber} from '../Types/isNumber';
-import {isObject} from '../Types/isObject';
-import {isPlainObject} from '../Types/isPlainObject';
-import {isString} from '../Types/isString';
-import {isUndefined} from '../Types/isUndefined';
-import {getScrollPos} from './getScrollPos';
-import {throttleEvent} from './throttleEvent';
+import {
+    addClass,
+    forEach,
+    getGuid,
+    getOffset,
+    getScrollPos,
+    isBool,
+    isBrowser,
+    isEmpty,
+    isNumber,
+    isObject,
+    isPlainObject,
+    isString,
+    isUndefined,
+    PlainObject,
+    removeClass,
+    throttleEvent
+} from '..';
 
 let stickyElements = [];
 

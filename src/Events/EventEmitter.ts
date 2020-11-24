@@ -16,16 +16,7 @@
  * Last modified: 2019.04.02 at 13:14
  */
 
-import {asArray} from '../FormatAndConvert/asArray';
-import {PlainObject} from '../Interfaces/PlainObject';
-import {filter} from '../Lists/filter';
-import {forEach} from '../Lists/forEach';
-import {sort} from '../Lists/sort';
-import {isArray} from '../Types/isArray';
-import {isNumber} from '../Types/isNumber';
-import {isPlainObject} from '../Types/isPlainObject';
-import {isString} from '../Types/isString';
-import {isUndefined} from '../Types/isUndefined';
+import {asArray, filter, forEach, isArray, isNumber, isPlainObject, isString, isUndefined, PlainObject, sort} from '..';
 
 export class EventEmitterEvent
 {

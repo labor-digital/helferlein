@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.01.22 at 12:25
  */
-import {isString} from '../Types/isString';
+import {isString} from '..';
 
 /**
  * Takes a file size in bytes and formats it into a human readable file size string
@@ -29,5 +29,5 @@ export function numberAsFileSize(input: number | string): string
         return '';
     }
     const i: number = Math.floor(Math.log(inputNumber) / Math.log(1024));
-    return (inputNumber / Math.pow(1024, i)).toFixed(2) + ' ' + ['B', 'kB', 'MB', "GB", "TB"][i];
+    return (inputNumber / Math.pow(1024, i)).toFixed(2) + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
 }

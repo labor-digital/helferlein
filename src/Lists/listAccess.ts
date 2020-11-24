@@ -15,14 +15,7 @@
  *
  * Last modified: 2019.01.10 at 10:18
  */
-import {asArray} from '../FormatAndConvert/asArray';
-import {List} from '../Interfaces/List';
-import {isIterator} from '../Types/isIterator';
-import {isMap} from '../Types/isMap';
-import {isObject} from '../Types/isObject';
-import {isSet} from '../Types/isSet';
-import {isUndefined} from '../Types/isUndefined';
-import {forEach} from './forEach';
+import {asArray, forEach, isIterator, isMap, isObject, isSet, isUndefined, List} from '..';
 
 export enum ListType
 {

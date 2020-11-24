@@ -15,13 +15,7 @@
  *
  * Last modified: 2019.02.01 at 14:35
  */
-import {requestFrame} from '../Browser/requestFrame';
-import {isBrowser} from '../Environment/isBrowser';
-import {forEach} from '../Lists/forEach';
-import {isString} from '../Types/isString';
-import {isUndefined} from '../Types/isUndefined';
-import {getScrollPos} from './getScrollPos';
-import {throttleEvent} from './throttleEvent';
+import {forEach, getScrollPos, isBrowser, isString, isUndefined, requestFrame, throttleEvent} from '..';
 
 // The number of milliseconds for each frame / tick
 const tickLength = 15;

@@ -15,10 +15,7 @@
  *
  * Last modified: 2019.01.22 at 18:02
  */
-import {isBrowser} from '../Environment/isBrowser';
-import {isNumber} from '../Types/isNumber';
-import {isPlainObject} from '../Types/isPlainObject';
-import {isString} from '../Types/isString';
+import {isBrowser, isNumber, isPlainObject, isString} from '..';
 
 interface LoadJsOptions
 {

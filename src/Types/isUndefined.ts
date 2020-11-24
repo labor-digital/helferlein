@@ -19,7 +19,7 @@
  * Returns true if the given value is undefined, false if not
  * @param value
  */
-export function isUndefined(value): boolean
+export function isUndefined(value: any): boolean
 {
     return typeof value === 'undefined';
 }

@@ -16,12 +16,7 @@
  * Last modified: 2019.08.01 at 18:23
  */
 
-import {isBrowser} from '../Environment/isBrowser';
-import {isNull} from '../Types/isNull';
-import {isObject} from '../Types/isObject';
-import {isUndefined} from '../Types/isUndefined';
-import {RgbColor} from './Color.interfaces';
-import {rgbStringToRgbColor} from './rgbStringToRgbColor';
+import {isBrowser, isNull, isObject, isUndefined, RgbColor, rgbStringToRgbColor} from '..';
 
 /**
  * Traverses the dom upwards, beginning by the given element and extracts their background color.

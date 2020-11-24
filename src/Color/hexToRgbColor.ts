@@ -41,5 +41,5 @@ export function hexToRgbColor(hex: string): RgbColor
             b: parseInt(result[3], 16)
         };
     }
-    throw new Error("Invalid hex color given: " + hex);
+    throw new Error('Invalid hex color given: ' + hex);
 }

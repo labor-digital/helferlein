@@ -15,15 +15,17 @@
  *
  * Last modified: 2019.01.09 at 15:43
  */
+import {isString} from '..';
+
 /**
  * Receives a string, trims it and sets the first char to uppercase
  * @param value
  */
 export function ucFirst(value: string): string
 {
-    if (typeof value !== 'string') {
+    if (!isString(value)) {
         return '';
     }
     value = value.trim();
-    return value.charAt(0).toUpperCase() + value.substr(1)
+    return value.charAt(0).toUpperCase() + value.substr(1);
 }

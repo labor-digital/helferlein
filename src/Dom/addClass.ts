@@ -16,9 +16,7 @@
  * Last modified: 2019.02.01 at 10:50
  */
 
-import {forEach} from '../Lists/forEach';
-import {isObject} from '../Types/isObject';
-import {isUndefined} from '../Types/isUndefined';
+import {forEach, isObject, isUndefined} from '..';
 
 /**
  * Internal helper to avoid unnecessary iteration

@@ -16,9 +16,7 @@
  * Last modified: 2019.02.18 at 13:52
  */
 
-import {isObject} from '../Types/isObject';
-import {addClass} from './addClass';
-import {removeClass} from './removeClass';
+import {addClass, isObject, removeClass} from '..';
 
 /**
  * Toggles a single, or multiple classes to the given html element based on a given condition

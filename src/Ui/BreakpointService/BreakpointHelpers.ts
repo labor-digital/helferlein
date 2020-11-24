@@ -16,9 +16,7 @@
  * Last modified: 2019.01.18 at 20:09
  */
 
-import {forEach} from '../../Lists/forEach';
-import {isNull} from '../../Types/isNull';
-import {Breakpoint} from './Entities/Breakpoint';
+import {Breakpoint, forEach, isNull} from '../..';
 import {BreakpointContext} from './Entities/BreakpointContext';
 
 export class BreakpointHelpers

@@ -16,8 +16,7 @@
  * Last modified: 2019.02.06 at 12:03
  */
 
-import {isObject} from '../Types/isObject';
-import {isString} from '../Types/isString';
+import {isObject, isString} from '..';
 
 /**
  * This helper receives a html element and extracts either a single,

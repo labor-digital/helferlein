@@ -15,11 +15,7 @@
  *
  * Last modified: 2019.01.11 at 18:53
  */
-import {GenericStorage} from '../Entities/GenericStorage';
-import {isBrowser} from '../Environment/isBrowser';
-import {isString} from '../Types/isString';
-import {isUndefined} from '../Types/isUndefined';
-import {getPageStorage} from './getPageStorage';
+import {GenericStorage, getPageStorage, isBrowser, isString, isUndefined} from '..';
 
 /**
  * A fallback local storage if this script is not called from a browser,

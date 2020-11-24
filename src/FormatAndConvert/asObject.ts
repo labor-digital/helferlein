@@ -15,9 +15,7 @@
  *
  * Last modified: 2019.01.10 at 15:08
  */
-import {List} from '../Interfaces/List';
-import {PlainObject} from '../Interfaces/PlainObject';
-import {forEach} from '../Lists/forEach';
+import {forEach, List, PlainObject} from '..';
 
 /**
  * Converts a given object/map/set/array into a generic object literal

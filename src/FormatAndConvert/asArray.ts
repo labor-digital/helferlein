@@ -15,9 +15,7 @@
  *
  * Last modified: 2019.01.11 at 18:13
  */
-import {List} from '../Interfaces/List';
-import {forEach} from '../Lists/forEach';
-import {isList} from '../Lists/isList';
+import {forEach, isList, List} from '..';
 
 /**
  * Converts a given object/map/set into an array

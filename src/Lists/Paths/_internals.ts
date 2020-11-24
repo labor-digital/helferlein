@@ -84,7 +84,7 @@ export function _initPathWalkerPath(list: List, path: ListPath, separator): Arra
     }
     const parsedPath = parsePath(path, separator);
     if (parsedPath.length === 0) {
-        throw new Error("The given path is empty!");
+        throw new Error('The given path is empty!');
     }
     return parsedPath;
 }

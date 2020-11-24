@@ -15,17 +15,19 @@
  *
  * Last modified: 2019.01.24 at 10:51
  */
-import {getData} from '../Dom/getData';
-import {isBrowser} from '../Environment/isBrowser';
-import {List} from '../Interfaces/List';
-import {PlainObject} from '../Interfaces/PlainObject';
-import {forEach} from '../Lists/forEach';
-import {getPageStorage} from '../Misc/getPageStorage';
-import {isBool} from '../Types/isBool';
-import {isNull} from '../Types/isNull';
-import {isObject} from '../Types/isObject';
-import {isUndefined} from '../Types/isUndefined';
-import {getScrollPos} from './getScrollPos';
+import {
+    forEach,
+    getData,
+    getPageStorage,
+    getScrollPos,
+    isBool,
+    isBrowser,
+    isNull,
+    isObject,
+    isUndefined,
+    List,
+    PlainObject
+} from '..';
 
 const storage = getPageStorage();
 const isIos = isBrowser() && !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);

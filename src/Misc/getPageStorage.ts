@@ -15,12 +15,7 @@
  *
  * Last modified: 2019.01.11 at 18:39
  */
-import {GenericStorage} from '../Entities/GenericStorage';
-import {isBrowser} from '../Environment/isBrowser';
-import {PlainObject} from '../Interfaces/PlainObject';
-import {isNull} from '../Types/isNull';
-import {isString} from '../Types/isString';
-import {isUndefined} from '../Types/isUndefined';
+import {GenericStorage, isBrowser, isNull, isString, isUndefined, PlainObject} from '..';
 
 declare global
 {

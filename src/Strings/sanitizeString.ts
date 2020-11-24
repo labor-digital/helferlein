@@ -15,15 +15,17 @@
  *
  * Last modified: 2019.01.09 at 11:10
  */
+import {isString} from '..';
+
 /**
  * Removes all non alpha numerical chars from the given string and returns it.
  * Also keeps - _ and /
- * @param string
+ * @param value
  */
-export function sanitizeString(string: string): string
+export function sanitizeString(value: string): string
 {
-    if (typeof string !== 'string') {
+    if (!isString(value)) {
         return '';
     }
-    return string.replace(/[^a-zA-Z\-_/0-9]/g, '');
+    return value.replace(/[^a-zA-Z\-_/0-9]/g, '');
 }

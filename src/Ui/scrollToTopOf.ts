@@ -15,17 +15,19 @@
  *
  * Last modified: 2019.02.01 at 15:10
  */
-import {getOffset} from '../Dom/getOffset';
-import {isBrowser} from '../Environment/isBrowser';
-import {PlainObject} from '../Interfaces/PlainObject';
-import {merge} from '../Lists/merge';
-import {isBool} from '../Types/isBool';
-import {isEmpty} from '../Types/isEmpty';
-import {isFunction} from '../Types/isFunction';
-import {isNumber} from '../Types/isNumber';
-import {isObject} from '../Types/isObject';
-import {isString} from '../Types/isString';
-import {scrollToPosition} from './scrollToPosition';
+import {
+    getOffset,
+    isBool,
+    isBrowser,
+    isEmpty,
+    isFunction,
+    isNumber,
+    isObject,
+    isString,
+    merge,
+    PlainObject,
+    scrollToPosition
+} from '..';
 
 interface ScrollOffsetCalculator
 {

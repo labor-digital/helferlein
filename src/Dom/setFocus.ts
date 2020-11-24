@@ -16,11 +16,7 @@
  * Last modified: 2020.11.24 at 02:08
  */
 
-import {isBrowser} from '../Environment/isBrowser';
-import {asArray} from '../FormatAndConvert/asArray';
-import {filter} from '../Lists/filter';
-import {isFunction} from '../Types/isFunction';
-import {isObject} from '../Types/isObject';
+import {asArray, filter, isBrowser, isFunction, isObject} from '..';
 
 /**
  * Helper to set the focus of another html element relative to the given pivot element

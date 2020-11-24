@@ -16,7 +16,7 @@
  * Last modified: 2019.01.31 at 15:38
  */
 
-import {isBrowser} from '../Environment/isBrowser';
+import {isBrowser} from '..';
 
 /**
  * This part is mostly stolen and only slightly modified

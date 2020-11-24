@@ -16,12 +16,7 @@
  * Last modified: 2019.05.07 at 18:22
  */
 
-import {forEach} from '../Lists/forEach';
-import {isBool} from '../Types/isBool';
-import {isNumber} from '../Types/isNumber';
-import {isObject} from '../Types/isObject';
-import {isString} from '../Types/isString';
-import {isUndefined} from '../Types/isUndefined';
+import {forEach, isBool, isNumber, isObject, isString, isUndefined} from '..';
 
 /**
  * Internal helper

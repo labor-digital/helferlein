@@ -15,10 +15,7 @@
  *
  * Last modified: 2019.01.23 at 17:52
  */
-import {isArray} from './isArray';
-import {isMap} from './isMap';
-import {isPlainObject} from './isPlainObject';
-import {isSet} from './isSet';
+import {isArray, isMap, isPlainObject, isSet} from '..';
 
 /**
  * Returns true if the given value counts as empty
@@ -26,7 +23,7 @@ import {isSet} from './isSet';
  * @param value
  * @param includeZero By default zero (0) is not seen as "empty" if you set this to true, it will be, tho
  */
-export function isEmpty(value, includeZero?: boolean): boolean
+export function isEmpty(value: any, includeZero?: boolean): boolean
 {
     if (value === null) {
         return true;

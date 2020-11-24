@@ -16,7 +16,7 @@
  * Last modified: 2019.02.07 at 15:37
  */
 
-import {isBrowser} from '../Environment/isBrowser';
+import {isBrowser} from '..';
 import {ajax} from './ajax';
 
 /**

@@ -15,8 +15,7 @@
  *
  * Last modified: 2019.01.24 at 10:47
  */
-import {forEach} from '../Lists/forEach';
-import {isString} from '../Types/isString';
+import {forEach, isString} from '..';
 
 /**
  * This helper is used to cut a string to a fixed number of characters.

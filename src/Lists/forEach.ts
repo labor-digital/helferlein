@@ -15,10 +15,7 @@
  *
  * Last modified: 2019.01.10 at 10:02
  */
-import {List} from '../Interfaces/List';
-import {isArray} from '../Types/isArray';
-import {isIterator} from '../Types/isIterator';
-import {isSet} from '../Types/isSet';
+import {isArray, isIterator, isSet, List} from '..';
 
 export interface ForEachCallbackType extends Function
 {
@@ -125,7 +122,7 @@ export function forEach(object: List, callback: ForEachCallbackType): void
             let kReal: string | number = k;
             if (parseInt(k) + '' === k) {
                 kReal = parseInt(k);
-            } else if (parseFloat(k) + "" === k) {
+            } else if (parseFloat(k) + '' === k) {
                 kReal = parseFloat(k);
             }
             if (callback(object[k], kReal, object) === false) {
@@ -135,5 +132,5 @@ export function forEach(object: List, callback: ForEachCallbackType): void
         return;
     }
     
-    throw Error("Could not iterate given object!");
+    throw Error('Could not iterate given object!');
 }

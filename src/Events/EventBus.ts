@@ -15,8 +15,7 @@
  *
  * Last modified: 2019.04.02 at 13:15
  */
-import {PlainObject} from '../Interfaces/PlainObject';
-import {EventEmitter, EventEmitterEventListener} from './EventEmitter';
+import {EventEmitter, EventEmitterEventListener, PlainObject} from '..';
 
 const emitter = new EventEmitter();
 

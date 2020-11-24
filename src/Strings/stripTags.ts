@@ -15,8 +15,7 @@
  *
  * Last modified: 2019.01.24 at 10:40
  */
-import {isFunction} from '../Types/isFunction';
-import {isUndefined} from '../Types/isUndefined';
+import {isFunction, isString, isUndefined} from '..';
 
 /**
  * This helper removes all html tags from a given string, returning only
@@ -25,6 +24,9 @@ import {isUndefined} from '../Types/isUndefined';
  */
 export function stripTags(value: string): string
 {
+    if (!isString(value)) {
+        return '';
+    }
     if (isUndefined(document) || !isFunction(document.createElement)) {
         throw new Error('This stripTags implementation only works in browsers!');
     }

@@ -21,12 +21,13 @@ const hasBuiltInArrayDetection = typeof Array !== 'undefined' && typeof Array.is
  * Returns true if the given value is an array, false if not
  * @param value
  */
-export function isArray(value): boolean
+export function isArray(value: any): boolean
 {
     // Use builtin array detection
     if (hasBuiltInArrayDetection) {
         return Array.isArray(value);
     }
+    
     // Use fallback
     return value !== null && typeof value !== 'undefined' &&
            typeof value.constructor !== 'undefined' && value.constructor === Array;

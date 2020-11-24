@@ -20,13 +20,10 @@
  * Checks if a given value is an iterator or not
  * @param value
  */
-export function isIterator(value): boolean
+export function isIterator(value: any): boolean
 {
-    if (typeof value !== 'object' || value === null) {
+    if (typeof value !== 'object' || value === null || typeof Symbol === 'undefined') {
         return false;
     }
-    if (typeof Symbol === 'undefined') {
-        return false;
-    }
-    return typeof value[Symbol.iterator] === "function";
+    return typeof value[Symbol.iterator] === 'function';
 }

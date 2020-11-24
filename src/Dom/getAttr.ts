@@ -16,7 +16,7 @@
  * Last modified: 2019.05.07 at 18:19
  */
 
-import {isObject} from '../Types/isObject';
+import {isObject} from '..';
 
 /**
  * Returns the value of one attribute of the given element

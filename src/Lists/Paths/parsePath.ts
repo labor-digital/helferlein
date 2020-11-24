@@ -16,13 +16,7 @@
  * Last modified: 2019.06.12 at 11:06
  */
 
-import {escapeRegex} from '../../Strings/escapeRegex';
-import {isArray} from '../../Types/isArray';
-import {isNumber} from '../../Types/isNumber';
-import {isString} from '../../Types/isString';
-import {isUndefined} from '../../Types/isUndefined';
-import {filter} from '../filter';
-import {map} from '../map';
+import {escapeRegex, filter, isArray, isNumber, isString, isUndefined, map} from '../..';
 
 const cachedPaths = {};
 
@@ -136,7 +130,7 @@ export function parsePath(path, separator?: string): Array<string>
         if (braces.size > 0) {
             let partString = JSON.stringify(parts);
             braces.forEach((v, k) => {
-                partString = partString.replace(new RegExp("\"[\\\\(]+b" + k + "[\\\\)]+\"", "g"), v);
+                partString = partString.replace(new RegExp('"[\\\\(]+b' + k + '[\\\\)]+"', 'g'), v);
             });
             parts = JSON.parse(partString);
         }

@@ -15,14 +15,16 @@
  *
  * Last modified: 2019.02.06 at 17:56
  */
-import {isBrowser} from '../../Environment/isBrowser';
-import {onDomReady} from '../../Events/DomEvents/onDomReady';
-import {EventBus} from '../../Events/EventBus';
-import {HelferleinEventList} from '../../Events/HelferleinEventList';
-import {throttleEvent} from '../throttleEvent';
+import {
+    Breakpoint,
+    BreakpointsConfigureOptions,
+    EventBus,
+    HelferleinEventList,
+    isBrowser,
+    onDomReady,
+    throttleEvent
+} from '../..';
 import {BreakpointHelpers} from './BreakpointHelpers';
-import {BreakpointsConfigureOptions} from './BreakpointService.interfaces';
-import {Breakpoint} from './Entities/Breakpoint';
 import {BreakpointContext} from './Entities/BreakpointContext';
 
 // Create new context
@@ -167,10 +169,10 @@ export class BreakpointService
         if (typeof opts.container === 'string') {
             context.container = opts.container;
         }
-        if (typeof opts.template === "string") {
+        if (typeof opts.template === 'string') {
             context.template = opts.template;
         }
-        if (typeof opts.inTemplateSelector === "string") {
+        if (typeof opts.inTemplateSelector === 'string') {
             context.inTemplateSelector = opts.inTemplateSelector;
         }
     }
