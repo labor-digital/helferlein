@@ -16,27 +16,13 @@
  * Last modified: 2019.07.02 at 15:26
  */
 
-import {isFunction} from '../Types/isFunction';
-import {isObject} from '../Types/isObject';
-
 /**
  * Can be used to html-encode a given string and return the result.
- *
- * ATTENTION: This only works if you are using it inside a browser, or have a working js dom,
- * that is linked to the global document variable.
- *
  * @param code
  */
 export function htmlEncode(code: string): string
 {
-    // Check if we have a dom
-    if (!isObject(document) || !isFunction(document.createElement)) {
-        console.error('htmlEncode() failed! Make sure you have a DOM document to work with!');
-        return code;
-    }
-    
-    // Translate the element
-    let elt = document.createElement('span');
-    elt.textContent = code;
-    return elt.innerHTML;
+    return (code + '').replace(/[\u00A0-\u9999<>&]/gim, function (i) {
+        return '&#' + i.charCodeAt(0) + ';';
+    });
 }
