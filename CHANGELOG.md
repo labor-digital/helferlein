@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.31.2](https://github.com/labor-digital/helferlein/compare/v3.31.1...v3.31.2) (2020-11-24)
+
+
+### Bug Fixes
+
+* transpile esm to es2015 ([64659c1](https://github.com/labor-digital/helferlein/commit/64659c1dc13bad2f963366a6af385717970fcfa2))
+
 ### [3.31.1](https://github.com/labor-digital/helferlein/compare/v3.31.0...v3.31.1) (2020-11-24)
 
 
