@@ -59,7 +59,7 @@ export function loadAsset(url: string, options?: LoadJsOptions): Promise<string>
         const timeoutTime = isNumber(options.timeout) ? options.timeout : 2000;
         const timeout = setTimeout(() => reject('Timeout after ' + timeoutTime + 'ms.'), timeoutTime);
         
-        (new Promise(resolve1 => {
+        (new Promise<void>(resolve1 => {
             const elType = isString(options.type) && options.type === 'css' ? 'css' : 'js';
             let el;
             if (elType === 'css') {
@@ -75,7 +75,7 @@ export function loadAsset(url: string, options?: LoadJsOptions): Promise<string>
             el.onload = () => {
                 resolve1();
             };
-            el.onerror = (e) => {
+            el.onerror = () => {
                 reject('An error occured while loading: "' + url + '"');
             };
             
