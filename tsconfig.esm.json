@@ -1,13 +1,14 @@
 {
 	"compilerOptions": {
 		"moduleResolution": "node",
-		"target": "es6",
-		"module": "es6",
+		"target": "esnext",
+		"module": "esnext",
 		"sourceMap": false,
 		"declaration": true,
 		"noImplicitAny": false,
 		"noEmitOnError": false,
-		"outDir": "lib",
+		"outDir": "dist/esm",
+		"declarationDir": "dist/types",
 		"esModuleInterop": true,
 		"pretty": true,
 		"lib": [

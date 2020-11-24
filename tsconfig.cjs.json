@@ -1,13 +1,13 @@
 {
 	"compilerOptions": {
 		"moduleResolution": "node",
-		"target": "es6",
-		"module": "es6",
+		"target": "es5",
+		"module": "commonjs",
 		"sourceMap": false,
-		"declaration": true,
+		"declaration": false,
 		"noImplicitAny": false,
 		"noEmitOnError": false,
-		"outDir": "lib",
+		"outDir": "dist/cjs",
 		"esModuleInterop": true,
 		"pretty": true,
 		"lib": [

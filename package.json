@@ -7,13 +7,14 @@
 		"url": "git+ssh://git@github.com:labor-digital/helferlein.git"
 	},
 	"scripts": {
-		"build": "node flushLib.js && tsc",
+		"build": "node flushLib.js && tsc && tsc --project ./tsconfig.cjs.json && tsc --project ./tsconfig.esm.json",
 		"watch": "node flushLib.js && tsc --watch",
 		"test": "jest",
 		"doc": "typedoc --out doc --tsconfig ./tsconfig.json src --module commonjs && echo helferlein.labor.tools >> doc/CNAME && touch doc/.nojekyll"
 	},
-	"main": "lib/index.js",
-	"typings": "lib/index.d.ts",
+	"main": "dist/esm/index.js",
+	"module": "dist/cjs/index.js",
+	"typings": "dist/types/index.d.ts",
 	"engines": {
 		"node": ">=8.11.2",
 		"npm": ">=6.3.0"

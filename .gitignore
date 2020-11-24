@@ -1,6 +1,7 @@
 node_modules
 lib
 lib.browser
+dist
 doc
 
 # IDEA Code Style
