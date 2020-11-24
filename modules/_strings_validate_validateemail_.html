@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;Events/DomEvents/registerEventOnHashChange&quot; | @labor-digital/helferlein</title>
+	<title>&quot;Strings/Validate/validateEmail&quot; | @labor-digital/helferlein</title>
 	<meta name="description" content="Documentation for @labor-digital/helferlein">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_events_domevents_registereventonhashchange_.html">&quot;Events/DomEvents/registerEventOnHashChange&quot;</a>
+					<a href="_strings_validate_validateemail_.html">&quot;Strings/Validate/validateEmail&quot;</a>
 				</li>
 			</ul>
-			<h1>Module &quot;Events/DomEvents/registerEventOnHashChange&quot;</h1>
+			<h1>Module &quot;Strings/Validate/validateEmail&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -73,14 +73,13 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_events_domevents_registereventonhashchange_.html#currenthash" class="tsd-kind-icon">current<wbr>Hash</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_events_domevents_registereventonhashchange_.html#isregistered" class="tsd-kind-icon">is<wbr>Registered</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_strings_validate_validateemail_.html#pattern" class="tsd-kind-icon">pattern</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_events_domevents_registereventonhashchange_.html#registereventonhashchange" class="tsd-kind-icon">register<wbr>Event<wbr>OnHash<wbr>Change</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_strings_validate_validateemail_.html#validateemail" class="tsd-kind-icon">validate<wbr>Email</a></li>
 							</ul>
 						</section>
 					</div>
@@ -89,22 +88,12 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
-					<a name="currenthash" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagLet">Let</span> current<wbr>Hash</h3>
-					<div class="tsd-signature tsd-kind-icon">current<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = isBrowser() ? window.location.hash : null</span></div>
+					<a name="pattern" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> pattern</h3>
+					<div class="tsd-signature tsd-kind-icon">pattern<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^(([^&lt;&gt;()\[\]\\.,;:\s@&quot;]+(\.[^&lt;&gt;()\[\]\\.,;:\s@&quot;]+)*)|(&quot;.+&quot;))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/e6f1f3a/src/Events/DomEvents/registerEventOnHashChange.ts#L23">src/Events/DomEvents/registerEventOnHashChange.ts:23</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
-					<a name="isregistered" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagLet">Let</span> is<wbr>Registered</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Registered<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/e6f1f3a/src/Events/DomEvents/registerEventOnHashChange.ts#L22">src/Events/DomEvents/registerEventOnHashChange.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/e6f1f3a/src/Strings/Validate/validateEmail.ts#L23">src/Strings/Validate/validateEmail.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -112,28 +101,32 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="registereventonhashchange" class="tsd-anchor"></a>
-					<h3>register<wbr>Event<wbr>OnHash<wbr>Change</h3>
+					<a name="validateemail" class="tsd-anchor"></a>
+					<h3>validate<wbr>Email</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">register<wbr>Event<wbr>OnHash<wbr>Change<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Email<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/e6f1f3a/src/Events/DomEvents/registerEventOnHashChange.ts#L33">src/Events/DomEvents/registerEventOnHashChange.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/e6f1f3a/src/Strings/Validate/validateEmail.ts#L29">src/Strings/Validate/validateEmail.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Registers the hash__change event on the event bus
-										which is triggered every time the user moves in the
-									history forwards or backwards.</p>
+									<p>Checks if the given value looks like a valid email address</p>
 								</div>
-								<p>If you change the hash and don&#39;t want EVENT_ON_HASH_CHANGE to be triggered by it,
-								emit the &quot;EVENT_HASH_UPDATE&quot; event first and set args: {new: &quot;#/new/hash&quot;}</p>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -146,20 +139,17 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="_events_domevents_registereventonhashchange_.html">&quot;<wbr>Events/<wbr>Dom<wbr>Events/register<wbr>Event<wbr>OnHash<wbr>Change&quot;</a>
+						<a href="_strings_validate_validateemail_.html">&quot;<wbr>Strings/<wbr>Validate/validate<wbr>Email&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_events_domevents_registereventonhashchange_.html#currenthash" class="tsd-kind-icon">current<wbr>Hash</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_events_domevents_registereventonhashchange_.html#isregistered" class="tsd-kind-icon">is<wbr>Registered</a>
+						<a href="_strings_validate_validateemail_.html#pattern" class="tsd-kind-icon">pattern</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_events_domevents_registereventonhashchange_.html#registereventonhashchange" class="tsd-kind-icon">register<wbr>Event<wbr>OnHash<wbr>Change</a>
+						<a href="_strings_validate_validateemail_.html#validateemail" class="tsd-kind-icon">validate<wbr>Email</a>
 					</li>
 				</ul>
 			</nav>
