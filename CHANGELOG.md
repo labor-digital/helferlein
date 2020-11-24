@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.30.1](https://github.com/labor-digital/helferlein/compare/v3.30.0...v3.30.1) (2020-11-24)
+
 ## [3.30.0](https://github.com/labor-digital/helferlein/compare/v3.29.0...v3.30.0) (2020-11-24)
 
 
