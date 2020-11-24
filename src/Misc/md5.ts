@@ -16,8 +16,6 @@
  * Last modified: 2019.01.09 at 11:10
  */
 
-import {isNode} from '../Environment/isNode';
-
 let k = [], i = 0;
 for (; i < 64;) {
     k[i] = 0 | (Math.abs(Math.sin(++i)) * 4294967296);
@@ -38,11 +36,6 @@ for (; i < 64;) {
  */
 export function md5(value: number | string): string
 {
-    // Shortcut if we are in a node environment
-    if (isNode()) {
-        return require('crypto').createHash('md5').update(value).digest('hex');
-    }
-    
     let str: any = value + '';
     var b, c, d, j,
         x = [],
