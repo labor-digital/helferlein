@@ -18,6 +18,7 @@
 		"node": ">=8.11.2",
 		"npm": ">=6.3.0"
 	},
+	"sideEffects": false,
 	"author": "Martin Neundorfer",
 	"license": "Apache-2.0",
 	"homepage": "https://github.com/labor-digital/helferlein",
