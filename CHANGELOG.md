@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.29.0](https://github.com/labor-digital/helferlein/compare/v3.28.0...v3.29.0) (2020-11-24)
+
+
+### Features
+
+* add setFocus helpers ([017a8fe](https://github.com/labor-digital/helferlein/commit/017a8fe2a547532d9b5b19219c1aad528175d875))
+
+
+### Bug Fixes
+
+* minor code cleanup ([ffe324f](https://github.com/labor-digital/helferlein/commit/ffe324fd10e6590cbce631994c571cb9b5d3aa33))
+
 ## [3.28.0](https://github.com/labor-digital/helferlein/compare/v3.27.0...v3.28.0) (2020-11-24)
 
 
