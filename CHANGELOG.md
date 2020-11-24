@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.31.0](https://github.com/labor-digital/helferlein/compare/v3.30.1...v3.31.0) (2020-11-24)
+
+
+### Features
+
+* build cjs and esm in separate files + deprecate lib directory ([f0a9a1a](https://github.com/labor-digital/helferlein/commit/f0a9a1af9c55f68804e538f45cbc7c523e1003fd))
+
 ### [3.30.1](https://github.com/labor-digital/helferlein/compare/v3.30.0...v3.30.1) (2020-11-24)
 
 ## [3.30.0](https://github.com/labor-digital/helferlein/compare/v3.29.0...v3.30.0) (2020-11-24)
