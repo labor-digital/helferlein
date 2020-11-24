@@ -98,7 +98,7 @@
 					<div class="tsd-signature tsd-kind-icon">running<wbr>Animations<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous class)</span><span class="tsd-signature-symbol"> = new class{protected containers: Array&lt;Window | HTMLElement&gt;;protected resolvers: Array&lt;Function&gt;;protected eventHandlers: Array&lt;Function | null&gt;;constructor(){this.containers &#x3D; [];this.resolvers &#x3D; [];this.eventHandlers &#x3D; [];}public startAnimation(container: Window | HTMLElement, resolver: Function, breakOnManualScroll?: boolean){const index &#x3D; this.containers.indexOf(container);if (index !&#x3D;&#x3D; -1) {this.stopAnimation(index);}this.containers.push(container);this.resolvers.push(resolver);if (breakOnManualScroll) {const handler &#x3D; () &#x3D;&gt; {this.stopAnimation(container);};this.eventHandlers.push(handler);forEach(scrollEvents, event &#x3D;&gt; {container.addEventListener(event, handler);});} else {this.eventHandlers.push(null);}}public stopAnimation(container: Window | HTMLElement | number): void{const otherAnimationWasStarted &#x3D; typeof container &#x3D;&#x3D;&#x3D; &#x27;number&#x27;;const index &#x3D; otherAnimationWasStarted ? container as number : this.containers.indexOf(container as any);if (isUndefined(this.resolvers[index])) {return;}this.resolvers[index](otherAnimationWasStarted);this.containers.splice(index, 1);this.resolvers.splice(index, 1);this.eventHandlers.splice(index, 1);}}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/e6f1f3a/src/Ui/scrollToPosition.ts#L42">src/Ui/scrollToPosition.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/a0ef304/src/Ui/scrollToPosition.ts#L42">src/Ui/scrollToPosition.ts:42</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -113,7 +113,7 @@
 					<div class="tsd-signature tsd-kind-icon">scroll<wbr>Events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&#x27;wheel&#x27;,&#x27;mousedown&#x27;,&#x27;keydown&#x27;,&#x27;touchstart&#x27;]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/e6f1f3a/src/Ui/scrollToPosition.ts#L32">src/Ui/scrollToPosition.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/a0ef304/src/Ui/scrollToPosition.ts#L32">src/Ui/scrollToPosition.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -128,7 +128,7 @@
 					<div class="tsd-signature tsd-kind-icon">tick<wbr>Length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">15</span><span class="tsd-signature-symbol"> = 15</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/e6f1f3a/src/Ui/scrollToPosition.ts#L27">src/Ui/scrollToPosition.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/a0ef304/src/Ui/scrollToPosition.ts#L27">src/Ui/scrollToPosition.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -145,7 +145,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/e6f1f3a/src/Ui/scrollToPosition.ts#L95">src/Ui/scrollToPosition.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/a0ef304/src/Ui/scrollToPosition.ts#L95">src/Ui/scrollToPosition.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -175,7 +175,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/e6f1f3a/src/Ui/scrollToPosition.ts#L114">src/Ui/scrollToPosition.ts:114</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/a0ef304/src/Ui/scrollToPosition.ts#L114">src/Ui/scrollToPosition.ts:114</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -205,7 +205,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/e6f1f3a/src/Ui/scrollToPosition.ts#L137">src/Ui/scrollToPosition.ts:137</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/a0ef304/src/Ui/scrollToPosition.ts#L137">src/Ui/scrollToPosition.ts:137</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -256,7 +256,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/e6f1f3a/src/Ui/scrollToPosition.ts#L101">src/Ui/scrollToPosition.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/a0ef304/src/Ui/scrollToPosition.ts#L101">src/Ui/scrollToPosition.ts:101</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
