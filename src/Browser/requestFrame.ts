@@ -34,8 +34,9 @@ if (isBrowser()) {
               window[vendors[x] + 'CancelRequestAnimationFrame'].bind(window);
     }
 }
+
 if (req === null) {
-    req = function (callback, element) {
+    req = function (callback) {
         const currTime = new Date().getTime();
         const timeToCall = Math.max(0, 16 - (currTime - lastTime));
         const id = window.setTimeout(() => callback(currTime + timeToCall), timeToCall);
@@ -43,6 +44,7 @@ if (req === null) {
         return id;
     };
 }
+
 if (can === null) {
     can = (id) => clearTimeout(id);
 }

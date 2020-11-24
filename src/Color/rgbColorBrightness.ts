@@ -27,7 +27,6 @@ export function rgbColorBrightness(r: number, g: number, b: number): number;
  * @param r
  * @param g
  * @param b
- * @deprecated use the function in the correctly named file instead! Whoops...
  */
 export function rgbColorBrightness(r: number | RgbColor, g?: number, b?: number): number
 {

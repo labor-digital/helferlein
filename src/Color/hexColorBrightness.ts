@@ -24,7 +24,7 @@ import {rgbColorBrightness} from './rgbColorBrightnesss';
  *
  * @param hexRaw
  */
-function hexColorBrightness(hexRaw: string): number
+export function hexColorBrightness(hexRaw: string): number
 {
     return rgbColorBrightness(hexToRgbColor(hexRaw));
 }

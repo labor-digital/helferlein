@@ -135,6 +135,7 @@ function prepareData(data, asGet: boolean)
  * jQuery's ajax instead of this one.
  *
  * @param request
+ * @deprecated will be removed in the next major version -> use a library like axios
  */
 export function ajax(request: AjaxRequest): Promise<AjaxResponse>
 {
@@ -191,7 +192,7 @@ export function ajax(request: AjaxRequest): Promise<AjaxResponse>
         // Set timeout handler
         xhttp.ontimeout = function () {
             response.status = 408;
-            response.error = "AJAX error: The timeout of " + request.timeout + "ms was reached";
+            response.error = 'AJAX error: The timeout of ' + request.timeout + 'ms was reached';
             reject(response);
         };
         xhttp.send(isGet ? undefined : request.data);

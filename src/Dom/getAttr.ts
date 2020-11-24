@@ -26,10 +26,7 @@ import {isObject} from '../Types/isObject';
  */
 export function getAttr(element: HTMLElement | Element, attributeName: string, fallback?: any)
 {
-    if (!isObject(element)) {
-        return fallback;
-    }
-    if (!element.hasAttribute(attributeName)) {
+    if (!isObject(element) || !element.hasAttribute(attributeName)) {
         return fallback;
     }
     return element.getAttribute(attributeName);

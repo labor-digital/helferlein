@@ -33,6 +33,7 @@ export function chunks(list: List, length: number): Array<List>
     const listType = getListType(list);
     let chunk = getNewList(listType);
     let count = 0;
+    
     forEach(list, (v, k) => {
         setListValue(chunk, v, k);
         if (++count === length) {
@@ -41,6 +42,7 @@ export function chunks(list: List, length: number): Array<List>
             count = 0;
         }
     });
+    
     if (count > 0) {
         result.push(chunk);
     }

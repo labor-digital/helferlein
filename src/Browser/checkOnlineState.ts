@@ -31,6 +31,7 @@ let lastCheck: number = 0;
 
 /**
  * Checks if the client is currently online or not
+ * @deprecated will be removed in the next major version -> use a library like axios
  */
 export function checkOnlineState(): Promise<boolean>
 {

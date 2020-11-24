@@ -149,7 +149,7 @@ export class UrlHash
             return;
         }
         const list = asArray(map(hash, (v, k) => encodeURIComponent(k + '') + '/' + encodeURIComponent(v)));
-        const hashString = "#/" + list.join("/");
+        const hashString = '#/' + list.join('/');
         EventBus.emit(HelferleinEventList.EVENT_HASH_UPDATE, {new: hashString});
         window.location.hash = hashString;
     }
