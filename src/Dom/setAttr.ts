@@ -61,7 +61,7 @@ export function setAttr(
         valueString = value ? 'TRUE' : 'FALSE';
     } else if (isNumber(value)) {
         valueString = value + '';
-    } else if (!isUndefined(value)) {
+    } else if (value !== null && !isUndefined(value)) {
         valueString = JSON.stringify(value);
     }
     if (isUndefined((element as NodeListOf<Element>).length)) {
