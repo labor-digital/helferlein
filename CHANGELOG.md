@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.31.5](https://github.com/labor-digital/helferlein/compare/v3.31.4...v3.31.5) (2020-12-02)
+
+
+### Bug Fixes
+
+* **setAttr:** allow attribute removal ([fda9593](https://github.com/labor-digital/helferlein/commit/fda9593cd534497d79a0363b6ca8a1b04ceddd25))
+
 ### [3.31.4](https://github.com/labor-digital/helferlein/compare/v3.31.3...v3.31.4) (2020-11-24)
 
 
