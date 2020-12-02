@@ -110,7 +110,7 @@ export * from './Misc/debouncePromise';
 export * from './Misc/getGuid';
 export * from './Misc/getLocalStorage';
 export * from './Misc/getPageStorage';
-export * from './Misc/makeOptions';
+export {makeOptions} from './Misc/makeOptions';
 export * from './Misc/makeOptions.interfaces';
 export * from './Misc/md5';
 

@@ -537,4 +537,5 @@ export function makeOptions(
     return applier.apply(input, definition, options);
 }
 
+// @deprecated, will be removed in the next major version
 export default makeOptions;
