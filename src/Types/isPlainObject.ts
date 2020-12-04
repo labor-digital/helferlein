@@ -15,12 +15,15 @@
  *
  * Last modified: 2019.01.09 at 11:32
  */
+import {PlainObject} from '../Interfaces/PlainObject';
+import {isObject} from './isObject';
+
 /**
  * Returns true if the given value is a child of a plain object created with {} or new Object()
  * @param value
  */
-export function isPlainObject(value): boolean
+export function isPlainObject(value): value is PlainObject
 {
-    return typeof value === 'object' && Object.prototype.toString.call(value) === '[object Object]' &&
+    return isObject(value) && Object.prototype.toString.call(value) === '[object Object]' &&
            typeof value.constructor === 'function' && value.constructor.prototype.hasOwnProperty('isPrototypeOf');
 }

@@ -15,20 +15,17 @@
  *
  * Last modified: 2019.01.09 at 11:10
  */
-const hasBuiltInArrayDetection = typeof Array !== 'undefined' && typeof Array.isArray === 'function';
+import {isFunction} from './isFunction';
+import {isNullOrUndef} from './isNullOrUndef';
+import {isUndefined} from './isUndefined';
+
+const hasBuiltInArrayDetection = !isUndefined(Array) && isFunction(Array.isArray);
 
 /**
  * Returns true if the given value is an array, false if not
  * @param value
  */
-export function isArray(value): boolean
+export function isArray(value): value is Array<any>
 {
-    // Use builtin array detection
-    if (hasBuiltInArrayDetection) {
-        return Array.isArray(value);
-    }
-    
-    // Use fallback
-    return value !== null && typeof value !== 'undefined' &&
-           typeof value.constructor !== 'undefined' && value.constructor === Array;
+    return hasBuiltInArrayDetection ? Array.isArray(value) : !isNullOrUndef(value) && value.constructor === Array;
 }

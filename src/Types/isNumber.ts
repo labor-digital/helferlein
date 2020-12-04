@@ -19,7 +19,7 @@
  * Returns true if the given value is a number, false if not
  * @param value
  */
-export function isNumber(value): boolean
+export function isNumber(value): value is number
 {
     return typeof value === 'number' && !isNaN(value);
 }

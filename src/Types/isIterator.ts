@@ -16,14 +16,16 @@
  * Last modified: 2019.06.12 at 12:43
  */
 
+
+import {isObject} from './isObject';
+
 /**
  * Checks if a given value is an iterator or not
  * @param value
  */
-export function isIterator(value): boolean
+export function isIterator(value): value is Iterator<any>
 {
     return typeof Symbol !== 'undefined'
-           && typeof value === 'object'
-           && value !== null
+           && isObject(value)
            && typeof value[Symbol.iterator] === 'function';
 }

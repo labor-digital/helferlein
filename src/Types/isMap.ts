@@ -15,14 +15,13 @@
  *
  * Last modified: 2019.01.09 at 11:10
  */
+import {isNullOrUndef} from './isNullOrUndef';
+
 /**
  * Returns true if the given value is a Map, false if not
  * @param object
  */
-export function isMap(object: any): boolean
+export function isMap(object: any): object is Map<any, any>
 {
-    if (typeof object === 'undefined' || object === null) {
-        return false;
-    }
-    return object instanceof Map || object.constructor === Map;
+    return !isNullOrUndef(object) && (object instanceof Map || object.constructor === Map);
 }

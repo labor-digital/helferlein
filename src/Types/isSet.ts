@@ -15,10 +15,9 @@
  *
  * Last modified: 2019.01.09 at 11:10
  */
-export function isSet(object: any): boolean
+import {isNullOrUndef} from './isNullOrUndef';
+
+export function isSet(object: any): object is Set<any>
 {
-    if (typeof object === 'undefined' || object === null) {
-        return false;
-    }
-    return object instanceof Set || object.constructor === Set;
+    return !isNullOrUndef(object) && (object instanceof Set || object.constructor === Set);
 }
