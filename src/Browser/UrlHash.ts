@@ -119,7 +119,7 @@ export class UrlHash
         const hashParts = hash.split('/');
         const parsed = {};
         let key = null;
-        forEach(hashParts, e => {
+        forEach(hashParts, (e: any) => {
             e = decodeURIComponent(e);
             if (key !== null) {
                 if (parseInt(e) + '' === e) {
