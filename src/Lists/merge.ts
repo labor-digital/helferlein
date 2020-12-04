@@ -17,35 +17,32 @@
  */
 import {asArray} from '../FormatAndConvert/asArray';
 import {List} from '../Interfaces/List';
+import {isArray} from '../Types/isArray';
+import {isSet} from '../Types/isSet';
 import {forEach} from './forEach';
-import {getListType, getListValue, getNewList, ListType, setListValue} from './listAccess';
+import {isList} from './isList';
+import {getListType, getListValue, getNewList, setListValue} from './listAccess';
+import {reduce} from './reduce';
 
-function _mergeInternal(output: List, list: List)
+function _mergeInternal(output: List, list: List): List
 {
-    
-    // Speed up the handling of sets
-    const outputType = getListType(output);
-    const outputLookup = outputType === ListType.Set ? asArray(output) : output;
-    
     // Handle the merging of values INTO arrays and sets
-    if (outputType === ListType.Array || outputType === ListType.Set) {
-        const comparator = (outputLookup as Array<any>).slice(0);
+    if (isArray(output) || isSet(output)) {
+        
+        const comparator = asArray(output);
         forEach(list, value => {
-            if (comparator.indexOf(value) !== -1) {
-                return;
+            if (comparator.indexOf(value) === -1) {
+                setListValue(output, value);
             }
-            setListValue(output, value);
         });
-        return;
+        
+        return output;
     }
     
     forEach(list, (v, key) => {
-        const outputV = getListValue(outputLookup, key);
-        const outputVType = getListType(outputV);
-        const vType = getListType(v);
-        
         // Check if we can merge both values
-        if (vType !== ListType.NoList && outputVType !== ListType.NoList) {
+        const outputV = getListValue(output, key);
+        if (isList(outputV) && isList(outputV)) {
             // Merge the children
             _mergeInternal(outputV, v);
             v = outputV;
@@ -54,6 +51,8 @@ function _mergeInternal(output: List, list: List)
         // Set the merged value inside the output list
         setListValue(output, v, key);
     });
+    
+    return output;
 }
 
 /**
@@ -77,23 +76,5 @@ function _mergeInternal(output: List, list: List)
  */
 export function merge(...args): List
 {
-    // Check if there was enough input given
-    if (args.length < 2) {
-        throw new Error('There must be at least two lists to merge!');
-    }
-    
-    // Prepare the output
-    const type = getListType(args[0]);
-    if (type === ListType.NoList) {
-        throw new Error('Could not determine the output type of a given list!');
-    }
-    const output = getNewList(type);
-    
-    // Merge all given lists into the output
-    forEach(args, list => {
-        _mergeInternal(output, list)
-    });
-    
-    // Done
-    return output;
+    return reduce(args, _mergeInternal, getNewList(getListType(args[0] ?? {})));
 }

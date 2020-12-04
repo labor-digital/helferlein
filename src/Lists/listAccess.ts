@@ -20,6 +20,7 @@ import {List, ListType, ListTypeDefinition, ReadList} from '../Interfaces/List';
 import {isArray} from '../Types/isArray';
 import {isIterator} from '../Types/isIterator';
 import {isMap} from '../Types/isMap';
+import {isNullOrUndef} from '../Types/isNullOrUndef';
 import {isObject} from '../Types/isObject';
 import {isSet} from '../Types/isSet';
 import {forEach} from './forEach';
@@ -33,16 +34,18 @@ export {ListType};
  */
 export function getListType(element: any): ListType
 {
-    if (isArray(element)) {
-        return ListType.Array;
-    } else if (isSet(element)) {
-        return ListType.Set;
-    } else if (isMap(element)) {
-        return ListType.Map;
-    } else if (isIterator(element)) {
-        return ListType.Iterator;
-    } else if (isObject(element)) {
-        return ListType.Object;
+    if (!isNullOrUndef(element)) {
+        if (isArray(element)) {
+            return ListType.Array;
+        } else if (isSet(element)) {
+            return ListType.Set;
+        } else if (isMap(element)) {
+            return ListType.Map;
+        } else if (isIterator(element)) {
+            return ListType.Iterator;
+        } else if (isObject(element)) {
+            return ListType.Object;
+        }
     }
     return ListType.NoList;
 }
@@ -118,7 +121,7 @@ export function getListValue<V, K>(list: ReadList<V, K>, key: K): undefined | V
 export function setListValue<V, K>(list: List<V, K>, value: V, key?: K): void
 {
     const keyCheck = () => {
-        if (typeof key === 'undefined' || key === null) {
+        if (isNullOrUndef(key)) {
             throw new Error('The given list type requires a "key" value to be specified!');
         }
     };
@@ -204,6 +207,22 @@ export function getLastInList<V, K>(list: ReadList<V, K>, returnKey?: false | bo
 export function getLastInList<V, K>(list: ReadList<V, K>, returnKey?: boolean): any
 {
     return getNthInList(list, -1, returnKey);
+}
+
+/**
+ * Returns the length of the given list
+ * @param list
+ * @param returnKey
+ */
+export function getListSize<V, K>(list: ReadList<V, K>, returnKey?: boolean): number
+{
+    return listTypeSwitch(list, {
+        array: (v) => v.length,
+        set: (v) => v.size,
+        iterator: (v) => asArray(v).length,
+        map: (v) => v.size,
+        object: (v) => Object.keys(v).length
+    });
 }
 
 /**

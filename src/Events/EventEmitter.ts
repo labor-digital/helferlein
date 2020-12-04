@@ -22,7 +22,9 @@ import {filter} from '../Lists/filter';
 import {forEach} from '../Lists/forEach';
 import {sort} from '../Lists/sort';
 import {isArray} from '../Types/isArray';
+import {isFunction} from '../Types/isFunction';
 import {isNumber} from '../Types/isNumber';
+import {isObject} from '../Types/isObject';
 import {isPlainObject} from '../Types/isPlainObject';
 import {isString} from '../Types/isString';
 import {isUndefined} from '../Types/isUndefined';
@@ -86,37 +88,31 @@ export class EventEmitter
      */
     emit(event: string | Array<string>, args?: PlainObject): EventEmitter
     {
-        // Check if we got arguments
-        if (isUndefined(args) || !isPlainObject(args)) {
-            args = {};
-        }
+        args = args ?? {};
         
         // Check if we got an array of strings
         if (isArray(event)) {
-            forEach(event as Array<string>, e => this.emit(e, args));
-            return this;
-        }
-        
-        // Skip if we don't know this event
-        if (isUndefined(this.events[event as string])) {
+            forEach(event, e => this.emit(e, args));
             return this;
         }
         
         // Loop through the events
-        const e = new EventEmitterEvent(event, args);
-        forEach(this.events[event as string], definition => {
-            if (this.emitAsCallback) {
-                const result = (definition as any).listener(...asArray(e.args));
-                if (result === false) {
-                    e.stopPropagation();
+        if (!isUndefined(this.events[event])) {
+            const e = new EventEmitterEvent(event, args);
+            forEach(this.events[event], definition => {
+                if (this.emitAsCallback) {
+                    if ((definition as any).listener(...asArray(e.args)) === false) {
+                        e.stopPropagation();
+                    }
+                } else {
+                    definition.listener(e);
                 }
-            } else {
-                definition.listener(e);
-            }
-            if (e.isPropagationStopped) {
-                return false;
-            }
-        });
+                if (e.isPropagationStopped) {
+                    return false;
+                }
+            });
+        }
+        
         return this;
     }
     
@@ -143,14 +139,16 @@ export class EventEmitter
         // Check if we got an array of strings
         if (isArray(event)) {
             const promises = [];
-            forEach(event as Array<string>, e => {
+            
+            forEach(event, e => {
                 promises.push(this.emitHook(e, args));
             });
+            
             return Promise.all(promises);
         }
         
         // Skip if we don't know this event
-        if (isUndefined(this.events[event as string])) {
+        if (isUndefined(this.events[event])) {
             return Promise.resolve(args);
         }
         
@@ -187,8 +185,7 @@ export class EventEmitter
                 }
                 
                 // Check if the listener returned a promise
-                if (typeof result === 'object' && typeof result.then === 'function' && typeof result.catch ===
-                    'function') {
+                if (isObject(result) && isFunction(result.then) && isFunction(result.catch)) {
                     result.then(() => {
                         next(next);
                     }).catch(reject);
@@ -219,12 +216,15 @@ export class EventEmitter
         if (isUndefined(this.events[event])) {
             this.events[event] = [];
         }
+        
         this.events[event].push({
             listener, priority: isNumber(priority) ? priority : 0
         });
+        
         if (this.events[event].length > 1) {
             this.events[event] = sort(this.events[event], 'priority') as any;
         }
+        
         return this;
     }
     
@@ -238,12 +238,15 @@ export class EventEmitter
         if (isUndefined(this.events[event])) {
             return this;
         }
+        
         this.events[event] = filter(this.events[event], (v) => {
             return v.listener !== listener;
         });
+        
         if (this.events[event].length === 0) {
             this.events[event] = undefined;
         }
+        
         return this;
     }
     

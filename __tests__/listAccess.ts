@@ -20,6 +20,7 @@ import {
     getFirstInList,
     getLastInList,
     getListKeys,
+    getListSize,
     getListType,
     getListValue,
     getNewList,
@@ -154,6 +155,16 @@ test('getLastInList', () => {
     expect(getLastInList(fixtures.set(), true)).toEqual(3);
     expect(getLastInList(fixtures.map(), true)).toEqual('baz');
     expect(getLastInList(fixtures.iterator(), true)).toEqual(2);
+});
+
+// ========================================================
+// getListSize
+// ========================================================
+test('getListSize', () => {
+    expect(getListSize(fixtures.array())).toEqual(4);
+    expect(getListSize(fixtures.set())).toEqual(4);
+    expect(getListSize(fixtures.map())).toEqual(3);
+    expect(getListSize(fixtures.iterator())).toEqual(3);
 });
 
 // ========================================================

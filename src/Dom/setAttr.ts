@@ -46,7 +46,7 @@ function setAttrSetter(element: HTMLElement | Element, attributeName: string, va
  * @param value If null is given the attribute will be removed, otherwise the attribute will be set to this value
  */
 export function setAttr(
-    element: HTMLElement | NodeListOf<Element>,
+    element: HTMLElement | Element | NodeListOf<Element>,
     attributeName: string,
     value: string | number | boolean | null
 )
@@ -54,6 +54,7 @@ export function setAttr(
     if (!isObject(element)) {
         return;
     }
+    
     let valueString = null;
     if (isString(value)) {
         valueString = value as string;
@@ -64,6 +65,7 @@ export function setAttr(
     } else if (value !== null && !isUndefined(value)) {
         valueString = JSON.stringify(value);
     }
+    
     if (isUndefined((element as NodeListOf<Element>).length)) {
         setAttrSetter(element as HTMLElement, attributeName, valueString);
     } else {

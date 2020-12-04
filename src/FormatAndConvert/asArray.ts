@@ -18,6 +18,7 @@
 import {List} from '../Interfaces/List';
 import {forEach} from '../Lists/forEach';
 import {isList} from '../Lists/isList';
+import {isNullOrUndef} from '../Types/isNullOrUndef';
 
 /**
  * Converts a given object/map/set into an array
@@ -26,7 +27,7 @@ import {isList} from '../Lists/isList';
  */
 export function asArray(list: List): Array<any>
 {
-    if (list === null || typeof list === 'undefined') {
+    if (isNullOrUndef(list)) {
         return [];
     }
     

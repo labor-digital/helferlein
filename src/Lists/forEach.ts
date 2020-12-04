@@ -17,7 +17,10 @@
  */
 import {ReadList} from '../Interfaces/List';
 import {isArray} from '../Types/isArray';
+import {isFunction} from '../Types/isFunction';
 import {isIterator} from '../Types/isIterator';
+import {isNullOrUndef} from '../Types/isNullOrUndef';
+import {isObject} from '../Types/isObject';
 import {isSet} from '../Types/isSet';
 
 export interface ForEachCallback<V = any, K = any> extends Function
@@ -56,7 +59,7 @@ breaker.breaker = true;
  */
 export function forEach<V = any, K = any>(list: ReadList<V, K>, callback: ForEachCallback<V, K>): void
 {
-    if (list === null || typeof list === 'undefined') {
+    if (isNullOrUndef(list)) {
         return;
     }
     
@@ -64,15 +67,15 @@ export function forEach<V = any, K = any>(list: ReadList<V, K>, callback: ForEac
     
     // Fast lane for arrays
     if (isArray(list)) {
-        for (_k = 0; _k < (list as Array<V>).length; _k++) {
-            if (callback(list[_k], _k, list as Array<V>) === false) {
+        for (_k = 0; _k < (list).length; _k++) {
+            if (callback(list[_k], _k, list) === false) {
                 break;
             }
         }
         return;
     }
     
-    if (typeof list === 'object' || typeof list === 'function') {
+    if (isObject(list) || isFunction(list)) {
         
         // Handle for-each functions on sets and maps
         if (typeof (list as any).forEach === 'function') {
@@ -95,7 +98,7 @@ export function forEach<V = any, K = any>(list: ReadList<V, K>, callback: ForEac
         // Handle iterators
         if (isIterator(list)) {
             let it: Iterator<V> = (list as Iterable<V>)[Symbol.iterator]();
-            if (typeof it.next === 'function') {
+            if (isFunction(it.next)) {
                 for (let nextValue = it.next(); nextValue.done !== true; nextValue = it.next()) {
                     if (callback(nextValue.value, _k++ as any, list) === false) {
                         break;
@@ -106,26 +109,24 @@ export function forEach<V = any, K = any>(list: ReadList<V, K>, callback: ForEac
         }
         
         // Handle object iteration
-        if (typeof list.hasOwnProperty === 'function') {
+        if (isFunction(list.hasOwnProperty)) {
             for (_k in list) {
-                if (!list.hasOwnProperty(_k)) {
-                    continue;
-                }
-                
-                // Try to translate string keys
-                let kReal: string | number = _k;
-                if (typeof _k === 'string') {
-                    let kInt: number;
-                    let kFloat: number;
-                    if ((kInt = parseInt(_k)) + '' === _k) {
-                        kReal = kInt;
-                    } else if ((kFloat = parseFloat(_k)) + '' === _k) {
-                        kReal = kFloat;
+                if (list.hasOwnProperty(_k)) {
+                    // Try to translate string keys
+                    let kReal: string | number = _k;
+                    if (typeof _k === 'string') {
+                        let kInt: number;
+                        let kFloat: number;
+                        if ((kInt = parseInt(_k)) + '' === _k) {
+                            kReal = kInt;
+                        } else if ((kFloat = parseFloat(_k)) + '' === _k) {
+                            kReal = kFloat;
+                        }
                     }
-                }
-                
-                if (callback(list[_k], kReal as any, list) === false) {
-                    break;
+                    
+                    if (callback(list[_k], kReal as any, list) === false) {
+                        break;
+                    }
                 }
             }
             return;
