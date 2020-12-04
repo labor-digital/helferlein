@@ -62,7 +62,7 @@ test('Map Object', () => {
 });
 
 test('Map Set', () => {
-    let object = new Set();
+    let object = new Set<number>();
     object.add(1);
     object.add(2);
     object.add(3);

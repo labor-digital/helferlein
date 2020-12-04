@@ -17,6 +17,22 @@
  */
 import {PlainObject} from './PlainObject';
 
-export type List = Array<any> | Set<any> | Map<any, any> | PlainObject;
+export type List<V = any, K = any, T = Array<V> | Set<V> | Map<K, V> | PlainObject<V>> = T;
+export type ReadList<V = any, K = any, T = List<V, K> | Iterable<V>> = T;
 
 export type ListPath = string | number | Array<string | number | Array<any>>;
+
+export enum ListType
+{
+    Array = 'array', Set = 'set', Map = 'map', Object = 'object', NoList = 'noList', Iterator = 'iterator'
+}
+
+export interface ListTypeDefinition
+{
+    array: (v: Array<any>) => any
+    set: (v: Set<any>) => any
+    map: (v: Map<any, any>) => any
+    object: (v: Object) => any
+    iterator: (v: Iterator<any>) => any
+    noList?: () => any | never
+}

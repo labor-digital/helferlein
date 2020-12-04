@@ -15,10 +15,10 @@
  *
  * Last modified: 2019.01.09 at 12:59
  */
-import {List} from '../Interfaces/List';
+import {ReadList} from '../Interfaces/List';
 import {forEach} from './forEach';
 
-interface ReduceCallbackType
+interface ReduceCallback<V = any, K = number | string, R = any>
 {
     /**
      * Is called on every element of the iterated list
@@ -27,7 +27,7 @@ interface ReduceCallbackType
      * @param key The key of the current value
      * @param list The iterated list
      */
-    (current: any, value?: any, key?: string | number, list?: any): any
+    (current: any, value: V, key: K, list: ReadList<V, K>): R
 }
 
 /**
@@ -39,7 +39,7 @@ interface ReduceCallbackType
  * @param callback The reducer to use for the combination
  * @param initial The initial value
  */
-export function reduce(list: List, callback: ReduceCallbackType, initial?: any): any
+export function reduce<V, K, R = any>(list: ReadList<V, K>, callback: ReduceCallback<V, K, R>, initial?: R): R
 {
     let out = initial;
     forEach(list, (v, k, it) => {

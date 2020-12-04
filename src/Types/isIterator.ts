@@ -22,11 +22,8 @@
  */
 export function isIterator(value): boolean
 {
-    if (typeof value !== 'object' || value === null) {
-        return false;
-    }
-    if (typeof Symbol === 'undefined') {
-        return false;
-    }
-    return typeof value[Symbol.iterator] === "function";
+    return typeof Symbol !== 'undefined'
+           && typeof value === 'object'
+           && value !== null
+           && typeof value[Symbol.iterator] === 'function';
 }

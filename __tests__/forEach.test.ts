@@ -16,6 +16,7 @@
  * Last modified: 2019.01.09 at 13:42
  */
 
+import {PlainObject} from '../src/Interfaces/PlainObject';
 import {forEach} from '../src/Lists/forEach';
 
 test('forEach with array', () => {
@@ -39,7 +40,7 @@ test('forEach break with array', () => {
 });
 
 test('forEach with Map', () => {
-    let map = new Map();
+    let map = new Map<number, number>();
     map.set(0, 1);
     map.set(1, 2);
     map.set(2, 3);
@@ -54,7 +55,7 @@ test('forEach with Map', () => {
 });
 
 test('forEach break with Map', () => {
-    let map = new Map();
+    let map = new Map<number, number>();
     map.set(0, 1);
     map.set(1, 2);
     forEach(map, (v, k, o) => {
@@ -64,7 +65,7 @@ test('forEach break with Map', () => {
 });
 
 test('forEach with Set', () => {
-    let set = new Set();
+    let set = new Set<number>();
     set.add(1);
     set.add(2);
     set.add(3);
@@ -78,8 +79,24 @@ test('forEach with Set', () => {
     expect(c).toBe(3);
 });
 
+test('forEach with Iterator', () => {
+    let set = new Set<number>();
+    set.add(1);
+    set.add(2);
+    set.add(3);
+    let c = 0;
+    const it = set.values();
+    forEach(it, (v, k, o) => {
+        expect(v).toBe(c + 1);
+        expect(k).toBe(c);
+        expect(o).toBe(it);
+        c++;
+    });
+    expect(c).toBe(3);
+});
+
 test('forEach break with Set', () => {
-    let set = new Set();
+    let set = new Set<number>();
     set.add(1);
     set.add(2);
     forEach(set, (v, k, o) => {
@@ -89,7 +106,7 @@ test('forEach break with Set', () => {
 });
 
 test('forEach with Object literal', () => {
-    let map = {
+    let map: PlainObject<number> = {
         0: 1,
         1: 2,
         2: 3

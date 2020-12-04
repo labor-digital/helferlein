@@ -16,32 +16,41 @@
  * Last modified: 2019.01.09 at 14:51
  */
 
-import {List} from '../Interfaces/List';
-import {forEach, ForEachCallbackType} from './forEach';
-import {isList} from './isList';
+import {List, ReadList} from '../Interfaces/List';
+import {PlainObject} from '../Interfaces/PlainObject';
+import {forEach} from './forEach';
 import {getListType, getNewList, setListValue} from './listAccess';
+import {MapCallback} from './map';
 
-export interface FilterCallback extends ForEachCallbackType
+export interface FilterCallback<V = any, K = any>
 {
+    /**
+     * Is called for every element of the iterated object
+     * @param value The current value
+     * @param key The current key
+     * @param iteratedObject The iterated object
+     */
+    (value?: V, key?: K, iteratedObject?: ReadList<V, K>): boolean
 }
 
+export function filter<V, K = number>(list: Array<V>, callback: MapCallback<V, K>): V[]
+export function filter<V, K = number>(list: Set<V>, callback: MapCallback<V, K>): Set<V>
+export function filter<V, K = any>(list: Map<K, V>, callback: MapCallback<V, K>): Map<K, V>
+export function filter<V, K = string>(list: PlainObject<V>, callback: MapCallback<V, K>): PlainObject<V>
+export function filter<V, K = number>(list: Iterator<V>, callback: MapCallback<V, K>): V[]
+
 /**
- * Works exactly the same as Array.filter() but with any valid list object
+ * Works exactly the same as Array.filter() but for any valid list object
  * @param list
  * @param callback
  */
-export function filter(list: List, callback: FilterCallback): any
+export function filter<V, K>(list: ReadList<V, K>, callback: FilterCallback<V, K>): List<V, K>
 {
-    if (!isList(list)) {
-        throw new Error('Could not determine the output type of a given element!');
-    }
-    
-    const output = getNewList(getListType(list));
+    const output = getNewList<V, K>(getListType(list));
     forEach(list, (v, k) => {
         if (callback(v, k, list) !== false) {
             setListValue(output, v, k);
         }
     });
-    
     return output;
 }

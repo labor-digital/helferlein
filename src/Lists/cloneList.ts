@@ -51,7 +51,7 @@ export interface CloneListOptionsInterface
  * @param options Additional options for the internal clone package
  * @see https://github.com/pvorb/clone
  */
-export function cloneList(list: List, options?: CloneListOptionsInterface): List
+export function cloneList<T = List>(list: T, options?: CloneListOptionsInterface): T
 {
     return clone(list, options);
 }

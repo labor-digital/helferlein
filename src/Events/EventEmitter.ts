@@ -106,7 +106,7 @@ export class EventEmitter
         const e = new EventEmitterEvent(event, args);
         forEach(this.events[event as string], definition => {
             if (this.emitAsCallback) {
-                const result = definition.listener(...asArray(e.args));
+                const result = (definition as any).listener(...asArray(e.args));
                 if (result === false) {
                     e.stopPropagation();
                 }

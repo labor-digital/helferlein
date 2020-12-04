@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.02.01 at 18:58
  */
-import {List, ListPath} from '../Interfaces/List';
+import {List, ListPath, ReadList} from '../Interfaces/List';
 import {isNull} from '../Types/isNull';
 import {isUndefined} from '../Types/isUndefined';
 import {forEach} from './forEach';
@@ -30,7 +30,7 @@ import {getPath} from './Paths/getPath';
  * @param by The property of the child objects to sort by
  * @param desc If set to true the result will be sorted descending instead of the default which is ascending
  */
-export function sort(list: List, by?: ListPath | null, desc?: boolean): List
+export function sort<V, K>(list: ReadList<V, K>, by?: ListPath | null, desc?: boolean): List<V, K>
 {
     // Build the sorter
     let sorter = [];
@@ -48,7 +48,7 @@ export function sort(list: List, by?: ListPath | null, desc?: boolean): List
             ((a.by < b.by) ? -1 : ((a.by > b.by) ? 1 : 0)));
     
     // Build result
-    const result = getNewList(getListType(list));
+    const result = getNewList<V, K>(getListType(list));
     forEach(sorter, (o) => setListValue(result, o.v, o.k));
     return result;
 }

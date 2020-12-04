@@ -15,32 +15,27 @@
  *
  * Last modified: 2019.01.10 at 10:02
  */
-import {List} from '../Interfaces/List';
+import {ReadList} from '../Interfaces/List';
 import {isArray} from '../Types/isArray';
 import {isIterator} from '../Types/isIterator';
 import {isSet} from '../Types/isSet';
 
-export interface ForEachCallbackType extends Function
+export interface ForEachCallback<V = any, K = any> extends Function
 {
     /**
      * Is called for every element of the iterated object
-     * @param $value The current value as a jquery object
      * @param value The current value
      * @param key The current key
      * @param iteratedObject The iterated object
      */
-    ($value?: any, key?, value?, iteratedObject?): boolean | any
+    (value?: V, key?: K, iteratedObject?: ReadList<V, K>): boolean | any
 }
 
-export interface ForEachCallbackType extends Function
+/**
+ * @deprecated use ForEachCallback instead
+ */
+export interface ForEachCallbackType<V = any, K = any> extends ForEachCallback<V, K>
 {
-    /**
-     * Is called for every element of the iterated object
-     * @param value The current value
-     * @param key The current key
-     * @param iteratedObject The iterated object
-     */
-    (value?: any, key?: string | number, iteratedObject?): boolean | any
 }
 
 interface BreakErrorType
@@ -54,86 +49,88 @@ breaker.breaker = true;
 /**
  * Loops over arrays or objects and applies a given callback
  *
- * Will work with Arrays, Objects, Map, Set and jQuery objects.
- * If jQuery is used the callback params are: ($jQueryValue, key, value, iteratedObject)
+ * Will work with Arrays, Objects, Map, Set and interators
  *
- * @param object The array or object to iterate
+ * @param list The array or object to iterate
  * @param callback The callback to apply. Params are: (value, key, iteratedObject)
  */
-export function forEach(object: List, callback: ForEachCallbackType): void
+export function forEach<V = any, K = any>(list: ReadList<V, K>, callback: ForEachCallback<V, K>): void
 {
-    if (object === null || typeof object === 'undefined') {
+    if (list === null || typeof list === 'undefined') {
         return;
     }
     
+    let _k: any = 0;
+    
     // Fast lane for arrays
-    if (isArray(object)) {
-        for (let i = 0; i < (object as Array<any>).length; i++) {
-            if (callback(object[i], i, object) === false) {
+    if (isArray(list)) {
+        for (_k = 0; _k < (list as Array<V>).length; _k++) {
+            if (callback(list[_k], _k, list as Array<V>) === false) {
                 break;
             }
         }
         return;
     }
     
-    // Handle for-each functions on sets and maps
-    if (typeof object.forEach === 'function') {
-        const objectIsSet = isSet(object);
-        try {
-            let c = 0;
-            object.forEach((v, k) => {
-                if (callback(v, objectIsSet ? c : k, object) === false) {
-                    throw breaker;
-                }
-                ++c;
-            });
-        } catch (e) {
-            if (e.breaker === true) {
-                return;
-            }
-            throw e;
-        }
-        return;
-    } else if (typeof object === 'object' || typeof object === 'function') {
-        // Handle iterators
-        if (isIterator(object)) {
-            let it: Iterator<any> = object as any;
-            
-            // Check if the iterator has the next() method -> IE fix
-            if (typeof object[Symbol.iterator].next !== 'function' && typeof object[Symbol.iterator] === 'function') {
-                it = object[Symbol.iterator]();
-            }
-            let k = 0;
-            for (let nextValue = it.next(); nextValue.done !== true; nextValue = it.next()) {
-                if (callback(nextValue.value, k++, object) === false) {
-                    break;
+    if (typeof list === 'object' || typeof list === 'function') {
+        
+        // Handle for-each functions on sets and maps
+        if (typeof (list as any).forEach === 'function') {
+            const objectIsSet = isSet(list);
+            try {
+                (list as any).forEach((v: V, k: K) => {
+                    if (callback(v, objectIsSet ? _k : k, list) === false) {
+                        throw breaker;
+                    }
+                    ++_k;
+                });
+            } catch (e) {
+                if (e.breaker !== true) {
+                    throw e;
                 }
             }
-            
-            // Done
             return;
         }
         
-        // Handle default iteration
-        for (let k in object) {
-            if (typeof object.hasOwnProperty !== 'function') {
-                continue;
+        // Handle iterators
+        if (isIterator(list)) {
+            let it: Iterator<V> = (list as Iterable<V>)[Symbol.iterator]();
+            if (typeof it.next === 'function') {
+                for (let nextValue = it.next(); nextValue.done !== true; nextValue = it.next()) {
+                    if (callback(nextValue.value, _k++ as any, list) === false) {
+                        break;
+                    }
+                }
             }
-            if (!object.hasOwnProperty(k)) {
-                continue;
-            }
-            let kReal: string | number = k;
-            if (parseInt(k) + '' === k) {
-                kReal = parseInt(k);
-            } else if (parseFloat(k) + "" === k) {
-                kReal = parseFloat(k);
-            }
-            if (callback(object[k], kReal, object) === false) {
-                break;
-            }
+            return;
         }
-        return;
+        
+        // Handle object iteration
+        if (typeof list.hasOwnProperty === 'function') {
+            for (_k in list) {
+                if (!list.hasOwnProperty(_k)) {
+                    continue;
+                }
+                
+                // Try to translate string keys
+                let kReal: string | number = _k;
+                if (typeof _k === 'string') {
+                    let kInt: number;
+                    let kFloat: number;
+                    if ((kInt = parseInt(_k)) + '' === _k) {
+                        kReal = kInt;
+                    } else if ((kFloat = parseFloat(_k)) + '' === _k) {
+                        kReal = kFloat;
+                    }
+                }
+                
+                if (callback(list[_k], kReal as any, list) === false) {
+                    break;
+                }
+            }
+            return;
+        }
     }
     
-    throw Error("Could not iterate given object!");
+    throw Error('Could not iterate given object!');
 }

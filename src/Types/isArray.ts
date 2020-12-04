@@ -27,6 +27,7 @@ export function isArray(value): boolean
     if (hasBuiltInArrayDetection) {
         return Array.isArray(value);
     }
+    
     // Use fallback
     return value !== null && typeof value !== 'undefined' &&
            typeof value.constructor !== 'undefined' && value.constructor === Array;

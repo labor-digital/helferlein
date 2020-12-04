@@ -15,33 +15,36 @@
  *
  * Last modified: 2019.01.09 at 12:58
  */
-import {List} from '../Interfaces/List';
+import {List, ReadList} from '../Interfaces/List';
+import {PlainObject} from '../Interfaces/PlainObject';
 import {forEach} from './forEach';
-import {getListType, getNewList, ListType, setListValue} from './listAccess';
+import {getListType, getNewList, setListValue} from './listAccess';
 
-interface MapCallbackType
+export interface MapCallback<V = any, K = number | string, R = any>
 {
     /**
-     * Called on every property of the iterade object
-     * @param value
-     * @param key
-     * @param iteratedObject
+     * Is called for every element of the iterated object
+     * @param value The current value
+     * @param key The current key
+     * @param iteratedObject The iterated object
      */
-    (value?, key?: string | number, iteratedObject?): any
+    (value?: V, key?: K, iteratedObject?: ReadList<V, K>): R
 }
 
+export function map<R, V = any, K = number>(list: Array<V>, callback: MapCallback<V, K, R>): R[]
+export function map<R, V = any, K = number>(list: Set<V>, callback: MapCallback<V, K, R>): Set<R>
+export function map<R, V = any, K = any>(list: Map<K, V>, callback: MapCallback<V, K, R>): Map<K, R>
+export function map<R, V = any, K = string>(list: PlainObject<V>, callback: MapCallback<V, K, R>): PlainObject<R>
+export function map<R, V = any, K = number>(list: Iterator<V>, callback: MapCallback<V, K, R>): R[]
+
 /**
- * Works like Array.map() but also for objects
+ * Works like Array.map() but for any valid list object
  * @param list The array or object to iterate
  * @param callback The callback to apply. Params are: (value, key)
  */
-export function map(list: List, callback: MapCallbackType): any
+export function map<V, K, R>(list: ReadList<V, K>, callback: MapCallback<V, K, R>): List<R, K>
 {
-    const outputType = getListType(list);
-    if (outputType === ListType.NoList) {
-        throw new Error('Could not determine the output type of a given element!');
-    }
-    const output = getNewList(outputType);
+    const output = getNewList<R, K>(getListType(list));
     forEach(list, (v, k) => {
         setListValue(output, callback(v, k, list), k);
     });
