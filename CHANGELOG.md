@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.32.0](https://github.com/labor-digital/helferlein/compare/v3.31.5...v3.32.0) (2020-12-04)
+
+
+### Features
+
+* general code optimization ([5ed798a](https://github.com/labor-digital/helferlein/commit/5ed798ae46c118ffbe7c543a2c68985c26eb395d))
+* implement type helpers as typescript type-guards ([683d48d](https://github.com/labor-digital/helferlein/commit/683d48db0fb53e30b1cbcabd81a74438589583c3))
+* improve list access + new tests ([fd1a29f](https://github.com/labor-digital/helferlein/commit/fd1a29f703a9af38eeadf4e4f98ec400a3d8d443))
+
+
+### Bug Fixes
+
+* **UrlHash:** ignore type incompatibility in forEach ([01f952b](https://github.com/labor-digital/helferlein/commit/01f952b021e50c4725e1b159d21cd3413b1895c7))
+
 ### [3.31.5](https://github.com/labor-digital/helferlein/compare/v3.31.4...v3.31.5) (2020-12-02)
 
 
