@@ -74,7 +74,8 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_lists_foreach_.breakerrortype.html" class="tsd-kind-icon">Break<wbr>Error<wbr>Type</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_lists_foreach_.foreachcallbacktype.html" class="tsd-kind-icon">For<wbr>Each<wbr>Callback<wbr>Type</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter"><a href="../interfaces/_lists_foreach_.foreachcallback.html" class="tsd-kind-icon">For<wbr>Each<wbr>Callback</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter"><a href="../interfaces/_lists_foreach_.foreachcallbacktype.html" class="tsd-kind-icon">For<wbr>Each<wbr>Callback<wbr>Type</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
@@ -86,7 +87,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lists_foreach_.html#foreach" class="tsd-kind-icon">for<wbr>Each</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lists_foreach_.html#foreach" class="tsd-kind-icon">for<wbr>Each</a></li>
 							</ul>
 						</section>
 					</div>
@@ -100,43 +101,51 @@
 					<div class="tsd-signature tsd-kind-icon">breaker<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lists_foreach_.breakerrortype.html" class="tsd-signature-type">BreakErrorType</a><span class="tsd-signature-symbol"> = new Error() as BreakErrorType</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9eac9bb/src/Lists/forEach.ts#L51">src/Lists/forEach.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/forEach.ts#L49">src/Lists/forEach.ts:49</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 					<a name="foreach" class="tsd-anchor"></a>
 					<h3>for<wbr>Each</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">for<wbr>Each<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a>, callback<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lists_foreach_.foreachcallbacktype.html" class="tsd-signature-type">ForEachCallbackType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">for<wbr>Each&lt;V, K&gt;<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span>, callback<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lists_foreach_.foreachcallback.html" class="tsd-signature-type">ForEachCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9eac9bb/src/Lists/forEach.ts#L63">src/Lists/forEach.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/forEach.ts#L60">src/Lists/forEach.ts:60</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Loops over arrays or objects and applies a given callback</p>
 								</div>
-								<p>Will work with Arrays, Objects, Map, Set and jQuery objects.
-								If jQuery is used the callback params are: ($jQueryValue, key, value, iteratedObject)</p>
+								<p>Will work with Arrays, Objects, Map, Set and interators</p>
 							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V = <span class="tsd-signature-type">any</span></h4>
+								</li>
+								<li>
+									<h4>K = <span class="tsd-signature-type">any</span></h4>
+								</li>
+							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>object: <a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a></h5>
+									<h5>list: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The array or object to iterate</p>
 									</div>
 								</li>
 								<li>
-									<h5>callback: <a href="../interfaces/_lists_foreach_.foreachcallbacktype.html" class="tsd-signature-type">ForEachCallbackType</a></h5>
+									<h5>callback: <a href="../interfaces/_lists_foreach_.foreachcallback.html" class="tsd-signature-type">ForEachCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The callback to apply. Params are: (value, key, iteratedObject)</p>
 									</div>
@@ -164,13 +173,16 @@
 					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
 						<a href="../interfaces/_lists_foreach_.breakerrortype.html" class="tsd-kind-icon">Break<wbr>Error<wbr>Type</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="../interfaces/_lists_foreach_.foreachcallback.html" class="tsd-kind-icon">For<wbr>Each<wbr>Callback</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="../interfaces/_lists_foreach_.foreachcallbacktype.html" class="tsd-kind-icon">For<wbr>Each<wbr>Callback<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_lists_foreach_.html#breaker" class="tsd-kind-icon">breaker</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_lists_foreach_.html#foreach" class="tsd-kind-icon">for<wbr>Each</a>
 					</li>
 				</ul>
@@ -187,7 +199,9 @@
 				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>

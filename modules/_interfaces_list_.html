@@ -71,10 +71,23 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Enumerations</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-enum tsd-parent-kind-module"><a href="../enums/_interfaces_list_.listtype.html" class="tsd-kind-icon">List<wbr>Type</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_interfaces_list_.listtypedefinition.html" class="tsd-kind-icon">List<wbr>Type<wbr>Definition</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_interfaces_list_.html#list" class="tsd-kind-icon">List</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="_interfaces_list_.html#list" class="tsd-kind-icon">List</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_interfaces_list_.html#listpath" class="tsd-kind-icon">List<wbr>Path</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="_interfaces_list_.html#readlist" class="tsd-kind-icon">Read<wbr>List</a></li>
 							</ul>
 						</section>
 					</div>
@@ -82,15 +95,27 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
 					<a name="list" class="tsd-anchor"></a>
 					<h3>List</h3>
-					<div class="tsd-signature tsd-kind-icon">List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_plainobject_.plainobject.html" class="tsd-signature-type">PlainObject</a></div>
+					<div class="tsd-signature tsd-kind-icon">List&lt;V, K, T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9eac9bb/src/Interfaces/List.ts#L20">src/Interfaces/List.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Interfaces/List.ts#L20">src/Interfaces/List.ts:20</a></li>
 						</ul>
 					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>V = <span class="tsd-signature-type">any</span></h4>
+						</li>
+						<li>
+							<h4>K = <span class="tsd-signature-type">any</span></h4>
+						</li>
+						<li>
+							<h4>T = <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PlainObject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="listpath" class="tsd-anchor"></a>
@@ -98,9 +123,31 @@
 					<div class="tsd-signature tsd-kind-icon">List<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9eac9bb/src/Interfaces/List.ts#L22">src/Interfaces/List.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Interfaces/List.ts#L23">src/Interfaces/List.ts:23</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="readlist" class="tsd-anchor"></a>
+					<h3>Read<wbr>List</h3>
+					<div class="tsd-signature tsd-kind-icon">Read<wbr>List&lt;V, K, T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Interfaces/List.ts#L21">src/Interfaces/List.ts:21</a></li>
+						</ul>
+					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>V = <span class="tsd-signature-type">any</span></h4>
+						</li>
+						<li>
+							<h4>K = <span class="tsd-signature-type">any</span></h4>
+						</li>
+						<li>
+							<h4>T = <span class="tsd-signature-type">List</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -117,11 +164,20 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+					<li class=" tsd-kind-enum tsd-parent-kind-module">
+						<a href="../enums/_interfaces_list_.listtype.html" class="tsd-kind-icon">List<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_interfaces_list_.listtypedefinition.html" class="tsd-kind-icon">List<wbr>Type<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_interfaces_list_.html#list" class="tsd-kind-icon">List</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="_interfaces_list_.html#listpath" class="tsd-kind-icon">List<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="_interfaces_list_.html#readlist" class="tsd-kind-icon">Read<wbr>List</a>
 					</li>
 				</ul>
 			</nav>
@@ -137,7 +193,9 @@
 				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>

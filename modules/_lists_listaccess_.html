@@ -71,19 +71,19 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Enumerations</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum tsd-parent-kind-module"><a href="../enums/_lists_listaccess_.listtype.html" class="tsd-kind-icon">List<wbr>Type</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lists_listaccess_.html#getlistkeys" class="tsd-kind-icon">get<wbr>List<wbr>Keys</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lists_listaccess_.html#getfirstinlist" class="tsd-kind-icon">get<wbr>First<wbr>InList</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lists_listaccess_.html#getlastinlist" class="tsd-kind-icon">get<wbr>Last<wbr>InList</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lists_listaccess_.html#getlistkeys" class="tsd-kind-icon">get<wbr>List<wbr>Keys</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lists_listaccess_.html#getlistsize" class="tsd-kind-icon">get<wbr>List<wbr>Size</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lists_listaccess_.html#getlisttype" class="tsd-kind-icon">get<wbr>List<wbr>Type</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lists_listaccess_.html#getlistvalue" class="tsd-kind-icon">get<wbr>List<wbr>Value</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lists_listaccess_.html#getnewlist" class="tsd-kind-icon">get<wbr>New<wbr>List</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_lists_listaccess_.html#setlistvalue" class="tsd-kind-icon">set<wbr>List<wbr>Value</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lists_listaccess_.html#getlistvalue" class="tsd-kind-icon">get<wbr>List<wbr>Value</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lists_listaccess_.html#getnewlist" class="tsd-kind-icon">get<wbr>New<wbr>List</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lists_listaccess_.html#getnthinlist" class="tsd-kind-icon">get<wbr>Nth<wbr>InList</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lists_listaccess_.html#listintersect" class="tsd-kind-icon">list<wbr>Intersect</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lists_listaccess_.html#listtypeswitch" class="tsd-kind-icon">list<wbr>Type<wbr>Switch</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_lists_listaccess_.html#setlistvalue" class="tsd-kind-icon">set<wbr>List<wbr>Value</a></li>
 							</ul>
 						</section>
 					</div>
@@ -91,17 +91,181 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="getlistkeys" class="tsd-anchor"></a>
-					<h3>get<wbr>List<wbr>Keys</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>List<wbr>Keys<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="getfirstinlist" class="tsd-anchor"></a>
+					<h3>get<wbr>First<wbr>InList</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>First<wbr>InList&lt;V, K&gt;<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span>, returnKey<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>First<wbr>InList&lt;V, K&gt;<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span>, returnKey<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9eac9bb/src/Lists/listAccess.ts#L143">src/Lists/listAccess.ts:143</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L184">src/Lists/listAccess.ts:184</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the first element in a list</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V</h4>
+								</li>
+								<li>
+									<h4>K</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>list: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The list to extact the element from</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> returnKey: <span class="tsd-signature-type">true</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>True to return the key instead of the value</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L185">src/Lists/listAccess.ts:185</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the first element in a list</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V</h4>
+								</li>
+								<li>
+									<h4>K</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>list: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> returnKey: <span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">V</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="getlastinlist" class="tsd-anchor"></a>
+					<h3>get<wbr>Last<wbr>InList</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Last<wbr>InList&lt;V, K&gt;<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span>, returnKey<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Last<wbr>InList&lt;V, K&gt;<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span>, returnKey<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L198">src/Lists/listAccess.ts:198</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the last element in a list</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V</h4>
+								</li>
+								<li>
+									<h4>K</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>list: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The list to extact the element from</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> returnKey: <span class="tsd-signature-type">true</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>True to return the key instead of the value</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L199">src/Lists/listAccess.ts:199</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the last element in a list</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V</h4>
+								</li>
+								<li>
+									<h4>K</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>list: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> returnKey: <span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">V</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="getlistkeys" class="tsd-anchor"></a>
+					<h3>get<wbr>List<wbr>Keys</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>List<wbr>Keys&lt;K&gt;<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L149">src/Lists/listAccess.ts:149</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -109,15 +273,63 @@
 									<p>Returns the list of all keys of the given list element</p>
 								</div>
 							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>K</h4>
+								</li>
+							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>list: <a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a></h5>
+									<h5>list: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="getlistsize" class="tsd-anchor"></a>
+					<h3>get<wbr>List<wbr>Size</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>List<wbr>Size&lt;V, K&gt;<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span>, returnKey<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L217">src/Lists/listAccess.ts:217</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the length of the given list</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V</h4>
+								</li>
+								<li>
+									<h4>K</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>list: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> returnKey: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -125,13 +337,13 @@
 					<a name="getlisttype" class="tsd-anchor"></a>
 					<h3>get<wbr>List<wbr>Type</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>List<wbr>Type<span class="tsd-signature-symbol">(</span>element<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/_lists_listaccess_.listtype.html" class="tsd-signature-type">ListType</a></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>List<wbr>Type<span class="tsd-signature-symbol">(</span>element<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/_interfaces_list_.listtype.html" class="tsd-signature-type">ListType</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9eac9bb/src/Lists/listAccess.ts#L36">src/Lists/listAccess.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L35">src/Lists/listAccess.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -147,21 +359,21 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../enums/_lists_listaccess_.listtype.html" class="tsd-signature-type">ListType</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../enums/_interfaces_list_.listtype.html" class="tsd-signature-type">ListType</a></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 					<a name="getlistvalue" class="tsd-anchor"></a>
 					<h3>get<wbr>List<wbr>Value</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>List<wbr>Value<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span></li>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>List<wbr>Value&lt;V, K&gt;<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">V</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9eac9bb/src/Lists/listAccess.ts#L81">src/Lists/listAccess.ts:81</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L91">src/Lists/listAccess.ts:91</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -169,32 +381,41 @@
 									<p>Returns the value of a given list at a given key</p>
 								</div>
 							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V</h4>
+								</li>
+								<li>
+									<h4>K</h4>
+								</li>
+							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>list: <a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a></h5>
+									<h5>list: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
-									<h5>key: <span class="tsd-signature-type">any</span></h5>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">V</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 					<a name="getnewlist" class="tsd-anchor"></a>
 					<h3>get<wbr>New<wbr>List</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>New<wbr>List<span class="tsd-signature-symbol">(</span>type<span class="tsd-signature-symbol">: </span><a href="../enums/_lists_listaccess_.listtype.html" class="tsd-signature-type">ListType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a></li>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>New<wbr>List&lt;V, K&gt;<span class="tsd-signature-symbol">(</span>type<span class="tsd-signature-symbol">: </span><a href="../enums/_interfaces_list_.listtype.html" class="tsd-signature-type">ListType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9eac9bb/src/Lists/listAccess.ts#L56">src/Lists/listAccess.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L75">src/Lists/listAccess.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -202,29 +423,224 @@
 									<p>Returns a new list object based on the given list type</p>
 								</div>
 							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V</h4>
+								</li>
+								<li>
+									<h4>K</h4>
+								</li>
+							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>type: <a href="../enums/_lists_listaccess_.listtype.html" class="tsd-signature-type">ListType</a></h5>
+									<h5>type: <a href="../enums/_interfaces_list_.listtype.html" class="tsd-signature-type">ListType</a></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="setlistvalue" class="tsd-anchor"></a>
-					<h3>set<wbr>List<wbr>Value</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>List<wbr>Value<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, key<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="getnthinlist" class="tsd-anchor"></a>
+					<h3>get<wbr>Nth<wbr>InList</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Nth<wbr>InList&lt;V, K&gt;<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, returnKey<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Nth<wbr>InList&lt;V, K&gt;<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, returnKey<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/9eac9bb/src/Lists/listAccess.ts#L117">src/Lists/listAccess.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L160">src/Lists/listAccess.ts:160</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the nth element in a given list</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V</h4>
+								</li>
+								<li>
+									<h4>K</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>list: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The list to extact the element from</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>index: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The numeric index to extract from the list</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> returnKey: <span class="tsd-signature-type">true</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>True to return the key instead of the value</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">K</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L161">src/Lists/listAccess.ts:161</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the nth element in a given list</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V</h4>
+								</li>
+								<li>
+									<h4>K</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>list: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>index: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> returnKey: <span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">V</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="listintersect" class="tsd-anchor"></a>
+					<h3>list<wbr>Intersect</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Intersect&lt;V1, K1, V2, K2&gt;<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span>, b<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L233">src/Lists/listAccess.ts:233</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the intersection of two lists</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V1 = <span class="tsd-signature-type">any</span></h4>
+								</li>
+								<li>
+									<h4>K1 = <span class="tsd-signature-type">any</span></h4>
+								</li>
+								<li>
+									<h4>V2 = <span class="tsd-signature-type">any</span></h4>
+								</li>
+								<li>
+									<h4>K2 = <span class="tsd-signature-type">any</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>a: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>b: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">V2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="listtypeswitch" class="tsd-anchor"></a>
+					<h3>list<wbr>Type<wbr>Switch</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Type<wbr>Switch&lt;V, K&gt;<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span>, definition<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_list_.listtypedefinition.html" class="tsd-signature-type">ListTypeDefinition</a>, type<span class="tsd-signature-symbol">?: </span><a href="../enums/_interfaces_list_.listtype.html" class="tsd-signature-type">ListType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L59">src/Lists/listAccess.ts:59</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Helper to call different actions based on the given list type</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V</h4>
+								</li>
+								<li>
+									<h4>K</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>list: <a href="_interfaces_list_.html#readlist" class="tsd-signature-type">ReadList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>definition: <a href="../interfaces/_interfaces_list_.listtypedefinition.html" class="tsd-signature-type">ListTypeDefinition</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> type: <a href="../enums/_interfaces_list_.listtype.html" class="tsd-signature-type">ListType</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="setlistvalue" class="tsd-anchor"></a>
+					<h3>set<wbr>List<wbr>Value</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>List<wbr>Value&lt;V, K&gt;<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span>, key<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/01f952b/src/Lists/listAccess.ts#L121">src/Lists/listAccess.ts:121</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -232,18 +648,27 @@
 									<p>Sets a value for a given key in the given list.</p>
 								</div>
 							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V</h4>
+								</li>
+								<li>
+									<h4>K</h4>
+								</li>
+							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>list: <a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a></h5>
+									<h5>list: <a href="_interfaces_list_.html#list" class="tsd-signature-type">List</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
-									<h5>value: <span class="tsd-signature-type">any</span></h5>
+									<h5>value: <span class="tsd-signature-type">V</span></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> key: <span class="tsd-signature-type">any</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> key: <span class="tsd-signature-type">K</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -265,22 +690,37 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="../enums/_lists_listaccess_.listtype.html" class="tsd-kind-icon">List<wbr>Type</a>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="_lists_listaccess_.html#getfirstinlist" class="tsd-kind-icon">get<wbr>First<wbr>InList</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="_lists_listaccess_.html#getlastinlist" class="tsd-kind-icon">get<wbr>Last<wbr>InList</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_lists_listaccess_.html#getlistkeys" class="tsd-kind-icon">get<wbr>List<wbr>Keys</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="_lists_listaccess_.html#getlistsize" class="tsd-kind-icon">get<wbr>List<wbr>Size</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_lists_listaccess_.html#getlisttype" class="tsd-kind-icon">get<wbr>List<wbr>Type</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_lists_listaccess_.html#getlistvalue" class="tsd-kind-icon">get<wbr>List<wbr>Value</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_lists_listaccess_.html#getnewlist" class="tsd-kind-icon">get<wbr>New<wbr>List</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="_lists_listaccess_.html#getnthinlist" class="tsd-kind-icon">get<wbr>Nth<wbr>InList</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="_lists_listaccess_.html#listintersect" class="tsd-kind-icon">list<wbr>Intersect</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="_lists_listaccess_.html#listtypeswitch" class="tsd-kind-icon">list<wbr>Type<wbr>Switch</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_lists_listaccess_.html#setlistvalue" class="tsd-kind-icon">set<wbr>List<wbr>Value</a>
 					</li>
 				</ul>
@@ -297,7 +737,9 @@
 				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
