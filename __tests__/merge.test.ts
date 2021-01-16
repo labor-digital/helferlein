@@ -29,6 +29,12 @@ test('Recursive array merge', () => {
     expect(merge([1, [2, 3]], [6, [4, 5], 7])).toEqual([1, [2, 3], 6, [4, 5], 7]);
 });
 
+test('Merge with null override', () => {
+    expect(merge({foo: {bar: [123, 234]}}, {foo: {bar: null}})).toEqual({foo: {bar: null}});
+    expect(merge({foo: {bar: [123, 234]}}, {foo: null})).toEqual({foo: null});
+    expect(merge({foo: {bar: [123, 234]}}, {foo: {bar: [null]}})).toEqual({foo: {bar: [123, 234, null]}});
+});
+
 test('Simple object merge', () => {
     expect(merge({
         a: 1,

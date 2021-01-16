@@ -42,10 +42,9 @@ function _mergeInternal(output: List, list: List): List
     forEach(list, (v, key) => {
         // Check if we can merge both values
         const outputV = getListValue(output, key);
-        if (isList(outputV) && isList(outputV)) {
+        if (isList(outputV) && isList(v)) {
             // Merge the children
-            _mergeInternal(outputV, v);
-            v = outputV;
+            v = _mergeInternal(outputV, v);
         }
         
         // Set the merged value inside the output list
