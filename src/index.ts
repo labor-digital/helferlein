@@ -120,6 +120,7 @@ export * from './Strings/getLongestCommonPrefix';
 export * from './Strings/getLongestCommonSuffix';
 export * from './Strings/getSimilarity';
 export * from './Strings/htmlEncode';
+export * from './Strings/htmlDecode';
 export * from './Strings/lcFirst';
 export * from './Strings/maxLength';
 export * from './Strings/sanitizeString';
