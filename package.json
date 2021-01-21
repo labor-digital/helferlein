@@ -10,7 +10,7 @@
 		"build": "node flushLib.js && tsc && tsc --project ./tsconfig.cjs.json && tsc --project ./tsconfig.esm.json",
 		"watch": "node flushLib.js && tsc --watch",
 		"test": "jest",
-		"doc": "typedoc --out doc --tsconfig ./tsconfig.json src --module commonjs && echo helferlein.labor.tools >> doc/CNAME && touch doc/.nojekyll"
+		"doc": "typedoc --out doc --tsconfig ./tsconfig.json src && echo helferlein.labor.tools >> doc/CNAME && touch doc/.nojekyll"
 	},
 	"main": "dist/cjs/index.js",
 	"module": "dist/esm/index.js",
