@@ -1,0 +1,995 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ComponentProxy | @labor-digital/helferlein</title>
+	<meta name="description" content="Documentation for @labor-digital/helferlein">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">@labor-digital/helferlein</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">@labor-digital/helferlein</a>
+				</li>
+				<li>
+					<a href="../modules/entities_componentproxy.html">Entities/ComponentProxy</a>
+				</li>
+				<li>
+					<a href="entities_componentproxy.componentproxy.html">ComponentProxy</a>
+				</li>
+			</ul>
+			<h1>Class ComponentProxy</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This class is mend to be used inside of js components.
+							The promise is simple: Sometimes your component needs outside connections to the dom, other libraries, hooks into a promise chain,
+							registers a callback or something else. But what&#39;s if your component gets destroyed? You have to unbind all event listeners, decouple
+						all callbacks, cancel all timeouts and intervals. If you forget one? The instance will stay in the memory for the rest of the page&#39;s livecycle.</p>
+					</div>
+					<p>To make the handling in that case a lot easier you can use this proxy class.
+						Create it inside your component, supply it the component&#39;s instance as &quot;this&quot; context and register events, timeouts and intervals
+						using the proxy. When your component reaches the end of it&#39;s lifecycle call the proxy.destroy() method and the proxy will
+					do all the unbinding for you, cleaning up all the junk you might forget at some point.</p>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">ComponentProxy</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="entities_componentproxy.componentproxy.html#events" class="tsd-kind-icon">events</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="entities_componentproxy.componentproxy.html#intervals" class="tsd-kind-icon">intervals</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="entities_componentproxy.componentproxy.html#lives" class="tsd-kind-icon">lives</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="entities_componentproxy.componentproxy.html#mutationemitter" class="tsd-kind-icon">mutation<wbr>Emitter</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="entities_componentproxy.componentproxy.html#mutationobservers" class="tsd-kind-icon">mutation<wbr>Observers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="entities_componentproxy.componentproxy.html#thiscontext" class="tsd-kind-icon">this<wbr>Context</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="entities_componentproxy.componentproxy.html#timeouts" class="tsd-kind-icon">timeouts</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#bind" class="tsd-kind-icon">bind</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#callbackproxy" class="tsd-kind-icon">callback<wbr>Proxy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#clearinterval" class="tsd-kind-icon">clear<wbr>Interval</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#cleartimeout" class="tsd-kind-icon">clear<wbr>Timeout</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#destroy" class="tsd-kind-icon">destroy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#emit" class="tsd-kind-icon">emit</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#emithook" class="tsd-kind-icon">emit<wbr>Hook</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#isdestroyed" class="tsd-kind-icon">is<wbr>Destroyed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#promiseproxy" class="tsd-kind-icon">promise<wbr>Proxy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#setinterval" class="tsd-kind-icon">set<wbr>Interval</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#settimeout" class="tsd-kind-icon">set<wbr>Timeout</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="entities_componentproxy.componentproxy.html#unbind" class="tsd-kind-icon">unbind</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="entities_componentproxy.componentproxy.html#unbindinternal" class="tsd-kind-icon">unbind<wbr>Internal</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Component<wbr>Proxy<span class="tsd-signature-symbol">(</span>thisContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="entities_componentproxy.componentproxy.html" class="tsd-signature-type" data-tsd-kind="Class">ComponentProxy</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L100">src/Entities/ComponentProxy.ts:100</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>thisContext: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="entities_componentproxy.componentproxy.html" class="tsd-signature-type" data-tsd-kind="Class">ComponentProxy</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="events" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> events</h3>
+					<div class="tsd-signature tsd-kind-icon">events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/entities_componentproxy.html#componentproxyeventtarget" class="tsd-signature-type" data-tsd-kind="Type alias">ComponentProxyEventTarget</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/entities_componentproxy.componentproxylistener.html" class="tsd-signature-type" data-tsd-kind="Interface">ComponentProxyListener</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L88">src/Entities/ComponentProxy.ts:88</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The list of all registered event listeners and their matching proxy functions
+							by the target and event name</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="intervals" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> intervals</h3>
+					<div class="tsd-signature tsd-kind-icon">intervals<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L82">src/Entities/ComponentProxy.ts:82</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Contains the list of all intervals that are bound on this block</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="lives" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> lives</h3>
+					<div class="tsd-signature tsd-kind-icon">lives<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L72">src/Entities/ComponentProxy.ts:72</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>False if this instance was destroyed</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="mutationemitter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> mutation<wbr>Emitter</h3>
+					<div class="tsd-signature tsd-kind-icon">mutation<wbr>Emitter<span class="tsd-signature-symbol">:</span> <a href="events_eventemitter.eventemitter.html" class="tsd-signature-type" data-tsd-kind="Class">EventEmitter</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L100">src/Entities/ComponentProxy.ts:100</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The internal event emitter to handle mutation events</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="mutationobservers" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> mutation<wbr>Observers</h3>
+					<div class="tsd-signature tsd-kind-icon">mutation<wbr>Observers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/entities_componentproxy.html#componentproxyeventtarget" class="tsd-signature-type" data-tsd-kind="Type alias">ComponentProxyEventTarget</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">MutationObserver</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L95">src/Entities/ComponentProxy.ts:95</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The list of registered mutation observers by their target objects</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="thiscontext" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> this<wbr>Context</h3>
+					<div class="tsd-signature tsd-kind-icon">this<wbr>Context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L67">src/Entities/ComponentProxy.ts:67</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The component which is used as this context inside the proxy instance</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="timeouts" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> timeouts</h3>
+					<div class="tsd-signature tsd-kind-icon">timeouts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L77">src/Entities/ComponentProxy.ts:77</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Contains the list of all timeouts that are bound on this block</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="bind" class="tsd-anchor"></a>
+					<h3>bind</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">bind<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><a href="../modules/entities_componentproxy.html#componentproxyeventtarget" class="tsd-signature-type" data-tsd-kind="Type alias">ComponentProxyEventTarget</a>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, listener<span class="tsd-signature-symbol">: </span><a href="../interfaces/entities_componentproxy.componentproxylistener.html" class="tsd-signature-type" data-tsd-kind="Interface">ComponentProxyListener</a>, priority<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="entities_componentproxy.componentproxy.html" class="tsd-signature-type" data-tsd-kind="Class">ComponentProxy</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L317">src/Entities/ComponentProxy.ts:317</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Binds a given listener to a certain event</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <a href="../modules/entities_componentproxy.html#componentproxyeventtarget" class="tsd-signature-type" data-tsd-kind="Type alias">ComponentProxyEventTarget</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The target to bind the listener to. Either a html element, the document or the EventBus class</p>
+									</div>
+								</li>
+								<li>
+									<h5>event: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event to bind the listener to. If you use &quot;@mutation&quot; a MutationObserver will track
+										any changes of the dom and call the listener on it</p>
+									</div>
+								</li>
+								<li>
+									<h5>listener: <a href="../interfaces/entities_componentproxy.componentproxylistener.html" class="tsd-signature-type" data-tsd-kind="Interface">ComponentProxyListener</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The listener which is called when the event is emitted on the given target</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> priority: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Default: 0, the lower the number, the earlier the execution. May be a negative value!
+											Note: This only works for event emitters and the event bus.
+										@todo add html event listener options like passive and capture!</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="entities_componentproxy.componentproxy.html" class="tsd-signature-type" data-tsd-kind="Class">ComponentProxy</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="callbackproxy" class="tsd-anchor"></a>
+					<h3>callback<wbr>Proxy</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">callback<wbr>Proxy<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L245">src/Entities/ComponentProxy.ts:245</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrap all callbacks to the outside world with this method so you can be sure there won&#39;t be issues
+										even if your component is destroyed before the outside function finishes
+									outsideFunction(proxy.callbackProxy((...args) =&gt; console.log(args)));</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>callback: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Function</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="clearinterval" class="tsd-anchor"></a>
+					<h3>clear<wbr>Interval</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">clear<wbr>Interval<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L147">src/Entities/ComponentProxy.ts:147</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes a given interval on the current block</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>id: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="cleartimeout" class="tsd-anchor"></a>
+					<h3>clear<wbr>Timeout</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">clear<wbr>Timeout<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L201">src/Entities/ComponentProxy.ts:201</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Clears a given timeout id</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>id: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="destroy" class="tsd-anchor"></a>
+					<h3>destroy</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">destroy<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="entities_componentproxy.componentproxy.html" class="tsd-signature-type" data-tsd-kind="Class">ComponentProxy</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L472">src/Entities/ComponentProxy.ts:472</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Call this method when your component is destroyed.
+										The proxy will then unbind all events, timeouts, intervals and block all promises
+									which could lead to errors or memory leaks</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="entities_componentproxy.componentproxy.html" class="tsd-signature-type" data-tsd-kind="Class">ComponentProxy</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="emit" class="tsd-anchor"></a>
+					<h3>emit</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><a href="../modules/entities_componentproxy.html#componentproxyeventtarget" class="tsd-signature-type" data-tsd-kind="Type alias">ComponentProxyEventTarget</a>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><a href="../interfaces/interfaces_plainobject.plainobject.html" class="tsd-signature-type" data-tsd-kind="Interface">PlainObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="entities_componentproxy.componentproxy.html" class="tsd-signature-type" data-tsd-kind="Class">ComponentProxy</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L266">src/Entities/ComponentProxy.ts:266</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Emits a given event which has the option to pass additional arguments.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <a href="../modules/entities_componentproxy.html#componentproxyeventtarget" class="tsd-signature-type" data-tsd-kind="Type alias">ComponentProxyEventTarget</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The target to trigger the event on. Either a html element, the document or the EventBus class</p>
+									</div>
+								</li>
+								<li>
+									<h5>event: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event to emit</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> args: <a href="../interfaces/interfaces_plainobject.plainobject.html" class="tsd-signature-type" data-tsd-kind="Interface">PlainObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>An object of arguments which then are transferred to e.args in your callback</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="entities_componentproxy.componentproxy.html" class="tsd-signature-type" data-tsd-kind="Class">ComponentProxy</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="emithook" class="tsd-anchor"></a>
+					<h3>emit<wbr>Hook</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">emit<wbr>Hook<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><a href="../modules/entities_componentproxy.html#componentproxyhooktarget" class="tsd-signature-type" data-tsd-kind="Type alias">ComponentProxyHookTarget</a>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">: </span><a href="../interfaces/interfaces_plainobject.plainobject.html" class="tsd-signature-type" data-tsd-kind="Interface">PlainObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/interfaces_plainobject.plainobject.html" class="tsd-signature-type" data-tsd-kind="Interface">PlainObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L292">src/Entities/ComponentProxy.ts:292</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Emits a given hook to process the given arguments</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>EventEmitter.emitHook()</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <a href="../modules/entities_componentproxy.html#componentproxyhooktarget" class="tsd-signature-type" data-tsd-kind="Type alias">ComponentProxyHookTarget</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The target to trigger the event on. Either a EventBus, EventEmitter or storage object</p>
+									</div>
+								</li>
+								<li>
+									<h5>event: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the hook to emit</p>
+									</div>
+								</li>
+								<li>
+									<h5>args: <a href="../interfaces/interfaces_plainobject.plainobject.html" class="tsd-signature-type" data-tsd-kind="Interface">PlainObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>An object of arguments which then are transferred to e.args in your callbacks</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/interfaces_plainobject.plainobject.html" class="tsd-signature-type" data-tsd-kind="Interface">PlainObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="isdestroyed" class="tsd-anchor"></a>
+					<h3>is<wbr>Destroyed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Destroyed<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L521">src/Entities/ComponentProxy.ts:521</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns true if this proxy is destroyed, false if not</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="promiseproxy" class="tsd-anchor"></a>
+					<h3>promise<wbr>Proxy</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">promise<wbr>Proxy<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L223">src/Entities/ComponentProxy.ts:223</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This helper can be used in a promise chain Promise().then(this.promiseProxy()).then(...)
+										This makes sure that even if the current block is destroyed the chained functions will not be executed
+									and may break stuff.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Function</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setinterval" class="tsd-anchor"></a>
+					<h3>set<wbr>Interval</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Interval<span class="tsd-signature-symbol">(</span>handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span>, timeout<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Interval<span class="tsd-signature-symbol">(</span>handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span>, <span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L121">src/Entities/ComponentProxy.ts:121</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Registers a handler to run in a specified interval.
+									The interval will automatically be stopped when the block is destroyed</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>handler: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L130">src/Entities/ComponentProxy.ts:130</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Registers a handler to run in a specified interval.
+									The interval will automatically be stopped when the block is destroyed</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>handler: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> timeout: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="settimeout" class="tsd-anchor"></a>
+					<h3>set<wbr>Timeout</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Timeout<span class="tsd-signature-symbol">(</span>handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span>, timeout<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Timeout<span class="tsd-signature-symbol">(</span>handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span>, <span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L170">src/Entities/ComponentProxy.ts:170</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Registers a timeout to run after a specified timespan.
+									The timout will automatically be stopped when the block is destroyed</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>handler: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5>timeout: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L179">src/Entities/ComponentProxy.ts:179</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Registers a timeout to run after a specified timespan.
+									The timout will automatically be stopped when the block is destroyed</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>handler: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> timeout: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="unbind" class="tsd-anchor"></a>
+					<h3>unbind</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">unbind<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><a href="../modules/entities_componentproxy.html#componentproxyeventtarget" class="tsd-signature-type" data-tsd-kind="Type alias">ComponentProxyEventTarget</a>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, listener<span class="tsd-signature-symbol">: </span><a href="../interfaces/entities_componentproxy.componentproxylistener.html" class="tsd-signature-type" data-tsd-kind="Interface">ComponentProxyListener</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="entities_componentproxy.componentproxy.html" class="tsd-signature-type" data-tsd-kind="Class">ComponentProxy</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L395">src/Entities/ComponentProxy.ts:395</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes a given listener from a certain event</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <a href="../modules/entities_componentproxy.html#componentproxyeventtarget" class="tsd-signature-type" data-tsd-kind="Type alias">ComponentProxyEventTarget</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The target to unbind the listener from. Either a html element, the document or the EventBus class</p>
+									</div>
+								</li>
+								<li>
+									<h5>event: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The event to unbind or @mutation if a mutation observer is used</p>
+									</div>
+								</li>
+								<li>
+									<h5>listener: <a href="../interfaces/entities_componentproxy.componentproxylistener.html" class="tsd-signature-type" data-tsd-kind="Interface">ComponentProxyListener</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The listener which should be unbound for the given event
+											@todo add html event listener options like passive and capture!
+										@todo While addEventListener() will let you add the same listener more than once for the same type if the options are different, the only option removeEventListener() checks is the capture/useCapture flag. Its value must match for removeEventListener() to match, but the other values don&#39;t.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="entities_componentproxy.componentproxy.html" class="tsd-signature-type" data-tsd-kind="Class">ComponentProxy</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="unbindinternal" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> unbind<wbr>Internal</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">unbind<wbr>Internal<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><a href="../modules/entities_componentproxy.html#componentproxyeventtarget" class="tsd-signature-type" data-tsd-kind="Type alias">ComponentProxyEventTarget</a>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, listener<span class="tsd-signature-symbol">: </span><a href="../interfaces/entities_componentproxy.componentproxylistener.html" class="tsd-signature-type" data-tsd-kind="Interface">ComponentProxyListener</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/b59739c/src/Entities/ComponentProxy.ts#L411">src/Entities/ComponentProxy.ts:411</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Internal logic to unbind an event from a listener.
+									This method does not do any validation if the proxy still lives so it can be called in the destroy method</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <a href="../modules/entities_componentproxy.html#componentproxyeventtarget" class="tsd-signature-type" data-tsd-kind="Type alias">ComponentProxyEventTarget</a></h5>
+								</li>
+								<li>
+									<h5>event: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>listener: <a href="../interfaces/entities_componentproxy.componentproxylistener.html" class="tsd-signature-type" data-tsd-kind="Interface">ComponentProxyListener</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/entities_componentproxy.html">Entities/<wbr>Component<wbr>Proxy</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-module">
+						<a href="entities_componentproxy.componentproxy.html" class="tsd-kind-icon">Component<wbr>Proxy</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="entities_componentproxy.componentproxy.html#events" class="tsd-kind-icon">events</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="entities_componentproxy.componentproxy.html#intervals" class="tsd-kind-icon">intervals</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="entities_componentproxy.componentproxy.html#lives" class="tsd-kind-icon">lives</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="entities_componentproxy.componentproxy.html#mutationemitter" class="tsd-kind-icon">mutation<wbr>Emitter</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="entities_componentproxy.componentproxy.html#mutationobservers" class="tsd-kind-icon">mutation<wbr>Observers</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="entities_componentproxy.componentproxy.html#thiscontext" class="tsd-kind-icon">this<wbr>Context</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="entities_componentproxy.componentproxy.html#timeouts" class="tsd-kind-icon">timeouts</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#bind" class="tsd-kind-icon">bind</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#callbackproxy" class="tsd-kind-icon">callback<wbr>Proxy</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#clearinterval" class="tsd-kind-icon">clear<wbr>Interval</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#cleartimeout" class="tsd-kind-icon">clear<wbr>Timeout</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#destroy" class="tsd-kind-icon">destroy</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#emit" class="tsd-kind-icon">emit</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#emithook" class="tsd-kind-icon">emit<wbr>Hook</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#isdestroyed" class="tsd-kind-icon">is<wbr>Destroyed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#promiseproxy" class="tsd-kind-icon">promise<wbr>Proxy</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#setinterval" class="tsd-kind-icon">set<wbr>Interval</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#settimeout" class="tsd-kind-icon">set<wbr>Timeout</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="entities_componentproxy.componentproxy.html#unbind" class="tsd-kind-icon">unbind</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="entities_componentproxy.componentproxy.html#unbindinternal" class="tsd-kind-icon">unbind<wbr>Internal</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/entities_componentproxy.componentproxylistener.html" class="tsd-kind-icon">Component<wbr>Proxy<wbr>Listener</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="../modules/entities_componentproxy.html#componentproxyeventtarget" class="tsd-kind-icon">Component<wbr>Proxy<wbr>Event<wbr>Target</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="../modules/entities_componentproxy.html#componentproxyhooktarget" class="tsd-kind-icon">Component<wbr>Proxy<wbr>Hook<wbr>Target</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
