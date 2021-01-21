@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.33.1](https://github.com/labor-digital/helferlein/compare/v3.33.0...v3.33.1) (2021-01-21)
+
+
+### Bug Fixes
+
+* add export for htmlDecode ([df8fef6](https://github.com/labor-digital/helferlein/commit/df8fef6ef6542fe0e3cbd6e776c7769385588423))
+
 ## [3.33.0](https://github.com/labor-digital/helferlein/compare/v3.32.1...v3.33.0) (2021-01-21)
 
 
