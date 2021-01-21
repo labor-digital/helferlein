@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.32.1](https://github.com/labor-digital/helferlein/compare/v3.32.0...v3.32.1) (2021-01-16)
+
+
+### Bug Fixes
+
+* **merge:** correctly handle null override on values ([867a666](https://github.com/labor-digital/helferlein/commit/867a666266e640b1467c56f8cc890dd00b6b7846))
+
 ## [3.32.0](https://github.com/labor-digital/helferlein/compare/v3.31.5...v3.32.0) (2020-12-04)
 
 
