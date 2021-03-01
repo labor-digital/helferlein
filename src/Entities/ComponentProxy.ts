@@ -402,6 +402,35 @@ export class ComponentProxy
     }
     
     /**
+     * Unbinds all event listeners and mutation objservers from the dom
+     */
+    public unbindAll(): ComponentProxy
+    {
+        if (!this.lives) {
+            return this;
+        }
+        
+        // Events
+        forEach(this.events, (eventList, target) => {
+            forEach(eventList, (listeners, event) => {
+                forEach(listeners, (proxy, listener) => {
+                    this.unbindInternal(target, event, listener);
+                });
+            });
+        });
+        
+        // Mutation observers
+        if (!isUndefined(this.mutationEmitter)) {
+            forEach(this.mutationObservers, (o: MutationObserver, k) => {
+                o.disconnect();
+                this.mutationObservers.delete(k);
+            });
+        }
+        
+        return this;
+    }
+    
+    /**
      * Internal logic to unbind an event from a listener.
      * This method does not do any validation if the proxy still lives so it can be called in the destroy method
      * @param target
@@ -486,30 +515,16 @@ export class ComponentProxy
             forEach(this.timeouts, t => clearTimeout(t));
         }
         
-        // Events
-        forEach(this.events, (eventList, target) => {
-            forEach(eventList, (listeners, event) => {
-                forEach(listeners, (proxy, listener) => {
-                    this.unbindInternal(target, event, listener);
-                });
-            });
-        });
-        
-        // Mutation observers
-        if (!isUndefined(this.mutationEmitter)) {
-            forEach(this.mutationObservers, (o: MutationObserver, k) => {
-                o.disconnect();
-                this.mutationObservers.delete(k);
-            });
-            delete this.mutationEmitter;
-            delete this.mutationObservers;
-        }
+        // EventListeners and MutationObservers
+        this.unbindAll();
         
         // Remove my properties
         delete this.intervals;
         delete this.timeouts;
         delete this.thisContext;
         delete this.events;
+        delete this.mutationEmitter;
+        delete this.mutationObservers;
         
         // Be dead
         return this;
