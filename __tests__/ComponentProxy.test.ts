@@ -61,10 +61,14 @@ test('Component Proxy, event unbinding on destroy', () => {
                 expect(this).toBe(that);
                 expect(e.args.foo).toBe(1);
             };
+            
             proxy.bind(EventBus, 'test', callback);
             proxy.emit(EventBus, 'test', {foo: 1});
+            expect(c).toBe(1);
             EventBus.emit('test', {foo: 1});
+            expect(c).toBe(2);
             EventBus.getEmitter().emit('test', {foo: 1});
+            expect(c).toBe(3);
             
             proxy.destroy();
             

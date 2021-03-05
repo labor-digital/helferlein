@@ -60,7 +60,6 @@ export interface ComponentProxyListener extends Function
  */
 export class ComponentProxy
 {
-    
     /**
      * The component which is used as this context inside the proxy instance
      */
@@ -407,13 +406,13 @@ export class ComponentProxy
      * @param target The target to unbind the listener from. Either a html element, the document or the EventBus class
      * @param event The event to unbind or @mutation if a mutation observer is used
      * @param listener The listener which should be unbound for the given event
-     *                    @todo add html event listener options like passive and capture!
-     *                    @todo While addEventListener() will let you add the same listener more than once for the same type if the options are different, the only option removeEventListener() checks is the capture/useCapture flag. Its value must match for removeEventListener() to match, but the other values don't.
+     * @todo add html event listener options like passive and capture!
+     * @todo While addEventListener() will let you add the same listener more than once for the same type if the options are different, the only option removeEventListener() checks is the capture/useCapture flag. Its value must match for removeEventListener() to match, but the other values don't.
      */
     unbind(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener): ComponentProxy
     {
         if (this.lives) {
-            this.unbindInternal(target, event, listener);
+            this._unbind(target, event, listener);
         }
         
         return this;
@@ -428,11 +427,72 @@ export class ComponentProxy
             return this;
         }
         
+        this._unbindAll();
+        
+        return this;
+    }
+    
+    /**
+     * DESTRUCTION
+     * ==================================================================
+     */
+    /**
+     * Call this method when your component is destroyed.
+     * The proxy will then unbind all events, timeouts, intervals and block all promises
+     * which could lead to errors or memory leaks
+     */
+    public destroy(): ComponentProxy
+    {
+        if (!this.lives) {
+            return this;
+        }
+        
+        this.lives = false;
+        
+        // Intervals
+        if (this.intervals.length > 0) {
+            forEach(this.intervals, i => clearInterval(i));
+        }
+        
+        // Timeouts
+        if (this.timeouts.length > 0) {
+            forEach(this.timeouts, t => clearTimeout(t));
+        }
+        
+        // EventListeners and MutationObservers
+        this._unbindAll();
+        
+        // Remove my properties
+        delete this.intervals;
+        delete this.timeouts;
+        delete this.thisContext;
+        delete this.events;
+        delete this.mutationEmitter;
+        delete this.mutationObservers;
+        
+        // Be dead
+        return this;
+    }
+    
+    /**
+     * Returns true if this proxy is destroyed, false if not
+     */
+    public isDestroyed(): boolean
+    {
+        return !this.lives;
+    }
+    
+    /**
+     * Internal logic to unbind all currently registered events
+     * @protected
+     */
+    protected _unbindAll(): void
+    {
         // Events
         forEach(this.events, (eventList, target) => {
             forEach(eventList, (listeners, event) => {
                 forEach(listeners, (proxy, listener) => {
-                    this.unbindInternal(target, event, listener);
+                    this._unbind(target, event, listener);
                 });
             });
         });
@@ -444,8 +504,6 @@ export class ComponentProxy
                 this.mutationObservers.delete(k);
             });
         }
-        
-        return this;
     }
     
     /**
@@ -455,7 +513,7 @@ export class ComponentProxy
      * @param event
      * @param listener
      */
-    protected unbindInternal(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener): void
+    protected _unbind(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener): void
     {
         // Prepare the target
         if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter)) {
@@ -504,56 +562,5 @@ export class ComponentProxy
         } else {
             throw new Error('Could not bind to event "' + event + '", because the given target is invalid!');
         }
-        
-    }
-    
-    /**
-     * DESTRUCTION
-     * ==================================================================
-     */
-    /**
-     * Call this method when your component is destroyed.
-     * The proxy will then unbind all events, timeouts, intervals and block all promises
-     * which could lead to errors or memory leaks
-     */
-    public destroy(): ComponentProxy
-    {
-        if (!this.lives) {
-            return this;
-        }
-        
-        this.lives = false;
-        
-        // Intervals
-        if (this.intervals.length > 0) {
-            forEach(this.intervals, i => clearInterval(i));
-        }
-        
-        // Timeouts
-        if (this.timeouts.length > 0) {
-            forEach(this.timeouts, t => clearTimeout(t));
-        }
-        
-        // EventListeners and MutationObservers
-        this.unbindAll();
-        
-        // Remove my properties
-        delete this.intervals;
-        delete this.timeouts;
-        delete this.thisContext;
-        delete this.events;
-        delete this.mutationEmitter;
-        delete this.mutationObservers;
-        
-        // Be dead
-        return this;
-    }
-    
-    /**
-     * Returns true if this proxy is destroyed, false if not
-     */
-    public isDestroyed(): boolean
-    {
-        return !this.lives;
     }
 }
