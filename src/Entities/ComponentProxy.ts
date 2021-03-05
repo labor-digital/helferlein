@@ -133,10 +133,13 @@ export class ComponentProxy
         if (!this.lives) {
             return 0;
         }
+        
         const i: any = setInterval(() => {
             handler.apply(this.thisContext, args);
         }, timeout);
+        
         this.intervals.push(i);
+        
         return i;
     }
     
@@ -182,6 +185,7 @@ export class ComponentProxy
         if (!this.lives) {
             return 0;
         }
+        
         const i: any = setTimeout(() => {
             // Clean up to keep the memory tidy
             const k = this.timeouts.indexOf(i);
@@ -190,7 +194,9 @@ export class ComponentProxy
             }
             handler.apply(this.thisContext, args);
         }, timeout);
+        
         this.timeouts.push(i);
+        
         return i;
     }
     
@@ -203,11 +209,14 @@ export class ComponentProxy
         if (!this.lives) {
             return;
         }
+        
         const k = this.timeouts.indexOf(id);
         clearTimeout(id);
+        
         if (k === -1) {
             return;
         }
+        
         this.timeouts.splice(k, 1);
     }
     
@@ -223,6 +232,7 @@ export class ComponentProxy
     public promiseProxy(): Function
     {
         const that = this;
+        
         return function (args?: any): Promise<any> | any {
             if (isUndefined(that) || !that.lives) {
                 const noopPromise = {
@@ -232,6 +242,7 @@ export class ComponentProxy
                 };
                 return noopPromise;
             }
+            
             return Promise.resolve(args);
         };
     }
@@ -249,6 +260,7 @@ export class ComponentProxy
             if (isUndefined(that) || !that.lives) {
                 return;
             }
+            
             return callback.apply(that.thisContext, Array.prototype.slice.call(arguments));
         };
     }
@@ -272,6 +284,7 @@ export class ComponentProxy
         if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter)) {
             target = (target as any).getEmitter();
         }
+        
         if (isObject(target) && isFunction((target as any).emit)) {
             (target as any).emit(event, args);
         } else if (isFunction((target as HTMLElement).dispatchEvent)) {
@@ -279,6 +292,7 @@ export class ComponentProxy
         } else {
             throw new Error('Could not emit event "' + event + '", because the given target is invalid!');
         }
+        
         return this;
     }
     
@@ -294,12 +308,15 @@ export class ComponentProxy
         if (!this.lives) {
             return Promise.resolve(args);
         }
+        
         if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter)) {
             target = (target as any).getEmitter();
         }
+        
         if (isObject(target) && isFunction((target as any).emit)) {
             return (target as any).emit(event, args);
         }
+        
         throw new Error('Could not emit hook "' + event + '", because the given target is invalid!');
     }
     
@@ -334,6 +351,7 @@ export class ComponentProxy
         if (!this.events.has(target)) {
             this.events.set(target, new Map());
         }
+        
         if (!this.events.get(target).has(event)) {
             this.events.get(target).set(event, new Map());
         }
@@ -394,10 +412,10 @@ export class ComponentProxy
      */
     unbind(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener): ComponentProxy
     {
-        if (!this.lives) {
-            return this;
+        if (this.lives) {
+            this.unbindInternal(target, event, listener);
         }
-        this.unbindInternal(target, event, listener);
+        
         return this;
     }
     
@@ -503,6 +521,7 @@ export class ComponentProxy
         if (!this.lives) {
             return this;
         }
+        
         this.lives = false;
         
         // Intervals
