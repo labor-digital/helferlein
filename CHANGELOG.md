@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.34.0](https://github.com/labor-digital/helferlein/compare/v3.33.1...v3.34.0) (2021-03-05)
+
+
+### Features
+
+* **ComponentProxy:** implement unbindAll method ([e84d60e](https://github.com/labor-digital/helferlein/commit/e84d60ef1e8ab679c8748a556ab9f2872c2ee6c7))
+
+
+### Bug Fixes
+
+* **ComponentProxy:** make sure unbindAll can be called on destroy ([c187184](https://github.com/labor-digital/helferlein/commit/c1871842098e14a6fa4a8e30435e23624a038df6))
+
 ### [3.33.1](https://github.com/labor-digital/helferlein/compare/v3.33.0...v3.33.1) (2021-01-21)
 
 
