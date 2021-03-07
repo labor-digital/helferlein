@@ -16,7 +16,7 @@
  * Last modified: 2019.06.12 at 12:01
  */
 
-import {cloneList} from '../lib';
+import {cloneList} from '../src/Lists/cloneList';
 import {_initPathWalkerStep, KeyTypes} from '../src/Lists/Paths/_internals';
 import {getPath} from '../src/Lists/Paths/getPath';
 import {hasPath} from '../src/Lists/Paths/hasPath';
