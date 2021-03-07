@@ -16,8 +16,7 @@
  * Last modified: 2019.06.12 at 11:06
  */
 
-import {ListPath} from '../../../lib';
-import {TListPathArray} from '../../Interfaces/List';
+import {ListPath, TListPathArray} from '../../Interfaces/List';
 import {escapeRegex} from '../../Strings/escapeRegex';
 import {isArray} from '../../Types/isArray';
 import {isNumber} from '../../Types/isNumber';
