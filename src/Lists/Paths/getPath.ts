@@ -17,7 +17,7 @@
  */
 
 import {asArray} from '../../FormatAndConvert/asArray';
-import {List, ListPath} from '../../Interfaces/List';
+import {List, ListPath, TListPathArray} from '../../Interfaces/List';
 import {isArray} from '../../Types/isArray';
 import {isEmpty} from '../../Types/isEmpty';
 import {isUndefined} from '../../Types/isUndefined';
@@ -33,7 +33,7 @@ import {_initPathWalkerPath, _initPathWalkerStep, KeyTypes} from './_internals';
  * @param defaultValue
  * @param isNested
  */
-function getPathWalker(list: List, path: Array<any>, defaultValue?: any, isNested?: boolean)
+function getPathWalker(list: List, path: TListPathArray, defaultValue?: any, isNested?: boolean)
 {
     const [keys, isLastKey, keyType] = _initPathWalkerStep(list, path);
     
@@ -43,29 +43,30 @@ function getPathWalker(list: List, path: Array<any>, defaultValue?: any, isNeste
     
     let result = {};
     for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
         
         // Handle nested paths
-        if (isArray(keys[i])) {
-            result = merge(result, getPathWalker(list, keys[i], defaultValue, true));
+        if (isArray(key)) {
+            result = merge(result, getPathWalker(list, key, defaultValue, true));
             continue;
         }
         
         // Validate if the requested value exists
-        const value = getListValue(list, keys[i]);
+        const value = getListValue(list, key);
         if (isUndefined(value)) {
-            result[keys[i]] = defaultValue;
+            result[key] = defaultValue;
             continue;
         }
         
         // Follow the path deeper
         if (!isLastKey) {
             if (getListType(value) === ListType.NoList) {
-                result[keys[i]] = defaultValue;
+                result[key] = defaultValue;
                 continue;
             }
-            result[keys[i]] = getPathWalker(value, path.slice(0), defaultValue, isNested);
+            result[key] = getPathWalker(value, path.slice(0), defaultValue, isNested);
         } else {
-            result[keys[i]] = value;
+            result[key] = value;
         }
     }
     
@@ -90,7 +91,7 @@ function getPathWalker(list: List, path: Array<any>, defaultValue?: any, isNeste
  * which will iterate over all, possible keys in the given list. You may also specify a subset of keys to return,
  * by using braces like [key1,key2]
  *
- * @param list The array to read the path"s values from
+ * @param list The list to read the paths values from
  * @param path The path to read in the $input array
  * @param defaultValue The value which will be returned if the $path did not match anything.
  * @param separator Default: "." Can be set to any string you want to use as separator of path parts.

@@ -40,7 +40,7 @@ export enum KeyTypes
  * @param path
  * @private
  */
-export function _initPathWalkerStep(list: List, path: Array<string>): Array<any>
+export function _initPathWalkerStep(list: List, path: TListPathArray): Array<any>
 {
     // Prepare result
     const part = path.shift();

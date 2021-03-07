@@ -16,11 +16,13 @@
  * Last modified: 2019.06.12 at 12:01
  */
 
+import {cloneList} from '../lib';
 import {_initPathWalkerStep, KeyTypes} from '../src/Lists/Paths/_internals';
 import {getPath} from '../src/Lists/Paths/getPath';
 import {hasPath} from '../src/Lists/Paths/hasPath';
 import {mergePaths} from '../src/Lists/Paths/mergePaths';
 import {parsePath} from '../src/Lists/Paths/parsePath';
+import {setPath} from '../src/Lists/Paths/setPath';
 
 const tree = {
     foo: 'bar',
@@ -255,4 +257,27 @@ test('get path with sub keys', () => {
         {'carrot': 123, 'rose': undefined, 'saddle': 345}, {'carrot': 562, 'rose': undefined, 'saddle': 903}
     ]);
     expect(getPath(list, '[wild,wild2].*.foo')).toEqual({'wild': [123, 234], 'wild2': ['asdf', 'bar', 'baz']});
+});
+
+/**
+ * SET PATH
+ */
+test('set simple path', () => {
+    expect(setPath({}, 'foo', 'bar')).toEqual({foo: 'bar'});
+    expect(setPath({foo: 'bar'}, 'bar', 'baz')).toEqual({foo: 'bar', bar: 'baz'});
+    
+    const i: any = {
+        foo: {
+            bar: 'baz',
+            baz: {
+                bar: 'foo'
+            }
+        }
+    };
+    
+    const e = cloneList(i);
+    e.foo.baz.foo = true;
+    
+    expect(setPath(cloneList(i), 'foo.baz.foo', true)).toEqual(e);
+    expect(setPath(cloneList(i), ['foo', 'baz', 'foo'], true)).toEqual(e);
 });
