@@ -145,6 +145,7 @@ test('parsePath with array', () => {
 test('parsePath with invalid array', () => {
     expect(() => {
         parsePath([
+            // @ts-ignore
             'foo', () => {
             }, 'baz'
         ]);

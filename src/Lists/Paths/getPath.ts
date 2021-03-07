@@ -26,6 +26,65 @@ import {merge} from '../merge';
 import {_initPathWalkerPath, _initPathWalkerStep, KeyTypes} from './_internals';
 
 /**
+ * Internal worker to do the actual iteration
+ *
+ * @param list
+ * @param path
+ * @param defaultValue
+ * @param isNested
+ */
+function getPathWalker(list: List, path: Array<any>, defaultValue?: any, isNested?: boolean)
+{
+    const [keys, isLastKey, keyType] = _initPathWalkerStep(list, path);
+    
+    if (isEmpty(list)) {
+        return defaultValue;
+    }
+    
+    let result = {};
+    for (let i = 0; i < keys.length; i++) {
+        
+        // Handle nested paths
+        if (isArray(keys[i])) {
+            result = merge(result, getPathWalker(list, keys[i], defaultValue, true));
+            continue;
+        }
+        
+        // Validate if the requested value exists
+        const value = getListValue(list, keys[i]);
+        if (isUndefined(value)) {
+            result[keys[i]] = defaultValue;
+            continue;
+        }
+        
+        // Follow the path deeper
+        if (!isLastKey) {
+            if (getListType(value) === ListType.NoList) {
+                result[keys[i]] = defaultValue;
+                continue;
+            }
+            result[keys[i]] = getPathWalker(value, path.slice(0), defaultValue, isNested);
+        } else {
+            result[keys[i]] = value;
+        }
+    }
+    
+    // Skip post processing if nested
+    if (isNested === true) {
+        return result;
+    }
+    
+    // Flatten result
+    if (keyType === KeyTypes.Default) {
+        result = result[keys[0]];
+    } else if (keyType === KeyTypes.Wildcard && keys[0] === 0) {
+        result = asArray(result);
+    }
+    
+    return result;
+}
+
+/**
  * This method reads a single value or multiple values (depending on the given $path) from
  * the given list. You may use wildcards by specifying an astrix(*) as the replacement for a generic key,
  * which will iterate over all, possible keys in the given list. You may also specify a subset of keys to return,
@@ -36,55 +95,7 @@ import {_initPathWalkerPath, _initPathWalkerStep, KeyTypes} from './_internals';
  * @param defaultValue The value which will be returned if the $path did not match anything.
  * @param separator Default: "." Can be set to any string you want to use as separator of path parts.
  */
-export function getPath(list: List, path: ListPath, defaultValue?: any, separator?: string): any
+export function getPath<V = any>(list: List<V>, path: ListPath, defaultValue?: any, separator?: string): V
 {
-    // Check recursive if the path exists
-    const walker = function getPathWalker(list: List, path: Array<any>, isNested?: boolean) {
-        const [keys, isLastKey, keyType] = _initPathWalkerStep(list, path);
-        if (isEmpty(list)) {
-            return defaultValue;
-        }
-        let result = {};
-        for (let i = 0; i < keys.length; i++) {
-            
-            // Handle nested paths
-            if (isArray(keys[i])) {
-                result = merge(result, walker(list, keys[i], true));
-                continue;
-            }
-            
-            // Validate if the requested value exists
-            const value = getListValue(list, keys[i]);
-            if (isUndefined(value)) {
-                result[keys[i]] = defaultValue;
-                continue;
-            }
-            
-            // Follow the path deeper
-            if (!isLastKey) {
-                if (getListType(value) === ListType.NoList) {
-                    result[keys[i]] = defaultValue;
-                    continue;
-                }
-                result[keys[i]] = walker(value, path.slice(0), isNested);
-            } else {
-                result[keys[i]] = value;
-            }
-        }
-        
-        // Skip post processing if nested
-        if (isNested === true) {
-            return result;
-        }
-        
-        // Flatten result
-        if (keyType === KeyTypes.Default) {
-            result = result[keys[0]];
-        } else if (keyType === KeyTypes.Wildcard && keys[0] === 0) {
-            result = asArray(result);
-        }
-        return result;
-    };
-    
-    return walker(list, _initPathWalkerPath(list, path, separator));
+    return getPathWalker(list, _initPathWalkerPath(list, path, separator), defaultValue);
 }

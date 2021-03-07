@@ -20,7 +20,8 @@ import {PlainObject} from './PlainObject';
 export type List<V = any, K = any, T = Array<V> | Set<V> | Map<K, V> | PlainObject<V>> = T;
 export type ReadList<V = any, K = any, T = List<V, K> | Iterable<V>> = T;
 
-export type ListPath = string | number | Array<string | number | Array<any>>;
+export type TListPathArray = Array<string | number | TListPathArray>;
+export type ListPath = string | number | TListPathArray;
 
 export enum ListType
 {

@@ -16,10 +16,11 @@
  * Last modified: 2019.06.12 at 17:51
  */
 
-import {List, ListPath} from '../../Interfaces/List';
+import {List, ListPath, TListPathArray} from '../../Interfaces/List';
 import {isArray} from '../../Types/isArray';
 import {isUndefined} from '../../Types/isUndefined';
-import {getListKeys, getListType, ListType} from '../listAccess';
+import {isList} from '../isList';
+import {getListKeys} from '../listAccess';
 import {parsePath} from './parsePath';
 
 const CONTROL_OBJECT_ESCAPING = {
@@ -32,7 +33,6 @@ export enum KeyTypes
     Default, Wildcard, Keys
 }
 
-
 /**
  * Internal helper to generate the correct key list for the current walker step
  *
@@ -44,7 +44,7 @@ export function _initPathWalkerStep(list: List, path: Array<string>): Array<any>
 {
     // Prepare result
     const part = path.shift();
-    let keys = [];
+    let keys;
     let keyType = KeyTypes.Default;
     let isLastKey = path.length === 0;
     
@@ -74,17 +74,17 @@ export function _initPathWalkerStep(list: List, path: Array<string>): Array<any>
     return [keys, isLastKey, keyType];
 }
 
-export function _initPathWalkerPath(list: List, path: ListPath, separator): Array<string | Array<any>>
+export function _initPathWalkerPath(list: List, path: ListPath, separator): TListPathArray
 {
-    if (isUndefined(separator)) {
-        separator = '.';
+    if (!isList(list)) {
+        throw new Error('The given list value can not be accessed via path');
     }
-    if (getListType(list) === ListType.NoList) {
-        throw new Error('The given value can not be accessed via path');
-    }
+    
     const parsedPath = parsePath(path, separator);
+    
     if (parsedPath.length === 0) {
-        throw new Error("The given path is empty!");
+        throw new Error('The given path is empty!');
     }
+    
     return parsedPath;
 }
