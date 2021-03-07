@@ -47,6 +47,24 @@ export interface ComponentProxyListener extends Function
     (evt: Event | EventEmitterEvent | any): void | any;
 }
 
+export interface ComponentProxyAsyncWrapper
+{
+    (concrete: Function): void
+}
+
+/**
+ * Helper to extract the event emitter from a gaiven target
+ * @param target
+ */
+function resolveEmitterIfPossible(target: ComponentProxyEventTarget): EventEmitter | ComponentProxyEventTarget
+{
+    if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter)) {
+        return (target as any).getEmitter();
+    }
+    
+    return target;
+}
+
 /**
  * This class is mend to be used inside of js components.
  * The promise is simple: Sometimes your component needs outside connections to the dom, other libraries, hooks into a promise chain,
@@ -64,6 +82,15 @@ export class ComponentProxy
      * The component which is used as this context inside the proxy instance
      */
     protected thisContext: any;
+    
+    /**
+     * Allows to call a wrapper function every time a async function is triggered.
+     * This allows advanced setups when you work with state management libraries like mobx.
+     * You could, for example wrapp all calls through the proxy in a runInAction() wrap.
+     * @see https://mobx.js.org/actions.html#asynchronous-actions
+     * @protected
+     */
+    protected asyncWrapper: ComponentProxyAsyncWrapper;
     
     /**
      * False if this instance was destroyed
@@ -98,10 +125,11 @@ export class ComponentProxy
      */
     protected mutationEmitter: EventEmitter;
     
-    constructor(thisContext)
+    constructor(thisContext: any, asyncWrapper?: ComponentProxyAsyncWrapper)
     {
         this.lives = true;
         this.thisContext = thisContext;
+        this.asyncWrapper = asyncWrapper ?? ((f) => f());
         this.timeouts = [];
         this.intervals = [];
         this.events = new Map();
@@ -134,7 +162,7 @@ export class ComponentProxy
         }
         
         const i: any = setInterval(() => {
-            handler.apply(this.thisContext, args);
+            this.asyncWrapper(() => handler.apply(this.thisContext, args));
         }, timeout);
         
         this.intervals.push(i);
@@ -151,12 +179,13 @@ export class ComponentProxy
         if (!this.lives) {
             return;
         }
+        
         const k = this.intervals.indexOf(id);
         clearInterval(id);
-        if (k === -1) {
-            return;
+        
+        if (k !== -1) {
+            this.intervals.splice(k, 1);
         }
-        this.intervals.splice(k, 1);
     }
     
     /**
@@ -188,10 +217,12 @@ export class ComponentProxy
         const i: any = setTimeout(() => {
             // Clean up to keep the memory tidy
             const k = this.timeouts.indexOf(i);
+            
             if (k !== -1) {
                 this.timeouts.splice(k, 1);
             }
-            handler.apply(this.thisContext, args);
+            
+            this.asyncWrapper(() => handler.apply(this.thisContext, args));
         }, timeout);
         
         this.timeouts.push(i);
@@ -255,12 +286,14 @@ export class ComponentProxy
     public callbackProxy(callback): Function
     {
         const that = this;
-        return function (args?: any): Promise<any> | any {
-            if (isUndefined(that) || !that.lives) {
+        return function (...args: [any]): Promise<any> | any {
+            if (!isUndefined(that) && that.lives) {
                 return;
             }
             
-            return callback.apply(that.thisContext, Array.prototype.slice.call(arguments));
+            return that.asyncWrapper(
+                () => callback.apply(that.thisContext, args)
+            );
         };
     }
     
@@ -280,9 +313,7 @@ export class ComponentProxy
             return this;
         }
         
-        if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter)) {
-            target = (target as any).getEmitter();
-        }
+        target = resolveEmitterIfPossible(target);
         
         if (isObject(target) && isFunction((target as any).emit)) {
             (target as any).emit(event, args);
@@ -308,9 +339,7 @@ export class ComponentProxy
             return Promise.resolve(args);
         }
         
-        if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter)) {
-            target = (target as any).getEmitter();
-        }
+        target = resolveEmitterIfPossible(target);
         
         if (isObject(target) && isFunction((target as any).emit)) {
             return (target as any).emit(event, args);
@@ -341,12 +370,8 @@ export class ComponentProxy
             return this;
         }
         
-        // Prepare the target
-        if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter)) {
-            target = (target as any).getEmitter();
-        }
+        target = resolveEmitterIfPossible(target);
         
-        // Prepare storage
         if (!this.events.has(target)) {
             this.events.set(target, new Map());
         }
@@ -359,9 +384,11 @@ export class ComponentProxy
         let proxy: any = this.events.get(target).get(event).get(listener);
         if (isUndefined(proxy)) {
             const thisContext = this.thisContext;
-            proxy = function () {
-                listener.apply(thisContext, arguments);
+            
+            proxy = (...args: [any]) => {
+                this.asyncWrapper(() => listener.apply(thisContext, args));
             };
+            
             this.events.get(target).get(event).set(listener, proxy);
         }
         
@@ -515,12 +542,8 @@ export class ComponentProxy
      */
     protected _unbind(target: ComponentProxyEventTarget, event: string, listener: ComponentProxyListener): void
     {
-        // Prepare the target
-        if ((isFunction(target) || isObject(target)) && isFunction((target as any).getEmitter)) {
-            target = (target as any).getEmitter();
-        }
+        target = resolveEmitterIfPossible(target);
         
-        // Check if we can do stuff
         if (this.events.has(target) &&
             this.events.get(target).has(event) &&
             this.events.get(target).get(event).has(listener)) {

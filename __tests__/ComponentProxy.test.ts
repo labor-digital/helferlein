@@ -83,3 +83,21 @@ test('Component Proxy, event unbinding on destroy', () => {
     
     (new CPTestDummy()).test();
 });
+
+test('Component proxy, async wrapper', () => {
+    let c = 0;
+    let c2 = 0;
+    const callback = function () {
+        c++;
+    };
+    const proxy = new ComponentProxy({}, (f) => {
+        c2++;
+        f();
+    });
+    
+    proxy.bind(EventBus, 'event', callback);
+    proxy.emit(EventBus, 'event');
+    
+    expect(c).toBe(1);
+    expect(c2).toBe(1);
+});
