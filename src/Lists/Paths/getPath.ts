@@ -33,7 +33,7 @@ import {_initPathWalkerPath, _initPathWalkerStep, KeyTypes} from './_internals';
  * @param defaultValue
  * @param isNested
  */
-function getPathWalker(list: List, path: TListPathArray, defaultValue?: any, isNested?: boolean)
+function getPathWalker(list: List, path: TListPathArray, defaultValue?: any, isNested?: boolean): any
 {
     const [keys, isLastKey, keyType] = _initPathWalkerStep(list, path);
     

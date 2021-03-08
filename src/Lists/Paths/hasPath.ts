@@ -16,7 +16,7 @@
  * Last modified: 2019.06.12 at 12:08
  */
 
-import {List, ListPath} from '../../Interfaces/List';
+import {List, ListPath, TListPathArray} from '../../Interfaces/List';
 import {isArray} from '../../Types/isArray';
 import {isUndefined} from '../../Types/isUndefined';
 import {isList} from '../isList';
@@ -28,7 +28,7 @@ import {_initPathWalkerPath, _initPathWalkerStep} from './_internals';
  * @param list
  * @param path
  */
-function hasPathWalker(list: List, path: Array<any>)
+function hasPathWalker(list: List, path: TListPathArray): void
 {
     const [keys, isLastKey] = _initPathWalkerStep(list, path);
     for (let i = 0; i < keys.length; i++) {

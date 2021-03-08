@@ -16,7 +16,7 @@
  * Last modified: 2019.06.12 at 11:50
  */
 
-import {isUndefined} from '../../Types/isUndefined';
+import {ListPath, TListPathArray} from '../../Interfaces/List';
 import {forEach} from '../forEach';
 import {parsePath} from './parsePath';
 
@@ -38,16 +38,12 @@ import {parsePath} from './parsePath';
  * @param separatorA The separator for string paths in $pathA
  * @param separatorB The separator for string paths in $pathB
  */
-export function mergePaths(pathA, pathB, separatorA?: string, separatorB?: string): Array<string>
+export function mergePaths(pathA: ListPath, pathB: ListPath, separatorA?: string, separatorB?: string): TListPathArray
 {
-    if (isUndefined(separatorA)) {
-        separatorA = '.';
-    }
-    if (isUndefined(separatorB)) {
-        separatorB = separatorA;
-    }
-    const partsA = parsePath(pathA, separatorA);
-    const partsB = parsePath(pathB, separatorB);
+    const partsA = parsePath(pathA, separatorA ?? '.');
+    const partsB = parsePath(pathB, separatorB ?? separatorA ?? '.');
+    
     forEach(partsB, (p) => partsA.push(p));
+    
     return partsA;
 }

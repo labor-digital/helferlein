@@ -16,8 +16,8 @@
  * Last modified: 2021.03.07 at 23:11
  */
 
-import {isArray} from '../../../lib';
 import {List, ListPath, TListPathArray} from '../../Interfaces/List';
+import {isArray} from '../../Types/isArray';
 import {isList} from '../isList';
 import {getListValue, setListValue} from '../listAccess';
 import {_initPathWalkerPath, _initPathWalkerStep} from './_internals';
@@ -29,7 +29,7 @@ import {_initPathWalkerPath, _initPathWalkerStep} from './_internals';
  * @param path
  * @param value
  */
-function setPathWalker(list: List, path: TListPathArray, value: any)
+function setPathWalker(list: List, path: TListPathArray, value: any): void
 {
     const [keys, isLastKey] = _initPathWalkerStep(list, path);
     
