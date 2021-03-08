@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.35.0](https://github.com/labor-digital/helferlein/compare/v3.34.0...v3.35.0) (2021-03-08)
+
+
+### Features
+
+* **ComponentProxy:** implement asyncWrapper parameter ([25ddc58](https://github.com/labor-digital/helferlein/commit/25ddc5889b6a3af45bc59d3988ec103fadb9b724))
+* **Paths:** implement setPath ([819d394](https://github.com/labor-digital/helferlein/commit/819d394f3455f88191ed89c696649f04633995fd))
+
+
+### Bug Fixes
+
+* **Lists/Paths:** optimize code and typescript declaration ([5e03323](https://github.com/labor-digital/helferlein/commit/5e03323efc72b7dd065461200bc93a80b02b88c3))
+
 ## [3.34.0](https://github.com/labor-digital/helferlein/compare/v3.33.1...v3.34.0) (2021-03-05)
 
 
