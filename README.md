@@ -17,17 +17,48 @@ npm install @labor-digital/helferlein
 
 ## Usage
 
-This package is designed to run in a typescript application and not directly in the browser. A common usecase would look like:
+### In a module environment (webpack/typescript)
 
-```
-import {asArray} from "@labor-digital/helferlein/lib/FormatAndConvert/asArray";
+The helpers are distributed as loosely coupled components, that are tree-shakable by modern building tools like webpack. So you can simply load what you need
+directly from your code
+
+```js
+import {asArray} from "@labor-digital/helferlein";
+
 const objectAsArray = asArray({'a': 1, 'b': 2, 'd': 3, 'e': 'asdf'});
 ``` 
 
-As you see in the import statement we did not add a "main" file to avoid overhead for bundlers that don't support treeshaking out of the box.
+### As scrip in a browser
 
-However, if you want to use the library in your browser, without typescript you can use the precompiled javascript files in the "lib.browser" directory. You can
-simply import any file in your html and and access the helper functions using ``Helferlein.asArray()`` in your javascript.
+You can also load the pre-build sources directly in your browser. You don't need any bundler for that, just look inside the dist.browser directory.
+
+#### Load only some helpers
+
+Each helper is available in a standalone file. That way you can load either a single helper, or two, or three. Each loaded helper, will be added to the global "
+Helferlein" object.
+
+```html
+
+<script type="text/javascript" src="../dist.browser/Helferlein.types.isArray.js"></script>
+<script type="text/javascript" src="../dist.browser/Helferlein.types.isString.js"></script>
+<script type="text/javascript">
+    console.log('Is string', Helferlein.isString('true'), '<- true | false ->', Helferlein.isString(false));
+    console.log('Is array', Helferlein.isArray([]), '<- true | false ->', Helferlein.isString(false));
+</script>
+```
+
+#### Load all helpers
+
+Alternatively you can load all available helpers at once using the "Helferlein.all.js" file.
+
+```html
+
+<script type="text/javascript" src="../dist.browser/Helferlein.all.js"></script>
+<script type="text/javascript">
+    console.log('Is string', Helferlein.isString('true'), '<- true | false ->', Helferlein.isString(false));
+    console.log('Is array', Helferlein.isArray([]), '<- true | false ->', Helferlein.isString(false));
+</script>
+```
 
 ## Documentation
 

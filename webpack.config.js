@@ -19,8 +19,24 @@
 const path = require('path');
 const fs = require('fs');
 
+// A list of module names that should be rewritten to something different
+const rewrites = {
+    'ui.BreakpointService.BreakpointService': 'ui.BreakpointService',
+    'index': 'all'
+};
+
+// A list of compiled ts files that should not be converted into browser chunks
+const forbiddenPatterns = [
+    /[Ii]nterfaces?$/,
+    /index\./,
+    /interfaces\./,
+    /_internals/,
+    /breakpointService\./
+];
+
+const basePath = path.join(__dirname, 'dist');
+
 // Find all functions we have in our library...
-const dir = '../lib/';
 const entryPoints = {};
 const traverser = function (pathString) {
     fs.readdirSync(pathString).forEach(fileName => {
@@ -35,19 +51,41 @@ const traverser = function (pathString) {
             }
             
             if (localPathString.match(/\.([^.]+)$/, '')[1] === 'js') {
-                const baseName = path.basename(localPathString).replace(/\.([^.]+)$/, '');
+                let baseName = localPathString.replace(/\.([^.]+)$/, '');
+                baseName = baseName.substr(basePath.length);
+                baseName = baseName.replace(/[\/\\]/g, '.');
+                if (baseName.charAt(0) === '.') {
+                    baseName = baseName.substr(1);
+                }
+                baseName = baseName
+                    .split('.')
+                    .map(v => v.slice(0, 1).toLowerCase() + v.slice(1))
+                    .join('.');
+                
+                if (typeof rewrites[baseName] === 'string') {
+                    baseName = rewrites[baseName];
+                }
+                
+                for (let i = 0; i < forbiddenPatterns.length; i++) {
+                    const pattern = forbiddenPatterns[i];
+                    if (baseName.match(pattern)) {
+                        return;
+                    }
+                }
+                
                 entryPoints[baseName] = localPathString;
             }
         }
     });
 };
-traverser(dir);
+traverser(basePath);
 
 module.exports = {
     mode: 'production',
+    target: 'es5',
     entry: entryPoints,
     output: {
-        path: path.join(__dirname, '../lib.browser'),
+        path: path.join(__dirname, 'dist.browser'),
         filename: 'Helferlein.[name].js',
         library: ['Helferlein'],
         libraryTarget: 'umd'
