@@ -31,7 +31,7 @@ export interface ForEachCallback<V = any, K = any> extends Function
      * @param key The current key
      * @param iteratedObject The iterated object
      */
-    (value?: V, key?: K, iteratedObject?: ReadList<V, K>): boolean | any
+    (value: V, key: K, iteratedObject: ReadList<V, K>): boolean | any
 }
 
 /**
