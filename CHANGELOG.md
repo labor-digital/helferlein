@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/labor-digital/helferlein/compare/v4.0.0...v4.0.1) (2021-03-10)
+
+
+### Bug Fixes
+
+* add missing helpers to the entry file ([39281c1](https://github.com/labor-digital/helferlein/commit/39281c1948d3b929893434f5c1d559621ee32039))
+
 ## [4.0.0](https://github.com/labor-digital/helferlein/compare/v3.35.1...v4.0.0) (2021-03-10)
 
 
