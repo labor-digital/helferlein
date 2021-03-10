@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.04.02 at 13:15
  */
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {EventEmitter, EventEmitterEventListener} from './EventEmitter';
 
 const emitter = new EventEmitter();
@@ -62,7 +62,7 @@ export class EventBus
      */
     static bind(event: string, listener: EventEmitterEventListener, priority?: number): void
     {
-        emitter.bind(event, listener);
+        emitter.bind(event, listener, priority);
     }
     
     /**

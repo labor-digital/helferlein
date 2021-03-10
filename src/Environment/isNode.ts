@@ -16,7 +16,7 @@
  * Last modified: 2019.10.05 at 14:57
  */
 
-let isNodeCache = null;
+let isNodeCache: boolean | null = null;
 
 /**
  * Returns true if the script is called from within a node context
@@ -26,7 +26,9 @@ export function isNode(): boolean
     if (isNodeCache !== null) {
         return isNodeCache;
     }
-    return isNodeCache = typeof process !== 'undefined' &&
-                         process.versions != null &&
-                         process.versions.node != null;
+    
+    return isNodeCache =
+        typeof process !== 'undefined' &&
+        process.versions != null &&
+        process.versions.node != null;
 }

@@ -19,7 +19,7 @@ import {isBrowser} from '../Environment/isBrowser';
 import {EventBus} from '../Events/EventBus';
 import {HelferleinEventList} from '../Events/HelferleinEventList';
 import {asArray} from '../FormatAndConvert/asArray';
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {forEach} from '../Lists/forEach';
 import {map} from '../Lists/map';
 import {isEmpty} from '../Types/isEmpty';
@@ -105,22 +105,22 @@ export class UrlHash
         if (!isBrowser()) {
             return {};
         }
+        
         if (window.location.hash === knownHash) {
             return hashCache;
         }
-        if (window.location.hash === '') {
+        
+        if (window.location.hash === '' || window.location.hash.indexOf('/') === -1) {
             return {};
         }
-        if (window.location.hash.indexOf('/') === -1) {
-            return {};
-        }
+        
         knownHash = window.location.hash;
         const hash = window.location.hash.replace(/^[#\/]*/, '');
         const hashParts = hash.split('/');
         const parsed = {};
-        let key = null;
-        forEach(hashParts, (e: any) => {
-            e = decodeURIComponent(e);
+        let key: string | null = null;
+        forEach(hashParts, (e: string | number) => {
+            e = decodeURIComponent(e + '');
             if (key !== null) {
                 if (parseInt(e) + '' === e) {
                     e = parseInt(e);
@@ -143,11 +143,13 @@ export class UrlHash
         if (!isBrowser()) {
             return;
         }
+        
         if (isEmpty(hash)) {
             EventBus.emit(HelferleinEventList.EVENT_HASH_UPDATE, {new: ''});
             window.location.hash = '/';
             return;
         }
+        
         const list = asArray(map(hash, (v, k) => encodeURIComponent(k + '') + '/' + encodeURIComponent(v)));
         const hashString = '#/' + list.join('/');
         EventBus.emit(HelferleinEventList.EVENT_HASH_UPDATE, {new: hashString});

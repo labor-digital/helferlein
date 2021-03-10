@@ -16,7 +16,7 @@
  * Last modified: 2019.06.12 at 11:06
  */
 
-import {ListPath, TListPathArray} from '../../Interfaces/List';
+import type {ListPath, TListPathArray} from '../../Interfaces/List';
 import {escapeRegex} from '../../Strings/escapeRegex';
 import {isArray} from '../../Types/isArray';
 import {isNumber} from '../../Types/isNumber';
@@ -130,10 +130,8 @@ export function parsePath(path: ListPath, separator?: string): TListPathArray
     // Split the path into parts
     const hasEscapedSeparators = pathString.indexOf('\\') !== -1;
     const seperatorPattern = escapeRegex(separator);
-    let parts = map(
-        pathString.match(new RegExp('(\\\\.|[^' + seperatorPattern + '])+', 'g')),
-        (v: string) => v.trim()
-    );
+    const pattern = new RegExp('(\\\\.|[^' + seperatorPattern + '])+', 'g');
+    let parts = map(pathString.match(pattern) as Array<string>, v => v.trim());
     
     // Remove empty parts
     parts = filter(parts, (v) => v !== '');
@@ -142,7 +140,7 @@ export function parsePath(path: ListPath, separator?: string): TListPathArray
     if (hasEscapedSeparators) {
         const pattern = new RegExp('\\\\' + seperatorPattern, 'g');
         parts = map(parts, (v) => {
-            return v.replace(pattern, separator);
+            return v.replace(pattern, separator!);
         });
     }
     

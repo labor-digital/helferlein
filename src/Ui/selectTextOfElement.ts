@@ -34,11 +34,12 @@ declare global
  *
  * @param element The dom element to mark the text of
  */
-export function selectTextOfElement(element: HTMLElement)
+export function selectTextOfElement(element: HTMLElement): void
 {
     if (!isBrowser()) {
         return;
     }
+    
     if (document.body.createTextRange) {
         const range = document.body.createTextRange();
         range.moveToElementText(element);
@@ -47,6 +48,9 @@ export function selectTextOfElement(element: HTMLElement)
         const selection = window.getSelection();
         const range = document.createRange();
         range.selectNodeContents(element);
+        if (!selection) {
+            return;
+        }
         selection.removeAllRanges();
         selection.addRange(range);
     }

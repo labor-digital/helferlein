@@ -16,7 +16,7 @@
  * Last modified: 2019.12.30 at 21:11
  */
 
-import {PlainObject} from '../src/Interfaces/PlainObject';
+import type {PlainObject} from '../src/Interfaces/PlainObject';
 import {cloneList} from '../src/Lists/cloneList';
 
 test('cloneList of array', () => {

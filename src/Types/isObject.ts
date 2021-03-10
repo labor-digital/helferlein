@@ -15,15 +15,16 @@
  *
  * Last modified: 2019.01.09 at 11:59
  */
-export function isObject(value, allowNull?: true): value is Object | null
-export function isObject(value, allowNull?: false | boolean): value is Object
+export function isObject(value: any, allowNull: true): value is Object | null
+export function isObject(value: any, allowNull: false): value is Object & NonNullable<any>
+export function isObject(value: any, allowNull?: boolean): value is Object & NonNullable<any>
 
 /**
  * Returns true if the given value is an object of some kind and NOT NULL
  * @param value
  * @param allowNull True if null should also return TRUE
  */
-export function isObject(value, allowNull?: boolean): value is Object
+export function isObject(value: any, allowNull?: boolean)
 {
     return typeof value === 'object' && (allowNull === true || value !== null);
 }

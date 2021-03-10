@@ -20,7 +20,7 @@ import {isBrowser} from '../Environment/isBrowser';
 import {isNull} from '../Types/isNull';
 import {isObject} from '../Types/isObject';
 import {isUndefined} from '../Types/isUndefined';
-import {RgbColor} from './Color.interfaces';
+import type {RgbColor} from './Color.interfaces';
 import {rgbStringToRgbColor} from './rgbStringToRgbColor';
 
 /**
@@ -37,22 +37,29 @@ export function getBackgroundColor(el: HTMLElement): RgbColor | null
     if (!isBrowser()) {
         return null;
     }
+    
     if (!isObject(el)) {
         return null;
     }
+    
     let backgroundColor = null;
     while (el) {
         const backgroundColorLocal = window.getComputedStyle(el).backgroundColor;
+        
         if (backgroundColorLocal === null) {
             break;
         }
+        
         const rgba = backgroundColorLocal.match(/^rgba?\((\d+|0),\s*(\d+|0),\s*(\d+|0)(?:,\s*(\d+|0))?\)$/);
+        
         if (!isNull(rgba) && (isUndefined(rgba[4]) || rgba[4] !== '0')) {
             backgroundColor = rgbStringToRgbColor(backgroundColorLocal);
         }
-        if (el.tagName === 'HTML' || !isNull(backgroundColor)) {
+        
+        if (el.tagName === 'HTML' || !isNull(backgroundColor) || !el.parentElement) {
             break;
         }
+        
         el = el.parentElement;
     }
     if (isNull(backgroundColor)) {

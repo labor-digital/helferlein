@@ -17,7 +17,7 @@
  */
 
 import {asArray} from '../FormatAndConvert/asArray';
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {filter} from '../Lists/filter';
 import {forEach} from '../Lists/forEach';
 import {sort} from '../Lists/sort';
@@ -35,7 +35,7 @@ export class EventEmitterEvent
     public args: PlainObject;
     public isPropagationStopped: boolean;
     
-    constructor(name, args)
+    constructor(name: string, args: PlainObject)
     {
         this.name = name;
         this.args = args;
@@ -63,7 +63,10 @@ export class EventEmitter
     /**
      * The list of events that are registered in this emitter
      */
-    protected events: PlainObject<Array<{ priority: number, listener: EventEmitterEventListener | EventEmitterCallbackEventListener }>>;
+    protected events: PlainObject<Array<{
+        priority: number,
+        listener: EventEmitterEventListener | EventEmitterCallbackEventListener
+    }>>;
     
     /**
      * If true the emitter will emit the event as callback and not using the event object
@@ -138,7 +141,7 @@ export class EventEmitter
         
         // Check if we got an array of strings
         if (isArray(event)) {
-            const promises = [];
+            const promises: Array<Promise<any>> = [];
             
             forEach(event, e => {
                 promises.push(this.emitHook(e, args));
@@ -244,7 +247,7 @@ export class EventEmitter
         });
         
         if (this.events[event].length === 0) {
-            this.events[event] = undefined;
+            delete this.events[event];
         }
         
         return this;

@@ -17,7 +17,7 @@
  */
 
 import {isNode} from '../Environment/isNode';
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {isUndefined} from '../Types/isUndefined';
 import {canUseFetch} from './canUseFetch';
 import {fetchWithTimeout} from './fetchWithTimeout';
@@ -45,7 +45,7 @@ function makeRequest(uri: string): Promise<boolean>
                 host: parsed.hostname,
                 path: parsed.pathname,
                 timeout: 1000
-            }, res => {
+            }, (res: any) => {
                 res.on('error', () => resolve(false));
                 res.on('data', () => resolve(true));
             }).on('error', () => resolve(false));
@@ -87,12 +87,12 @@ export function checkOnlineState(pingUrl?: string, stateTtl?: number): Promise<b
             return;
         }
         
-        const del = () => delete stateList[pingUrl];
+        const del = () => delete stateList[pingUrl!];
         
         makeRequest(pingUrl)
             .then((res) => {
                 if (res) {
-                    stateList[pingUrl] = res;
+                    stateList[pingUrl!] = res;
                     setTimeout(del, stateTtl);
                 } else {
                     del();

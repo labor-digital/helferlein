@@ -19,6 +19,18 @@
 import {isObject} from '../Types/isObject';
 import {isString} from '../Types/isString';
 
+// Auto convert json objects
+function getDataConverter(value: any)
+{
+    if (isString(value)) {
+        try {
+            return JSON.parse(value);
+        } catch (e) {
+        }
+    }
+    return value;
+}
+
 /**
  * This helper receives a html element and extracts either a single,
  * or all data attributes from it. It can also accept a default, which
@@ -32,18 +44,6 @@ export function getData(element: HTMLElement, selector?: string, fallback?: any)
 {
     if (!isObject(element)) {
         return fallback;
-    }
-    
-    // Auto convert json objects
-    function getDataConverter(value: any)
-    {
-        if (isString(value)) {
-            try {
-                return JSON.parse(value);
-            } catch (e) {
-            }
-        }
-        return value;
     }
     
     // Load a single selector
@@ -61,6 +61,11 @@ export function getData(element: HTMLElement, selector?: string, fallback?: any)
     var attrs = element.attributes;
     for (var i = 0; i < attrs.length; i++) {
         var attr = attrs.item(i);
+        
+        if (!attr) {
+            continue;
+        }
+        
         // make sure it is a data attribute
         if (attr.nodeName.match(new RegExp(/^data-/))) {
             // remove the 'data-' from the string
@@ -68,5 +73,6 @@ export function getData(element: HTMLElement, selector?: string, fallback?: any)
                 getDataConverter(attr.nodeValue);
         }
     }
+    
     return dataset;
 }

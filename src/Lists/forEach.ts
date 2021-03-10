@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.01.10 at 10:02
  */
-import {ReadList} from '../Interfaces/List';
+import type {ReadList} from '../Interfaces/List';
 import {isArray} from '../Types/isArray';
 import {isFunction} from '../Types/isFunction';
 import {isIterator} from '../Types/isIterator';
@@ -99,7 +99,7 @@ export function forEach<V = any, K = any>(list: ReadList<V, K>, callback: ForEac
         if (isIterator(list)) {
             let it: Iterator<V> = (list as Iterable<V>)[Symbol.iterator]();
             if (isFunction(it.next)) {
-                for (let nextValue = it.next(); nextValue.done !== true; nextValue = it.next()) {
+                for (let nextValue = it.next(); !nextValue.done; nextValue = it.next()) {
                     if (callback(nextValue.value, _k++ as any, list) === false) {
                         break;
                     }

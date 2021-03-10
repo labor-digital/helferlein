@@ -29,6 +29,7 @@ export function isEmpty(value: any, includeZero?: boolean): boolean
     if (isNullOrUndef(value)) {
         return true;
     }
+    
     switch (typeof value) {
         case 'string':
             return value.trim().length === 0 || includeZero === true && value === '0';
@@ -37,5 +38,6 @@ export function isEmpty(value: any, includeZero?: boolean): boolean
         case 'object':
             return getListSize(value) === 0;
     }
+    
     return false;
 }

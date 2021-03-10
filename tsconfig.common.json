@@ -18,12 +18,12 @@
 		"alwaysStrict": true,
 		"forceConsistentCasingInFileNames": true,
 		// @todo we should refactor the code, so we can enable these
-		//		"importsNotUsedAsValues": "error",
-		//		"noFallthroughCasesInSwitch": true,
-		//		"noUnusedLocals": true,
-		//		"noUnusedParameters": true,
-		//		"strict": true,
-		//		"suppressImplicitAnyIndexErrors": true,
+		"importsNotUsedAsValues": "error",
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"strict": true,
+		"suppressImplicitAnyIndexErrors": true,
 		// Type-checking settings.
 		"lib": [
 			"dom",

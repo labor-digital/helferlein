@@ -21,8 +21,8 @@ import {EventBus} from '../../Events/EventBus';
 import {HelferleinEventList} from '../../Events/HelferleinEventList';
 import {throttleEvent} from '../throttleEvent';
 import {BreakpointHelpers} from './BreakpointHelpers';
-import {BreakpointsConfigureOptions} from './BreakpointService.interfaces';
-import {Breakpoint} from './Entities/Breakpoint';
+import type {BreakpointsConfigureOptions} from './BreakpointService.interfaces';
+import type {Breakpoint} from './Entities/Breakpoint';
 import {BreakpointContext} from './Entities/BreakpointContext';
 
 // Create new context
@@ -133,16 +133,19 @@ export class BreakpointService
      * It throws an error if a non existent breakpoint key was requested
      * @param key
      */
-    static getSingle(key: string): Breakpoint
+    static getSingle(key: string): Breakpoint | null
     {
         if (!isBrowser()) {
             return null;
         }
+        
         const all = this.getAll();
-        if (!all.has(key)) {
+        
+        if (!all || !all.has(key)) {
             throw new Error('Request for unknown breakpoint: ' + key);
         }
-        return all.get(key);
+        
+        return all.get(key)!;
     }
     
     /**
@@ -161,16 +164,16 @@ export class BreakpointService
         // Reset current and breakpoints
         context.breakpoints = null;
         context.current = null;
-        context.inTemplateSelector = null;
+        delete context.inTemplateSelector;
         
         // Apply options
         if (typeof opts.container === 'string') {
             context.container = opts.container;
         }
-        if (typeof opts.template === "string") {
+        if (typeof opts.template === 'string') {
             context.template = opts.template;
         }
-        if (typeof opts.inTemplateSelector === "string") {
+        if (typeof opts.inTemplateSelector === 'string') {
             context.inTemplateSelector = opts.inTemplateSelector;
         }
     }

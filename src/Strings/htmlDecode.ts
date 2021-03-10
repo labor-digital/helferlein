@@ -40,9 +40,9 @@ const translationMap = {
  */
 export function htmlDecode(code: string): string
 {
-    return code.replace(translationPattern, function (m, value) {
+    return code.replace(translationPattern, function (_, value) {
         return translationMap[value];
-    }).replace(/&#(\d+);/gi, function (m, number) {
+    }).replace(/&#(\d+);/gi, function (_, number) {
         return String.fromCharCode(parseInt(number, 10));
     });
 }

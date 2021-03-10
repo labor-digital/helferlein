@@ -59,13 +59,18 @@ export function getListType(element: any): ListType
 export function listTypeSwitch<V, K>(list: ReadList<V, K>, definition: ListTypeDefinition, type?: ListType): any
 {
     type = type ?? getListType(list);
+    
     if (!definition || !definition[type]) {
+        
         if (type === ListType.NoList && !definition[ListType.NoList]) {
             throw new Error('Invalid list type given!');
         }
+        
         return undefined;
+        
     }
-    return definition[type](list as any);
+    
+    return definition[type]!(list as any);
 }
 
 /**
@@ -212,9 +217,8 @@ export function getLastInList<V, K>(list: ReadList<V, K>, returnKey?: boolean): 
 /**
  * Returns the length of the given list
  * @param list
- * @param returnKey
  */
-export function getListSize<V, K>(list: ReadList<V, K>, returnKey?: boolean): number
+export function getListSize<V, K>(list: ReadList<V, K>): number
 {
     return listTypeSwitch(list, {
         array: (v) => v.length,
@@ -235,8 +239,10 @@ export function listIntersect<V1 = any, K1 = any, V2 = any, K2 = any>(
     b: ReadList<V2, K2>
 ): Array<V1 | V2>
 {
-    const known = [];
+    const known: Array<V1 | V2> = [];
+    
     const _b = asArray(b);
+    
     return asArray(a).filter(v => {
         const r = _b.indexOf(v) !== -1 && known.indexOf(v) === -1;
         known.push(v);

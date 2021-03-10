@@ -55,7 +55,8 @@ export function setAttr(
         return;
     }
     
-    let valueString = null;
+    let valueString: string = '';
+    
     if (isString(value)) {
         valueString = value as string;
     } else if (isBool(value)) {

@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.02.01 at 18:58
  */
-import {List, ListPath, ReadList} from '../Interfaces/List';
+import type {List, ListPath, ReadList} from '../Interfaces/List';
 import {isNull} from '../Types/isNull';
 import {isUndefined} from '../Types/isUndefined';
 import {forEach} from './forEach';
@@ -33,7 +33,7 @@ import {getPath} from './Paths/getPath';
 export function sort<V, K>(list: ReadList<V, K>, by?: ListPath | null, desc?: boolean): List<V, K>
 {
     // Build the sorter
-    let sorter = [];
+    let sorter: Array<{ by: V | ListPath | any, k: any, v: any }> = [];
     forEach(list, (v, k) => {
         sorter.push({
             by: isNull(by) || isUndefined(by) ? v : getPath(v, by),

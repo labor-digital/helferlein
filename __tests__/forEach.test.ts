@@ -16,7 +16,7 @@
  * Last modified: 2019.01.09 at 13:42
  */
 
-import {PlainObject} from '../src/Interfaces/PlainObject';
+import type {PlainObject} from '../src/Interfaces/PlainObject';
 import {forEach} from '../src/Lists/forEach';
 
 test('forEach with array', () => {
@@ -33,7 +33,7 @@ test('forEach with array', () => {
 
 test('forEach break with array', () => {
     let array = [1, 2];
-    forEach(array, (v, k, o) => {
+    forEach(array, (v) => {
         expect(v).toBe(1);
         return false;
     });
@@ -58,7 +58,7 @@ test('forEach break with Map', () => {
     let map = new Map<number, number>();
     map.set(0, 1);
     map.set(1, 2);
-    forEach(map, (v, k, o) => {
+    forEach(map, (v) => {
         expect(v).toBe(1);
         return false;
     });
@@ -99,7 +99,7 @@ test('forEach break with Set', () => {
     let set = new Set<number>();
     set.add(1);
     set.add(2);
-    forEach(set, (v, k, o) => {
+    forEach(set, (v) => {
         expect(v).toBe(1);
         return false;
     });
@@ -146,7 +146,7 @@ test('forEach break with Set', () => {
         1: 2,
         2: 3
     };
-    forEach(map, (v, k, o) => {
+    forEach(map, (v) => {
         expect(v).toBe(1);
         return false;
     });

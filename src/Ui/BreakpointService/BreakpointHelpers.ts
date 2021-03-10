@@ -19,7 +19,7 @@
 import {forEach} from '../../Lists/forEach';
 import {isNull} from '../../Types/isNull';
 import {Breakpoint} from './Entities/Breakpoint';
-import {BreakpointContext} from './Entities/BreakpointContext';
+import type {BreakpointContext} from './Entities/BreakpointContext';
 
 export class BreakpointHelpers
 {
@@ -51,6 +51,12 @@ export class BreakpointHelpers
         
         // Add the template to the container
         const container = document.querySelector(context.container);
+        
+        if (!container) {
+            console.error('Failed to read breakpoints! Container is missing!');
+            return;
+        }
+        
         const tplWrapper = document.createElement('div');
         tplWrapper.innerHTML = context.template;
         const tpl = tplWrapper.firstChild as HTMLElement;
@@ -71,11 +77,12 @@ export class BreakpointHelpers
         if (breakpointDefinition.indexOf(':') === -1) {
             return;
         }
+        
         const breakpoints = new Map();
         forEach(breakpointDefinition.replace(/"/g, '').split(/,/), (singleBreakpoint, id: number) => {
             singleBreakpoint
                 .trim()
-                .replace(/^(.*?):(?:[^\d]*?)(\d*?)(?:[^\d|]*?)\|(?:[^\d|]*?)(\d*?)(?:[^\d]*?)$/, (a, key, min, max) => {
+                .replace(/^(.*?):(?:[^\d]*?)(\d*?)(?:[^\d|]*?)\|(?:[^\d|]*?)(\d*?)(?:[^\d]*?)$/, (_, key, min, max) => {
                     breakpoints.set(key, new Breakpoint(id, key, parseInt(min), parseInt(max)));
                     return '';
                 });
@@ -111,7 +118,7 @@ export class BreakpointHelpers
         }
         
         let foundBreakpoint = null;
-        forEach(context.breakpoints, (breakpoint: Breakpoint) => {
+        forEach(context.breakpoints!, (breakpoint: Breakpoint) => {
             // Skip if min is bigger than window width
             if (breakpoint.min > width) {
                 return;

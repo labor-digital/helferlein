@@ -15,9 +15,9 @@
  *
  * Last modified: 2019.01.11 at 18:13
  */
-import {List} from '../Interfaces/List';
-import {forEach} from '../Lists/forEach';
+import type {List} from '../Interfaces/List';
 import {isList} from '../Lists/isList';
+import {reduce} from '../Lists/reduce';
 import {isNullOrUndef} from '../Types/isNullOrUndef';
 
 /**
@@ -35,7 +35,8 @@ export function asArray(list: List): Array<any>
         throw new Error('Could not determine the output type of a given element!');
     }
     
-    const output = [];
-    forEach(list, v => output.push(v));
-    return output;
+    return reduce(list, (l, v) => {
+        l.push(v);
+        return l;
+    }, []);
 }

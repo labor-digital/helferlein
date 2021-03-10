@@ -17,8 +17,8 @@
  */
 import {getData} from '../Dom/getData';
 import {isBrowser} from '../Environment/isBrowser';
-import {List} from '../Interfaces/List';
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {List} from '../Interfaces/List';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {forEach} from '../Lists/forEach';
 import {getPageStorage} from '../Misc/getPageStorage';
 import {isBool} from '../Types/isBool';
@@ -32,8 +32,8 @@ const isIos = isBrowser() && !!navigator.platform && /iPad|iPhone|iPod/.test(nav
 const storageKeyStopped = 'stopBodyScrolling';
 const storageKeyBackup = 'stopBodyScrollingPropertyBackup';
 
-let html = null;
-let body = null;
+let html: HTMLElement | null = null;
+let body: HTMLElement | null = null;
 let forceHtmlBlocking = isIos;
 
 /**
@@ -80,7 +80,7 @@ export function stopBodyScrolling(state?: boolean)
     }
     
     // Stop the scrolling
-    if (isUndefined(state) || state === true) {
+    if (isUndefined(state) || state) {
         // Ignore if already stopped
         if (storage.get(storageKeyStopped, false)) {
             return;

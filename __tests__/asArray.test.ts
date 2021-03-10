@@ -44,8 +44,8 @@ test('asArray with Map', () => {
 });
 
 test('asArray empty array with null or undefined', () => {
-    expect(asArray(null)).toEqual([]);
-    expect(asArray(undefined)).toEqual([]);
+    expect(asArray(null as any)).toEqual([]);
+    expect(asArray(undefined as any)).toEqual([]);
 });
 
 test('asArray to die if a non-iterable object was given', () => {

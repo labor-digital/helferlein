@@ -16,6 +16,8 @@
  * Last modified: 2019.01.25 at 11:48
  */
 
+import type {PlainObject} from '../Interfaces/PlainObject';
+
 export interface ThrottleEventWrapper extends Function
 {
     /**
@@ -39,7 +41,10 @@ export interface ThrottledEventHandler extends Function
  */
 export function throttleEvent(callback: ThrottledEventHandler, limit: number): any
 {
-    var timeout, context, args, result;
+    var timeout: number | null | any;
+    let context: any;
+    let args: PlainObject | null;
+    let result: any;
     let previous = 0;
     
     var later = function () {
@@ -51,13 +56,14 @@ export function throttleEvent(callback: ThrottledEventHandler, limit: number): a
         }
     };
     
-    var throttled: ThrottleEventWrapper = function throttleEventWrapper(foo, bar) {
+    var throttled: ThrottleEventWrapper = function throttleEventWrapper() {
         args = arguments;
         var now = new Date().getTime();
         if (!previous) {
             previous = now;
         }
         var remaining = limit - (now - previous);
+        // @ts-ignore
         context = this;
         
         if (remaining <= 0 || remaining > limit) {

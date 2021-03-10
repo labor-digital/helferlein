@@ -30,17 +30,26 @@ export function closest(selector: string, to: HTMLElement): HTMLElement | null
     if (!isObject(to)) {
         return null;
     }
-    if (!isFunction(to.closest)) {
-        let el = to;
-        while (el) {
-            const matches = isFunction(el.matches) ? el.matches : (el as any).msMatchesSelector.bind(el);
-            if (matches(selector)) {
-                return el;
-            }
-            el = el.parentElement;
-        }
-        return null;
-    } else {
+    
+    if (isFunction(to.closest)) {
         return to.closest(selector) as HTMLElement | null;
     }
+    
+    let el = to;
+    
+    while (el) {
+        const matches = isFunction(el.matches) ? el.matches : (el as any).msMatchesSelector.bind(el);
+        
+        if (matches(selector)) {
+            return el;
+        }
+        
+        if (!el.parentElement) {
+            return null;
+        }
+        
+        el = el.parentElement;
+    }
+    
+    return null;
 }

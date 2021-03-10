@@ -92,7 +92,7 @@ const runningAnimations = new class
  * The used easing function
  * @param p
  */
-function easing(p)
+function easing(p: number)
 {
     return (-0.5 * (Math.cos(Math.PI * p) - 1));
 }
@@ -139,7 +139,7 @@ export function scrollToPosition(
     duration?: number,
     container?: HTMLElement | Window | string,
     breakOnManualScroll?: boolean
-): Promise<HTMLElement | Window | string>
+): Promise<HTMLElement | Window | string | undefined>
 {
     // Noop if not in browser
     if (!isBrowser()) {
@@ -166,7 +166,7 @@ export function scrollToPosition(
         const currentPosition = getScrollPos(resolvedContainer);
         const targetPosition = position;
         const distance = targetPosition - currentPosition;
-        const ticks = Math.round(duration / tickLength);
+        const ticks = Math.round(duration! / tickLength);
         let expectedPosition = currentPosition;
         
         // Nothing to do

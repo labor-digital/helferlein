@@ -17,7 +17,7 @@
  */
 
 import {isBrowser} from '../../Environment/isBrowser';
-import {PlainObject} from '../../Interfaces/PlainObject';
+import type {PlainObject} from '../../Interfaces/PlainObject';
 import {isPlainObject} from '../../Types/isPlainObject';
 
 /**
@@ -26,11 +26,12 @@ import {isPlainObject} from '../../Types/isPlainObject';
  * @param event the name of the event to emit
  * @param args additional arguments to pass to the event
  */
-export function emitDomEvent(target: Document | Window | HTMLElement, event: string, args?: PlainObject)
+export function emitDomEvent(target: Document | Window | HTMLElement, event: string, args?: PlainObject): void
 {
     if (!isBrowser()) {
         return;
     }
+    
     const e = document.createEvent('Event') as any;
     e.initEvent(event, true, true);
     e.args = isPlainObject(args) ? args : {};

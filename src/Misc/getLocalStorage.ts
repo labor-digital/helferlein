@@ -25,7 +25,7 @@ import {getPageStorage} from './getPageStorage';
  * A fallback local storage if this script is not called from a browser,
  * or a browser that does not support the local storage object
  */
-let fallbackStorage = null;
+let fallbackStorage: GenericStorage | null = null;
 
 /**
  * Adapter to connect a GenericStorage object to the window.localStorage API.
@@ -63,8 +63,8 @@ export function getLocalStorage(namespace?: string): GenericStorage
     
     // Create storage object
     const lc = new GenericStorage(storage);
-    lc.watch('*', (value, valueOld, s) => {
-        window.localStorage.setItem(namespace, JSON.stringify(s));
+    lc.watch('*', (_: any, _1: any, s: any) => {
+        window.localStorage.setItem(namespace!, JSON.stringify(s));
     });
     localStorageRegistry.set(namespace, lc);
     return lc;

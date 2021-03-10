@@ -17,7 +17,6 @@
  */
 
 // BROWSER
-export * from './Browser/ajax';
 export * from './Browser/checkOnlineState';
 export * from './Browser/loadAsset';
 export * from './Browser/requestFrame';

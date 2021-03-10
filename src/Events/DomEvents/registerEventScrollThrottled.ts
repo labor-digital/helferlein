@@ -32,7 +32,7 @@ export function registerEventScrollThrottled(): void
         return;
     }
     isRegistered = true;
-    window.addEventListener('scroll', throttleEvent((e) => {
+    window.addEventListener('scroll', throttleEvent((e: any) => {
         EventBus.emit(HelferleinEventList.EVENT_SCROLL_THROTTLED, {parent: e});
     }, 50));
 }

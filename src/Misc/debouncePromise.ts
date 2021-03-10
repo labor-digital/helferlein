@@ -61,7 +61,7 @@ export function debouncePromise(key: string, promiseCreator: PromiseCreator,
     }
     
     // Load config
-    const config = registry.get(key);
+    const config = registry.get(key)!;
     
     // Register timeout
     clearTimeout(config.timeout);
@@ -71,7 +71,7 @@ export function debouncePromise(key: string, promiseCreator: PromiseCreator,
     
     return new Promise((resolve, reject) => {
         const localGuid = ++config.guid;
-        const callback = function (e) {
+        const callback = function (e: any) {
             // Clean our callback
             EventBus.unbind(config.event, callback);
             
@@ -86,7 +86,8 @@ export function debouncePromise(key: string, promiseCreator: PromiseCreator,
             if (config.promise === null) {
                 config.promise = e.args.promiseCreator();
             }
-            config.promise.then(resolve).catch(reject);
+            
+            config.promise!.then(resolve).catch(reject);
         };
         EventBus.bind(config.event, callback);
     }).catch((e) => {

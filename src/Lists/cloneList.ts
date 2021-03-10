@@ -17,7 +17,7 @@
  */
 
 import clone from 'clone';
-import {List} from '../Interfaces/List';
+import type {List} from '../Interfaces/List';
 
 export interface CloneListOptionsInterface
 {
@@ -30,7 +30,7 @@ export interface CloneListOptionsInterface
     /**
      * Depth to which the object is to be cloned (optional, defaults to Infinity)
      */
-    depth?: Number
+    depth?: number
     
     /**
      * Sets the prototype to be used when cloning an Object. (optional, defaults to __proto__ of the to be cloned value, ie.
@@ -53,5 +53,5 @@ export interface CloneListOptionsInterface
  */
 export function cloneList<T = List>(list: T, options?: CloneListOptionsInterface): T
 {
-    return clone(list, options);
+    return clone(list, options ?? {});
 }

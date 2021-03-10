@@ -16,11 +16,11 @@
  * Last modified: 2019.01.09 at 14:51
  */
 
-import {List, ReadList} from '../Interfaces/List';
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {List, ReadList} from '../Interfaces/List';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {forEach} from './forEach';
 import {getListType, getNewList, setListValue} from './listAccess';
-import {MapCallback} from './map';
+import type {MapCallback} from './map';
 
 export interface FilterCallback<V = any, K = any>
 {
@@ -30,7 +30,7 @@ export interface FilterCallback<V = any, K = any>
      * @param key The current key
      * @param iteratedObject The iterated object
      */
-    (value?: V, key?: K, iteratedObject?: ReadList<V, K>): boolean
+    (value: V, key: K, iteratedObject: ReadList<V, K>): boolean
 }
 
 export function filter<V, K = number>(list: Array<V>, callback: MapCallback<V, K>): V[]
@@ -48,6 +48,7 @@ export function filter<V, K>(list: ReadList<V, K>, callback: FilterCallback<V, K
 {
     const output = getNewList<V, K>(getListType(list));
     forEach(list, (v, k) => {
+        // noinspection PointlessBooleanExpressionJS
         if (callback(v, k, list) !== false) {
             setListValue(output, v, k);
         }

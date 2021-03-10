@@ -28,23 +28,20 @@ export function onDomMutation(target: HTMLElement, callback: Function): Mutation
 {
     if (!isBrowser()) {
         return {
-            observe(target: Node, options?: MutationObserverInit): void
-            {
-            },
-            disconnect(): void
-            {
-            },
-            takeRecords(): any
-            {
-            }
+            observe(): void { },
+            disconnect(): void { },
+            takeRecords(): any { }
         };
     }
+    
     const observer = new MutationObserver((mutations: MutationRecord[], observer: MutationObserver) => {
         callback({target, mutations, observer});
     });
+    
     observer.observe(
         target as any,
         {attributes: true, childList: true, characterData: true, subtree: true}
     );
+    
     return observer;
 }

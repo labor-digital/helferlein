@@ -16,7 +16,7 @@
  * Last modified: 2021.03.07 at 23:11
  */
 
-import {List, ListPath, TListPathArray} from '../../Interfaces/List';
+import type {List, ListPath, TListPathArray} from '../../Interfaces/List';
 import {isArray} from '../../Types/isArray';
 import {isList} from '../isList';
 import {getListValue, setListValue} from '../listAccess';

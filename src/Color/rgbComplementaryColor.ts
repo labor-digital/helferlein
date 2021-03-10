@@ -17,7 +17,7 @@
  */
 
 import {isObject} from '../Types/isObject';
-import {RgbColor} from './Color.interfaces';
+import type {RgbColor} from './Color.interfaces';
 
 export function rgbComplementaryColor(r: RgbColor): RgbColor;
 export function rgbComplementaryColor(r: number, g: number, b: number): RgbColor;
@@ -33,6 +33,10 @@ export function rgbComplementaryColor(r: number | RgbColor, g?: number, b?: numb
     if (isObject(r)) {
         ({r, g, b} = (r as RgbColor));
     }
+    
+    g = g ?? 0;
+    b = b ?? 0;
+    
     return {
         r: Math.abs((r as number) - 255),
         g: Math.abs(g - 255),

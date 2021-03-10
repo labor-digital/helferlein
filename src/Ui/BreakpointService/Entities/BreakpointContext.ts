@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.01.10 at 13:41
  */
-import {Breakpoint} from './Breakpoint';
+import type {Breakpoint} from './Breakpoint';
 
 export class BreakpointContext
 {

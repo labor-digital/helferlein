@@ -17,7 +17,7 @@
  */
 
 import {EventBus} from '../src/Events/EventBus';
-import {EventEmitterEvent} from '../src/Events/EventEmitter';
+import type {EventEmitterEvent} from '../src/Events/EventEmitter';
 
 test('Event bus, bind and emit event', () => {
     const args = {

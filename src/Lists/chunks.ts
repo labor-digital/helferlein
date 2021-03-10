@@ -16,7 +16,7 @@
  * Last modified: 2019.11.10 at 20:39
  */
 
-import {List} from '../Interfaces/List';
+import type {List} from '../Interfaces/List';
 import {forEach} from './forEach';
 import {getListType, getNewList, setListValue} from './listAccess';
 

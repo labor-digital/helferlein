@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.01.10 at 13:43
  */
-import {Breakpoint} from './Entities/Breakpoint';
+import type {Breakpoint} from './Entities/Breakpoint';
 
 export interface BreakpointsConfigureOptions
 {

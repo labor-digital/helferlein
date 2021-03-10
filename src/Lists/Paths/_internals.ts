@@ -16,7 +16,7 @@
  * Last modified: 2019.06.12 at 17:51
  */
 
-import {List, ListPath, TListPathArray} from '../../Interfaces/List';
+import type {List, ListPath, TListPathArray} from '../../Interfaces/List';
 import {isArray} from '../../Types/isArray';
 import {isUndefined} from '../../Types/isUndefined';
 import {isList} from '../isList';
@@ -74,7 +74,7 @@ export function _initPathWalkerStep(list: List, path: TListPathArray): Array<any
     return [keys, isLastKey, keyType];
 }
 
-export function _initPathWalkerPath(list: List, path: ListPath, separator): TListPathArray
+export function _initPathWalkerPath(list: List, path: ListPath, separator?: string): TListPathArray
 {
     if (!isList(list)) {
         throw new Error('The given list value can not be accessed via path');

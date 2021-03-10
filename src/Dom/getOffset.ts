@@ -19,6 +19,7 @@
 import {isBrowser} from '../Environment/isBrowser';
 import {isEmpty} from '../Types/isEmpty';
 import {isObject} from '../Types/isObject';
+import {isString} from '../Types/isString';
 
 /**
  * Returns the offset of a given dom element relative to the document
@@ -34,12 +35,14 @@ export function getOffset(element: HTMLElement, container?: HTMLElement | string
     let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     if (!isEmpty(container)) {
-        if (typeof container === 'string') {
+        
+        if (isString(container)) {
             container = document.querySelector(container as string) as HTMLElement;
         }
-        const containerRect = container.getBoundingClientRect();
-        scrollLeft = container.scrollLeft - containerRect.left;
-        scrollTop = container.scrollTop - containerRect.top;
+        
+        const containerRect = container!.getBoundingClientRect();
+        scrollLeft = container!.scrollLeft - containerRect.left;
+        scrollTop = container!.scrollTop - containerRect.top;
     }
     return {
         top: rect.top + scrollTop,

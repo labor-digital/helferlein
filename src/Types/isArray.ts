@@ -25,7 +25,7 @@ const hasBuiltInArrayDetection = !isUndefined(Array) && isFunction(Array.isArray
  * Returns true if the given value is an array, false if not
  * @param value
  */
-export function isArray(value): value is Array<any>
+export function isArray<T = any>(value: any): value is Array<T>
 {
     return hasBuiltInArrayDetection ? Array.isArray(value) : !isNullOrUndef(value) && value.constructor === Array;
 }

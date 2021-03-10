@@ -220,15 +220,17 @@ export function getNameOfMonth(month: number, short?: boolean): string
  * @param format
  * @param date
  */
-export function formatDateAndTime(format: string, date?: Date)
+export function formatDateAndTime(format: string, date?: Date): string
 {
-    if (isUndefined(date)) {
-        date = new Date();
-    }
+    date = date ?? new Date();
+    
     if (format === 'mysql') {
         return formatDateAndTime('Y-m-d H:i:s', date);
     }
+    
     return format.replace(/(?:\\.)|([YydjwnlDFmMHisG])/g, (a, b) => {
+        date = date as Date;
+        
         if (isUndefined(b)) {
             return a.charAt(0) === '\\' ? a.substr(1) : a;
         }

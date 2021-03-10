@@ -15,8 +15,8 @@
  *
  * Last modified: 2019.01.09 at 12:58
  */
-import {List, ReadList} from '../Interfaces/List';
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {List, ReadList} from '../Interfaces/List';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {forEach} from './forEach';
 import {getListType, getNewList, setListValue} from './listAccess';
 
@@ -28,7 +28,7 @@ export interface MapCallback<V = any, K = number | string, R = any>
      * @param key The current key
      * @param iteratedObject The iterated object
      */
-    (value?: V, key?: K, iteratedObject?: ReadList<V, K>): R
+    (value: V, key: K, iteratedObject: ReadList<V, K>): R
 }
 
 export function map<R, V = any, K = number>(list: Array<V>, callback: MapCallback<V, K, R>): R[]

@@ -16,7 +16,7 @@
  * Last modified: 2019.07.24 at 17:27
  */
 
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {inflectToDashed} from '../Strings/Inflector/inflectToDashed';
 import {isNull} from '../Types/isNull';
 import {isNumber} from '../Types/isNumber';

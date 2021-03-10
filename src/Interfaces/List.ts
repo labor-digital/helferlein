@@ -15,7 +15,7 @@
  *
  * Last modified: 2019.01.09 at 12:53
  */
-import {PlainObject} from './PlainObject';
+import type {PlainObject} from './PlainObject';
 
 export type List<V = any, K = any, T = Array<V> | Set<V> | Map<K, V> | PlainObject<V>> = T;
 export type ReadList<V = any, K = any, T = List<V, K> | Iterable<V>> = T;

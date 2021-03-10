@@ -19,7 +19,7 @@ import {requestFrame} from '../Browser/requestFrame';
 import {addClass} from '../Dom/addClass';
 import {removeClass} from '../Dom/removeClass';
 import {isBrowser} from '../Environment/isBrowser';
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {forEach} from '../Lists/forEach';
 import {isPlainObject} from '../Types/isPlainObject';
 import {isString} from '../Types/isString';

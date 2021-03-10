@@ -18,14 +18,14 @@
 
 import {emitDomEvent} from '../Events/DomEvents/emitDomEvent';
 import {onDomMutation} from '../Events/DomEvents/onDomMutation';
-import {EventBus} from '../Events/EventBus';
+import type {EventBus} from '../Events/EventBus';
 import {EventEmitter, EventEmitterEvent} from '../Events/EventEmitter';
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {forEach} from '../Lists/forEach';
 import {isFunction} from '../Types/isFunction';
 import {isObject} from '../Types/isObject';
 import {isUndefined} from '../Types/isUndefined';
-import {GenericStorageInterface} from './GenericStorageInterface';
+import type {GenericStorageInterface} from './GenericStorageInterface';
 
 export type ComponentProxyEventTarget =
     Document
@@ -118,12 +118,12 @@ export class ComponentProxy
     /**
      * The list of registered mutation observers by their target objects
      */
-    protected mutationObservers: Map<ComponentProxyEventTarget, MutationObserver>;
+    protected mutationObservers?: Map<ComponentProxyEventTarget, MutationObserver>;
     
     /**
      * The internal event emitter to handle mutation events
      */
-    protected mutationEmitter: EventEmitter;
+    protected mutationEmitter?: EventEmitter;
     
     constructor(thisContext: any, asyncWrapper?: ComponentProxyAsyncWrapper)
     {
@@ -283,7 +283,7 @@ export class ComponentProxy
      * outsideFunction(proxy.callbackProxy((...args) => console.log(args)));
      * @param callback
      */
-    public callbackProxy(callback): Function
+    public callbackProxy<T = Function>(callback: T): T
     {
         const that = this;
         return function (...args: [any]): Promise<any> | any {
@@ -292,9 +292,9 @@ export class ComponentProxy
             }
             
             return that.asyncWrapper(
-                () => callback.apply(that.thisContext, args)
+                () => (callback as any).apply(that.thisContext, args)
             );
-        };
+        } as any;
     }
     
     /**
@@ -376,12 +376,12 @@ export class ComponentProxy
             this.events.set(target, new Map());
         }
         
-        if (!this.events.get(target).has(event)) {
-            this.events.get(target).set(event, new Map());
+        if (!this.events.get(target)!.has(event)) {
+            this.events.get(target)!.set(event, new Map());
         }
         
         // Retrieve or create the proxy
-        let proxy: any = this.events.get(target).get(event).get(listener);
+        let proxy: any = this.events.get(target)!.get(event)!.get(listener);
         if (isUndefined(proxy)) {
             const thisContext = this.thisContext;
             
@@ -389,7 +389,7 @@ export class ComponentProxy
                 this.asyncWrapper(() => listener.apply(thisContext, args));
             };
             
-            this.events.get(target).get(event).set(listener, proxy);
+            this.events.get(target)!.get(event)!.set(listener, proxy);
         }
         
         // Execute the binding
@@ -407,10 +407,10 @@ export class ComponentProxy
                 this.mutationEmitter.bind('', proxy);
                 
                 // Make sure we have an observer on that target
-                if (!this.mutationObservers.has(target)) {
-                    this.mutationObservers.set(target, onDomMutation((target as HTMLElement),
+                if (!this.mutationObservers!.has(target)) {
+                    this.mutationObservers!.set(target, onDomMutation((target as HTMLElement),
                         (args: { target: any, mutations: MutationRecord[], observer: MutationObserver }) => {
-                            this.mutationEmitter.emit('', args);
+                            this.mutationEmitter!.emit('', args);
                         }));
                 }
                 
@@ -490,10 +490,11 @@ export class ComponentProxy
         this._unbindAll();
         
         // Remove my properties
-        delete this.intervals;
-        delete this.timeouts;
+        this.intervals = null as any;
+        this.timeouts = null as any;
+        this.events = null as any;
+        
         delete this.thisContext;
-        delete this.events;
         delete this.mutationEmitter;
         delete this.mutationObservers;
         
@@ -518,17 +519,17 @@ export class ComponentProxy
         // Events
         forEach(this.events, (eventList, target) => {
             forEach(eventList, (listeners, event) => {
-                forEach(listeners, (proxy, listener) => {
+                forEach(listeners, (_, listener) => {
                     this._unbind(target, event, listener);
                 });
             });
         });
         
         // Mutation observers
-        if (!isUndefined(this.mutationEmitter)) {
+        if (!isUndefined(this.mutationObservers)) {
             forEach(this.mutationObservers, (o: MutationObserver, k) => {
                 o.disconnect();
-                this.mutationObservers.delete(k);
+                this.mutationObservers!.delete(k);
             });
         }
     }
@@ -545,20 +546,20 @@ export class ComponentProxy
         target = resolveEmitterIfPossible(target);
         
         if (this.events.has(target) &&
-            this.events.get(target).has(event) &&
-            this.events.get(target).get(event).has(listener)) {
+            this.events.get(target)!.has(event) &&
+            this.events.get(target)!.get(event)!.has(listener)) {
             
             // Get the proxy instance
             const eventList = this.events.get(target);
-            const eventListeners = eventList.get(event);
-            const proxy: any = eventListeners.get(listener);
+            const eventListeners = eventList!.get(event);
+            const proxy: any = eventListeners!.get(listener);
             
             // Remove the listener and clean up
-            eventListeners.delete(listener);
-            if (eventListeners.size === 0) {
-                eventList.delete(event);
+            eventListeners!.delete(listener);
+            if (eventListeners!.size === 0) {
+                eventList!.delete(event);
             }
-            if (eventList.size === 0) {
+            if (eventList!.size === 0) {
                 this.events.delete(target);
             }
             

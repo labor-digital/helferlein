@@ -17,7 +17,7 @@
  */
 import {GenericStorage} from '../Entities/GenericStorage';
 import {isBrowser} from '../Environment/isBrowser';
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {isNull} from '../Types/isNull';
 import {isString} from '../Types/isString';
 import {isUndefined} from '../Types/isUndefined';
@@ -33,7 +33,7 @@ declare global
 /**
  * A fallback local storage if this script is not called from a browser.
  */
-let fallbackStorage = null;
+let fallbackStorage: GenericStorage | null = null;
 
 /**
  * Provides access to a storage object on the window scope. Means multiple libraries may interact

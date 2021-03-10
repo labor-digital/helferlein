@@ -19,7 +19,6 @@ import {addClass} from '../Dom/addClass';
 import {getOffset} from '../Dom/getOffset';
 import {removeClass} from '../Dom/removeClass';
 import {isBrowser} from '../Environment/isBrowser';
-import {PlainObject} from '../Interfaces/PlainObject';
 import {forEach} from '../Lists/forEach';
 import {getGuid} from '../Misc/getGuid';
 import {isBool} from '../Types/isBool';
@@ -32,7 +31,18 @@ import {isUndefined} from '../Types/isUndefined';
 import {getScrollPos} from './getScrollPos';
 import {throttleEvent} from './throttleEvent';
 
-let stickyElements = [];
+let stickyElements: Array<IStickyElementDefinition> = [];
+
+interface IStickyElementDefinition
+{
+    guid: string
+    element: HTMLElement,
+    options: StickyElementOptions
+    unbindHandler?: Function
+    position?: number,
+    state?: boolean
+    appliedState?: boolean
+}
 
 export interface StickyElementOptions
 {
@@ -70,25 +80,25 @@ export interface StickyElementOptions
  * @param scrollPos
  * @param container
  */
-function checkElementState(e, scrollPos, container?: HTMLElement)
+function checkElementState(e: IStickyElementDefinition, scrollPos: number, container?: HTMLElement)
 {
     if (isUndefined(e.position)) {
-        e.position = Math.max(0, getOffset(e.element, container).top - e.options.offset);
+        e.position = Math.max(0, getOffset(e.element, container).top - e.options.offset!);
     }
     
     e.state = e.position <= scrollPos;
     if (e.state !== e.appliedState) {
         if (e.state) {
             // Make the element sticky
-            addClass(e.element, e.options.class);
+            addClass(e.element, e.options.class!);
             if (e.options.setStyle) {
                 const containerOffset = !isUndefined(container) ? getOffset(container).top : 0;
                 e.element.style.position = 'fixed';
-                e.element.style.top = e.options.offset + containerOffset + 'px';
+                e.element.style.top = e.options.offset! + containerOffset + 'px';
             }
         } else {
             // Unstick the element
-            removeClass(e.element, e.options.class);
+            removeClass(e.element, e.options.class!);
             if (e.options.setStyle) {
                 e.element.style.position = '';
                 e.element.style.top = '';
@@ -150,7 +160,7 @@ export function stickyElement(element: HTMLElement, options?: StickyElementOptio
     }
     const container: HTMLElement | undefined = options.container as any;
     
-    const e: PlainObject = {guid, element, options};
+    const e: IStickyElementDefinition = {guid, element, options};
     const handler = throttleEvent(() => checkElementState(e, getScrollPos(container), container), 25);
     const eventTarget = isObject(options.container) ? options.container : window;
     (eventTarget as HTMLElement | Window).addEventListener('scroll', handler);
@@ -185,7 +195,9 @@ export function destroyStickyElement(element: HTMLElement)
             checkElementState(e, -1);
             
             // Unbind the element
-            e.unbindHandler();
+            if (e.unbindHandler) {
+                e.unbindHandler();
+            }
             
             // Clean up
             stickyElements.splice(k, 1);

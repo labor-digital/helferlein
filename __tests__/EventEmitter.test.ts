@@ -227,10 +227,10 @@ test('Event emitter, as callbacks', () => {
     const callback1: EventEmitterCallbackEventListener = (arg1, arg2) => {
         c += arg1 + arg2;
     };
-    const callback2 = (arg1, arg2) => {
+    const callback2 = (arg1: any, arg2: any) => {
         c += arg1 + arg2;
     };
-    const callback3 = (arg1, arg2) => {
+    const callback3 = (arg1: any, arg2: any) => {
         c += arg1 + arg2;
     };
     emitter.bind('test', callback1);

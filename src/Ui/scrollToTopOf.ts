@@ -17,7 +17,7 @@
  */
 import {getOffset} from '../Dom/getOffset';
 import {isBrowser} from '../Environment/isBrowser';
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {merge} from '../Lists/merge';
 import {isBool} from '../Types/isBool';
 import {isEmpty} from '../Types/isEmpty';
@@ -69,7 +69,7 @@ const isInBrowser = isBrowser();
 let config: ScrollToTopOfConfiguration = {
     duration: 300,
     offset: 0,
-    container: isInBrowser ? window : null
+    container: isInBrowser ? window : undefined
 };
 
 /**

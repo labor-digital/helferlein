@@ -16,6 +16,7 @@
  * Last modified: 2019.01.11 at 18:14
  */
 import {GenericStorage} from '../src/Entities/GenericStorage';
+import type {GenericStorageWatcher} from '../src/Entities/GenericStorageInterface';
 import {forEach} from '../src/Lists/forEach';
 
 test('GenericStorage construction', () => {
@@ -91,8 +92,8 @@ test('GenericStorage remove', () => {
 
 test('GenericStorage forEach', () => {
     const i = new GenericStorage({foo: 1, bar: 2});
-    const e = [];
-    i.forEach((v, k) => {
+    const e: Array<any> = [];
+    i.forEach((v: any, k: any) => {
         e.push(k);
         e.push(v);
     });
@@ -101,7 +102,7 @@ test('GenericStorage forEach', () => {
 
 test('GenericStorage forEach function bridge', () => {
     const i = new GenericStorage({foo: 1, bar: 2});
-    const e = [];
+    const e: Array<any> = [];
     forEach(i, (v, k) => {
         e.push(k);
         e.push(v);
@@ -113,7 +114,7 @@ test('GenericStorage onChange', () => {
     const s = {};
     let c = 0;
     const i = new GenericStorage(s);
-    const callbackWildcard = (value, valueOld, storage, key) => {
+    const callbackWildcard: GenericStorageWatcher = (_: any, _1: any, storage: any, key: any) => {
         c++;
         expect(key).toBe('foo');
         expect(storage).toBe(s);
@@ -121,7 +122,7 @@ test('GenericStorage onChange', () => {
     
     i.watch('*', callbackWildcard);
     
-    let callback = (value, valueOld, storage, key) => {
+    let callback: GenericStorageWatcher = (value: any, valueOld: any, storage: any, key: any) => {
         c++;
         expect(valueOld).toBe(undefined);
         expect(key).toBe('foo');
@@ -132,7 +133,7 @@ test('GenericStorage onChange', () => {
     i.set('foo', 'bar');
     i.unwatch('foo', callback);
     
-    callback = (value, valueOld, storage, key) => {
+    callback = (value: any, valueOld: any, storage: any, key: any) => {
         c++;
         expect(valueOld).toBe('bar');
         expect(key).toBe('foo');

@@ -16,7 +16,7 @@
  * Last modified: 2019.01.09 at 11:10
  */
 
-let k = [], i = 0;
+let k: any = [], i = 0;
 for (; i < 64;) {
     k[i] = 0 | (Math.abs(Math.sin(++i)) * 4294967296);
 }
@@ -37,8 +37,8 @@ for (; i < 64;) {
 export function md5(value: number | string): string
 {
     let str: any = value + '';
-    var b, c, d, j,
-        x = [],
+    var b, c, d, j: any,
+        x: any = [],
         str2 = unescape(encodeURI(str)),
         a: any = str2.length,
         h = [b = 1732584193, c = -271733879, ~b, ~c],

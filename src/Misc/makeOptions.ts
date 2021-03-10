@@ -16,8 +16,8 @@
  * Last modified: 2019.07.25 at 10:02
  */
 
-import {List} from '../Interfaces/List';
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {List} from '../Interfaces/List';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {forEach} from '../Lists/forEach';
 import {getListType, getListValue, ListType, setListValue} from '../Lists/listAccess';
 import {merge} from '../Lists/merge';
@@ -29,7 +29,7 @@ import {isObject} from '../Types/isObject';
 import {isPlainObject} from '../Types/isPlainObject';
 import {isString} from '../Types/isString';
 import {isUndefined} from '../Types/isUndefined';
-import {
+import type {
     MakeOptionsDefinition,
     MakeOptionsOptions,
     MakeOptionsValueDefinition,
@@ -62,19 +62,19 @@ export class OptionApplier
     /**
      * The list of errors we encountered while applying the options
      */
-    protected errors = [];
+    protected errors: Array<string> = [];
     
     /**
      * The options for the applier
      */
-    protected options: MakeOptionsOptions | PlainObject;
+    protected options?: MakeOptionsOptions | PlainObject;
     
     /**
      * If set, this holds the values that the custom validator returned
      * This is needed to transfer the values from the custom validator to the value validator.
      * The property is cleaned afterwards
      */
-    protected customValidatorValues;
+    protected customValidatorValues?: any;
     
     /**
      * Can be used in the same way as makeOptions
@@ -140,7 +140,7 @@ export class OptionApplier
             // Check if we know this key
             if (isUndefined(definition[k])) {
                 // Ignore if we allow unknown
-                if (this.options.allowUnknown === true) {
+                if (this.options!.allowUnknown === true) {
                     return;
                 }
                 // Handle the error
@@ -173,7 +173,7 @@ export class OptionApplier
             
             // Handle children
             if (isObject(v) && isObject(def.children)) {
-                v = this.applyInternal(v, def.children, path);
+                v = this.applyInternal(v, def.children!, path);
             }
             
             // Add the value to the result
@@ -192,7 +192,7 @@ export class OptionApplier
     protected validateDefinition(def: MakeOptionsValueDefinition, path: Array<string>): void
     {
         // Check if there are invalid keys
-        forEach(def, (v, k) => {
+        forEach(def, (_, k) => {
             if (ALLOWED_DEFINITION_KEYS.indexOf(k) === -1) {
                 throw new Error(
                     'Error at: "' + path.join('.') + '" invalid key found: "' + k + '" allowed keys are: ' +
@@ -451,10 +451,13 @@ export class OptionApplier
                     }
                     break;
             }
-            if (valid === true) {
+            
+            if (valid) {
                 return false;
             }
+            
         });
+        
         return valid;
     }
 }

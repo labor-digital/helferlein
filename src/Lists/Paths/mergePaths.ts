@@ -16,7 +16,7 @@
  * Last modified: 2019.06.12 at 11:50
  */
 
-import {ListPath, TListPathArray} from '../../Interfaces/List';
+import type {ListPath, TListPathArray} from '../../Interfaces/List';
 import {forEach} from '../forEach';
 import {parsePath} from './parsePath';
 

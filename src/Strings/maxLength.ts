@@ -37,16 +37,20 @@ export function maxLength(value: string, limit: number, ellipsis?: string): stri
     }
     const words = value.trim().split(' ');
     let length = 0;
-    let result = [];
+    let result: Array<string> = [];
+    
     forEach(words, word => {
         if ((length += word.length) >= limit) {
             return false;
         }
         result.push(word);
     });
+    
     let string = result.join(' ');
+    
     if (words.length !== result.length) {
         string += ellipsis;
     }
+    
     return string;
 }

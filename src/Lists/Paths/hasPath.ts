@@ -16,7 +16,7 @@
  * Last modified: 2019.06.12 at 12:08
  */
 
-import {List, ListPath, TListPathArray} from '../../Interfaces/List';
+import type {List, ListPath, TListPathArray} from '../../Interfaces/List';
 import {isArray} from '../../Types/isArray';
 import {isUndefined} from '../../Types/isUndefined';
 import {isList} from '../isList';

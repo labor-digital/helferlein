@@ -16,7 +16,7 @@
  * Last modified: 2019.01.09 at 18:42
  */
 import {asArray} from '../FormatAndConvert/asArray';
-import {List} from '../Interfaces/List';
+import type {List} from '../Interfaces/List';
 import {isArray} from '../Types/isArray';
 import {isSet} from '../Types/isSet';
 import {forEach} from './forEach';
@@ -24,7 +24,7 @@ import {isList} from './isList';
 import {getListType, getListValue, getNewList, setListValue} from './listAccess';
 import {reduce} from './reduce';
 
-function _mergeInternal(output: List, list: List): List
+function mergeWalker(output: List, list: List): List
 {
     // Handle the merging of values INTO arrays and sets
     if (isArray(output) || isSet(output)) {
@@ -44,7 +44,7 @@ function _mergeInternal(output: List, list: List): List
         const outputV = getListValue(output, key);
         if (isList(outputV) && isList(v)) {
             // Merge the children
-            v = _mergeInternal(outputV, v);
+            v = mergeWalker(outputV, v);
         }
         
         // Set the merged value inside the output list
@@ -73,7 +73,7 @@ function _mergeInternal(output: List, list: List): List
  *
  * @param args
  */
-export function merge(...args): List
+export function merge(...args: Array<any>): List
 {
-    return reduce(args, _mergeInternal, getNewList(getListType(args[0] ?? {})));
+    return reduce(args, mergeWalker, getNewList(getListType(args[0] ?? {})));
 }

@@ -16,7 +16,7 @@
  * Last modified: 2019.05.17 at 16:46
  */
 import {isObject} from '../Types/isObject';
-import {RgbColor} from './Color.interfaces';
+import type {RgbColor} from './Color.interfaces';
 
 export function rgbColorBrightness(r: RgbColor): number;
 export function rgbColorBrightness(r: number, g: number, b: number): number;
@@ -34,5 +34,7 @@ export function rgbColorBrightness(r: number | RgbColor, g?: number, b?: number)
     if (isObject(r)) {
         ({r, g, b} = (r as RgbColor));
     }
+    g = g ?? 0;
+    b = b ?? 0;
     return ((r as number) * 299 + g * 587 + b * 114) / 1000;
 }

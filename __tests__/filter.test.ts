@@ -26,7 +26,7 @@ test('filter with array', () => {
 });
 
 test('filter with set', () => {
-    let list = new Set();
+    let list: Set<number> = new Set();
     list.add(1);
     list.add(2);
     list.add(3);

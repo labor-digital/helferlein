@@ -27,8 +27,9 @@ test('Component Proxy, event binding and unbinding', () => {
             const proxy = new ComponentProxy(this);
             let c = 0;
             const that = this;
-            const callback = function (e) {
+            const callback = function (e: any) {
                 c++;
+                // @ts-ignore
                 expect(this).toBe(that);
                 expect(e.args.foo).toBe(1);
             };
@@ -56,8 +57,9 @@ test('Component Proxy, event unbinding on destroy', () => {
             const proxy = new ComponentProxy(this);
             let c = 0;
             const that = this;
-            const callback = function (e) {
+            const callback = function (e: any) {
                 c++;
+                // @ts-ignore
                 expect(this).toBe(that);
                 expect(e.args.foo).toBe(1);
             };
