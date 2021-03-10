@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/labor-digital/helferlein/compare/v3.35.1...v4.0.0) (2021-03-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* some helpers imports/exports got shifted and deprecated
+code removed
+* This might break your type checking on a project level,
+because lot's of types are now no longer "any"
+* ajax() helper was removed without replacement. Use
+axios or fetch instead
+* **checkOnlineState:** The called url was changed. You might need to
+reconfigure your firewall
+* Direct imports using @labor-digital/helferlein/lib/types/isArray are no longer supported.
+- The names of the browser files have been changed, to be more speaking.
+- The browser files are now located under dist.browser (formerly lib.browser)
+
+### Features
+
+* implement canUseFetch and fetchWithTimeout ([1e3c13e](https://github.com/labor-digital/helferlein/commit/1e3c13e51e5595593926c4969e8f1a870ea6eff8))
+* remove ajax helper ([f1f94f3](https://github.com/labor-digital/helferlein/commit/f1f94f3cefcd5f00e5e2556209aeb2edeefd04c5))
+* remove deprecated code ([f871a3d](https://github.com/labor-digital/helferlein/commit/f871a3d5bfcff60a4ac6c8a7ddd440f526e91ec4))
+* set typescript to use strict types ([9af298d](https://github.com/labor-digital/helferlein/commit/9af298dbc211ff63f8dfd5792c4b36d6f00876d6))
+* **checkOnlineState:** no longer rely on ajax() and make called url configurable ([a49f049](https://github.com/labor-digital/helferlein/commit/a49f0497d21fdceea51216fe073ec4356940445d))
+
+
+### build
+
+* rework the building ([469a81d](https://github.com/labor-digital/helferlein/commit/469a81dd7a9b1a34f4fcee4a08d68d2152b41964))
+
 ### [3.35.1](https://github.com/labor-digital/helferlein/compare/v3.35.0...v3.35.1) (2021-03-09)
 
 
