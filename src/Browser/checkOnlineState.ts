@@ -18,6 +18,7 @@
 
 import {isNode} from '../Environment/isNode';
 import type {PlainObject} from '../Interfaces/PlainObject';
+import {nodeRequire} from '../Node/nodeRequire';
 import {isUndefined} from '../Types/isUndefined';
 import {canUseFetch} from './canUseFetch';
 import {fetchWithTimeout} from './fetchWithTimeout';
@@ -39,9 +40,9 @@ function makeRequest(uri: string): Promise<boolean>
     
     if (isNode()) {
         return new Promise<boolean>(resolve => {
-            const {URL} = require('url');
+            const {URL} = nodeRequire('url');
             const parsed = new URL(uri);
-            require('https').get({
+            nodeRequire('https').get({
                 host: parsed.hostname,
                 path: parsed.pathname,
                 timeout: 1000

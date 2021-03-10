@@ -18,7 +18,6 @@
 
 const path = require('path');
 const fs = require('fs');
-const webpack = require('webpack');
 
 // A list of module names that should be rewritten to something different
 const rewrites = {
@@ -90,14 +89,6 @@ module.exports = {
         filename: 'Helferlein.[name].js',
         library: ['Helferlein'],
         libraryTarget: 'umd'
-    },
-    node: {},
-    resolve: {
-        fallback: {
-            https: false,
-            url: false,
-            crypto: false
-        }
     },
     performance: {
         hints: false
