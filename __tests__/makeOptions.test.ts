@@ -16,7 +16,7 @@
  * Last modified: 2019.07.25 at 14:36
  */
 
-import makeOptions from '../src/Misc/makeOptions';
+import {makeOptions} from '../src/Misc/makeOptions';
 
 test('makeOptions simple', () => {
     expect(makeOptions({
@@ -192,7 +192,7 @@ test('makeOptions error on custom validator', () => {
         }, {
             foo: {
                 default: '',
-                validator: (v) => {
+                validator: (v: any) => {
                     if (v === 123) {
                         return 'This is wrong!';
                     }

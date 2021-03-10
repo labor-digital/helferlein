@@ -18,10 +18,11 @@
 
 import {asArray} from '../../FormatAndConvert/asArray';
 import type {List, ListPath, TListPathArray} from '../../Interfaces/List';
+import {ListType} from '../../Interfaces/List';
 import {isArray} from '../../Types/isArray';
 import {isEmpty} from '../../Types/isEmpty';
 import {isUndefined} from '../../Types/isUndefined';
-import {getListType, getListValue, ListType} from '../listAccess';
+import {getListType, getListValue} from '../listAccess';
 import {merge} from '../merge';
 import {_initPathWalkerPath, _initPathWalkerStep, KeyTypes} from './_internals';
 

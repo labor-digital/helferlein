@@ -25,9 +25,6 @@ import {isObject} from '../Types/isObject';
 import {isSet} from '../Types/isSet';
 import {forEach} from './forEach';
 
-// @deprecated import listType directly from interfaces
-export {ListType};
-
 /**
  * Returns an enum of ListType which defines the type of list that was given
  * @param element

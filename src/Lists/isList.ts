@@ -16,7 +16,8 @@
  * Last modified: 2020.11.14 at 15:26
  */
 
-import {getListType, ListType} from './listAccess';
+import {ListType} from '../Interfaces/List';
+import {getListType} from './listAccess';
 
 /**
  * Returns true if the given value is a valid list we can use in list actions

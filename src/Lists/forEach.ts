@@ -34,13 +34,6 @@ export interface ForEachCallback<V = any, K = any> extends Function
     (value: V, key: K, iteratedObject: ReadList<V, K>): boolean | any
 }
 
-/**
- * @deprecated use ForEachCallback instead
- */
-export interface ForEachCallbackType<V = any, K = any> extends ForEachCallback<V, K>
-{
-}
-
 interface BreakErrorType
 {
     breaker?: boolean;

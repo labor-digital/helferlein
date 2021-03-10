@@ -17,9 +17,10 @@
  */
 
 import type {List} from '../Interfaces/List';
+import {ListType} from '../Interfaces/List';
 import type {PlainObject} from '../Interfaces/PlainObject';
 import {forEach} from '../Lists/forEach';
-import {getListType, getListValue, ListType, setListValue} from '../Lists/listAccess';
+import {getListType, getListValue, setListValue} from '../Lists/listAccess';
 import {merge} from '../Lists/merge';
 import {isArray} from '../Types/isArray';
 import {isFunction} from '../Types/isFunction';
@@ -539,6 +540,3 @@ export function makeOptions(
     const applier = new OptionApplier();
     return applier.apply(input, definition, options);
 }
-
-// @deprecated, will be removed in the next major version
-export default makeOptions;

@@ -16,6 +16,7 @@
  * Last modified: 2019.06.12 at 12:32
  */
 
+import {ListType} from '../src/Interfaces/List';
 import {
     getFirstInList,
     getLastInList,
@@ -25,8 +26,7 @@ import {
     getListValue,
     getNewList,
     getNthInList,
-    listIntersect,
-    ListType
+    listIntersect
 } from '../src/Lists/listAccess';
 
 const fixtures = {
