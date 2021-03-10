@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Ui/getViewportSize | @labor-digital/helferlein</title>
+	<title>Node/nodeRequire | @labor-digital/helferlein</title>
 	<meta name="description" content="Documentation for @labor-digital/helferlein">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">@labor-digital/helferlein</a>
 				</li>
 				<li>
-					<a href="ui_getviewportsize.html">Ui/getViewportSize</a>
+					<a href="node_noderequire.html">Node/nodeRequire</a>
 				</li>
 			</ul>
-			<h1>Module Ui/getViewportSize</h1>
+			<h1>Module Node/nodeRequire</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="ui_getviewportsize.html#getviewportsize" class="tsd-kind-icon">get<wbr>Viewport<wbr>Size</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="node_noderequire.html#noderequire" class="tsd-kind-icon">node<wbr>Require</a></li>
 							</ul>
 						</section>
 					</div>
@@ -81,24 +81,36 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="getviewportsize" class="tsd-anchor"></a>
-					<h3>get<wbr>Viewport<wbr>Size</h3>
+					<a name="noderequire" class="tsd-anchor"></a>
+					<h3>node<wbr>Require</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Viewport<wbr>Size<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ViewportSize</span></li>
+						<li class="tsd-signature tsd-kind-icon">node<wbr>Require<span class="tsd-signature-symbol">(</span>module<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/56a3fff/src/Ui/getViewportSize.ts#L29">src/Ui/getViewportSize.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/56a3fff/src/Node/nodeRequire.ts#L30">src/Node/nodeRequire.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the current viewport size as object containing width and height</p>
+									<p>Internal helper to execute a require for node, without breaking webpack in the process.</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>interface</dt>
+									<dd></dd>
+								</dl>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ViewportSize</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>module: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -111,14 +123,14 @@
 						<a href="../modules.html">Exports</a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="ui_getviewportsize.html">Ui/get<wbr>Viewport<wbr>Size</a>
+						<a href="node_noderequire.html">Node/node<wbr>Require</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="ui_getviewportsize.html#getviewportsize" class="tsd-kind-icon">get<wbr>Viewport<wbr>Size</a>
+						<a href="node_noderequire.html#noderequire" class="tsd-kind-icon">node<wbr>Require</a>
 					</li>
 				</ul>
 			</nav>
