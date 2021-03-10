@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.2](https://github.com/labor-digital/helferlein/compare/v4.0.1...v4.0.2) (2021-03-10)
+
+
+### Bug Fixes
+
+* implement fix for node only require() calls in webpack ([106b52e](https://github.com/labor-digital/helferlein/commit/106b52ebd01a43615f05bf9efc6123e0a58c5a26))
+
 ### [4.0.1](https://github.com/labor-digital/helferlein/compare/v4.0.0...v4.0.1) (2021-03-10)
 
 
