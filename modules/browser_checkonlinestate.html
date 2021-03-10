@@ -84,25 +84,41 @@
 					<a name="checkonlinestate" class="tsd-anchor"></a>
 					<h3>check<wbr>Online<wbr>State</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">check<wbr>Online<wbr>State<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Online<wbr>State<span class="tsd-signature-symbol">(</span>pingUrl<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, stateTtl<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/f29a78b/src/Browser/checkOnlineState.ts#L36">src/Browser/checkOnlineState.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/772b318/src/Browser/checkOnlineState.ts#L78">src/Browser/checkOnlineState.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Checks if the client is currently online or not</p>
+									<p>Checks if the client is currently online or not.
+										This methoed will execute a request to a online resource and does not rely on navigator.isOnline,
+									to reliably if a internet connection can be used.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>deprecated</dt>
-									<dd><p>will be removed in the next major version -&gt; use a library like axios</p>
-									</dd>
-								</dl>
+								<p>Note:</p>
 							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> pingUrl: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The url of an endpoint, you know that is online. If not provided, we use
+											<a href="https://ping.labor.tools/">https://ping.labor.tools/</a> which is a secure, no tracking endpoint that just sends you a &quot;pong&quot; response.
+										It is routed through cloudflare and hosted on github: <a href="https://github.com/labor-digital/ping-endpoint">https://github.com/labor-digital/ping-endpoint</a></p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> stateTtl: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>A numeric value in milliseconds to define how long a state should be cached. By default the
+										state is cached for 60 seconds.</p>
+									</div>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>

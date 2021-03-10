@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Browser/ajax | @labor-digital/helferlein</title>
+	<title>Browser/canUseFetch | @labor-digital/helferlein</title>
 	<meta name="description" content="Documentation for @labor-digital/helferlein">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">@labor-digital/helferlein</a>
 				</li>
 				<li>
-					<a href="browser_ajax.html">Browser/ajax</a>
+					<a href="browser_canusefetch.html">Browser/canUseFetch</a>
 				</li>
 			</ul>
-			<h1>Module Browser/ajax</h1>
+			<h1>Module Browser/canUseFetch</h1>
 		</div>
 	</div>
 </header>
@@ -70,21 +70,9 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Classes</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/browser_ajax.ajaxresponse.html" class="tsd-kind-icon">Ajax<wbr>Response</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Interfaces</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/browser_ajax.ajaxrequest.html" class="tsd-kind-icon">Ajax<wbr>Request</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="browser_ajax.html#ajax" class="tsd-kind-icon">ajax</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="browser_canusefetch.html#canusefetch" class="tsd-kind-icon">can<wbr>Use<wbr>Fetch</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,42 +81,24 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="ajax" class="tsd-anchor"></a>
-					<h3>ajax</h3>
+					<a name="canusefetch" class="tsd-anchor"></a>
+					<h3>can<wbr>Use<wbr>Fetch</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">ajax<span class="tsd-signature-symbol">(</span>request<span class="tsd-signature-symbol">: </span><a href="../interfaces/browser_ajax.ajaxrequest.html" class="tsd-signature-type" data-tsd-kind="Interface">AjaxRequest</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../classes/browser_ajax.ajaxresponse.html" class="tsd-signature-type" data-tsd-kind="Class">AjaxResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">can<wbr>Use<wbr>Fetch<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/f29a78b/src/Browser/ajax.ts#L140">src/Browser/ajax.ts:140</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/772b318/src/Browser/canUseFetch.ts#L24">src/Browser/canUseFetch.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>This helper is a wrapper around BASIC ajax functionallity.
-										It supports post and get requests. It also supports data submission based
-									on an javascript object and should work with any backend without problems.</p>
+									<p>Returns true if the fetch api is supported by the current browser.</p>
 								</div>
-								<p>It returns a promise which holds a response object you can get the returned data from.
-								If the result is a json format, it will be auto-decoded for you</p>
-								<p>NOTE: This is the simplest implementation you can do and does not supply you with any comfort features
-									than the automatic encoding of data objects. If you want more advanced features you should use axios or
-								jQuery&#39;s ajax instead of this one.</p>
-								<dl class="tsd-comment-tags">
-									<dt>deprecated</dt>
-									<dd><p>will be removed in the next major version -&gt; use a library like axios</p>
-									</dd>
-								</dl>
 							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>request: <a href="../interfaces/browser_ajax.ajaxrequest.html" class="tsd-signature-type" data-tsd-kind="Interface">AjaxRequest</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../classes/browser_ajax.ajaxresponse.html" class="tsd-signature-type" data-tsd-kind="Class">AjaxResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -141,20 +111,14 @@
 						<a href="../modules.html">Exports</a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="browser_ajax.html">Browser/ajax</a>
+						<a href="browser_canusefetch.html">Browser/can<wbr>Use<wbr>Fetch</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="../classes/browser_ajax.ajaxresponse.html" class="tsd-kind-icon">Ajax<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/browser_ajax.ajaxrequest.html" class="tsd-kind-icon">Ajax<wbr>Request</a>
-					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="browser_ajax.html#ajax" class="tsd-kind-icon">ajax</a>
+						<a href="browser_canusefetch.html#canusefetch" class="tsd-kind-icon">can<wbr>Use<wbr>Fetch</a>
 					</li>
 				</ul>
 			</nav>
