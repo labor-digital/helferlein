@@ -18,6 +18,8 @@
 
 // BROWSER
 export * from './Browser/checkOnlineState';
+export * from './Browser/fetchWithTimeout';
+export * from './Browser/canUseFetch';
 export * from './Browser/loadAsset';
 export * from './Browser/requestFrame';
 export * from './Browser/UrlHash';
@@ -100,6 +102,7 @@ export * from './Lists/sort';
 
 // -- Paths
 export * from './Lists/Paths/getPath';
+export * from './Lists/Paths/setPath';
 export * from './Lists/Paths/hasPath';
 export * from './Lists/Paths/mergePaths';
 export * from './Lists/Paths/parsePath';
