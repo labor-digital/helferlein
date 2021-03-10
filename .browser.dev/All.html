@@ -26,6 +26,7 @@
         console.log('Contents of the loaded Helferlein', Helferlein);
         console.log('Is string', Helferlein.isString('true'), '<- true | false ->', Helferlein.isString(false));
         console.log('Is array', Helferlein.isArray([]), '<- true | false ->', Helferlein.isString(false));
+        Helferlein.checkOnlineState().then(function (v) { console.log('Is online', v); });
     </script>
 </head>
 <body>

@@ -23,7 +23,7 @@
 		//		"noUnusedLocals": true,
 		//		"noUnusedParameters": true,
 		//		"strict": true,
-		"suppressImplicitAnyIndexErrors": true,
+		//		"suppressImplicitAnyIndexErrors": true,
 		// Type-checking settings.
 		"lib": [
 			"dom",

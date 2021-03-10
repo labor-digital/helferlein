@@ -17,10 +17,10 @@
  */
 
 import {EventEmitter} from '../Events/EventEmitter';
-import {PlainObject} from '../Interfaces/PlainObject';
+import type {PlainObject} from '../Interfaces/PlainObject';
 import {forEach} from '../Lists/forEach';
 import {isUndefined} from '../Types/isUndefined';
-import {GenericStorageInterface, GenericStorageWatcher} from './GenericStorageInterface';
+import type {GenericStorageInterface, GenericStorageWatcher} from './GenericStorageInterface';
 
 export class GenericStorage implements GenericStorageInterface
 {
