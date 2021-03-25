@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.5](https://github.com/labor-digital/helferlein/compare/v4.0.4...v4.0.5) (2021-03-25)
+
+
+### Bug Fixes
+
+* **getGuid:** fix invalid import of dependencies ([32b3854](https://github.com/labor-digital/helferlein/commit/32b385400644197e61eba1fea0f862f4a3abfc85))
+
 ### [4.0.4](https://github.com/labor-digital/helferlein/compare/v4.0.3...v4.0.4) (2021-03-15)
 
 ### [4.0.3](https://github.com/labor-digital/helferlein/compare/v4.0.2...v4.0.3) (2021-03-15)
