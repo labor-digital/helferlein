@@ -15,9 +15,12 @@
  *
  * Last modified: 2019.02.01 at 13:32
  */
-import {isBrowser, isNumber} from '..';
+
+import {isBrowser} from '../Environment/isBrowser';
+import {isNumber} from '../Types/isNumber';
 
 const storageKey = 'HELFERLEIN_GUID_STORAGE';
+
 const storage = (function () {
     if (isBrowser()) {
         return window;
