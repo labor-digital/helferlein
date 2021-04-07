@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.6](https://github.com/labor-digital/helferlein/compare/v4.0.5...v4.0.6) (2021-04-07)
+
+
+### Bug Fixes
+
+* include "src" directory in the npm tarball ([0eabf38](https://github.com/labor-digital/helferlein/commit/0eabf387d995728ea7a6ef9f5f4e39ece680586c))
+
 ### [4.0.5](https://github.com/labor-digital/helferlein/compare/v4.0.4...v4.0.5) (2021-03-25)
 
 
