@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/labor-digital/helferlein/compare/v4.0.6...v4.1.0) (2021-04-14)
+
+
+### Features
+
+* **setAttr:** allow to pass attribute object ([50aec8c](https://github.com/labor-digital/helferlein/commit/50aec8cfd2be7c6067fc79183ffdda9b201a2401))
+
+
+### Bug Fixes
+
+* add "isList" to the main exports ([3bc325f](https://github.com/labor-digital/helferlein/commit/3bc325fc06d2f2e861da27c4bd096b06c45c148c))
+
 ### [4.0.6](https://github.com/labor-digital/helferlein/compare/v4.0.5...v4.0.6) (2021-04-07)
 
 
