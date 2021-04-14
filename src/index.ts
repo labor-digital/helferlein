@@ -99,6 +99,7 @@ export * from './Lists/map';
 export * from './Lists/merge';
 export * from './Lists/reduce';
 export * from './Lists/sort';
+export * from './Lists/isList';
 
 // -- Paths
 export * from './Lists/Paths/getPath';
