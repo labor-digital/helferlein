@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Dom/addClass | @labor-digital/helferlein</title>
+	<title>Events/registerEventBusEmitterBridge | @labor-digital/helferlein</title>
 	<meta name="description" content="Documentation for @labor-digital/helferlein">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">@labor-digital/helferlein</a>
 				</li>
 				<li>
-					<a href="dom_addclass.html">Dom/addClass</a>
+					<a href="events_registereventbusemitterbridge.html">Events/registerEventBusEmitterBridge</a>
 				</li>
 			</ul>
-			<h1>Module Dom/addClass</h1>
+			<h1>Module Events/registerEventBusEmitterBridge</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="dom_addclass.html#addclass" class="tsd-kind-icon">add<wbr>Class</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="events_registereventbusemitterbridge.html#registereventbusemitterbridge" class="tsd-kind-icon">register<wbr>Event<wbr>Bus<wbr>Emitter<wbr>Bridge</a></li>
 							</ul>
 						</section>
 					</div>
@@ -81,35 +81,37 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="addclass" class="tsd-anchor"></a>
-					<h3>add<wbr>Class</h3>
+					<a name="registereventbusemitterbridge" class="tsd-anchor"></a>
+					<h3>register<wbr>Event<wbr>Bus<wbr>Emitter<wbr>Bridge</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Class<span class="tsd-signature-symbol">(</span>element<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">NodeListOf</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">&gt;</span>, classes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">register<wbr>Event<wbr>Bus<wbr>Emitter<wbr>Bridge<span class="tsd-signature-symbol">(</span>emitter<span class="tsd-signature-symbol">: </span><a href="../classes/events_eventemitter.eventemitter.html" class="tsd-signature-type" data-tsd-kind="Class">EventEmitter</a>, additionalEvents<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/13ae5ce/src/Dom/addClass.ts#L42">src/Dom/addClass.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/13ae5ce/src/Events/registerEventBusEmitterBridge.ts#L32">src/Events/registerEventBusEmitterBridge.ts:32</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Adds a single, or multiple classes to the given html element</p>
+									<p>Helper to create a bridge between event bus events and a localized event emitter.
+										The method will automatically pass through all helferlein events emitted on the event bus to the provided
+									event emitter instance. You can also provide additional, non helferlein events you want to pass as well.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>element: <span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">NodeListOf</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>emitter: <a href="../classes/events_eventemitter.eventemitter.html" class="tsd-signature-type" data-tsd-kind="Class">EventEmitter</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Receives either a single element or multiple elements</p>
+										<p>The event emitter to pass the events on to</p>
 									</div>
 								</li>
 								<li>
-									<h5>classes: <span class="tsd-signature-type">string</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> additionalEvents: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The space-separated list of classes to add to the element</p>
+										<p>Optional, additional events to be passed on</p>
 									</div>
 								</li>
 							</ul>
@@ -126,14 +128,14 @@
 						<a href="../modules.html">Exports</a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="dom_addclass.html">Dom/add<wbr>Class</a>
+						<a href="events_registereventbusemitterbridge.html">Events/register<wbr>Event<wbr>Bus<wbr>Emitter<wbr>Bridge</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="dom_addclass.html#addclass" class="tsd-kind-icon">add<wbr>Class</a>
+						<a href="events_registereventbusemitterbridge.html#registereventbusemitterbridge" class="tsd-kind-icon">register<wbr>Event<wbr>Bus<wbr>Emitter<wbr>Bridge</a>
 					</li>
 				</ul>
 			</nav>
