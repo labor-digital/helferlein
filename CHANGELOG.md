@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/labor-digital/helferlein/compare/v4.1.0...v4.2.0) (2021-06-30)
+
+
+### Features
+
+* **registerEventBusEmitterBridge:** add new helper to proxy event bus events to a local emitter ([6802751](https://github.com/labor-digital/helferlein/commit/68027519a70f72fe32cbde856a7895085fbde338))
+
 ## [4.1.0](https://github.com/labor-digital/helferlein/compare/v4.0.6...v4.1.0) (2021-04-14)
 
 
