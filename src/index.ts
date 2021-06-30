@@ -65,6 +65,7 @@ export * from './Environment/isNode';
 export * from './Events/EventBus';
 export * from './Events/EventEmitter';
 export * from './Events/HelferleinEventList';
+export * from './Events/registerEventBusEmitterBridge';
 
 // -- DomEvents
 export * from './Events/DomEvents/emitDomEvent';
