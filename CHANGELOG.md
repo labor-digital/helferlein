@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.3.0](https://github.com/labor-digital/helferlein/compare/v4.2.0...v4.3.0) (2021-08-17)
+
+
+### Features
+
+* introduce node.js specific bundle under @labor-digital/helferlein/node ([c5713ed](https://github.com/labor-digital/helferlein/commit/c5713eddd76e3fc21b4c71751a21545ca25c6581))
+* update dependencies ([ff988c8](https://github.com/labor-digital/helferlein/commit/ff988c81f582bcf70a489a767232978a5a094f61))
+
 ## [4.2.0](https://github.com/labor-digital/helferlein/compare/v4.1.0...v4.2.0) (2021-06-30)
 
 
