@@ -89,7 +89,8 @@ module.exports = {
         path: path.join(__dirname, 'dist.browser'),
         filename: 'Helferlein.[name].js',
         library: ['Helferlein'],
-        libraryTarget: 'umd'
+        libraryTarget: 'umd',
+        chunkFormat: 'array-push'
     },
     performance: {
         hints: false
