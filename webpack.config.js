@@ -31,7 +31,8 @@ const forbiddenPatterns = [
     /index\./,
     /interfaces\./,
     /_internals/,
-    /breakpointService\./
+    /breakpointService\./,
+    /node\.?/
 ];
 
 const basePath = path.join(__dirname, 'dist');

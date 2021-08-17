@@ -1,0 +1,7 @@
+{
+	"name": "@labor-digital/helferlein-node-dist",
+	"description": "Node.js helpers without interfering with webpack",
+	"license": "Apache-2.0",
+	"main": "dist/index.cjs.js",
+	"module": "dist/index.js"
+}

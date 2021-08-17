@@ -16,7 +16,7 @@
  * Last modified: 2021.03.09 at 13:49
  */
 
-import {terser} from 'rollup-plugin-terser';
+import copy from 'rollup-plugin-copy';
 import pkg from './package.json';
 
 /**
@@ -38,7 +38,7 @@ function createOutputOptions(options)
 {
     return {
         banner,
-        name: 'helferlein',
+        name: 'helferlein.node',
         exports: 'named',
         sourcemap: true,
         ...options
@@ -49,7 +49,7 @@ function createOutputOptions(options)
  * @type {import('rollup').RollupOptions}
  */
 const options = {
-    input: './dist/index.js',
+    input: './dist/node.js',
     onwarn: function (warning) {
         // Suppress this error message...
         // https://github.com/rollup/rollup/issues/794#issuecomment-270803587
@@ -60,20 +60,23 @@ const options = {
     },
     output: [
         createOutputOptions({
-            file: './dist/index.esm.js',
+            file: './node/dist/index.js',
             format: 'esm'
         }),
         createOutputOptions({
-            file: './dist/index.umd.js',
-            format: 'umd'
-        }),
-        createOutputOptions({
-            file: './dist/index.umd.min.js',
-            format: 'umd',
-            plugins: [terser()]
+            file: './node/dist/index.cjs.js',
+            format: 'cjs'
         })
     ],
-    plugins: []
+    plugins: [
+        copy({
+            targets: [
+                {src: './dist/node.d.ts', dest: './node/dist'},
+                {src: './dist/Node/*.d.ts', dest: './node/dist/Node'},
+                {src: './dist/Node/FileSystem/*.d.ts', dest: './node/dist/Node/FileSystem'}
+            ]
+        })
+    ]
 };
 
 export default options;
