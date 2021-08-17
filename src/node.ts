@@ -18,5 +18,6 @@
 
 export * from './Node/nodeRequire';
 export * from './Node/FileSystem/copySync';
+export {copy as copySync} from './Node/FileSystem/copySync';
 export * from './Node/FileSystem/mkdirRecursiveSync';
 export * from './Node/FileSystem/rmdirRecursiveSync';

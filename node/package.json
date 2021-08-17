@@ -3,5 +3,6 @@
 	"description": "Node.js helpers without interfering with webpack",
 	"license": "Apache-2.0",
 	"main": "dist/index.cjs.js",
-	"module": "dist/index.js"
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts"
 }

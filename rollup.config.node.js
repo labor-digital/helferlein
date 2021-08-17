@@ -71,7 +71,7 @@ const options = {
     plugins: [
         copy({
             targets: [
-                {src: './dist/node.d.ts', dest: './node/dist'},
+                {src: './dist/node.d.ts', dest: './node/dist', rename: 'index.d.ts'},
                 {src: './dist/Node/*.d.ts', dest: './node/dist/Node'},
                 {src: './dist/Node/FileSystem/*.d.ts', dest: './node/dist/Node/FileSystem'}
             ]
