@@ -1,0 +1,400 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>BreakpointService | @labor-digital/helferlein</title>
+	<meta name="description" content="Documentation for @labor-digital/helferlein">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">@labor-digital/helferlein</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">@labor-digital/helferlein</a>
+				</li>
+				<li>
+					<a href="../modules/Ui_BreakpointService_BreakpointService.html">Ui/BreakpointService/BreakpointService</a>
+				</li>
+				<li>
+					<a href="Ui_BreakpointService_BreakpointService.BreakpointService.html">BreakpointService</a>
+				</li>
+			</ul>
+			<h1>Class BreakpointService</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This class utilizes the css to javascript breakpoint service provided by the &quot;@neunerlei/sassy&quot; package
+						to create a breakpoint api in javascript which is configured in css.</p>
+					</div>
+					<p>If you don&#39;t want to use the sassy library, but still want access to this api you have
+						to create a css class that defines a &quot;font-family&quot; with a value like the following:
+					font-family: &quot;xxs: 0|449px, xs: 0|549px, sm: 550px|767px, md: 768px|991px, lg: 992px|1199px, xl: 1200px|999999px&quot;;</p>
+					<p>The key is the name of the breakpoint, the first number is the &quot;min&quot; value of the breakpoint, the second (after the pipe)
+					the &quot;max&quot; value of the breakpoint</p>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">BreakpointService</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#bpIs" class="tsd-kind-icon">bp<wbr>Is</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#configure" class="tsd-kind-icon">configure</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#getAll" class="tsd-kind-icon">get<wbr>All</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#getCurrent" class="tsd-kind-icon">get<wbr>Current</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#getForWidth" class="tsd-kind-icon">get<wbr>For<wbr>Width</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#getSingle" class="tsd-kind-icon">get<wbr>Single</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Breakpoint<wbr>Service<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Ui_BreakpointService_BreakpointService.BreakpointService.html" class="tsd-signature-type" data-tsd-kind="Class">BreakpointService</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="Ui_BreakpointService_BreakpointService.BreakpointService.html" class="tsd-signature-type" data-tsd-kind="Class">BreakpointService</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="bpIs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> bp<wbr>Is</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">bp<wbr>Is<span class="tsd-signature-symbol">(</span>comparator<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;&lt;&#x3D;&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;&#x3D;&#x3D;&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;&gt;&#x3D;&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;&gt;&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;&lt;&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;!&#x3D;&quot;</span>, breakpointKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/5186019/src/Ui/BreakpointService/BreakpointService.ts#L78">src/Ui/BreakpointService/BreakpointService.ts:78</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if the current breakpoint which was configured using its css counterpart of bootstrap-addons
+									is (bigger, smaller, the same, not) as a given other breakpoint key (&quot;sm&quot;, &quot;lg&quot;...)</p>
+								</div>
+								<p>To add your own breakpoints take a look at the &quot;$js-breakpoints&quot; variable in config.sass</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>comparator: <span class="tsd-signature-type">&quot;&lt;&#x3D;&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;&#x3D;&#x3D;&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;&gt;&#x3D;&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;&gt;&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;&lt;&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;!&#x3D;&quot;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The operator to use for the comparison</p>
+									</div>
+								</li>
+								<li>
+									<h5>breakpointKey: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The other breakpoint to compare with the current one</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="configure" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> configure</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">configure<span class="tsd-signature-symbol">(</span>opts<span class="tsd-signature-symbol">: </span><a href="../interfaces/Ui_BreakpointService_BreakpointService_interfaces.BreakpointsConfigureOptions.html" class="tsd-signature-type" data-tsd-kind="Interface">BreakpointsConfigureOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/5186019/src/Ui/BreakpointService/BreakpointService.ts#L158">src/Ui/BreakpointService/BreakpointService.ts:158</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Can be used to customize the settings for the breakpoint service</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>opts: <a href="../interfaces/Ui_BreakpointService_BreakpointService_interfaces.BreakpointsConfigureOptions.html" class="tsd-signature-type" data-tsd-kind="Interface">BreakpointsConfigureOptions</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<pre><code><span style="color: #000000">       - container: </span><span style="color: #001080">The</span><span style="color: #000000"> </span><span style="color: #001080">container</span><span style="color: #000000"> </span><span style="color: #001080">selector</span><span style="color: #000000"> </span><span style="color: #001080">to</span><span style="color: #000000"> </span><span style="color: #001080">create</span><span style="color: #000000"> </span><span style="color: #001080">the</span><span style="color: #000000"> </span><span style="color: #001080">breakpoint</span><span style="color: #000000"> </span><span style="color: #001080">marker</span><span style="color: #000000"> </span><span style="color: #0000FF">in</span><span style="color: #000000"> (</span><span style="color: #001080">DEFAULT</span><span style="color: #000000">: </span><span style="color: #A31515">&#039;body&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">       - template: The html template to append to the breakpointContainer (</span><span style="color: #001080">DEFAULT</span><span style="color: #000000">: </span><span style="color: #A31515">&#039;&lt;div class=&quot;sassy-breakpoint-service&quot;&gt;&lt;/div&gt;&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">       - inTemplateSelector: Can be used if multi-layered templates are required to get the correct element to read the css definition from.</span>
+</code></pre>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getAll" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>All</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>All<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="Ui_BreakpointService_Entities_Breakpoint.Breakpoint.html" class="tsd-signature-type" data-tsd-kind="Class">Breakpoint</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/5186019/src/Ui/BreakpointService/BreakpointService.ts#L121">src/Ui/BreakpointService/BreakpointService.ts:121</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the list of all found breakpoints or null, if there are none</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="Ui_BreakpointService_Entities_Breakpoint.Breakpoint.html" class="tsd-signature-type" data-tsd-kind="Class">Breakpoint</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getCurrent" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Current</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Current<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="Ui_BreakpointService_Entities_Breakpoint.Breakpoint.html" class="tsd-signature-type" data-tsd-kind="Class">Breakpoint</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/5186019/src/Ui/BreakpointService/BreakpointService.ts#L97">src/Ui/BreakpointService/BreakpointService.ts:97</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the current breakpoint or null, if there is no
+									breakpoint definition</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="Ui_BreakpointService_Entities_Breakpoint.Breakpoint.html" class="tsd-signature-type" data-tsd-kind="Class">Breakpoint</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getForWidth" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>For<wbr>Width</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>For<wbr>Width<span class="tsd-signature-symbol">(</span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="Ui_BreakpointService_Entities_Breakpoint.Breakpoint.html" class="tsd-signature-type" data-tsd-kind="Class">Breakpoint</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/5186019/src/Ui/BreakpointService/BreakpointService.ts#L110">src/Ui/BreakpointService/BreakpointService.ts:110</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the breakpoint instance that would be used for a given width in pixels</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>width: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the number in pixels to calculate the breakpoint for</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="Ui_BreakpointService_Entities_Breakpoint.Breakpoint.html" class="tsd-signature-type" data-tsd-kind="Class">Breakpoint</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getSingle" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Single</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Single<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="Ui_BreakpointService_Entities_Breakpoint.Breakpoint.html" class="tsd-signature-type" data-tsd-kind="Class">Breakpoint</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/labor-digital/helferlein/blob/5186019/src/Ui/BreakpointService/BreakpointService.ts#L136">src/Ui/BreakpointService/BreakpointService.ts:136</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the definition for a single breakpoint with the given key
+										It may return null if it is called on the server side.
+									It throws an error if a non existent breakpoint key was requested</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="Ui_BreakpointService_Entities_Breakpoint.Breakpoint.html" class="tsd-signature-type" data-tsd-kind="Class">Breakpoint</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Modules</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/Ui_BreakpointService_BreakpointService.html">Ui/<wbr>Breakpoint<wbr>Service/<wbr>Breakpoint<wbr>Service</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-module">
+						<a href="Ui_BreakpointService_BreakpointService.BreakpointService.html" class="tsd-kind-icon">Breakpoint<wbr>Service</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#bpIs" class="tsd-kind-icon">bp<wbr>Is</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#configure" class="tsd-kind-icon">configure</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#getAll" class="tsd-kind-icon">get<wbr>All</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#getCurrent" class="tsd-kind-icon">get<wbr>Current</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#getForWidth" class="tsd-kind-icon">get<wbr>For<wbr>Width</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="Ui_BreakpointService_BreakpointService.BreakpointService.html#getSingle" class="tsd-kind-icon">get<wbr>Single</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
