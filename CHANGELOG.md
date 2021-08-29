@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.3.1](https://github.com/labor-digital/helferlein/compare/v4.3.0...v4.3.1) (2021-08-17)
+
+
+### Bug Fixes
+
+* rename node types to be resolved correctly ([928ed7f](https://github.com/labor-digital/helferlein/commit/928ed7ff7412cfef062de025f9179307ba6c0e47))
+
 ## [4.3.0](https://github.com/labor-digital/helferlein/compare/v4.2.0...v4.3.0) (2021-08-17)
 
 
