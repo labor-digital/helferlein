@@ -28,12 +28,7 @@ import {removeClass} from './removeClass';
  */
 export function toggleClass(element: HTMLElement | NodeListOf<Element>, classes: string, condition: boolean)
 {
-    if (!isObject(element)) {
-        return;
-    }
-    if (condition === true) {
-        addClass(element, classes);
-    } else {
-        removeClass(element, classes);
+    if (isObject(element)) {
+        condition ? addClass(element, classes) : removeClass(element, classes);
     }
 }

@@ -16,17 +16,49 @@
  * Last modified: 2019.06.14 at 17:09
  */
 
+import {forEach} from '../Lists/forEach';
 import {isObject} from '../Types/isObject';
+import {testFlags} from '../util';
+import {hasClassList} from './util';
 
 /**
  * Returns true if the given element has the given class name
  * @param element A single html element to check if it has a given class
- * @param className A single class to check for existence
+ * @param classes The space-separated list of classes to remove from the element
  */
-export function hasClass(element: HTMLElement, className: string): boolean
+export function hasClass(element: HTMLElement, classes: string): boolean
 {
-    if (!isObject(element)) {
-        return false;
+    if (isObject(element)) {
+        let state = true;
+        let elClasses: Array<string>;
+        classes = classes.trim();
+        
+        if (classes === '') {
+            return false;
+        }
+        
+        forEach(classes.split(' '), c => {
+            if (c.trim() === '') {
+                return;
+            }
+            
+            if (hasClassList && !testFlags.noClassList) {
+                if (!element.classList.contains(c)) {
+                    state = false;
+                    return false;
+                }
+            } else {
+                elClasses = elClasses ?? classes.split(' ');
+                if (elClasses.indexOf(c) === -1) {
+                    state = false;
+                    return false;
+                }
+            }
+            
+        });
+        
+        return state;
     }
-    return (' ' + element.className + ' ').replace(/[\n\t]/g, ' ').indexOf(' ' + className.trim() + " ") > -1;
+    
+    return false;
 }

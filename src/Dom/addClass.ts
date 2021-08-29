@@ -19,18 +19,29 @@
 import {forEach} from '../Lists/forEach';
 import {isObject} from '../Types/isObject';
 import {isUndefined} from '../Types/isUndefined';
+import {testFlags} from '../util';
+import {hasClassList} from './util';
 
 /**
  * Internal helper to avoid unnecessary iteration
  * @param element
  * @param classList
  */
-function addClassAdder(element: HTMLElement | Element, classList: Array<string>)
+function adder(element: HTMLElement | Element, classList: Array<string>)
 {
-    for (let i = 0; i < classList.length; i++) {
-        if (element.className.indexOf(classList[i]) === -1) {
-            element.className += ' ' + classList[i];
-        }
+    if (hasClassList && !testFlags.noClassList) {
+        // IE 11 supports class list, but does not support adding multiple classes at once
+        forEach(classList, function (c) {c && element.classList.add(c);});
+    } else {
+        // Fallback for browsers that don't support classList
+        let newTokens: Array<string> = [];
+        forEach([...element.className.split(' '), ...classList], function (token) {
+            token = token.trim();
+            if (token !== '' && newTokens.indexOf(token) === -1) {
+                newTokens.push(token);
+            }
+        });
+        element.className = newTokens.join(' ');
     }
 }
 
@@ -39,14 +50,16 @@ function addClassAdder(element: HTMLElement | Element, classList: Array<string>)
  * @param element Receives either a single element or multiple elements
  * @param classes The space-separated list of classes to add to the element
  */
-export function addClass(element: HTMLElement | NodeListOf<Element>, classes: string)
+export function addClass(element: HTMLElement | NodeListOf<Element>, classes: string): void
 {
-    if (!isObject(element)) {
-        return;
+    if (isObject(element)) {
+        
+        const classList = classes.split(' ');
+        
+        forEach(
+            isUndefined((element as NodeListOf<Element>).length) ? [element] as any : element,
+            function (e) {adder(e, classList);}
+        );
+        
     }
-    const classList = classes.split(' ');
-    if (isUndefined((element as NodeListOf<Element>).length)) {
-        return addClassAdder(element as HTMLElement, classList);
-    }
-    forEach(element, (e) => addClassAdder(e, classList));
 }

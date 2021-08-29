@@ -16,18 +16,32 @@
  * Last modified: 2019.02.01 at 10:50
  */
 
+import {filter} from '../Lists/filter';
 import {forEach} from '../Lists/forEach';
 import {isObject} from '../Types/isObject';
 import {isUndefined} from '../Types/isUndefined';
+import {testFlags} from '../util';
+import {hasClassList} from './util';
 
 /**
  * Internal helper to avoid unnecessary iteration
  * @param element
- * @param regex
+ * @param classList
  */
-function removeClassRemover(element: HTMLElement | Element, regex: RegExp)
+function remover(element: HTMLElement | Element, classList: Array<string>)
 {
-    element.className = element.className.replace(regex, '$1 ').trim();
+    if (hasClassList && !testFlags.noClassList) {
+        // IE 11 supports class list, but does not support adding multiple classes at once
+        forEach(classList, function (c) {c && element.classList.remove(c);});
+    } else {
+        // Fallback for browsers that don't support classList
+        element.className = filter(
+            element.className.split(' '),
+            function (token): boolean {
+                return token.trim() !== '' && classList.indexOf(token) === -1;
+            }
+        ).join(' ');
+    }
 }
 
 /**
@@ -37,14 +51,14 @@ function removeClassRemover(element: HTMLElement | Element, regex: RegExp)
  */
 export function removeClass(element: HTMLElement | NodeListOf<Element>, classes: string)
 {
-    if (!isObject(element)) {
-        return;
+    if (isObject(element)) {
+        
+        const classList = classes.split(' ');
+        
+        forEach(
+            isUndefined((element as NodeListOf<Element>).length) ? [element] as any : element,
+            function (e) {remover(e, classList);}
+        );
+        
     }
-    // Prepare regex
-    const pattern = '(^|\\s)' + classes.replace(/\*/g, '[^\\s]*?').split(' ').join('(\\s|$)|') + '(\\s|$)';
-    const regex = new RegExp(pattern, 'g');
-    if (isUndefined((element as NodeListOf<Element>).length)) {
-        return removeClassRemover(element as HTMLElement, regex);
-    }
-    forEach(element, (e) => removeClassRemover(e, regex));
 }

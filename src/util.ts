@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 LABOR.digital
+ * Copyright 2021 LABOR.digital
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Last modified: 2019.01.09 at 11:10
+ * Last modified: 2021.08.29 at 13:52
  */
+import type {PlainObject} from './Interfaces/PlainObject';
 
-module.exports = {
-    preset: 'ts-jest',
-    testEnvironment: 'jsdom',
-    modulePathIgnorePatterns: ['__util__']
-};
+export const testFlags: PlainObject = {};

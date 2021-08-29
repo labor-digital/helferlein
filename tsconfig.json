@@ -4,6 +4,7 @@
 		"sourceMap": true
 	},
 	"exclude": [
+		"dist",
 		"./src/**/*.test.ts",
 		"./src/**/*.test.tsx"
 	]
