@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.4.0](https://github.com/labor-digital/helferlein/compare/v4.3.1...v4.4.0) (2021-08-29)
+
+
+### Features
+
+* **DOM:** improve and test addClass, removeClass and hasClass helpers ([7a585c2](https://github.com/labor-digital/helferlein/commit/7a585c2fe11dba32ab63c47ae96aab941538e4a5))
+
 ### [4.3.1](https://github.com/labor-digital/helferlein/compare/v4.3.0...v4.3.1) (2021-08-17)
 
 
