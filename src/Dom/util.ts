@@ -16,4 +16,6 @@
  * Last modified: 2021.08.29 at 13:38
  */
 
-export const hasClassList = !!document.body?.classList;
+import {isBrowser} from '../Environment/isBrowser';
+
+export const hasClassList = isBrowser() && !!document.body?.classList;
