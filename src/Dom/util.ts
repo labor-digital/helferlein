@@ -16,6 +16,4 @@
  * Last modified: 2021.08.29 at 13:38
  */
 
-import {isBrowser} from '../Environment/isBrowser';
-
-export const hasClassList = isBrowser() && !!document.body?.classList;
+export const hasClassList = typeof document !== 'undefined' && !!document.body?.classList;
