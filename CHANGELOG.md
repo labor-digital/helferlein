@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.4.1](https://github.com/labor-digital/helferlein/compare/v4.4.0...v4.4.1) (2021-09-04)
+
+
+### Bug Fixes
+
+* check if document is defined before checking class list ([735b8b5](https://github.com/labor-digital/helferlein/commit/735b8b5cd71b04a32584676208934e1d7b013458))
+* directly check document instead of using internal isBrowser() ([09d5227](https://github.com/labor-digital/helferlein/commit/09d5227182388d7cc41390934fecdbd315f4149a))
+
 ## [4.4.0](https://github.com/labor-digital/helferlein/compare/v4.3.1...v4.4.0) (2021-08-29)
 
 
